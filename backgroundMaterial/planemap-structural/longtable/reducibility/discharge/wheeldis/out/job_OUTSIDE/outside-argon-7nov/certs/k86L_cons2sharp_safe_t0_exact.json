@@ -1,0 +1,367 @@
+{
+  "certificate_type": "exact_rational_k86L_cons2sharp_safe_t0_certificate",
+  "description": "Exact rational (Fraction) verification of CONS2SHARP-safe refinements of cg12_76_0 that close all 2,749 rows of Opus k86L (cert_p1_00_2efe5cb3_exb.json) to exact t* = 0 while guaranteeing exact coefficient 0 (zero load) on C 778979 and on all 92 canonical all-big 6-wheels L in {7,8,9}^6 (5,888 (L,s) pairs).",
+  "why_unrefined_cg12_76_0_loaded_C_778979": {
+    "rule": "EDGE(7->6)[R.L+2={6789} R.L-2={6789}]",
+    "mechanism": "On C 778979 (and any 6-wheel with L in {7,8,9}^6), all six link vertices have degree >= 7 in {7,8,9} subset {6,7,8,9}, so cg12_76_0 fires at both orientations of every 7-spoke (+6 on C 778979). When h=0 on all-big 6-wheels (pure-E cons2 constraint), forcing load <= 0 on C 778979 forces E(cg12_76_0) = 0, leaving t* = +0.000421197 on k86L.",
+    "solution": "On C 778979 (L in {7,8,9}^6), there is NO 5 and NO 6 anywhere on the 6-wheel link (S.L+1, S.L-1, R.L+2, R.L-2 are all in {7,8,9}). By contrast, on the k86L rows relieved by cg12_76_0, the 7->6 edge is adjacent to a 5 or 6 on the 6-wheel link (S.L+1=S or S.L-1=S or R.L+2=6 or R.L-2=6). Restricting S.L+1=S (cg76_SL1_S = EDGE(7->6)[S.L+1=S R.L+2={6789} R.L-2={6789}]) or R.L+2=6 (cg76_RL2_6 = EDGE(7->6)[R.L+2=6 R.L-2={6789}]) gives IDENTICALLY ZERO (0) coefficient on C 778979 and on ALL 5,888 (L,s) pairs with L in {7,8,9}^6, while still closing all 2,749 rows of k86L to exact t* = 0!"
+  },
+  "rule_cons2_allbig_audit": {
+    "cg12_76_0": {
+      "rule": "EDGE(7->6)[R.L+2={6789} R.L-2={6789}]   # W6 r12 colsum 0.054929",
+      "coef_on_C_778979_sB": 6,
+      "coef_on_C_778979_sS": 6,
+      "max_coef_across_all_5888_allbig_6wheels": 12,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 5056,
+      "strictly_zero_on_C_778979": false,
+      "strictly_zero_on_all_789_6wheels": false
+    },
+    "w6b85_87_0": {
+      "rule": "EDGE(8->7)[S.L+1={568} S.L-1=5 S.A-1=5 R.L+2=S R.L-2={5678}]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 0,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 0,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": true
+    },
+    "cg76_SL1_S": {
+      "rule": "EDGE(7->6)[S.L+1=S R.L+2={6789} R.L-2={6789}]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 0,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 0,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": true
+    },
+    "cg76_SLm1_S": {
+      "rule": "EDGE(7->6)[S.L-1=S R.L+2={6789} R.L-2={6789}]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 0,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 0,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": true
+    },
+    "cg76_RL2_6": {
+      "rule": "EDGE(7->6)[R.L+2=6 R.L-2={6789}]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 0,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 0,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": true
+    },
+    "cg76_RLm2_6": {
+      "rule": "EDGE(7->6)[R.L+2={6789} R.L-2=6]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 0,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 0,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": true
+    },
+    "cg76_SL1_6": {
+      "rule": "EDGE(7->6)[S.L+1=6 R.L+2={6789} R.L-2={6789}]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 0,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 0,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": true
+    },
+    "cg76_SL1_5": {
+      "rule": "EDGE(7->6)[S.L+1=5 R.L+2={6789} R.L-2={6789}]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 0,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 0,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": true
+    },
+    "cg76_no9_link": {
+      "rule": "EDGE(7->6)[S.L+1={5678} S.L-1={5678} R.L+2={678} R.L-2={678}]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 12,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 1408,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": false
+    },
+    "cg76_SL1_567": {
+      "rule": "EDGE(7->6)[S.L+1={567} S.L-1={567} R.L+2={678} R.L-2={678}]",
+      "coef_on_C_778979_sB": 0,
+      "coef_on_C_778979_sS": 0,
+      "max_coef_across_all_5888_allbig_6wheels": 12,
+      "min_coef_across_all_5888_allbig_6wheels": 0,
+      "nonzero_count_across_5888_allbig_6wheels": 512,
+      "strictly_zero_on_C_778979": true,
+      "strictly_zero_on_all_789_6wheels": false
+    },
+    "relay_6B_allbig": {
+      "rule": "EDGE(6->B)[S.L+1=B S.L+2=B S.L+3=B S.L-1=B S.L-2=B]",
+      "coef_on_C_778979_sB": -12,
+      "coef_on_C_778979_sS": -12,
+      "max_coef_across_all_5888_allbig_6wheels": -12,
+      "min_coef_across_all_5888_allbig_6wheels": -12,
+      "nonzero_count_across_5888_allbig_6wheels": 5888,
+      "strictly_zero_on_C_778979": false,
+      "strictly_zero_on_all_789_6wheels": false
+    }
+  },
+  "k86L_plus_allbig_cons2_lp_and_exact_verification": {
+    "control_140_plus_unrefined_cg12_76_0_with_pureE_allbig_enforced": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0004338269941075326,
+      "t_star_unconstrained_with_allbig_pureE_zero": 0.00043382699410808784,
+      "reaches_t0": false
+    },
+    "140_plus_single_cg76_SL1_S": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.06783201345666891,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "9999999991/1000000000000",
+        "min_slack_2749_float": 0.009999999991
+      }
+    },
+    "140_plus_single_cg76_SLm1_S": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.06783201345666891,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "9999999991/1000000000000",
+        "min_slack_2749_float": 0.009999999991
+      }
+    },
+    "140_plus_single_cg76_RL2_6": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.05200582713851632,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "1999999999/200000000000",
+        "min_slack_2749_float": 0.009999999995
+      }
+    },
+    "140_plus_single_cg76_RLm2_6": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.05200582713851632,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "1999999999/200000000000",
+        "min_slack_2749_float": 0.009999999995
+      }
+    },
+    "140_plus_single_cg76_SL1_6": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.0673206137511488,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "2499999999/250000000000",
+        "min_slack_2749_float": 0.009999999996
+      }
+    },
+    "140_plus_single_cg76_SL1_5": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.00043382699410808616,
+      "t_star_unconstrained_with_allbig_pureE_zero": 0.0004338269941074424,
+      "reaches_t0": false
+    },
+    "140_plus_single_cg76_no9_link": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0004338269941075326,
+      "t_star_unconstrained_with_allbig_pureE_zero": 0.00043382699410808784,
+      "reaches_t0": false
+    },
+    "140_plus_single_cg76_SL1_567": {
+      "num_keys": 141,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0004338269941075326,
+      "t_star_unconstrained_with_allbig_pureE_zero": 0.00043382699410808784,
+      "reaches_t0": false
+    },
+    "140_plus_pair_cg76_SL1_S_and_SLm1_S": {
+      "num_keys": 142,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.09250881005315305,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "2499999999/250000000000",
+        "min_slack_2749_float": 0.009999999996
+      }
+    },
+    "140_plus_pair_cg76_RL2_6_and_RLm2_6": {
+      "num_keys": 142,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.07613866583356527,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "2499999999/250000000000",
+        "min_slack_2749_float": 0.009999999996
+      }
+    },
+    "140_plus_cg12_76_0_and_relay_6B_allbig": {
+      "num_keys": 142,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.05304015924722181,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "-735139019517/250000000000",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "4999999997/500000000000",
+        "min_slack_2749_float": 0.009999999994
+      }
+    },
+    "124_plus_cg76_SL1_S_and_w6b85_87_0": {
+      "num_keys": 126,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.08876649020480888,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "2499999999/250000000000",
+        "min_slack_2749_float": 0.009999999996
+      }
+    },
+    "124_plus_cg76_SL1_S_SLm1_S_and_w6b85_87_0": {
+      "num_keys": 127,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.11395362326874799,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "2499999999/250000000000",
+        "min_slack_2749_float": 0.009999999996
+      }
+    },
+    "111_plus_cg76_SL1_S_SLm1_S_and_w6b85_87_0": {
+      "num_keys": 114,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.11266852834518498,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "2499999999/250000000000",
+        "min_slack_2749_float": 0.009999999996
+      }
+    },
+    "87_plus_cg76_SL1_S_SLm1_S_and_w6b85_87_0": {
+      "num_keys": 90,
+      "t_star_nonneg_with_allbig_pureE_zero": 0.0,
+      "t_star_unconstrained_with_allbig_pureE_zero": -0.11239705847332405,
+      "reaches_t0": true,
+      "exact_fraction_verification": {
+        "verified_t0_exact": true,
+        "sigma_interior_float": 0.01,
+        "violations_on_2749_k86L_rows": 0,
+        "violations_on_184_pureE_allbig_6wheels": 0,
+        "exact_load_on_C_778979": "0",
+        "max_load_across_all_789_6wheels": "0",
+        "min_slack_2749_exact": "2499999999/250000000000",
+        "min_slack_2749_float": 0.009999999996
+      }
+    }
+  },
+  "irreducible_sparse_closing_set_on_k86L_and_allbig_cons2": {
+    "active_key_count": 1,
+    "active_keys": [
+      "cg76_SL1_S"
+    ],
+    "rules": [
+      {
+        "key": "cg76_SL1_S",
+        "rule": "EDGE(7->6)[S.L+1=S R.L+2={6789} R.L-2={6789}]"
+      }
+    ],
+    "exact_fraction_verification": {
+      "verified_t0_exact": true,
+      "sigma_interior_float": 0.01,
+      "violations_on_2749_k86L_rows": 0,
+      "violations_on_184_pureE_allbig_6wheels": 0,
+      "exact_load_on_C_778979": "0",
+      "max_load_across_all_789_6wheels": "0",
+      "min_slack_2749_exact": "0",
+      "min_slack_2749_float": 0.0
+    },
+    "nonzero_E_variables": [
+      {
+        "key": "cg76_SL1_S",
+        "value": "780106848731/1000000000000"
+      }
+    ]
+  }
+}

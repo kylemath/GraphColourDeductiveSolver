@@ -1,0 +1,2577 @@
+{
+  "task": "Task B: Simplified 1-Sentence Rules for A97+F (37 keys) & A100F (51 keys) and Unified Master Closing Rule Set",
+  "verified": true,
+  "exact_algebraic_slot_identities": {
+    "identity_1_deg5_sender": "For every EDGE(5->v) rule, S.L+3 is bit-for-bit identical to S.L-2 and S.L-3 is bit-for-bit identical to S.L+2 across all OUT and IN slots in S_all U C_all U R7_5678 U R8_567.",
+    "identity_2_deg6_sender": "For every EDGE(6->v) rule, S.L+3 is bit-for-bit identical to S.L-3 across all OUT and IN slots in S_all U C_all U R7_5678 U R8_567.",
+    "identity_3_domain_bounds": "Predicates such as R.L+2={5678} or S.A+1={5678} that hold universally on all active slots triggered by the remaining clauses are stripped without altering any LP matrix entry.",
+    "slot_universe_counts": {
+      "uniq_out_slots": 629073,
+      "uniq_in_slots": 71377,
+      "exact_slot_hit_mismatches": 0
+    }
+  },
+  "tiered_master_architecture": {
+    "Tier_1_D7_567_World": {
+      "world": "{5,6,7} World (110,087 R7_567 receivers + S + C + mrow)",
+      "rule_count": 16,
+      "predicate_count": 84,
+      "t_star_exact": "0",
+      "certificate_file": "outside-argon-7nov/certs/primal_t0_16rules_84conds_exact.json",
+      "verified_0_violations": true
+    },
+    "Tier_2_D8_Capped_Studio": {
+      "world": "Degree-8 Capped Studio (2,297,792 Studio receivers + 511 rpatN3_rot receivers = 2,298,303 receivers)",
+      "widened_1sentence_set": {
+        "rule_count": 17,
+        "predicate_count": 87,
+        "added_over_Tier_1": [
+          "r1s_gk00_5 = EDGE(7->6)[S.L+2=5 S.A+1=5 S.A-1=5] (3 predicates)"
+        ],
+        "t_star_exact": "0",
+        "certificate_file": "outside-argon-7nov/certs/primal_d8_studio_17rules_exact.json",
+        "verified_0_violations": true
+      },
+      "exact_slot_equivalent_24key_set": {
+        "rule_count": 24,
+        "orig_predicate_count": 189,
+        "simplified_predicate_count": 143,
+        "predicates_removed": 46,
+        "t_star_exact": "0",
+        "certificate_file": "outside-argon-7nov/certs/primal_d8_studio_24keys_exact.json",
+        "verified_0_violations": true
+      }
+    },
+    "Tier_3_D8_Capped_A97F": {
+      "world": "Degree-8 Capped A97+F (2,305,606 A97+F receivers + 511 rpatN3_rot receivers = 2,306,117 receivers)",
+      "rule_count": 37,
+      "orig_predicate_count": 301,
+      "simplified_predicate_count": 232,
+      "predicates_removed": 69,
+      "overlap_with_Studio_24": 20,
+      "additional_A97F_keys_count": 17,
+      "additional_A97F_keys": [
+        "cg00_10",
+        "cg00_9",
+        "gk00_61",
+        "gk00_87",
+        "gk00_98",
+        "gk01_16",
+        "gk01_71",
+        "gk01_74",
+        "gk01_99",
+        "gk02_26",
+        "gk02_31",
+        "gk02_79",
+        "gk02_84",
+        "gk02_86",
+        "gk03_40",
+        "gk04_44",
+        "gk04_45"
+      ],
+      "t_star_exact": "0",
+      "certificate_file": "outside-argon-7nov/certs/primal_d8_a97f_37keys_exact.json",
+      "verified_0_violations": true
+    },
+    "Tier_4_D8_Capped_A100F": {
+      "world": "Degree-8 Capped A100F (2,305,618 A100F receivers + 511 rpatN3_rot receivers = 2,306,129 receivers)",
+      "rule_count": 51,
+      "orig_predicate_count": 410,
+      "simplified_predicate_count": 312,
+      "predicates_removed": 98,
+      "strict_superset_of_Tier_3_A97F_37": true,
+      "additional_A100F_RouteF_keys_count": 14,
+      "additional_A100F_RouteF_keys": [
+        "cg12_77_0",
+        "gk00_54",
+        "gk00_55",
+        "gk00_92",
+        "gk01_101",
+        "gk01_105",
+        "gk01_106",
+        "gk01_21",
+        "gk01_64",
+        "gk02_27",
+        "gk02_29",
+        "gk02_80",
+        "gk02_82",
+        "gk03_35"
+      ],
+      "t_star_exact": "0",
+      "certificate_file": "outside-argon-7nov/certs/primal_d8_a100f_51keys_exact.json",
+      "verified_0_violations": true
+    },
+    "Tier_5_k86L_CONS2SHARP_Safe": {
+      "world": "k86L (2,749 rows + mrow closure + all 184 pure-E all-big 6-wheels L in {7,8,9}^6 including C 778979)",
+      "added_rule": {
+        "name": "cg76_SL1_S",
+        "rule": "EDGE(7->6)[S.L+1=S R.L+2={6789} R.L-2={6789}]",
+        "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is small in {5,6}, R.L+2 is != 5 (in {6,7,8,9}), R.L-2 is != 5 (in {6,7,8,9}).",
+        "predicates": 3,
+        "C_778979_coeff": 0,
+        "all_5888_allbig_L789_coeff": 0,
+        "k86L_140keys_plus_cg76_SL1_S_t_unc": -0.067832013,
+        "k86L_1key_alone_t_unc": -0.025271535,
+        "k86L_zcons_6718_t_unc": -0.026259778,
+        "k86L_empty_0f2b_t_unc": -0.017738516,
+        "verified_t0_exact": true
+      },
+      "unified_rule_count_with_A100F_51": 52,
+      "unified_predicate_count_with_A100F_51": 315,
+      "unified_rule_count_all_distinct_ across_Studio24_A97F37_A100F51_k86L": 55,
+      "t_star_exact": "0",
+      "certificate_file": "outside-argon-7nov/certs/k86L_cons2sharp_safe_t0_exact.json",
+      "verified_0_violations": true
+    }
+  },
+  "studio_17_widened_1sentence_rules": [
+    {
+      "name": "r16_KS",
+      "rule": "EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is big in {7,8,9}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A-1 is big in {7,8,9}.",
+      "predicates": 5,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "279530600652540109452079038179077/9196233713254914459110625000000000"
+    },
+    {
+      "name": "r16_A1",
+      "rule": "EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]",
+      "english_1sentence": "Send charge along 7->B (7-sender to a big vertex (deg >= 7)) when S.L+1 is small in {5,6}, S.L+2 is 5, S.L-2 is 5, S.A+1 is small in {5,6}.",
+      "predicates": 4,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "3322073056738932407791547686867337/147139739412078631345770000000000000"
+    },
+    {
+      "name": "r16_N1",
+      "rule": "EDGE(7->7)[S.L+1=5 S.L-1=5 S.L-2=7 S.A-1=5 R.L+2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is 5, S.L-1 is 5, S.L-2 is 7, S.A-1 is 5, R.L+2 is small in {5,6}.",
+      "predicates": 5,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "131714910269385692814587725816871/7356986970603931567288500000000000"
+    },
+    {
+      "name": "r16_gk00_10",
+      "rule": "EDGE(7->7)[S.L+1=S S.L-1=S S.A+1=5 S.A-1=5 R.L+2={67} R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L-1 is small in {5,6}, S.A+1 is 5, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is in {6,7}.",
+      "predicates": 6,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "2498201791815309180785195950029827/147139739412078631345770000000000000"
+    },
+    {
+      "name": "r16_gk00_13",
+      "rule": "EDGE(5->6)[S.L+2=S S.L-1=5 S.A-1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+2 is small in {5,6}, S.L-1 is 5, S.A-1 is big in {7,8,9}.",
+      "predicates": 3,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "741458329313066782747650253242493/36784934853019657836442500000000000"
+    },
+    {
+      "name": "r16_gk01_18",
+      "rule": "EDGE(5->7)[S.L-1=5 S.L-3={67} S.A-1=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L-1 is 5, S.L-3 is in {6,7}, S.A-1 is big in {7,8,9}.",
+      "predicates": 3,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "4202141084719411532020678513755321/24523289902013105224295000000000000"
+    },
+    {
+      "name": "r16_gk01_20",
+      "rule": "EDGE(7->6)[S.L+1=5 S.L-1=5 S.A+1=S S.A-1=S R.L-2=5]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is 5, S.L-1 is 5, S.A+1 is small in {5,6}, S.A-1 is small in {5,6}, R.L-2 is 5.",
+      "predicates": 5,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "2864522652255988857242866967117141/147139739412078631345770000000000000"
+    },
+    {
+      "name": "r16_gk02_24",
+      "rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L-1=S S.L-2=7 S.A-1=5 R.L+2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.A-1 is 5, R.L+2 is in {5,7}.",
+      "predicates": 6,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "65060166643200420723159984863407/2452328990201310522429500000000000"
+    },
+    {
+      "name": "r16_gk03_33",
+      "rule": "EDGE(7->7)[S.L+1=5 S.L+2={57} S.L-1=5 S.L-2={57} S.A+1={67} S.A-1={67} R.L+2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is 5, S.L+2 is in {5,7}, S.L-1 is 5, S.L-2 is in {5,7}, S.A+1 is in {6,7}, S.A-1 is in {6,7}, R.L+2 is small in {5,6}.",
+      "predicates": 7,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "3140653633288152797414193221968523/147139739412078631345770000000000000"
+    },
+    {
+      "name": "r16_gk03_38",
+      "rule": "EDGE(7->6)[S.L+1=5 S.L-1=5 S.A+1=7 S.A-1=5 R.L+2=S R.L-2=5]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is 5, S.L-1 is 5, S.A+1 is 7, S.A-1 is 5, R.L+2 is small in {5,6}, R.L-2 is 5.",
+      "predicates": 6,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "37291919029/1000000000000"
+    },
+    {
+      "name": "r16_gk04_41",
+      "rule": "EDGE(7->7)[S.L+2=S S.L-1=5 S.A-1={67} R.L+2={67} R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+2 is small in {5,6}, S.L-1 is 5, S.A-1 is in {6,7}, R.L+2 is in {6,7}, R.L-2 is in {6,7}.",
+      "predicates": 5,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "1126530967918267072933136114428727/36784934853019657836442500000000000"
+    },
+    {
+      "name": "r16_gk00_50",
+      "rule": "EDGE(7->7)[S.L+1={67} S.L-1=S S.L-2=5 S.L-3=5 S.A-1={67} R.L+2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A-1 is in {6,7}, R.L+2 is in {5,7}.",
+      "predicates": 6,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "3255241342306482848668193498035457/73569869706039315672885000000000000"
+    },
+    {
+      "name": "r16_gk00_58",
+      "rule": "EDGE(5->7)[S.L+1={57} S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.L-3 is 5, S.A-1 is small in {5,6}.",
+      "predicates": 5,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "237829575511142177458890973481519/18392467426509828918221250000000000"
+    },
+    {
+      "name": "r16_gk01_66",
+      "rule": "EDGE(7->7)[S.L+1={57} S.L+2=S S.L-1=S S.A-1=5 R.L+2={67} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is small in {5,6}.",
+      "predicates": 6,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "469455686397667996197534395770457/24523289902013105224295000000000000"
+    },
+    {
+      "name": "r16_gk01_67",
+      "rule": "EDGE(7->7)[S.L+1=S S.L+2=S S.L+3=5 S.L-1={57} R.L+2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L+2 is small in {5,6}, S.L+3 is 5, S.L-1 is in {5,7}, R.L+2 is small in {5,6}.",
+      "predicates": 5,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "1655822205811449001270572036919499/73569869706039315672885000000000000"
+    },
+    {
+      "name": "r16_gk02_75",
+      "rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L-1=S S.L-2=S S.L-3=5 R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "predicates": 7,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "1102224984041567144957036402324013/49046579804026210448590000000000000"
+    },
+    {
+      "name": "r1s_gk00_5",
+      "rule": "EDGE(7->6)[S.A+1={567} S.A-1={567} R.L+2=B]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is big in {7,8,9}.",
+      "predicates": 3,
+      "weight_d7_16rules": "0",
+      "weight_d8_studio_17rules": "216729181594989862100723042648157/24523289902013105224295000000000000"
+    }
+  ],
+  "a97f_37_simplified_1sentence_rules": [
+    {
+      "original_rule": "EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]",
+      "simplified_1s_rule": "EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]",
+      "english_1sentence": "Send charge along 7->B (7-sender to a big vertex (deg >= 7)) when S.L+1 is small in {5,6}, S.L+2 is 5, S.L-2 is 5, S.A+1 is small in {5,6}.",
+      "orig_predicates": 4,
+      "simplified_predicates": 4,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "A1",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "1548795410054533481000677618913845577569797/121413098799733710309206065925917000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is big in {7,8,9}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 5,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "KS",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "663634910336897935554826736235356183762597/15176637349966713788650758240739625000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=5 S.L-1=5 S.L-2=7 S.A+1=7 S.A-1=5 R.L+2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=5 S.L-1=5 S.L-2=7 S.A+1=7 S.A-1=5 R.L+2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is 5, S.L-1 is 5, S.L-2 is 7, S.A+1 is 7, S.A-1 is 5, R.L+2 is small in {5,6}.",
+      "orig_predicates": 6,
+      "simplified_predicates": 6,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "N1",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "3769710157216684717358752075956514665753679/242826197599467420618412131851834000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+2=7 S.L+3={567} S.L-1=S S.L-2={57} S.L-3={567} S.A+1=5 S.A-1={5678} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L+2=7 S.L-1=S S.L-2={57} S.A+1=5 R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L+2 is 7, S.L-1 is small in {5,6}, S.L-2 is in {5,7}, S.A+1 is 5, R.L-2 is in {6,7}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.A-1={5678}",
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "cg00_10",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "312696904738422684809595113283668055406249/24282619759946742061841213185183400000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+2={567} S.L+3={5678} S.L-2={567} S.L-3={5678} S.A+1={5678} S.A-1={5678} R.L-2={6789}]",
+      "simplified_1s_rule": "EDGE(7->6)[R.L-2={6789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when R.L-2 is != 5 (in {6,7,8,9}).",
+      "orig_predicates": 7,
+      "simplified_predicates": 1,
+      "predicates_removed": 6,
+      "dropped_predicates": [
+        "S.A+1={5678}",
+        "S.A-1={5678}",
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "cg00_9",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "1529885186146332164410959736977661429809647/60706549399866855154603032962958500000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+3={567} S.L-1=S S.L-3={567} S.A+1=5 S.A-1=5 R.L+2={67} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L-1=S S.A+1=5 S.A-1=5 R.L+2={67} R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L-1 is small in {5,6}, S.A+1 is 5, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is in {6,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_10",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "95337881198367955484225686803409553016353/9713047903978696824736485274073360000000000"
+    },
+    {
+      "original_rule": "EDGE(5->6)[S.L+1={5789} S.L+2=S S.L+3={58} S.L-1={589} S.L-2={567} S.L-3={567} S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1={5789} S.L+2=S S.L+3={58} S.L-1={589} S.L-2={57} S.A-1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L+2 is small in {5,6}, S.L+3 is in {5,8}, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is in {5,7}, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [
+        "S.L-2={567} -> S.L-2={57}"
+      ],
+      "slot_universe_exact_match": true,
+      "name": "gk00_13",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "11730301088307720002515582090266384071435461/242826197599467420618412131851834000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {5,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 7,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_50",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "9420032416226301903585286009924072756159583/242826197599467420618412131851834000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1={57} S.L+2=5 S.L+3=7 S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={57} S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.L-3 is 5, S.A-1 is small in {5,6}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=5",
+        "S.L+3=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_58",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "1374898761148174419230062749003594114031407/121413098799733710309206065925917000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1={57} S.L+2={57} S.L+3={57} S.L-1=5 S.L-2={57} S.L-3={57} S.A-1=S R.L+2=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={57} S.L-1=5 S.L-2={57} S.L-3={57} S.A-1=S R.L+2=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L-1 is 5, S.L-2 is in {5,7}, S.L-3 is in {5,7}, S.A-1 is small in {5,6}, R.L+2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2={57}",
+        "S.L+3={57}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_59",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "306408109357717802954623199898894529111109/12141309879973371030920606592591700000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-1={6789} S.L-2={567} S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L-1={6789} S.A+1=S S.A-1={567} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 5 (in {6,7,8,9}), S.A+1 is small in {5,6}, S.A-1 is in {5,6,7}, R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_61",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "304413504624338479240248619765056735580327/60706549399866855154603032962958500000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={589} S.L+2=S S.L+3={5678} S.L-1={589} S.L-2={67} S.L-3={5678} S.A+1=7 S.A-1=7]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={589} S.L+2=S S.L-1={589} S.A+1=7 S.A-1=7]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is small in {5,6}, S.L-1 is != 6,7 (in {5,8,9}), S.A+1 is 7, S.A-1 is 7.",
+      "orig_predicates": 8,
+      "simplified_predicates": 5,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L-2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_7",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "2324940029471029481980794860978261535782881/60706549399866855154603032962958500000000000"
+    },
+    {
+      "original_rule": "EDGE(5->5)[S.L+1={5789} S.L+2=S S.L+3=S S.L-1={5789} S.L-2=S S.L-3=S R.L+2=B R.L-2=B]",
+      "simplified_1s_rule": "EDGE(5->5)[S.L+1={5789} S.L-1={5789} S.L-2=S S.L-3=S R.L+2=B R.L-2=B]",
+      "english_1sentence": "Send charge along 5->5 (5-sender to a 5-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is small in {5,6}, S.L-3 is small in {5,6}, R.L+2 is big in {7,8,9}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=S",
+        "S.L+3=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_8",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "306408109357717802954623199898894529111109/24282619759946742061841213185183400000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={57} S.L+2={57} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67} R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={57} S.L+2={57} S.L-1=S S.L-2=7 S.A+1={567} S.A-1=5 R.L+2={67} R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_87",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "1332798684828999072847978357644065736150409/60706549399866855154603032962958500000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+2=S S.L-1=5 S.L-3=S S.A-1={568} R.L+2=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L-1=5 S.L-3=S S.A-1={568} R.L+2=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L-1 is 5, S.L-3 is small in {5,6}, S.A-1 is in {5,6,8}, R.L+2 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 4,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+2=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_98",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "99112435335305058400959857685473611278417/15176637349966713788650758240739625000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+2={57} S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2={57} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+2={57} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2={57} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+2 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is in {5,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 8,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_15",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "227846617678875874472895364367877247452693/12141309879973371030920606592591700000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-2=S S.L-3={5678} S.A+1=S S.A-1=7 R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={589} S.L+2=7 S.L-2=S S.A+1=S S.A-1=7 R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-2 is small in {5,6}, S.A+1 is small in {5,6}, S.A-1 is 7, R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_16",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "99112435335305058400959857685473611278417/15176637349966713788650758240739625000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1={67} S.L+2=7 S.L-1=5 S.L-3=7 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={67} S.L-1=5 S.L-3=7 S.A-1=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L-1 is 5, S.L-3 is 7, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 4,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+2=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_18",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "3967495226045733036577775817673939364628851/242826197599467420618412131851834000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2={67} S.L-3={5678} S.A+1=S S.A-1=S R.L+2={5789} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={589} S.A+1=S S.A-1=S R.L+2={5789} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 6,7 (in {5,8,9}), S.A+1 is small in {5,6}, S.A-1 is small in {5,6}, R.L+2 is != 6 (in {5,7,8,9}), R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 6,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L+2={67}",
+        "S.L-2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_20",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "3409156268754593516929845750545369958491/189707966874583922358134478009245312500000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=S S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={57} S.L+2=S S.L-1=S S.A+1={567} S.A-1=5 R.L+2={67} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_66",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "2546680548511471286921006486316066850178521/121413098799733710309206065925917000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+2=S S.L+3=5 S.L-1={57} S.L-3={567} S.A+1={567} S.A-1={567} R.L+2=S R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L+2=S S.L+3=5 S.L-1={57} S.A+1={567} S.A-1={567} R.L+2=S R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L+2 is small in {5,6}, S.L+3 is 5, S.L-1 is in {5,7}, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is small in {5,6}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 8,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_67",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "1690658219406770420021243428929615201508773/242826197599467420618412131851834000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1=7 S.L+2=7 S.L+3=S S.L-1=5 S.L-2=S S.L-3=7 S.A-1=S R.L+2=S]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1=7 S.L-1=5 S.L-2=S S.L-3=7 S.A-1=S R.L+2=S]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is 7, S.L-1 is 5, S.L-2 is small in {5,6}, S.L-3 is 7, S.A-1 is small in {5,6}, R.L+2 is small in {5,6}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=7",
+        "S.L+3=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_71",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "1145943331095775894967710007223441027057203/60706549399866855154603032962958500000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-1={5789} S.L-2={67} S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L-1={5789} S.L-2={67} S.A+1=7 S.A-1={567} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is in {6,7}, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_74",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "258218119322456996552870070881074298619307/24282619759946742061841213185183400000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {6,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_99",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "6389290956677302248775193402944910653808311/121413098799733710309206065925917000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L-1=S S.L-2=7 S.A+1={567} S.A-1=5 R.L+2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {5,7}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_24",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "3735953497641608816700753861268626867771363/121413098799733710309206065925917000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5789} S.L-2=S S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2=B]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L-1={5789} S.L-2=S S.A+1=7 S.A-1={567} R.L-2=B]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is small in {5,6}, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_26",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "78254695703403335340924542301292606361201/6070654939986685515460303296295850000000000"
+    },
+    {
+      "original_rule": "EDGE(5->6)[S.L+1={589} S.L+2=7 S.L+3=7 S.L-1={6789} S.L-2=7 S.L-3={567} S.A+1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1={589} S.L+2=7 S.L-1={6789} S.L-2=7 S.A+1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is 7, S.A+1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L-3={567}",
+        "S.L+3=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_31",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "1490749644842534593985398492293061122068959/121413098799733710309206065925917000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_75",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "2875491402430886558772791580499476879731983/242826197599467420618412131851834000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_79",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "80295739181102365118456269715619789375551/4856523951989348412368242637036680000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={5689} S.L+2=7 S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=S S.A-1=S R.L+2={589} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={5689} S.L+2=7 S.L-1={589} S.L-2=7 S.A+1=S S.A-1=S R.L+2={589} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is 7, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is 7, S.A+1 is small in {5,6}, S.A-1 is small in {5,6}, R.L+2 is != 6,7 (in {5,8,9}), R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_84",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "69966158855594511665812751864961324419089/7588318674983356894325379120369812500000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1=6 S.L+2={67} S.L+3=5 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1={568}]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1=6 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1={568}]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is 6, S.L-1 is in {5,7}, S.L-2 is 5, S.L-3 is in {6,7}, S.A+1 is small in {5,6}, S.A-1 is in {5,6,8}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2={67}",
+        "S.L+3=5"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_86",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "99112435335305058400959857685473611278417/15176637349966713788650758240739625000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=5 S.L+2={57} S.L+3={567} S.L-1=5 S.L-2={57} S.L-3={567} S.A+1={67} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=5 S.L+2={57} S.L-1=5 S.L-2={57} S.A+1={67} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is 5, S.L+2 is in {5,7}, S.L-1 is 5, S.L-2 is in {5,7}, S.A+1 is in {6,7}, S.A-1 is in {6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk03_33",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "2384457958467408073917466356540545620289357/121413098799733710309206065925917000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=7 S.A-1=5 R.L+2={5689} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={589} S.L-2=7 S.A+1=7 S.A-1=5 R.L+2={5689} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is 7, S.A+1 is 7, S.A-1 is 5, R.L+2 is != 7 (in {5,6,8,9}), R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 7,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L+2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk03_38",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "40248912597563887589041863805249485590467/971304790397869682473648527407336000000000"
+    },
+    {
+      "original_rule": "EDGE(5->6)[S.L+1=B S.L+2={67} S.L+3={567} S.L-1={589} S.L-2={567} S.L-3=7 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1=B S.L-1={589} S.L-2={567} S.L-3=7 S.A-1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is big in {7,8,9}, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is in {5,6,7}, S.L-3 is 7, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L+2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk03_40",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "337682034160983763499905227383875605163121/12141309879973371030920606592591700000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+2=S S.L+3={567} S.L-1=5 S.L-3={567} S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+2=S S.L-1=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+2 is small in {5,6}, S.L-1 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {6,7}, R.L-2 is in {6,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk04_41",
+      "in_studio_24": true,
+      "weight_d8_a97f_37keys": "1071692493426636060786932187964504124793097/30353274699933427577301516481479250000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L-1={6789} S.L-2=S S.A+1=S S.A-1={567} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is small in {5,6}, S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is small in {5,6}, S.A+1 is small in {5,6}, S.A-1 is in {5,6,7}, R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk04_44",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "99112435335305058400959857685473611278417/15176637349966713788650758240739625000000000"
+    },
+    {
+      "original_rule": "EDGE(6->5)[S.L+1={5789} S.L+2={567} S.L+3={5678} S.L-1={689} S.L-2={567} S.L-3={5678} S.A-1=S R.L-2=B]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5789} S.L+2={567} S.L-1={689} S.L-2={567} S.L-3={5678} S.A-1=S R.L-2=B]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 5,7 (in {6,8,9}), S.L-2 is in {5,6,7}, S.L-3 is in {5,6,7,8}, S.A-1 is small in {5,6}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 7,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk04_45",
+      "in_studio_24": false,
+      "weight_d8_a97f_37keys": "183286542456414888956900250587270733870029/242826197599467420618412131851834000000000000"
+    }
+  ],
+  "a100f_51_simplified_1sentence_rules": [
+    {
+      "original_rule": "EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]",
+      "simplified_1s_rule": "EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]",
+      "english_1sentence": "Send charge along 7->B (7-sender to a big vertex (deg >= 7)) when S.L+1 is small in {5,6}, S.L+2 is 5, S.L-2 is 5, S.A+1 is small in {5,6}.",
+      "orig_predicates": 4,
+      "simplified_predicates": 4,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "A1",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "126354192685600272383490755122362143355700433881/6507762980489693623213514972435303357000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is big in {7,8,9}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 5,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "KS",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "1244008499436215502808061777500858924054534668291/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=5 S.L-1=5 S.L-2=7 S.A+1=7 S.A-1=5 R.L+2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=5 S.L-1=5 S.L-2=7 S.A+1=7 S.A-1=5 R.L+2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is 5, S.L-1 is 5, S.L-2 is 7, S.A+1 is 7, S.A-1 is 5, R.L+2 is small in {5,6}.",
+      "orig_predicates": 6,
+      "simplified_predicates": 6,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "N1",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "182669243844452374126322290180804454501308289533/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+2=7 S.L+3={567} S.L-1=S S.L-2={57} S.L-3={567} S.A+1=5 S.A-1={5678} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L+2=7 S.L-1=S S.L-2={57} S.A+1=5 R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L+2 is 7, S.L-1 is small in {5,6}, S.L-2 is in {5,7}, S.A+1 is 5, R.L-2 is in {6,7}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.A-1={5678}",
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "cg00_10",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "125521968040284578652671909353689581723984377663/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+2={567} S.L+3={5678} S.L-2={567} S.L-3={5678} S.A+1={5678} S.A-1={5678} R.L-2={6789}]",
+      "simplified_1s_rule": "EDGE(7->6)[R.L-2={6789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when R.L-2 is != 5 (in {6,7,8,9}).",
+      "orig_predicates": 7,
+      "simplified_predicates": 1,
+      "predicates_removed": 6,
+      "dropped_predicates": [
+        "S.A+1={5678}",
+        "S.A-1={5678}",
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "cg00_9",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "304971796973379309672803451466486610980327530329/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.L-2={5678} S.A-1={569} R.L+2={5689}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.A-1=S R.L+2={5689}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is in {5,6,7}, S.L-1 is 5, S.A-1 is small in {5,6}, R.L+2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 6,
+      "simplified_predicates": 5,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L-2={5678}"
+      ],
+      "token_simplifications": [
+        "S.A-1={569} -> S.A-1=S"
+      ],
+      "slot_universe_exact_match": true,
+      "name": "cg12_77_0",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "322747526897948715407640730308644118921493445991/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+3={567} S.L-1=S S.L-3={567} S.A+1=5 S.A-1=5 R.L+2={67} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L-1=S S.A+1=5 S.A-1=5 R.L+2={67} R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L-1 is small in {5,6}, S.A+1 is 5, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is in {6,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_10",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "238944479296997650328858776925919556390059350641/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->6)[S.L+1={5789} S.L+2=S S.L+3={58} S.L-1={589} S.L-2={567} S.L-3={567} S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1={5789} S.L+2=S S.L+3={58} S.L-1={589} S.L-2={57} S.A-1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L+2 is small in {5,6}, S.L+3 is in {5,8}, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is in {5,7}, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [
+        "S.L-2={567} -> S.L-2={57}"
+      ],
+      "slot_universe_exact_match": true,
+      "name": "gk00_13",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "1056115879072554386547446776005516022033116399463/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {5,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 7,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_50",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "1073735967857448087313112934066471448792004801133/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(6->6)[S.L+1={689} S.L+2={78} S.L+3={567} S.L-1={689} S.L-2=7 S.L-3={567}]",
+      "simplified_1s_rule": "EDGE(6->6)[S.L+1={689} S.L+2={78} S.L-1={689} S.L-2=7 S.L-3={567}]",
+      "english_1sentence": "Send charge along 6->6 (6-sender to a 6-vertex) when S.L+1 is != 5,7 (in {6,8,9}), S.L+2 is in {7,8}, S.L-1 is != 5,7 (in {6,8,9}), S.L-2 is 7, S.L-3 is in {5,6,7}.",
+      "orig_predicates": 6,
+      "simplified_predicates": 5,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_54",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "53916808522006233016366360046982120739504110839/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+2=7 S.L+3={5678} S.L-1={689} S.L-2={567} S.L-3={5678} S.A+1={567} S.A-1=S R.L+2={589}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+2=7 S.L-1={689} S.A+1={567} S.A-1=S R.L+2={589}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+2 is 7, S.L-1 is != 5,7 (in {6,8,9}), S.A+1 is in {5,6,7}, S.A-1 is small in {5,6}, R.L+2 is != 6,7 (in {5,8,9}).",
+      "orig_predicates": 8,
+      "simplified_predicates": 5,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_55",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "31961554235267460626476841890500045815406659817/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1={57} S.L+2=5 S.L+3=7 S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={57} S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.L-3 is 5, S.A-1 is small in {5,6}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=5",
+        "S.L+3=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_58",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "247006135803516179426176353620100986231026541223/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1={57} S.L+2={57} S.L+3={57} S.L-1=5 S.L-2={57} S.L-3={57} S.A-1=S R.L+2=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={57} S.L-1=5 S.L-2={57} S.L-3={57} S.A-1=S R.L+2=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L-1 is 5, S.L-2 is in {5,7}, S.L-3 is in {5,7}, S.A-1 is small in {5,6}, R.L+2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2={57}",
+        "S.L+3={57}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_59",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "509482768749782042294008794167497132478012229351/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-1={6789} S.L-2={567} S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L-1={6789} S.A+1=S S.A-1={567} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 5 (in {6,7,8,9}), S.A+1 is small in {5,6}, S.A-1 is in {5,6,7}, R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_61",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "206858330147712366845165210130745909675214647429/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={589} S.L+2=S S.L+3={5678} S.L-1={589} S.L-2={67} S.L-3={5678} S.A+1=7 S.A-1=7]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={589} S.L+2=S S.L-1={589} S.A+1=7 S.A-1=7]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is small in {5,6}, S.L-1 is != 6,7 (in {5,8,9}), S.A+1 is 7, S.A-1 is 7.",
+      "orig_predicates": 8,
+      "simplified_predicates": 5,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L-2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_7",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "914649335065667043784500062772904470592915655541/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->5)[S.L+1={5789} S.L+2=S S.L+3=S S.L-1={5789} S.L-2=S S.L-3=S R.L+2=B R.L-2=B]",
+      "simplified_1s_rule": "EDGE(5->5)[S.L+1={5789} S.L-1={5789} S.L-2=S S.L-3=S R.L+2=B R.L-2=B]",
+      "english_1sentence": "Send charge along 5->5 (5-sender to a 5-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is small in {5,6}, S.L-3 is small in {5,6}, R.L+2 is big in {7,8,9}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=S",
+        "S.L+3=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_8",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "118665289157145825417570222981108740952455096159/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={57} S.L+2={57} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67} R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={57} S.L+2={57} S.L-1=S S.L-2=7 S.A+1={567} S.A-1=5 R.L+2={67} R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_87",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "137761439245351391002310510254690512268677853529/6507762980489693623213514972435303357000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={689} S.L+2={567} S.L+3={5678} S.L-1={689} S.L-2={5678} S.L-3={5678} S.A+1=S S.A-1=7 R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={689} S.L-1={689} S.A+1=S S.A-1=7 R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 5,7 (in {6,8,9}), S.L-1 is != 5,7 (in {6,8,9}), S.A+1 is small in {5,6}, S.A-1 is 7, R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 5,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_92",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "31961554235267460626476841890500045815406659817/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+2=S S.L-1=5 S.L-3=S S.A-1={568} R.L+2=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L-1=5 S.L-3=S S.A-1={568} R.L+2=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L-1 is 5, S.L-3 is small in {5,6}, S.A-1 is in {5,6,8}, R.L+2 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 4,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+2=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk00_98",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "42465289305188581124701539542445274591841927527/6507762980489693623213514972435303357000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1={5689} S.L-2=S S.L-3={5678} S.A+1=S S.A-1=7 R.L+2={6789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L-1={5689} S.L-2=S S.A+1=S S.A-1=7 R.L+2={6789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is small in {5,6}, S.L-1 is != 7 (in {5,6,8,9}), S.L-2 is small in {5,6}, S.A+1 is small in {5,6}, S.A-1 is 7, R.L+2 is != 5 (in {6,7,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_101",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "31961554235267460626476841890500045815406659817/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(6->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=5 S.L-3=S S.A-1=S R.L+2=B]",
+      "simplified_1s_rule": "EDGE(6->7)[S.L+1={67} S.L+2=S S.L-1=5 S.L-3=S S.A-1=S R.L+2=B]",
+      "english_1sentence": "Send charge along 6->7 (6-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is 5, S.L-3 is small in {5,6}, S.A-1 is small in {5,6}, R.L+2 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_105",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "88580203277905449756022763564264005665377302677/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={567} S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=7 S.A-1={567} R.L+2={6789} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={6789} S.L-2=S S.A+1=7 S.A-1={567} R.L+2={6789} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is small in {5,6}, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L+2 is != 5 (in {6,7,8,9}), R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 7,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_106",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "17522186696898496060204473006429168689068225737/6507762980489693623213514972435303357000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+2={57} S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2={57} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+2={57} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2={57} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+2 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is in {5,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 8,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_15",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "57705900308445307151556321053096108600520465877/3253881490244846811606757486217651678500000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-2=S S.L-3={5678} S.A+1=S S.A-1=7 R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={589} S.L+2=7 S.L-2=S S.A+1=S S.A-1=7 R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-2 is small in {5,6}, S.A+1 is small in {5,6}, S.A-1 is 7, R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_16",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "117652704547565338495842555217813119873767858041/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1={67} S.L+2=7 S.L-1=5 S.L-3=7 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={67} S.L-1=5 S.L-3=7 S.A-1=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L-1 is 5, S.L-3 is 7, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 4,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+2=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_18",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "533108662041044864543617797321045639461069064781/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2={67} S.L-3={5678} S.A+1=S S.A-1=S R.L+2={5789} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={589} S.A+1=S S.A-1=S R.L+2={5789} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 6,7 (in {5,8,9}), S.A+1 is small in {5,6}, S.A-1 is small in {5,6}, R.L+2 is != 6 (in {5,7,8,9}), R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 6,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L+2={67}",
+        "S.L-2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_20",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "101626144745142100410310042022313307499741280337/5206210384391754898570811977948242685600000000000"
+    },
+    {
+      "original_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-1={5789} S.L-2=S S.L-3={567} S.A+1=B]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L-1={5789} S.L-2=S S.L-3={567} S.A+1=B]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is small in {5,6}, S.L-3 is in {5,6,7}, S.A+1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_21",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "53916808522006233016366360046982120739504110839/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(6->6)[S.L+1={5689} S.L+2={567} S.L-1={5689} S.L-2={567} R.L+2=B R.L-2=B]",
+      "simplified_1s_rule": "EDGE(6->6)[S.L+1={5689} S.L+2={567} S.L-1={5689} S.L-2={567} R.L+2=B R.L-2=B]",
+      "english_1sentence": "Send charge along 6->6 (6-sender to a 6-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 7 (in {5,6,8,9}), S.L-2 is in {5,6,7}, R.L+2 is big in {7,8,9}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 6,
+      "simplified_predicates": 6,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_64",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "53916808522006233016366360046982120739504110839/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=S S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={57} S.L+2=S S.L-1=S S.A+1={567} S.A-1=5 R.L+2={67} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_66",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "566802709543599093735584705174185977825948765777/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+2=S S.L+3=5 S.L-1={57} S.L-3={567} S.A+1={567} S.A-1={567} R.L+2=S R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L+2=S S.L+3=5 S.L-1={57} S.A+1={567} S.A-1={567} R.L+2=S R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L+2 is small in {5,6}, S.L+3 is 5, S.L-1 is in {5,7}, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is small in {5,6}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 8,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_67",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "287693581124189378894982654652523484202928253011/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1=7 S.L+2=7 S.L+3=S S.L-1=5 S.L-2=S S.L-3=7 S.A-1=S R.L+2=S]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1=7 S.L-1=5 S.L-2=S S.L-3=7 S.A-1=S R.L+2=S]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is 7, S.L-1 is 5, S.L-2 is small in {5,6}, S.L-3 is 7, S.A-1 is small in {5,6}, R.L+2 is small in {5,6}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=7",
+        "S.L+3=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_71",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "511888810234383401893647110889780153651762003337/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-1={5789} S.L-2={67} S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L-1={5789} S.L-2={67} S.A+1=7 S.A-1={567} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is in {6,7}, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_74",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "390595600559297013656888985226541817882042731349/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {6,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk01_99",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "31033388582929908525069841363879746688170612907/650776298048969362321351497243530335700000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L-1=S S.L-2=7 S.A+1={567} S.A-1=5 R.L+2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {5,7}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_24",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "879206299740006895613637856788438112659552650161/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5789} S.L-2=S S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2=B]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L-1={5789} S.L-2=S S.A+1=7 S.A-1={567} R.L-2=B]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is small in {5,6}, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_26",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "14556210475658082337002924607083951160861621381/1626940745122423405803378743108825839250000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2=7 S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={5689} S.L-2=7 S.A+1=7 S.A-1={567} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 7 (in {5,6,8,9}), S.L-2 is 7, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_27",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "159259456484421257713775948225881999048564083979/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={678} S.L-1={5689} S.L-2=S S.L-3={67} S.A+1=S]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L-1={5689} S.L-2=S S.L-3={67} S.A+1=S]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 7 (in {5,6,8,9}), S.L-2 is small in {5,6}, S.L-3 is in {6,7}, S.A+1 is small in {5,6}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_29",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "53916808522006233016366360046982120739504110839/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->6)[S.L+1={589} S.L+2=7 S.L+3=7 S.L-1={6789} S.L-2=7 S.L-3={567} S.A+1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1={589} S.L+2=7 S.L-1={6789} S.L-2=7 S.A+1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is 7, S.A+1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L-3={567}",
+        "S.L+3=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_31",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "414243718800626470168788061575026669948861041917/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_75",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "41681832254393537090639531922104507071680472517/3253881490244846811606757486217651678500000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_79",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "443124852035502624754449590864494678946586298431/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} S.A+1=S S.A-1=7 R.L+2={5789} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L-1={5689} S.A+1=S S.A-1=7 R.L+2={5789} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L-1 is != 7 (in {5,6,8,9}), S.A+1 is small in {5,6}, S.A-1 is 7, R.L+2 is != 6 (in {5,7,8,9}), R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 6,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_80",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "47257918823671833137367039267784960334627600767/26031051921958774492854059889741213428000000000000"
+    },
+    {
+      "original_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-1={6789} S.L-2=S S.L-3=7 S.A+1=S]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L-1={6789} S.L-2=S S.L-3=7 S.A+1=S]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is small in {5,6}, S.L-3 is 7, S.A+1 is small in {5,6}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_82",
+      "in_studio_24": false,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "53916808522006233016366360046982120739504110839/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={5689} S.L+2=7 S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=S S.A-1=S R.L+2={589} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={5689} S.L+2=7 S.L-1={589} S.L-2=7 S.A+1=S S.A-1=S R.L+2={589} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is 7, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is 7, S.A+1 is small in {5,6}, S.A-1 is small in {5,6}, R.L+2 is != 6,7 (in {5,8,9}), R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_84",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "258968950386721370966580311988399396626528655109/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(5->7)[S.L+1=6 S.L+2={67} S.L+3=5 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1={568}]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1=6 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1={568}]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is 6, S.L-1 is in {5,7}, S.L-2 is 5, S.L-3 is in {6,7}, S.A+1 is small in {5,6}, S.A-1 is in {5,6,8}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2={67}",
+        "S.L+3=5"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk02_86",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "39736498480530665806273072407475839112571660099/6507762980489693623213514972435303357000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+1=5 S.L+2={57} S.L+3={567} S.L-1=5 S.L-2={57} S.L-3={567} S.A+1={67} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=5 S.L+2={57} S.L-1=5 S.L-2={57} S.A+1={67} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is 5, S.L+2 is in {5,7}, S.L-1 is 5, S.L-2 is in {5,7}, S.A+1 is in {6,7}, S.A-1 is in {6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk03_33",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "117777271671790119913969888833350720927085353271/5206210384391754898570811977948242685600000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} S.A+1=7 S.A-1=7]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L-1={5689} S.A+1=7 S.A-1=7]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L-1 is != 7 (in {5,6,8,9}), S.A+1 is 7, S.A-1 is 7.",
+      "orig_predicates": 8,
+      "simplified_predicates": 4,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk03_35",
+      "in_studio_24": true,
+      "in_a97f_37": false,
+      "weight_d8_a100f_51keys": "9902434132367411720480485144785625768754282573/3253881490244846811606757486217651678500000000000"
+    },
+    {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=7 S.A-1=5 R.L+2={5689} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={589} S.L-2=7 S.A+1=7 S.A-1=5 R.L+2={5689} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is 7, S.A+1 is 7, S.A-1 is 5, R.L+2 is != 7 (in {5,6,8,9}), R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 7,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L+2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk03_38",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "11993748243/250000000000"
+    },
+    {
+      "original_rule": "EDGE(5->6)[S.L+1=B S.L+2={67} S.L+3={567} S.L-1={589} S.L-2={567} S.L-3=7 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1=B S.L-1={589} S.L-2={567} S.L-3=7 S.A-1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is big in {7,8,9}, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is in {5,6,7}, S.L-3 is 7, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L+2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk03_40",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "67850575987170163435221554791958897048106172067/3253881490244846811606757486217651678500000000000"
+    },
+    {
+      "original_rule": "EDGE(7->7)[S.L+2=S S.L+3={567} S.L-1=5 S.L-3={567} S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+2=S S.L-1=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+2 is small in {5,6}, S.L-1 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {6,7}, R.L-2 is in {6,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk04_41",
+      "in_studio_24": true,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "447018403638555932731924022851308442976793724399/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L-1={6789} S.L-2=S S.A+1=S S.A-1={567} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is small in {5,6}, S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is small in {5,6}, S.A+1 is small in {5,6}, S.A-1 is in {5,6,7}, R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk04_44",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "116892132845644622875879920975390594999090514871/13015525960979387246427029944870606714000000000000"
+    },
+    {
+      "original_rule": "EDGE(6->5)[S.L+1={5789} S.L+2={567} S.L+3={5678} S.L-1={689} S.L-2={567} S.L-3={5678} S.A-1=S R.L-2=B]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5789} S.L+2={567} S.L-1={689} S.L-2={567} S.L-3={5678} S.A-1=S R.L-2=B]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 5,7 (in {6,8,9}), S.L-2 is in {5,6,7}, S.L-3 is in {5,6,7,8}, S.A-1 is small in {5,6}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 7,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true,
+      "name": "gk04_45",
+      "in_studio_24": false,
+      "in_a97f_37": true,
+      "weight_d8_a100f_51keys": "53916808522006233016366360046982120739504110839/6507762980489693623213514972435303357000000000000"
+    }
+  ],
+  "k86L_cons2sharp_safe_1sentence_rule": {
+    "name": "cg76_SL1_S",
+    "rule": "EDGE(7->6)[S.L+1=S R.L+2={6789} R.L-2={6789}]",
+    "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is small in {5,6}, R.L+2 is != 5 (in {6,7,8,9}), R.L-2 is != 5 (in {6,7,8,9}).",
+    "predicates": 3,
+    "C_778979_coeff": 0,
+    "all_5888_allbig_L789_coeff": 0,
+    "k86L_140keys_plus_cg76_SL1_S_t_unc": -0.067832013,
+    "k86L_1key_alone_t_unc": -0.025271535,
+    "k86L_zcons_6718_t_unc": -0.026259778,
+    "k86L_empty_0f2b_t_unc": -0.017738516,
+    "verified_t0_exact": true
+  },
+  "all_54_distinct_simplified_keys_catalog": {
+    "A1": {
+      "original_rule": "EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]",
+      "simplified_1s_rule": "EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]",
+      "english_1sentence": "Send charge along 7->B (7-sender to a big vertex (deg >= 7)) when S.L+1 is small in {5,6}, S.L+2 is 5, S.L-2 is 5, S.A+1 is small in {5,6}.",
+      "orig_predicates": 4,
+      "simplified_predicates": 4,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "KS": {
+      "original_rule": "EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is big in {7,8,9}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 5,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "N1": {
+      "original_rule": "EDGE(7->7)[S.L+1=5 S.L-1=5 S.L-2=7 S.A+1=7 S.A-1=5 R.L+2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=5 S.L-1=5 S.L-2=7 S.A+1=7 S.A-1=5 R.L+2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is 5, S.L-1 is 5, S.L-2 is 7, S.A+1 is 7, S.A-1 is 5, R.L+2 is small in {5,6}.",
+      "orig_predicates": 6,
+      "simplified_predicates": 6,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "cg00_10": {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+2=7 S.L+3={567} S.L-1=S S.L-2={57} S.L-3={567} S.A+1=5 S.A-1={5678} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L+2=7 S.L-1=S S.L-2={57} S.A+1=5 R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L+2 is 7, S.L-1 is small in {5,6}, S.L-2 is in {5,7}, S.A+1 is 5, R.L-2 is in {6,7}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.A-1={5678}",
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "cg00_9": {
+      "original_rule": "EDGE(7->6)[S.L+2={567} S.L+3={5678} S.L-2={567} S.L-3={5678} S.A+1={5678} S.A-1={5678} R.L-2={6789}]",
+      "simplified_1s_rule": "EDGE(7->6)[R.L-2={6789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when R.L-2 is != 5 (in {6,7,8,9}).",
+      "orig_predicates": 7,
+      "simplified_predicates": 1,
+      "predicates_removed": 6,
+      "dropped_predicates": [
+        "S.A+1={5678}",
+        "S.A-1={5678}",
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "cg12_77_0": {
+      "original_rule": "EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.L-2={5678} S.A-1={569} R.L+2={5689}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.A-1=S R.L+2={5689}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is in {5,6,7}, S.L-1 is 5, S.A-1 is small in {5,6}, R.L+2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 6,
+      "simplified_predicates": 5,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L-2={5678}"
+      ],
+      "token_simplifications": [
+        "S.A-1={569} -> S.A-1=S"
+      ],
+      "slot_universe_exact_match": true
+    },
+    "gk00_10": {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+3={567} S.L-1=S S.L-3={567} S.A+1=5 S.A-1=5 R.L+2={67} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L-1=S S.A+1=5 S.A-1=5 R.L+2={67} R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L-1 is small in {5,6}, S.A+1 is 5, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is in {6,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_13": {
+      "original_rule": "EDGE(5->6)[S.L+1={5789} S.L+2=S S.L+3={58} S.L-1={589} S.L-2={567} S.L-3={567} S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1={5789} S.L+2=S S.L+3={58} S.L-1={589} S.L-2={57} S.A-1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L+2 is small in {5,6}, S.L+3 is in {5,8}, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is in {5,7}, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [
+        "S.L-2={567} -> S.L-2={57}"
+      ],
+      "slot_universe_exact_match": true
+    },
+    "gk00_5": {
+      "original_rule": "EDGE(7->6)[S.L+2={567} S.L+3={5678} S.L-2={567} S.L-3={5678} S.A+1={567} S.A-1={567} R.L+2={6789}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.A+1={567} S.A-1={567} R.L+2={6789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is != 5 (in {6,7,8,9}).",
+      "orig_predicates": 7,
+      "simplified_predicates": 3,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_50": {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {5,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 7,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_54": {
+      "original_rule": "EDGE(6->6)[S.L+1={689} S.L+2={78} S.L+3={567} S.L-1={689} S.L-2=7 S.L-3={567}]",
+      "simplified_1s_rule": "EDGE(6->6)[S.L+1={689} S.L+2={78} S.L-1={689} S.L-2=7 S.L-3={567}]",
+      "english_1sentence": "Send charge along 6->6 (6-sender to a 6-vertex) when S.L+1 is != 5,7 (in {6,8,9}), S.L+2 is in {7,8}, S.L-1 is != 5,7 (in {6,8,9}), S.L-2 is 7, S.L-3 is in {5,6,7}.",
+      "orig_predicates": 6,
+      "simplified_predicates": 5,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_55": {
+      "original_rule": "EDGE(7->5)[S.L+2=7 S.L+3={5678} S.L-1={689} S.L-2={567} S.L-3={5678} S.A+1={567} S.A-1=S R.L+2={589}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+2=7 S.L-1={689} S.A+1={567} S.A-1=S R.L+2={589}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+2 is 7, S.L-1 is != 5,7 (in {6,8,9}), S.A+1 is in {5,6,7}, S.A-1 is small in {5,6}, R.L+2 is != 6,7 (in {5,8,9}).",
+      "orig_predicates": 8,
+      "simplified_predicates": 5,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_58": {
+      "original_rule": "EDGE(5->7)[S.L+1={57} S.L+2=5 S.L+3=7 S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={57} S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.L-3 is 5, S.A-1 is small in {5,6}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=5",
+        "S.L+3=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_59": {
+      "original_rule": "EDGE(5->7)[S.L+1={57} S.L+2={57} S.L+3={57} S.L-1=5 S.L-2={57} S.L-3={57} S.A-1=S R.L+2=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={57} S.L-1=5 S.L-2={57} S.L-3={57} S.A-1=S R.L+2=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L-1 is 5, S.L-2 is in {5,7}, S.L-3 is in {5,7}, S.A-1 is small in {5,6}, R.L+2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2={57}",
+        "S.L+3={57}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_61": {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-1={6789} S.L-2={567} S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L-1={6789} S.A+1=S S.A-1={567} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 5 (in {6,7,8,9}), S.A+1 is small in {5,6}, S.A-1 is in {5,6,7}, R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_7": {
+      "original_rule": "EDGE(7->5)[S.L+1={589} S.L+2=S S.L+3={5678} S.L-1={589} S.L-2={67} S.L-3={5678} S.A+1=7 S.A-1=7]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={589} S.L+2=S S.L-1={589} S.A+1=7 S.A-1=7]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is small in {5,6}, S.L-1 is != 6,7 (in {5,8,9}), S.A+1 is 7, S.A-1 is 7.",
+      "orig_predicates": 8,
+      "simplified_predicates": 5,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L-2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_8": {
+      "original_rule": "EDGE(5->5)[S.L+1={5789} S.L+2=S S.L+3=S S.L-1={5789} S.L-2=S S.L-3=S R.L+2=B R.L-2=B]",
+      "simplified_1s_rule": "EDGE(5->5)[S.L+1={5789} S.L-1={5789} S.L-2=S S.L-3=S R.L+2=B R.L-2=B]",
+      "english_1sentence": "Send charge along 5->5 (5-sender to a 5-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is small in {5,6}, S.L-3 is small in {5,6}, R.L+2 is big in {7,8,9}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=S",
+        "S.L+3=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_87": {
+      "original_rule": "EDGE(7->7)[S.L+1={57} S.L+2={57} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67} R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={57} S.L+2={57} S.L-1=S S.L-2=7 S.A+1={567} S.A-1=5 R.L+2={67} R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_92": {
+      "original_rule": "EDGE(7->5)[S.L+1={689} S.L+2={567} S.L+3={5678} S.L-1={689} S.L-2={5678} S.L-3={5678} S.A+1=S S.A-1=7 R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={689} S.L-1={689} S.A+1=S S.A-1=7 R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 5,7 (in {6,8,9}), S.L-1 is != 5,7 (in {6,8,9}), S.A+1 is small in {5,6}, S.A-1 is 7, R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 5,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk00_98": {
+      "original_rule": "EDGE(5->7)[S.L+2=S S.L-1=5 S.L-3=S S.A-1={568} R.L+2=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L-1=5 S.L-3=S S.A-1={568} R.L+2=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L-1 is 5, S.L-3 is small in {5,6}, S.A-1 is in {5,6,8}, R.L+2 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 4,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+2=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_101": {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1={5689} S.L-2=S S.L-3={5678} S.A+1=S S.A-1=7 R.L+2={6789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L-1={5689} S.L-2=S S.A+1=S S.A-1=7 R.L+2={6789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is small in {5,6}, S.L-1 is != 7 (in {5,6,8,9}), S.L-2 is small in {5,6}, S.A+1 is small in {5,6}, S.A-1 is 7, R.L+2 is != 5 (in {6,7,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_105": {
+      "original_rule": "EDGE(6->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=5 S.L-3=S S.A-1=S R.L+2=B]",
+      "simplified_1s_rule": "EDGE(6->7)[S.L+1={67} S.L+2=S S.L-1=5 S.L-3=S S.A-1=S R.L+2=B]",
+      "english_1sentence": "Send charge along 6->7 (6-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is 5, S.L-3 is small in {5,6}, S.A-1 is small in {5,6}, R.L+2 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_106": {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={567} S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=7 S.A-1={567} R.L+2={6789} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={6789} S.L-2=S S.A+1=7 S.A-1={567} R.L+2={6789} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is small in {5,6}, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L+2 is != 5 (in {6,7,8,9}), R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 7,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_15": {
+      "original_rule": "EDGE(7->7)[S.L+2={57} S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2={57} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+2={57} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2={57} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+2 is in {5,7}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is in {5,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 8,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_16": {
+      "original_rule": "EDGE(7->5)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-2=S S.L-3={5678} S.A+1=S S.A-1=7 R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={589} S.L+2=7 S.L-2=S S.A+1=S S.A-1=7 R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-2 is small in {5,6}, S.A+1 is small in {5,6}, S.A-1 is 7, R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_18": {
+      "original_rule": "EDGE(5->7)[S.L+1={67} S.L+2=7 S.L-1=5 S.L-3=7 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1={67} S.L-1=5 S.L-3=7 S.A-1=B]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L-1 is 5, S.L-3 is 7, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 5,
+      "simplified_predicates": 4,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+2=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_20": {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2={67} S.L-3={5678} S.A+1=S S.A-1=S R.L+2={5789} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={589} S.A+1=S S.A-1=S R.L+2={5789} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 6,7 (in {5,8,9}), S.A+1 is small in {5,6}, S.A-1 is small in {5,6}, R.L+2 is != 6 (in {5,7,8,9}), R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 6,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L+2={67}",
+        "S.L-2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_21": {
+      "original_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-1={5789} S.L-2=S S.L-3={567} S.A+1=B]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L-1={5789} S.L-2=S S.L-3={567} S.A+1=B]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is small in {5,6}, S.L-3 is in {5,6,7}, S.A+1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_64": {
+      "original_rule": "EDGE(6->6)[S.L+1={5689} S.L+2={567} S.L-1={5689} S.L-2={567} R.L+2=B R.L-2=B]",
+      "simplified_1s_rule": "EDGE(6->6)[S.L+1={5689} S.L+2={567} S.L-1={5689} S.L-2={567} R.L+2=B R.L-2=B]",
+      "english_1sentence": "Send charge along 6->6 (6-sender to a 6-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 7 (in {5,6,8,9}), S.L-2 is in {5,6,7}, R.L+2 is big in {7,8,9}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 6,
+      "simplified_predicates": 6,
+      "predicates_removed": 0,
+      "dropped_predicates": [],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_66": {
+      "original_rule": "EDGE(7->7)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=S S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={57} S.L+2=S S.L-1=S S.A+1={567} S.A-1=5 R.L+2={67} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {5,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {6,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_67": {
+      "original_rule": "EDGE(7->7)[S.L+1=S S.L+2=S S.L+3=5 S.L-1={57} S.L-3={567} S.A+1={567} S.A-1={567} R.L+2=S R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=S S.L+2=S S.L+3=5 S.L-1={57} S.A+1={567} S.A-1={567} R.L+2=S R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is small in {5,6}, S.L+2 is small in {5,6}, S.L+3 is 5, S.L-1 is in {5,7}, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is small in {5,6}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 8,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_69": {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} S.A+1=7 S.A-1=S]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L-1={5689} S.A+1=7 S.A-1=S]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L-1 is != 7 (in {5,6,8,9}), S.A+1 is 7, S.A-1 is small in {5,6}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 4,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_71": {
+      "original_rule": "EDGE(5->7)[S.L+1=7 S.L+2=7 S.L+3=S S.L-1=5 S.L-2=S S.L-3=7 S.A-1=S R.L+2=S]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1=7 S.L-1=5 S.L-2=S S.L-3=7 S.A-1=S R.L+2=S]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is 7, S.L-1 is 5, S.L-2 is small in {5,6}, S.L-3 is 7, S.A-1 is small in {5,6}, R.L+2 is small in {5,6}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=7",
+        "S.L+3=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_72": {
+      "original_rule": "EDGE(5->7)[S.L+1=7 S.L+2=7 S.L+3=S S.L-1=5 S.L-2=S S.L-3=7 S.A-1={568} R.L+2=S]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1=7 S.L-1=5 S.L-2=S S.L-3=7 S.A-1={568} R.L+2=S]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is 7, S.L-1 is 5, S.L-2 is small in {5,6}, S.L-3 is 7, S.A-1 is in {5,6,8}, R.L+2 is small in {5,6}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2=7",
+        "S.L+3=S"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_74": {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-1={5789} S.L-2={67} S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L+2=7 S.L-1={5789} S.L-2={67} S.A+1=7 S.A-1={567} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is in {6,7}, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk01_99": {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=S]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=S]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 5, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {6,7}, R.L-2 is small in {5,6}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_24": {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2={67} S.L-1=S S.L-2=7 S.A+1={567} S.A-1=5 R.L+2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is in {6,7}, S.L-1 is small in {5,6}, S.L-2 is 7, S.A+1 is in {5,6,7}, S.A-1 is 5, R.L+2 is in {5,7}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_26": {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5789} S.L-2=S S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2=B]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L-1={5789} S.L-2=S S.A+1=7 S.A-1={567} R.L-2=B]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L-1 is != 6 (in {5,7,8,9}), S.L-2 is small in {5,6}, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_27": {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2=7 S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={5689} S.L-2=7 S.A+1=7 S.A-1={567} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 7 (in {5,6,8,9}), S.L-2 is 7, S.A+1 is 7, S.A-1 is in {5,6,7}, R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 6,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_29": {
+      "original_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={678} S.L-1={5689} S.L-2=S S.L-3={67} S.A+1=S]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L-1={5689} S.L-2=S S.L-3={67} S.A+1=S]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 7 (in {5,6,8,9}), S.L-2 is small in {5,6}, S.L-3 is in {6,7}, S.A+1 is small in {5,6}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_31": {
+      "original_rule": "EDGE(5->6)[S.L+1={589} S.L+2=7 S.L+3=7 S.L-1={6789} S.L-2=7 S.L-3={567} S.A+1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1={589} S.L+2=7 S.L-1={6789} S.L-2=7 S.A+1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L+2 is 7, S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is 7, S.A+1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L-3={567}",
+        "S.L+3=7"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_75": {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {5,6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_79": {
+      "original_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1={67} S.L+2=S S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is in {6,7}, S.L+2 is small in {5,6}, S.L-1 is small in {5,6}, S.L-2 is small in {5,6}, S.L-3 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 9,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_80": {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} S.A+1=S S.A-1=7 R.L+2={5789} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L-1={5689} S.A+1=S S.A-1=7 R.L+2={5789} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L-1 is != 7 (in {5,6,8,9}), S.A+1 is small in {5,6}, S.A-1 is 7, R.L+2 is != 6 (in {5,7,8,9}), R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 6,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_82": {
+      "original_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-1={6789} S.L-2=S S.L-3=7 S.A+1=S]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L-1={6789} S.L-2=S S.L-3=7 S.A+1=S]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is small in {5,6}, S.L-3 is 7, S.A+1 is small in {5,6}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 6,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_84": {
+      "original_rule": "EDGE(7->6)[S.L+1={5689} S.L+2=7 S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=S S.A-1=S R.L+2={589} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={5689} S.L+2=7 S.L-1={589} S.L-2=7 S.A+1=S S.A-1=S R.L+2={589} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is 7, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is 7, S.A+1 is small in {5,6}, S.A-1 is small in {5,6}, R.L+2 is != 6,7 (in {5,8,9}), R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk02_86": {
+      "original_rule": "EDGE(5->7)[S.L+1=6 S.L+2={67} S.L+3=5 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1={568}]",
+      "simplified_1s_rule": "EDGE(5->7)[S.L+1=6 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1={568}]",
+      "english_1sentence": "Send charge along 5->7 (5-sender to a 7-vertex) when S.L+1 is 6, S.L-1 is in {5,7}, S.L-2 is 5, S.L-3 is in {6,7}, S.A+1 is small in {5,6}, S.A-1 is in {5,6,8}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+2={67}",
+        "S.L+3=5"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk03_33": {
+      "original_rule": "EDGE(7->7)[S.L+1=5 S.L+2={57} S.L+3={567} S.L-1=5 S.L-2={57} S.L-3={567} S.A+1={67} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+1=5 S.L+2={57} S.L-1=5 S.L-2={57} S.A+1={67} S.A-1={67} R.L+2=S R.L-2={57}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+1 is 5, S.L+2 is in {5,7}, S.L-1 is 5, S.L-2 is in {5,7}, S.A+1 is in {6,7}, S.A-1 is in {6,7}, R.L+2 is small in {5,6}, R.L-2 is in {5,7}.",
+      "orig_predicates": 10,
+      "simplified_predicates": 8,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk03_35": {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} S.A+1=7 S.A-1=7]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L-1={5689} S.A+1=7 S.A-1=7]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L-1 is != 7 (in {5,6,8,9}), S.A+1 is 7, S.A-1 is 7.",
+      "orig_predicates": 8,
+      "simplified_predicates": 4,
+      "predicates_removed": 4,
+      "dropped_predicates": [
+        "S.L+2={567}",
+        "S.L+3={5678}",
+        "S.L-2={567}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk03_38": {
+      "original_rule": "EDGE(7->6)[S.L+1={589} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=7 S.A-1=5 R.L+2={5689} R.L-2={5689}]",
+      "simplified_1s_rule": "EDGE(7->6)[S.L+1={589} S.L-1={589} S.L-2=7 S.A+1=7 S.A-1=5 R.L+2={5689} R.L-2={5689}]",
+      "english_1sentence": "Send charge along 7->6 (7-sender to a 6-vertex) when S.L+1 is != 6,7 (in {5,8,9}), S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is 7, S.A+1 is 7, S.A-1 is 5, R.L+2 is != 7 (in {5,6,8,9}), R.L-2 is != 7 (in {5,6,8,9}).",
+      "orig_predicates": 10,
+      "simplified_predicates": 7,
+      "predicates_removed": 3,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}",
+        "S.L+2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk03_40": {
+      "original_rule": "EDGE(5->6)[S.L+1=B S.L+2={67} S.L+3={567} S.L-1={589} S.L-2={567} S.L-3=7 S.A-1=B]",
+      "simplified_1s_rule": "EDGE(5->6)[S.L+1=B S.L-1={589} S.L-2={567} S.L-3=7 S.A-1=B]",
+      "english_1sentence": "Send charge along 5->6 (5-sender to a 6-vertex) when S.L+1 is big in {7,8,9}, S.L-1 is != 6,7 (in {5,8,9}), S.L-2 is in {5,6,7}, S.L-3 is 7, S.A-1 is big in {7,8,9}.",
+      "orig_predicates": 7,
+      "simplified_predicates": 5,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L+2={67}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk04_41": {
+      "original_rule": "EDGE(7->7)[S.L+2=S S.L+3={567} S.L-1=5 S.L-3={567} S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={67}]",
+      "simplified_1s_rule": "EDGE(7->7)[S.L+2=S S.L-1=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={67}]",
+      "english_1sentence": "Send charge along 7->7 (7-sender to a 7-vertex) when S.L+2 is small in {5,6}, S.L-1 is 5, S.A+1 is in {5,6,7}, S.A-1 is in {6,7}, R.L+2 is in {6,7}, R.L-2 is in {6,7}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 6,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={567}",
+        "S.L-3={567}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk04_44": {
+      "original_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5789}]",
+      "simplified_1s_rule": "EDGE(7->5)[S.L+1={5689} S.L+2=S S.L-1={6789} S.L-2=S S.A+1=S S.A-1={567} R.L-2={5789}]",
+      "english_1sentence": "Send charge along 7->5 (7-sender to a 5-vertex) when S.L+1 is != 7 (in {5,6,8,9}), S.L+2 is small in {5,6}, S.L-1 is != 5 (in {6,7,8,9}), S.L-2 is small in {5,6}, S.A+1 is small in {5,6}, S.A-1 is in {5,6,7}, R.L-2 is != 6 (in {5,7,8,9}).",
+      "orig_predicates": 9,
+      "simplified_predicates": 7,
+      "predicates_removed": 2,
+      "dropped_predicates": [
+        "S.L+3={5678}",
+        "S.L-3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    },
+    "gk04_45": {
+      "original_rule": "EDGE(6->5)[S.L+1={5789} S.L+2={567} S.L+3={5678} S.L-1={689} S.L-2={567} S.L-3={5678} S.A-1=S R.L-2=B]",
+      "simplified_1s_rule": "EDGE(6->5)[S.L+1={5789} S.L+2={567} S.L-1={689} S.L-2={567} S.L-3={5678} S.A-1=S R.L-2=B]",
+      "english_1sentence": "Send charge along 6->5 (6-sender to a 5-vertex) when S.L+1 is != 6 (in {5,7,8,9}), S.L+2 is in {5,6,7}, S.L-1 is != 5,7 (in {6,8,9}), S.L-2 is in {5,6,7}, S.L-3 is in {5,6,7,8}, S.A-1 is small in {5,6}, R.L-2 is big in {7,8,9}.",
+      "orig_predicates": 8,
+      "simplified_predicates": 7,
+      "predicates_removed": 1,
+      "dropped_predicates": [
+        "S.L+3={5678}"
+      ],
+      "token_simplifications": [],
+      "slot_universe_exact_match": true
+    }
+  }
+}

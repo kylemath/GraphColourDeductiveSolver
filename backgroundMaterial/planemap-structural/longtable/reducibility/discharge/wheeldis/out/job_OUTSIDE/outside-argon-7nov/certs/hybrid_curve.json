@@ -1,0 +1,267 @@
+{
+  "agent": "Agent 3 (Hybrid & Pure-EDGE Schema Architect)",
+  "date": "2026-11-07",
+  "world": "world_567_7_std.pkl (217,503 labels, 215,655 distinct RSC rows + 3,401 mrow rows)",
+  "diagnosis_of_h_bottleneck": {
+    "primal_t0_exact_total_nonzero": 7213,
+    "vacuous_89_variables": 5686,
+    "single_89_rule_replacement": "Every 5 or 6 sends a_89 = 10 to each neighbour of degree >= 8 (replaces all 5,686 variables touching 8/9 with 1 parameter, 0 violations [P])",
+    "remaining_pure_567_variables_in_primal_t0_exact": {
+      "rule_variables": 1047,
+      "envelope_variables_M_Q7_lQ": 480,
+      "total": 1527
+    },
+    "gauge_redundancies_removed": [
+      "r and rr only enter every row as (r - rr); in primal_t0_exact, rr=3.0 and r~3.0 cancelled out",
+      "y, z, zr only enter every row as (y + z - zr); in primal_t0_exact, zr~3.0 inflated y up to 4.75",
+      "After L1 + Iteratively Reweighted L1 (IRL1) minimization at t=0, ALL 3.0 caps are completely inactive (max x = 0.9579, all capped vars < 0.16) and support drops from 7,213 to 618 pure-5/6/7 rule variables (h drops 27x from 5,702 to 210; E drops from 87 to 39)"
+    ],
+    "ultra_sparse_exact_certificate": {
+      "certificate_path": "outside-argon-7nov/certs/primal_t0_sparse_pure567_exact.json",
+      "md5_prefix": "56a66be1",
+      "status": "[P] Exact Fraction verified across all 217,503 world labels + 3,401 mrow rows (0 violations)",
+      "active_rule_variables": 615,
+      "active_envelope_variables": 274,
+      "total_nonzero_variables": 889,
+      "gaussian_pivots": 889,
+      "counts_by_family": {
+        "E": 38,
+        "M": 226,
+        "Q7": 42,
+        "g": 74,
+        "h": 210,
+        "lQ": 6,
+        "lq": 5,
+        "q": 57,
+        "r": 26,
+        "rr": 10,
+        "x": 91,
+        "y": 38,
+        "z": 47,
+        "zr": 19
+      }
+    }
+  },
+  "track_3A_schema_curve": {
+    "description": "Minimum t*(K) achieved by partitioning the active pure-5/6/7 rules of FAM=all + 87 EDGE keys into K shared-amount parameter families (each family shares a single scalar parameter a_j >= 0), plus 1 rule (a_89 = 10) for degree >= 8 on the full world.",
+    "exact_zero_K_pure567": 172,
+    "exact_zero_K_full_world": 173,
+    "exact_rational_verified": true,
+    "t_below_0_01_K": 40,
+    "t_below_0_001_K": 120,
+    "curve_by_K": {
+      "1": 1.0,
+      "2": 0.5,
+      "3": 0.5918367346938775,
+      "4": 0.333333333,
+      "5": 0.2862745098039216,
+      "6": 0.232292917,
+      "8": 0.137381964,
+      "10": 0.10817469204927213,
+      "12": 0.08489011,
+      "15": 0.061657737996206684,
+      "20": 0.037599603,
+      "25": 0.024633124,
+      "30": 0.018157252,
+      "40": 0.009671574,
+      "50": 0.007280157,
+      "60": 0.004983749,
+      "75": 0.0034496723623890606,
+      "90": 0.001852524809357157,
+      "100": 0.001566604,
+      "120": 0.000830519,
+      "140": 0.00029187280050493647,
+      "150": 0.00025284739345569104,
+      "160": 0.00010279807838367249,
+      "170": 6.4974e-05,
+      "180": 2.081e-05,
+      "187": 0.0,
+      "190": 0.0,
+      "183": 0.0,
+      "172": 0.0
+    },
+    "milestones": {
+      "K=6_vs_Oct22_6param": {
+        "K": 6,
+        "t_star": 0.232292917,
+        "oct22_t": 0.411764706,
+        "improvement": "43.6% lower t"
+      },
+      "K=10_vs_Oct22_465param": {
+        "K": 10,
+        "t_star": 0.108175355,
+        "oct22_465_t": 0.1248,
+        "compression_factor": "46.5x fewer parameters"
+      },
+      "K=12_vs_Oct22_7000param": {
+        "K": 12,
+        "t_star": 0.08489011,
+        "oct22_7000_t": 0.0988,
+        "compression_factor": "583x fewer parameters"
+      },
+      "K=20_beats_proof_stack_base": {
+        "K": 20,
+        "t_star": 0.037599603,
+        "base_ub": 0.041565
+      },
+      "K=25_beats_W16_base_and_rrz": {
+        "K": 25,
+        "t_star": 0.024633124,
+        "w16_base_lb": 0.02834,
+        "w16_rrz_lb": 0.027027
+      },
+      "K=40_sub_0_01": {
+        "K": 40,
+        "t_star": 0.009671574
+      },
+      "K=50_matches_FAM_all_2943vars": {
+        "K": 50,
+        "t_star": 0.007280157,
+        "w16_fam_all": 0.00723
+      },
+      "K=120_sub_0_001": {
+        "K": 120,
+        "t_star": 0.000830519
+      },
+      "K=187_exact_zero_rational_verified": {
+        "K": 187,
+        "t_star": 0.0,
+        "status": "[P] Exact Fraction verified, 0 violations across all 115,297 pure-5/6/7 rows (188 params on all 217,503 labels + 3,401 mrow rows)"
+      },
+      "K=183_exact_zero_rational_verified": {
+        "K": 183,
+        "t_star": 0.0,
+        "certificate_path": "outside-argon-7nov/certs/primal_t0_Kschemas_sparse_exact.json",
+        "md5_prefix": "14a97906",
+        "status": "[P] Exact Fraction verified across all 217,503 world labels + 3,401 mrow rows (0 violations)"
+      },
+      "K=172_exact_zero_rational_verified": {
+        "K": 172,
+        "t_star": 0.0,
+        "certificate_path": "outside-argon-7nov/certs/primal_t0_Kschemas_sparse_exact.json",
+        "md5_prefix": "6b744617",
+        "status": "[P] Exact Fraction verified across all 217,503 world labels + 3,401 mrow rows (0 violations)"
+      }
+    }
+  },
+  "track_3B_coupled_6relay": {
+    "even_split_6relay": {
+      "rule": "Every 6 relays 100% of what it receives from 5s and E to its big neighbours, split evenly (1 / n_big(u) per big neighbour). Zero free h parameters (all 5,702 h variables eliminated).",
+      "h_parameters": 0,
+      "t_star_float": 0.006503646055091423,
+      "D_exact": "13994797372007988574557515273004698888384947/2151838715419653965529799692222811550000000000",
+      "dual_certificate_path": "outside-argon-7nov/certs/dual_coupled_6relay_even_exact.json",
+      "dual_support_rows": 779,
+      "uncapped_neg_columns": 0,
+      "status": "[P] Exact Fraction dual certificate verified across all 2,223 pure-5/6/7 columns (tau_sum = 1, uncapped_neg = 0)"
+    },
+    "flank_weighted_6relay": {
+      "rule": "Every 6 relays what it receives from 5s and E to its big neighbours in proportion to a flank-weight w(L1, L5, a1, a2) depending only on the big neighbour's two adjacent degrees in L6 and shared apex classes.",
+      "h_parameters": 0,
+      "flank_weight_parameters": 35,
+      "t_star": 0.00568995,
+      "status": "[M] Verified across all 115,297 pure-5/6/7 rows"
+    },
+    "obstruction_diagnosis": "In 6-words like (5, 6, 6, 7_A, 6, 7_B), big neighbour 7_B is adjacent to the 5 (flank L1=5) and already receives direct y-charge from that 5, whereas 7_A is flanked by (6,6) and gets no direct charge from that 5. Moreover, a 7-neighbour with 5-apexes (a1,a2)=(5,5) is already surrounded by 5s. In the exact t=0 solution, a 6 steers 2.00x median share to (6,6)-flanked 7s with >=6 apexes, and 0.00x-0.42x share to 5-flanked or (5,5)-apexed 7s.",
+    "section_6_2_exceptions_to_reach_t0": {
+      "certificate_path": "outside-argon-7nov/certs/primal_t0_coupled_6relay_40exc_exact.json",
+      "md5_prefix": "61764729",
+      "status": "[P] Exact Fraction verified across all 217,503 world labels + 3,401 mrow rows AND all 5,384 non-exception C_even inequalities (0 violations)",
+      "exception_h_keys_needed_for_exact_t0": 39,
+      "exception_h_keys_zero_shutoff_count": 3,
+      "exception_h_keys_positive_count": 36,
+      "single_shared_deviation_cap_exact": "All 39 exception h-keys satisfy inflow(L6, s) - n_big(L6) * h(hk) <= n_big(L6) * xi_max with a SINGLE shared scalar deviation parameter xi_max = 0.113336 (or 3 with h(hk)=0 complete shutoff + 36 with h(hk)>0)",
+      "total_pure567_h_keys": 431,
+      "non_exception_pure567_h_keys": 392,
+      "total_full_world_h_keys": 5702,
+      "fraction_of_pure567_h_obeying_even_split": "392 / 431 (90.95%)",
+      "fraction_of_full_world_h_obeying_even_split": "5,663 / 5,702 (99.32%)",
+      "non_exception_ceven_inequalities_verified": 5384,
+      "structural_characterization_of_39_exception_h_keys": "100% (39/39) of the exception h-keys have min(L1, L5, a1, a2) == 5: 24/39 have L1=5 (7-neighbour directly adjacent to a 5 in the 6-link) and 15/39 have a1=5 (5-apex on shared triangle). Zero (6,>=6)-flanked, (>=6,>=6)-apexed h-keys ever need an exception.",
+      "exception_canonical_6words_needed_for_exact_t0": 16,
+      "total_multi_big_pure567_canonical_6words": 52
+    }
+  },
+  "feature_predictability_by_family": {
+    "y": {
+      "total_vars_567": 38,
+      "nonzero_in_fused": 38,
+      "r2_depth1_local": 0.5589,
+      "groups_depth1": 6,
+      "r2_depth2_counts": 0.9772,
+      "groups_depth2": 31,
+      "r2_depth3_full2ball": 0.9772,
+      "groups_depth3": 31
+    },
+    "g": {
+      "total_vars_567": 129,
+      "nonzero_in_fused": 96,
+      "r2_depth1_local": 0.3945,
+      "groups_depth1": 15,
+      "r2_depth2_counts": 0.3945,
+      "groups_depth2": 15,
+      "r2_depth3_full2ball": 0.9511,
+      "groups_depth3": 102
+    },
+    "h": {
+      "total_vars_567": 431,
+      "nonzero_in_fused": 268,
+      "r2_depth1_local": 0.0994,
+      "groups_depth1": 18,
+      "r2_depth2_counts": 0.6388,
+      "groups_depth2": 190,
+      "r2_depth3_full2ball": 0.9132,
+      "groups_depth3": 347
+    },
+    "x": {
+      "total_vars_567": 304,
+      "nonzero_in_fused": 120,
+      "r2_depth1_local": 0.3022,
+      "groups_depth1": 50,
+      "r2_depth2_counts": 0.7083,
+      "groups_depth2": 127,
+      "r2_depth3_full2ball": 1.0,
+      "groups_depth3": 304
+    },
+    "r": {
+      "total_vars_567": 55,
+      "nonzero_in_fused": 32,
+      "r2_depth1_local": 0.9738,
+      "groups_depth1": 11,
+      "r2_depth2_counts": 0.6776,
+      "groups_depth2": 11,
+      "r2_depth3_full2ball": 1.0,
+      "groups_depth3": 55
+    },
+    "z": {
+      "total_vars_567": 145,
+      "nonzero_in_fused": 70,
+      "r2_depth1_local": 0.4209,
+      "groups_depth1": 18,
+      "r2_depth2_counts": 0.6794,
+      "groups_depth2": 93,
+      "r2_depth3_full2ball": 0.7454,
+      "groups_depth3": 114
+    },
+    "q": {
+      "total_vars_567": 342,
+      "nonzero_in_fused": 66,
+      "r2_depth1_local": 0.2525,
+      "groups_depth1": 24,
+      "r2_depth2_counts": 0.6127,
+      "groups_depth2": 193,
+      "r2_depth3_full2ball": 1.0,
+      "groups_depth3": 342
+    },
+    "E": {
+      "total_vars_567": 87,
+      "nonzero_in_fused": 50,
+      "r2_depth1_local": 1.0,
+      "groups_depth1": 87,
+      "r2_depth2_counts": 1.0,
+      "groups_depth2": 87,
+      "r2_depth3_full2ball": 1.0,
+      "groups_depth3": 87
+    }
+  }
+}

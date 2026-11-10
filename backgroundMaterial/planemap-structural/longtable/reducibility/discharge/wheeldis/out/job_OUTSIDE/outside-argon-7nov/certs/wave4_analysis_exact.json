@@ -1,0 +1,3621 @@
+{
+  "task1_drop_with_gk00_5_on_567": [
+    [
+      "KS",
+      0.00019832
+    ],
+    [
+      "A1",
+      0.000246052
+    ],
+    [
+      "N1",
+      6.1527e-05
+    ],
+    [
+      "gk00_10",
+      0.000721429
+    ],
+    [
+      "gk00_13",
+      0.000148706
+    ],
+    [
+      "gk01_18",
+      0.002399669
+    ],
+    [
+      "gk01_20",
+      0.00010702
+    ],
+    [
+      "gk02_24",
+      0.000607919
+    ],
+    [
+      "gk03_33",
+      0.00055544
+    ],
+    [
+      "gk03_38",
+      0.000150914
+    ],
+    [
+      "gk04_41",
+      0.000644471
+    ],
+    [
+      "gk00_50",
+      0.000928675
+    ],
+    [
+      "gk00_58",
+      0.00014548
+    ],
+    [
+      "gk01_66",
+      0.00024506
+    ],
+    [
+      "gk01_67",
+      0.000377549
+    ],
+    [
+      "gk02_75",
+      0.000347748
+    ]
+  ],
+  "task1_merge_17_hits_on_567": [],
+  "task1_top10_merges_of_17_on_567": [
+    [
+      5.9718809014478706e-05,
+      "N1",
+      "r1s_gk00_5",
+      "EDGE(7->{67})[S.A-1={567}]"
+    ],
+    [
+      0.00010379354471045605,
+      "gk01_20",
+      "r1s_gk00_5",
+      "EDGE(7->6)[S.A+1={567} S.A-1={567}]"
+    ],
+    [
+      0.00014282446240123037,
+      "gk00_13",
+      "r1s_gk00_5",
+      "EDGE({57}->6)[]"
+    ],
+    [
+      0.00014618791842079456,
+      "gk03_38",
+      "r1s_gk00_5",
+      "EDGE(7->6)[S.A+1={567} S.A-1={567}]"
+    ],
+    [
+      0.00015060484248808367,
+      "gk01_20",
+      "gk03_38",
+      "EDGE(7->6)[S.L+1=5 S.L-1=5 S.A+1={567} S.A-1=S R.L-2=5]"
+    ],
+    [
+      0.0001527897176190167,
+      "gk00_58",
+      "r1s_gk00_5",
+      "EDGE({57}->{67})[S.A-1={567}]"
+    ],
+    [
+      0.0001918677172430847,
+      "KS",
+      "r1s_gk00_5",
+      "EDGE(7->{67})[]"
+    ],
+    [
+      0.00020142643877961683,
+      "N1",
+      "gk00_13",
+      "EDGE({57}->{67})[S.L-1=5 S.A-1={5789}]"
+    ],
+    [
+      0.00020205211319125938,
+      "N1",
+      "gk01_20",
+      "EDGE(7->{67})[S.L+1=5 S.L-1=5 S.A-1=S]"
+    ],
+    [
+      0.00022092451629706275,
+      "gk01_20",
+      "gk00_58",
+      "EDGE({57}->{67})[S.L+1={57} S.L-1=S S.A-1=S]"
+    ]
+  ],
+  "task2_decomposition": {
+    "base6718_picOrig_M_lQ_Q7_only": {
+      "16 rules": {
+        "t_opt": 0.011339465574691924,
+        "active_R_count": 157,
+        "active_M_count": 308,
+        "top_R_duals": [
+          {
+            "weight": 0.023378148986229863,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.02231340013040628,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.02022657224846387,
+            "row": "7/6666667/5676566",
+            "equiv_count": 1,
+            "killed_by_B": true,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01646800893453156,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008707666195462897,
+            "row": "7/5666766/6676676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008071555609794443,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007264691982780734,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0064417261741962235,
+            "row": "7/5556667/7577776",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006318947584236367,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006262333843201649,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005957740986913547,
+            "row": "7/5666767/5676665",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005567867137348937,
+            "row": "7/5566766/5677777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004924085246351221,
+            "row": "7/5566677/5676567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004840190926938617,
+            "row": "7/5566667/5677777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004803145105706811,
+            "row": "7/5557557/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.1629118472595493,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.13062166107696663,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.07251092419760687,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.07147907947987185,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.05607836312956915,
+            "mrow": "('mrowR2', (7, 6, 7, 7, 7, 5, 5, 31), (7, 6, 7, 5, 7, 7, 5, 5))"
+          },
+          {
+            "weight": 0.05535518723201037,
+            "mrow": "('mrowQ', (7, 6, 6, 6, 6, 31, 31), (7, 6, 6, 5, 5, 6, 6))"
+          },
+          {
+            "weight": 0.05215490422116933,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05194885248004394,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.050363488610754986,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.04099908070995689,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 6, 7, 5, 31), (7, 6, 5, 5, 6, 6, 7, 5))"
+          },
+          {
+            "weight": 0.04045314449692774,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 5, 31), (7, 6, 6, 5, 7, 6, 5, 5))"
+          },
+          {
+            "weight": 0.03681436927966293,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 31), (7, 6, 7, 5, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.036406729294495274,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.03582412418095461,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 7, 5, 5, 30), (7, 6, 5, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.034956267857303505,
+            "mrow": "('mrowR2', (7, 6, 7, 7, 6, 5, 7, 31), (7, 6, 7, 5, 7, 6, 5, 7))"
+          }
+        ]
+      },
+      "17 rules (16 + r1s_gk00_5)": {
+        "t_opt": 0.010658360371623883,
+        "active_R_count": 163,
+        "active_M_count": 328,
+        "top_R_duals": [
+          {
+            "weight": 0.024594400010967653,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.02005298297651295,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.018615097395502905,
+            "row": "7/6666667/5676566",
+            "equiv_count": 1,
+            "killed_by_B": true,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01848801102605596,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008189633061335723,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008030071406463026,
+            "row": "7/5666766/6676676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007923398543663182,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006998386989979935,
+            "row": "7/5566667/5677777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0062499465212940575,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0059932657245512526,
+            "row": "7/5757677/5756755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005766842569856705,
+            "row": "7/5666767/5676665",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004625052321784999,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004567142917470265,
+            "row": "7/5556667/7577776",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00444462875369839,
+            "row": "7/5556677/7576567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004126781529363115,
+            "row": "7/5557557/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.14815234074813183,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.12413324674095035,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.07065168495894802,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.05936267582148563,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.05912381131193538,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.0548346170851176,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.053065139441305344,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.04845337495833845,
+            "mrow": "('mrowQ', (7, 6, 6, 6, 6, 31, 31), (7, 6, 6, 5, 5, 6, 6))"
+          },
+          {
+            "weight": 0.03895289025570412,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.037901779400800015,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 6, 7, 5, 31), (7, 6, 5, 5, 6, 6, 7, 5))"
+          },
+          {
+            "weight": 0.03723019479100581,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 5, 31), (7, 6, 6, 5, 7, 6, 5, 5))"
+          },
+          {
+            "weight": 0.03703240237269194,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 7, 5, 5, 30), (7, 6, 5, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.03335710535873427,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 31), (7, 6, 7, 5, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.03274481875505112,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 7, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.0319570241020269,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          }
+        ]
+      },
+      "151 keys": {
+        "t_opt": 0.009204093528479347,
+        "active_R_count": 175,
+        "active_M_count": 359,
+        "top_R_duals": [
+          {
+            "weight": 0.02035943848547488,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.018564439761722583,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01534375367704608,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.014641861560928164,
+            "row": "7/6666667/5676566",
+            "equiv_count": 1,
+            "killed_by_B": true,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011709866888360938,
+            "row": "7/5566667/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009829904773308702,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008299703664780653,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007888617570810256,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006908446865153729,
+            "row": "7/5666766/6676676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006756958398563685,
+            "row": "7/5666767/5676665",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00578938687714199,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004942959292978031,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004346048416704566,
+            "row": "7/5556667/5776677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00430005364107401,
+            "row": "7/5556677/7576567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004232513943845259,
+            "row": "7/5556676/5776677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.12609431578335173,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.1222815014940604,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.09446388647714704,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.059702887062487685,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.04657890684139692,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.04538307779574204,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.04076921812145055,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.037915547985867215,
+            "mrow": "('mrowQ', (7, 6, 6, 6, 6, 31, 31), (7, 6, 6, 5, 5, 6, 6))"
+          },
+          {
+            "weight": 0.0363059081430174,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.03231767835158055,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.030640469064570144,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 7, 5, 5, 30), (7, 6, 5, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.030629368045913992,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 6, 7, 5, 31), (7, 6, 5, 5, 6, 6, 7, 5))"
+          },
+          {
+            "weight": 0.029340281192247294,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.029283723121856328,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 5, 31), (7, 6, 6, 5, 7, 6, 5, 5))"
+          },
+          {
+            "weight": 0.029283723121856328,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 5, 30), (7, 5, 6, 6, 7, 6, 5, 5))"
+          }
+        ]
+      },
+      "151 keys + KillB + H05": {
+        "t_opt": 0.007498977757797297,
+        "active_R_count": 196,
+        "active_M_count": 365,
+        "top_R_duals": [
+          {
+            "weight": 0.020899847525241204,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.015086240654882727,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01378985178954904,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009371305845989827,
+            "row": "7/5556676/5776767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00907488767963735,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007350595903283287,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007038610025626262,
+            "row": "7/5666766/6676676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006879926174503647,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0057449382965250526,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005554594768432292,
+            "row": "7/5566667/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005412055905264515,
+            "row": "7/6666767/5675666",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005046549237565982,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004942038516756734,
+            "row": "7/5666767/5676665",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0047243942753965595,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00471370190748318,
+            "row": "7/6667667/5666566",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.1269094217176145,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.1247062837973221,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.08889524124228862,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.06360611234672169,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05597959831153616,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.051008247923486544,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.04026315866350318,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.03952987021694768,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.0388156190475399,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.03752359339719385,
+            "mrow": "('mrowQ', (7, 6, 6, 6, 6, 31, 31), (7, 6, 6, 5, 5, 6, 6))"
+          },
+          {
+            "weight": 0.032410035487049335,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 7, 31), (7, 6, 6, 5, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.032069089208345364,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03150823201012103,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.028434372930899017,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.026989472455638933,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 31), (7, 6, 7, 5, 6, 7, 5, 5))"
+          }
+        ]
+      },
+      "all keys + KillB + H05": {
+        "t_opt": 0.007410587755194232,
+        "active_R_count": 190,
+        "active_M_count": 367,
+        "top_R_duals": [
+          {
+            "weight": 0.016426994158686287,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.013994413410512193,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.013029321237252254,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009465996100635555,
+            "row": "7/5556676/5776767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00931419264028075,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00852582543366877,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00816122438214085,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0070758679373729375,
+            "row": "7/6666767/5675666",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006792032473584818,
+            "row": "7/5666766/6676676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006675277597196436,
+            "row": "7/5566667/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006207562031880688,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005902554981848525,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005608139528133623,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005037655440406692,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004937570567902905,
+            "row": "7/5566676/5677767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.12618256353712026,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.1240600415719988,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.07599156901563364,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.06248855196236888,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05310767243237127,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.04587013126657843,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.045227698063024714,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.044434229833880894,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.034990107341589104,
+            "mrow": "('mrowQ', (7, 6, 6, 6, 6, 31, 31), (7, 6, 6, 5, 5, 6, 6))"
+          },
+          {
+            "weight": 0.03495292507293004,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.034610441372252616,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 7, 31), (7, 6, 6, 5, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.032573482737455216,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.03245923219263718,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.030029797144974515,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.0245579288161858,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 31), (7, 6, 7, 5, 6, 7, 5, 5))"
+          }
+        ]
+      }
+    },
+    "baseOrig_pic6718_IN_slots_only": {
+      "16 rules": {
+        "t_opt": 0.0013601942065103304,
+        "active_R_count": 154,
+        "active_M_count": 294,
+        "top_R_duals": [
+          {
+            "weight": 0.024368748888404596,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.018813322687920495,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.016376480746402827,
+            "row": "7/5556677/7576757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01136702817547097,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009707562653597037,
+            "row": "7/5667757/7665755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009046338064864129,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008733939366762075,
+            "row": "7/5577577/5667567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00830780725684065,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008302181117410792,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008024309665033334,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007424748571268196,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006971980339094906,
+            "row": "7/5657677/5567755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006530484663475049,
+            "row": "7/5556676/5776677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0063496020086582705,
+            "row": "7/5556677/7577657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0057487326433532425,
+            "row": "7/5656777/5676555",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.1737421045299632,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.11336501438469222,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.10533674605077527,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.07274666783002162,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.050670826543886875,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.048733948227653326,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.0476988915874991,
+            "mrow": "('mrowL', (5, 6, 31), (5, 6, 5))"
+          },
+          {
+            "weight": 0.0392524920637602,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.03873184236942498,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          },
+          {
+            "weight": 0.03762664537584099,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 7, 30, 31), (7, 5, 5, 7, 5, 5, 7))"
+          },
+          {
+            "weight": 0.03740725087952468,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.03637244224046176,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.034016654705248325,
+            "mrow": "('mrowQ', (7, 6, 6, 5, 7, 31, 31), (7, 6, 6, 5, 5, 5, 7))"
+          },
+          {
+            "weight": 0.034016654705248325,
+            "mrow": "('mrowQ', (7, 5, 5, 6, 7, 31, 31), (7, 5, 5, 5, 6, 6, 7))"
+          },
+          {
+            "weight": 0.0305021894544066,
+            "mrow": "('mrowQ', (7, 6, 7, 5, 7, 31, 31), (7, 6, 7, 5, 7, 5, 7))"
+          }
+        ]
+      },
+      "17 rules (16 + r1s_gk00_5)": {
+        "t_opt": 0.0013110373673966796,
+        "active_R_count": 163,
+        "active_M_count": 328,
+        "top_R_duals": [
+          {
+            "weight": 0.023548182830355834,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.017986860638749255,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.013896738976880468,
+            "row": "7/5556677/7576657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01160915332262037,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011062244753212203,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009444152771520034,
+            "row": "7/5667757/7665755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008846152533028397,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008333494787151959,
+            "row": "7/5577577/5667567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008026223136527027,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007973524216367213,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007707915944192995,
+            "row": "7/5556676/5776677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007543763303300378,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007206620504774967,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006687760866514703,
+            "row": "7/5657677/5567755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005398593239383253,
+            "row": "7/5656777/5676555",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.16642971412060215,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.1093396302376986,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.10175700258191558,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.06929763523391316,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.0493998996155281,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.04677251009591881,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.04610916862347661,
+            "mrow": "('mrowL', (5, 6, 31), (5, 6, 5))"
+          },
+          {
+            "weight": 0.03838579797715925,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.03729724520283448,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          },
+          {
+            "weight": 0.03608803987410263,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.03597372127749851,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 7, 30, 31), (7, 5, 5, 7, 5, 5, 7))"
+          },
+          {
+            "weight": 0.035085336115991926,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.03277612204328736,
+            "mrow": "('mrowQ', (7, 6, 6, 5, 7, 31, 31), (7, 6, 6, 5, 5, 5, 7))"
+          },
+          {
+            "weight": 0.03277612204328736,
+            "mrow": "('mrowQ', (7, 5, 5, 6, 7, 31, 31), (7, 5, 5, 5, 6, 6, 7))"
+          },
+          {
+            "weight": 0.02913101064495029,
+            "mrow": "('mrowQ', (7, 6, 7, 5, 7, 31, 31), (7, 6, 7, 5, 7, 5, 7))"
+          }
+        ]
+      },
+      "151 keys": {
+        "t_opt": 0.0006806283206808166,
+        "active_R_count": 182,
+        "active_M_count": 367,
+        "top_R_duals": [
+          {
+            "weight": 0.02077542169809367,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01668038084501791,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01408428072963019,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009308807578697498,
+            "row": "7/5556677/7577657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008734175641974777,
+            "row": "7/5577577/5667567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00856184215527965,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008397863590973794,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008087492650493274,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0076194559748695035,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007280276523237754,
+            "row": "7/5556676/5776677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007020392240790233,
+            "row": "7/5757677/5556657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006002186966161359,
+            "row": "7/5676757/7756755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005945823575345177,
+            "row": "7/5566677/5676757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005570882516015277,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005378435902657656,
+            "row": "7/5556667/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.16874913064587874,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.10341156339037222,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.10139796488894173,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.06450264098753329,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.04730494964105529,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.0446966535526843,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          },
+          {
+            "weight": 0.04431177751830951,
+            "mrow": "('mrowL', (5, 6, 31), (5, 6, 5))"
+          },
+          {
+            "weight": 0.04370951097451921,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.03902284586775623,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.0365832454698897,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.03532787467146128,
+            "mrow": "('mrowQ', (7, 6, 6, 5, 7, 31, 31), (7, 6, 6, 5, 5, 5, 7))"
+          },
+          {
+            "weight": 0.03532787467146128,
+            "mrow": "('mrowQ', (7, 5, 5, 6, 7, 31, 31), (7, 5, 5, 5, 6, 6, 7))"
+          },
+          {
+            "weight": 0.03466217129192117,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 7, 30, 31), (7, 5, 5, 7, 5, 5, 7))"
+          },
+          {
+            "weight": 0.03251915138114743,
+            "mrow": "('mrowQ', (7, 6, 7, 5, 7, 31, 31), (7, 6, 7, 5, 7, 5, 7))"
+          },
+          {
+            "weight": 0.03251915138114743,
+            "mrow": "('mrowQ', (7, 5, 7, 7, 6, 31, 31), (7, 5, 7, 5, 7, 7, 6))"
+          }
+        ]
+      },
+      "151 keys + KillB + H05": {
+        "t_opt": 0.0005969653443616933,
+        "active_R_count": 185,
+        "active_M_count": 376,
+        "top_R_duals": [
+          {
+            "weight": 0.022003615673203095,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.014634483047339306,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.013086533167169649,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010338287319497794,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008941514827494647,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008559571395754327,
+            "row": "7/5556677/7577657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007976138611282253,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007954622551048927,
+            "row": "7/5577577/5667567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007919224383065363,
+            "row": "7/5556676/5776677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007491488445699931,
+            "row": "7/5566677/5676757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007401572219922119,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007081735466698496,
+            "row": "7/5667757/7665755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005953321732995294,
+            "row": "7/5556667/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005414743215590843,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005150351012222885,
+            "row": "7/5556677/7576577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.15457800596271803,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.1080516232746295,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.10201935728505208,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.0621531777726482,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.04400505649800925,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.04282045405145163,
+            "mrow": "('mrowL', (5, 6, 31), (5, 6, 5))"
+          },
+          {
+            "weight": 0.04111227041594064,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.0399750631099949,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.03875536407118779,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          },
+          {
+            "weight": 0.037883201012908624,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.03557266366266996,
+            "mrow": "('mrowQ', (7, 6, 6, 5, 7, 31, 31), (7, 6, 6, 5, 5, 5, 7))"
+          },
+          {
+            "weight": 0.03557266366266996,
+            "mrow": "('mrowQ', (7, 5, 5, 6, 7, 31, 31), (7, 5, 5, 5, 6, 6, 7))"
+          },
+          {
+            "weight": 0.032883547877220025,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.03208663290042513,
+            "mrow": "('mrowQ', (7, 6, 7, 5, 7, 31, 31), (7, 6, 7, 5, 7, 5, 7))"
+          },
+          {
+            "weight": 0.03208663290042513,
+            "mrow": "('mrowQ', (7, 5, 7, 7, 6, 31, 31), (7, 5, 7, 5, 7, 7, 6))"
+          }
+        ]
+      },
+      "all keys + KillB + H05": {
+        "t_opt": 0.0005969653443621767,
+        "active_R_count": 185,
+        "active_M_count": 375,
+        "top_R_duals": [
+          {
+            "weight": 0.017825131456467316,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.014634483047384135,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01033828731957671,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008559571395771471,
+            "row": "7/5556677/7577657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008494965021211718,
+            "row": "7/5556677/7576757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008048890707933095,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007976138611260139,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007954622551055095,
+            "row": "7/5577577/5667567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00749148844565113,
+            "row": "7/5566677/5676757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007401572219755521,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00708173546665997,
+            "row": "7/5667757/7665755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006340323033976836,
+            "row": "7/5556676/5776677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006074551795797129,
+            "row": "7/5757677/5556657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005953321733011997,
+            "row": "7/5556667/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0054426653034796504,
+            "row": "7/5656777/5676555",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.15457800596299145,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.1080516232749033,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.10201935728546528,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.06215317777269583,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.044005056498013895,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.04282045405149362,
+            "mrow": "('mrowL', (5, 6, 31), (5, 6, 5))"
+          },
+          {
+            "weight": 0.04111227041603248,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.0399750631098641,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.03875536407141214,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          },
+          {
+            "weight": 0.03788320101302888,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.035572663662836505,
+            "mrow": "('mrowQ', (7, 6, 6, 5, 7, 31, 31), (7, 6, 6, 5, 5, 5, 7))"
+          },
+          {
+            "weight": 0.035572663662836505,
+            "mrow": "('mrowQ', (7, 5, 5, 6, 7, 31, 31), (7, 5, 5, 5, 6, 6, 7))"
+          },
+          {
+            "weight": 0.032883547877332615,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.03208663290043686,
+            "mrow": "('mrowQ', (7, 6, 7, 5, 7, 31, 31), (7, 6, 7, 5, 7, 5, 7))"
+          },
+          {
+            "weight": 0.03208663290043686,
+            "mrow": "('mrowQ', (7, 5, 7, 7, 6, 31, 31), (7, 5, 7, 5, 7, 7, 6))"
+          }
+        ]
+      }
+    },
+    "full_6718": {
+      "16 rules": {
+        "t_opt": 0.012616095068398288,
+        "active_R_count": 149,
+        "active_M_count": 290,
+        "top_R_duals": [
+          {
+            "weight": 0.02358568592520071,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.019754451714513836,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01781309978573444,
+            "row": "7/6666667/5676566",
+            "equiv_count": 1,
+            "killed_by_B": true,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0174365137594754,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009550335439289199,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008857875607280914,
+            "row": "7/5666766/6676676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006437847489153605,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006282498308177343,
+            "row": "7/5556677/7577567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006263784714617696,
+            "row": "7/5556667/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005922489475971203,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005202489092996745,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005145015170190189,
+            "row": "7/5557557/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00494504474840288,
+            "row": "7/5577577/5765567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004913535667781176,
+            "row": "7/5666767/6676665",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004718129713088808,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.1497585348876672,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.12761377057085502,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.06755535030960923,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.0674792138868892,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.06324119625239583,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.058412583889611416,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.046154308989066965,
+            "mrow": "('mrowQ', (7, 6, 6, 6, 6, 31, 31), (7, 6, 6, 5, 5, 6, 6))"
+          },
+          {
+            "weight": 0.04396708885764581,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.04049462525445371,
+            "mrow": "('mrowR2', (7, 6, 7, 7, 6, 5, 7, 31), (7, 6, 7, 5, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03887602092249798,
+            "mrow": "('mrowR2', (7, 6, 7, 7, 7, 5, 5, 31), (7, 6, 7, 5, 7, 7, 5, 5))"
+          },
+          {
+            "weight": 0.038480735740940034,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.03688583566822801,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 6, 7, 5, 31), (7, 6, 5, 5, 6, 6, 7, 5))"
+          },
+          {
+            "weight": 0.03684876590623228,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 5, 31), (7, 6, 6, 5, 7, 6, 5, 5))"
+          },
+          {
+            "weight": 0.03518128503687395,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.03328313455478136,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 31), (7, 6, 7, 5, 6, 7, 5, 5))"
+          }
+        ]
+      },
+      "17 rules (16 + r1s_gk00_5)": {
+        "t_opt": 0.012018443039189928,
+        "active_R_count": 158,
+        "active_M_count": 321,
+        "top_R_duals": [
+          {
+            "weight": 0.022201268637869177,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.021482102942695674,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.016257593712061768,
+            "row": "7/6666667/5676566",
+            "equiv_count": 1,
+            "killed_by_B": true,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.013358649540436649,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008394989162737386,
+            "row": "7/5666766/6676676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008350791517398166,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007123488748267924,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0062307316233197844,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005935516721621023,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005384864804482078,
+            "row": "7/5557557/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005094653882119648,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004637720950361479,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004508563508606643,
+            "row": "7/5577577/5765567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00412987487633613,
+            "row": "7/5556667/5776677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00399596014054899,
+            "row": "7/5666776/5776655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.13808974926565956,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.1146770436553151,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.06180318311352765,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.061134635200109186,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05969049416139181,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.05862881056930698,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.053184438112303764,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.04960586714305889,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.042257587362239786,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.04074476227268395,
+            "mrow": "('mrowQ', (7, 6, 6, 6, 6, 31, 31), (7, 6, 6, 5, 5, 6, 6))"
+          },
+          {
+            "weight": 0.03724101514360853,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.03586440807282993,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.03496744015023829,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 6, 7, 5, 31), (7, 6, 5, 5, 6, 6, 7, 5))"
+          },
+          {
+            "weight": 0.03494062097406187,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 5, 31), (7, 6, 6, 5, 7, 6, 5, 5))"
+          },
+          {
+            "weight": 0.03112233037098521,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 31), (7, 6, 7, 5, 6, 7, 5, 5))"
+          }
+        ]
+      },
+      "151 keys": {
+        "t_opt": 0.01077603866922452,
+        "active_R_count": 181,
+        "active_M_count": 367,
+        "top_R_duals": [
+          {
+            "weight": 0.016180763063472124,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01437652851297216,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.014177089916230777,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011376519087585893,
+            "row": "7/6666667/5676566",
+            "equiv_count": 1,
+            "killed_by_B": true,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010559298072520876,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006933543930708828,
+            "row": "7/5566667/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006816457065325416,
+            "row": "7/5556677/7576567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006716182364254677,
+            "row": "7/5666766/6676676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006169899105546465,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005722943193933986,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005579639465282401,
+            "row": "7/5757677/5556755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005442644998772273,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005394299751814995,
+            "row": "7/5677577/5665765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005362853510482253,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004834511433240495,
+            "row": "7/5676776/5675665",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.12385861711223374,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.11736110302476667,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.08383722166855273,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.06036528367285637,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.047919860070377525,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.04253766245979032,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.0425080167897825,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03999462304880925,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.038486254217032216,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03404365764768315,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.031968427755669306,
+            "mrow": "('mrowQ', (7, 6, 6, 6, 6, 31, 31), (7, 6, 6, 5, 5, 6, 6))"
+          },
+          {
+            "weight": 0.031084282934733417,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.029686195381003033,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.027053209601926483,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 5, 31), (7, 6, 6, 5, 7, 6, 5, 5))"
+          },
+          {
+            "weight": 0.027053209601926483,
+            "mrow": "('mrowR2', (7, 6, 5, 6, 6, 7, 5, 31), (7, 6, 5, 5, 6, 6, 7, 5))"
+          }
+        ]
+      },
+      "151 keys + KillB + H05": {
+        "t_opt": 0.010102784738006814,
+        "active_R_count": 180,
+        "active_M_count": 356,
+        "top_R_duals": [
+          {
+            "weight": 0.014662471373406209,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.012301329736377674,
+            "row": "7/5556677/7576567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01054351342169526,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01035616125663205,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009198049054738193,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009141636932681356,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008906828108335207,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00881565781594832,
+            "row": "7/6666677/5676565",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007649078975084135,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006582160888634574,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006548547296225651,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006477963226811571,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006059079419807085,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005749507278391595,
+            "row": "7/6667667/5675566",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005715984840809745,
+            "row": "7/5556677/7577756",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.11282685815059976,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.10484688504436256,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.09607761603520602,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.07088067750099604,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05320746679411303,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.05199493655936872,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.04118861009227382,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.036817590093987065,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.0340916693844284,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.033250790563242205,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.032278668578106004,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03215713248415545,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.029175575860812642,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 7))"
+          },
+          {
+            "weight": 0.02872126633366889,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 7, 31), (7, 6, 7, 7, 6, 7, 5, 7))"
+          },
+          {
+            "weight": 0.026633784934791717,
+            "mrow": "('mrowQ', (7, 6, 6, 5, 7, 31, 31), (7, 6, 6, 5, 5, 5, 7))"
+          }
+        ]
+      },
+      "all keys + KillB + H05": {
+        "t_opt": 0.010102784738006817,
+        "active_R_count": 180,
+        "active_M_count": 356,
+        "top_R_duals": [
+          {
+            "weight": 0.014662471373406854,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01230132973637537,
+            "row": "7/5556677/7576567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010543513421694625,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010356161256634038,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009198049054738623,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009141636932681666,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00890682810833456,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008815657815948497,
+            "row": "7/6666677/5676565",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007649078975086005,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006582160888633806,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006548547296225038,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006477963226811281,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006059079419807505,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005749507278392376,
+            "row": "7/6667667/5675566",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005715984840810269,
+            "row": "7/5556677/7577756",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.1128268581505997,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.10484688504436417,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.08098586184502098,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.07088067750099634,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05628036428245982,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.05320746679411157,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.04612298319253438,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.03681759009398803,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.03409166938442926,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03325079056324222,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.032157132484156026,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.029764044948375618,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 7))"
+          },
+          {
+            "weight": 0.029431327663640736,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.029175575860813107,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 7))"
+          },
+          {
+            "weight": 0.028721266333669705,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 7, 31), (7, 6, 7, 7, 6, 7, 5, 7))"
+          }
+        ]
+      }
+    },
+    "d7_w6_only_6718": {
+      "16 rules": {
+        "t_opt": 0.009685013412213513,
+        "active_R_count": 161,
+        "active_M_count": 295,
+        "top_R_duals": [
+          {
+            "weight": 0.015457558500930745,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.012281090732595385,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011948705493985343,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011865317714724676,
+            "row": "7/5556676/5776767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011648856309835498,
+            "row": "7/5566766/5677667",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01074988948881991,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009166775738751427,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00745697394590798,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0072687970732038115,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007197037222452173,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006552708796665427,
+            "row": "7/5556667/7577667",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0063876998140433095,
+            "row": "7/6666767/5675666",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006138885593148373,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006125078983734549,
+            "row": "7/5757677/5557655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006038886771165607,
+            "row": "7/5566677/5677757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.11925410888439614,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.1060301448232326,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.1059794993061609,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.07745413671937522,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.06170815199277457,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.055454555510008816,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.037645566481515416,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03531040471767588,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.034729018353190075,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.0338379918013239,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.0322692556551345,
+            "mrow": "('mrowR2', (7, 6, 7, 7, 7, 5, 5, 31), (7, 6, 7, 5, 7, 7, 5, 5))"
+          },
+          {
+            "weight": 0.030611399140728763,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 5, 30), (7, 5, 6, 6, 7, 6, 5, 5))"
+          },
+          {
+            "weight": 0.027128695949902023,
+            "mrow": "('mrowQ', (7, 6, 6, 5, 7, 30, 31), (7, 6, 6, 6, 5, 5, 7))"
+          },
+          {
+            "weight": 0.027128695949902023,
+            "mrow": "('mrowQ', (7, 5, 5, 6, 7, 30, 31), (7, 5, 5, 6, 6, 6, 7))"
+          },
+          {
+            "weight": 0.026794926215023246,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 7))"
+          }
+        ]
+      },
+      "17 rules (16 + r1s_gk00_5)": {
+        "t_opt": 0.009257886835585896,
+        "active_R_count": 155,
+        "active_M_count": 303,
+        "top_R_duals": [
+          {
+            "weight": 0.017306311409485683,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.016942922351869734,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.012231890376917104,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011267989251171989,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010520290599426413,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009302711602846875,
+            "row": "7/5556676/5776767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008881641980748355,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007971824045953625,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007417600261853895,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007114899363215669,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005943885488236285,
+            "row": "7/5556667/7577767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005651953539950768,
+            "row": "7/6666767/5675666",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00512037387003395,
+            "row": "7/5557557/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004979130480532517,
+            "row": "7/5566677/5677567",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.004921871854407185,
+            "row": "7/5556676/5777767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.11342380735556645,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.11049623686076615,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.09714564020787449,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.0766549009966868,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05382849284584572,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.05286144361355873,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.039715816319948236,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.034125721401550874,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.032799378850564095,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.032715322171896724,
+            "mrow": "('mrowR2', (7, 5, 6, 7, 6, 5, 7, 30), (7, 5, 6, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.030368780637197643,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.02942763403679996,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          },
+          {
+            "weight": 0.02645811285698752,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 5, 30), (7, 6, 7, 7, 6, 7, 5, 5))"
+          },
+          {
+            "weight": 0.02612560689905253,
+            "mrow": "('mrowQ', (7, 6, 6, 5, 7, 30, 31), (7, 6, 6, 6, 5, 5, 7))"
+          },
+          {
+            "weight": 0.02612560689905253,
+            "mrow": "('mrowQ', (7, 5, 5, 6, 7, 30, 31), (7, 5, 5, 6, 6, 6, 7))"
+          }
+        ]
+      },
+      "151 keys": {
+        "t_opt": 0.00817183681249516,
+        "active_R_count": 186,
+        "active_M_count": 351,
+        "top_R_duals": [
+          {
+            "weight": 0.013415297364006496,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011001025350821344,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01090046138153527,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010828922955457771,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010238833082290068,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009286355734137974,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009238904577636821,
+            "row": "7/5556676/5776767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008631040566532914,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008245691864605068,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006473390690852499,
+            "row": "7/5566766/5676677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006038621700674629,
+            "row": "7/5557557/5777777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005822977069704613,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005818016052302999,
+            "row": "7/5666777/5676565",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005818016052302999,
+            "row": "7/5566677/5677676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00561626677115311,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.11280856532572767,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.0960253312563162,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.09601671713563797,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.08664065335021855,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.0592244991808564,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.0515281667228334,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.03911139372541097,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.037874488646205746,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.03479610562210622,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03358352505592032,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.0328991642085537,
+            "mrow": "('mrowQ', (7, 5, 7, 7, 5, 31, 31), (7, 5, 7, 5, 7, 7, 5))"
+          },
+          {
+            "weight": 0.0328991642085537,
+            "mrow": "('mrowQ', (7, 5, 7, 5, 7, 31, 31), (7, 5, 7, 5, 7, 5, 7))"
+          },
+          {
+            "weight": 0.031262529014913484,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 7, 31), (7, 6, 7, 7, 6, 7, 5, 7))"
+          },
+          {
+            "weight": 0.02963823536757858,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 7, 30, 31), (7, 5, 5, 7, 5, 5, 7))"
+          },
+          {
+            "weight": 0.028979824540389623,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          }
+        ]
+      },
+      "151 keys + KillB + H05": {
+        "t_opt": 0.008055582996934029,
+        "active_R_count": 183,
+        "active_M_count": 349,
+        "top_R_duals": [
+          {
+            "weight": 0.014190574182350021,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.013562114390255335,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.012224316796450974,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011766577147902952,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011269841545135929,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010742289621108674,
+            "row": "7/5556676/5776767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.010404712682712581,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00917965156428214,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.008839904263421605,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007328489691412745,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006922597520240764,
+            "row": "7/5666777/5676565",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006706329060682938,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006258369096300318,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0061392896446778745,
+            "row": "7/5566677/5677676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005523501932814269,
+            "row": "7/5677757/7656555",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.12030230500392389,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.09753574756222833,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.09519587244531652,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.08453661986192056,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05357333711190314,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.05107032087907808,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.0399618592463397,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.036943616861182194,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.035491708715657724,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.035046641978948634,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 7, 31), (7, 6, 7, 7, 6, 7, 5, 7))"
+          },
+          {
+            "weight": 0.032770356587954616,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03202517650289885,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 7, 31), (7, 6, 6, 5, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.031585704644672585,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          },
+          {
+            "weight": 0.028115907958350842,
+            "mrow": "('mrowQ', (7, 5, 7, 7, 5, 31, 31), (7, 5, 7, 5, 7, 7, 5))"
+          },
+          {
+            "weight": 0.028115907958350842,
+            "mrow": "('mrowQ', (7, 5, 7, 5, 7, 31, 31), (7, 5, 7, 5, 7, 5, 7))"
+          }
+        ]
+      },
+      "all keys + KillB + H05": {
+        "t_opt": 0.008055582996934195,
+        "active_R_count": 182,
+        "active_M_count": 349,
+        "top_R_duals": [
+          {
+            "weight": 0.014555264945631505,
+            "row": "7/5557557/5767777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.013562114390256135,
+            "row": "7/5575577/5775677",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.012941164814366812,
+            "row": "7/5566677/5677657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011766577147902307,
+            "row": "7/5757577/5577765",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.011460540546160526,
+            "row": "7/5566766/5676777",
+            "equiv_count": 2,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.01074228962111181,
+            "row": "7/5556676/5776767",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009417846081675495,
+            "row": "7/5757677/5557657",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.009179651564281511,
+            "row": "7/5556677/7577757",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.00883990426342025,
+            "row": "7/5567767/5676577",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.007328489691412924,
+            "row": "7/5566767/5675777",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006922597520240612,
+            "row": "7/5666777/5676565",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.0067063290606823875,
+            "row": "7/5677757/7575755",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006258369096300059,
+            "row": "7/5757777/5555655",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.006139289644677595,
+            "row": "7/5566677/5677676",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          },
+          {
+            "weight": 0.005523501932814144,
+            "row": "7/5677757/7656555",
+            "equiv_count": 1,
+            "killed_by_B": false,
+            "killed_by_H05": false
+          }
+        ],
+        "top_M_duals": [
+          {
+            "weight": 0.11075753587464357,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 7))"
+          },
+          {
+            "weight": 0.09753574756222885,
+            "mrow": "('mrowL', (6, 6, 31), (6, 6, 5))"
+          },
+          {
+            "weight": 0.09519587244531455,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 6))"
+          },
+          {
+            "weight": 0.08453661986191834,
+            "mrow": "('mrowL', (5, 5, 31), (5, 5, 5))"
+          },
+          {
+            "weight": 0.05962822340732036,
+            "mrow": "('mrowL', (5, 5, 30), (5, 5, 6))"
+          },
+          {
+            "weight": 0.05357333711190312,
+            "mrow": "('mrowL', (6, 5, 31), (6, 5, 5))"
+          },
+          {
+            "weight": 0.03996185924633965,
+            "mrow": "('mrowL', (6, 5, 30), (6, 5, 6))"
+          },
+          {
+            "weight": 0.036943616861183505,
+            "mrow": "('mrowL', (6, 6, 30), (6, 6, 7))"
+          },
+          {
+            "weight": 0.035491708715658925,
+            "mrow": "('mrowL', (5, 6, 30), (5, 6, 6))"
+          },
+          {
+            "weight": 0.0350466419789452,
+            "mrow": "('mrowR2', (7, 6, 7, 6, 7, 5, 7, 31), (7, 6, 7, 7, 6, 7, 5, 7))"
+          },
+          {
+            "weight": 0.03277035658795378,
+            "mrow": "('mrowR2', (7, 5, 7, 7, 6, 5, 7, 30), (7, 5, 7, 6, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03202517650290065,
+            "mrow": "('mrowR2', (7, 6, 6, 7, 6, 5, 7, 31), (7, 6, 6, 5, 7, 6, 5, 7))"
+          },
+          {
+            "weight": 0.03059883804363459,
+            "mrow": "('mrowQ', (7, 5, 5, 5, 5, 30, 31), (7, 5, 5, 5, 7, 5, 5))"
+          },
+          {
+            "weight": 0.02811590795834897,
+            "mrow": "('mrowQ', (7, 5, 7, 7, 5, 31, 31), (7, 5, 7, 5, 7, 7, 5))"
+          },
+          {
+            "weight": 0.02811590795834897,
+            "mrow": "('mrowQ', (7, 5, 7, 5, 7, 31, 31), (7, 5, 7, 5, 7, 5, 7))"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "experiment": "KEYSPEC v2 Private-Letter Splitting on the Z-Consistent (2db75746, 6,718 Rules) {5,6,7} World",
+  "script": "agents/agent2_closing/test_keyspec_v2_zcons.py",
+  "modes_tested": {
+    "v1_baseline": {
+      "description": "Standard KEYSPEC v1 unsplit receiver rows (110,087 R7 rows, 0 split receivers, 115,702-117,073 deduplicated rows)",
+      "r7_receivers": 110087,
+      "split_receivers": 0,
+      "r7_branches": 110087,
+      "uniq_out": 93929,
+      "uniq_in": 12311,
+      "results": {
+        "16_rules": {"t_opt": 0.012616095, "dedup_rows": 115702, "active_R": 149, "active_M": 290},
+        "17_rules": {"t_opt": 0.012018443, "dedup_rows": 115702, "active_R": 158, "active_M": 321},
+        "151_keys": {"t_opt": 0.010776039, "dedup_rows": 117073, "active_R": 181, "active_M": 367},
+        "151_keys_plus_KillB_H05": {"t_opt": 0.010102785, "dedup_rows": 116980, "active_R": 180, "active_M": 356},
+        "all_keys_plus_KillB_H05": {"t_opt": 0.010102785, "dedup_rows": 116980, "active_R": 180, "active_M": 356}
+      }
+    },
+    "v2_diff_vs_orig_w6_w7": {
+      "description": "KEYSPEC v2 splitting on w6 and w7 positions where 6,718 widened masks relative to 9,326 (split into m_orig vs diff classes in {5}, {6}, B)",
+      "r7_receivers": 110087,
+      "split_receivers": 46533,
+      "r7_branches": 264121,
+      "uniq_out": 93929,
+      "uniq_in": 24402,
+      "results": {
+        "16_rules": {"t_opt": 0.012456905, "dedup_rows": 261293, "active_R": 162, "active_M": 329},
+        "17_rules": {"t_opt": 0.011697613, "dedup_rows": 261293, "active_R": 156, "active_M": 335},
+        "151_keys": {"t_opt": 0.010164752, "dedup_rows": 263450, "active_R": 200, "active_M": 408},
+        "151_keys_plus_KillB_H05": {"t_opt": 0.008881362, "dedup_rows": 262851, "active_R": 196, "active_M": 389},
+        "all_keys_plus_KillB_H05": {"t_opt": 0.008881362, "dedup_rows": 262861, "active_R": 197, "active_M": 390}
+      }
+    },
+    "v2_w6_split5_all": {
+      "description": "KEYSPEC v2 binary splitting {5} vs {6,7,8,9} at all link-6 vertices whose mask contains both 5 and {6,7,8,9}",
+      "r7_receivers": 110087,
+      "split_receivers": 81042,
+      "r7_branches": 475313,
+      "uniq_out": 93929,
+      "uniq_in": 13267,
+      "results": {
+        "16_rules": {"t_opt": 0.012427016, "dedup_rows": 451711, "active_R": 160, "active_M": 294},
+        "17_rules": {"t_opt": 0.011550665, "dedup_rows": 451711, "active_R": 166, "active_M": 317},
+        "151_keys": {"t_opt": 0.010101853, "dedup_rows": 455306, "active_R": 199, "active_M": 362},
+        "151_keys_plus_KillB_H05": {"t_opt": 0.008831930, "dedup_rows": 454957, "active_R": 201, "active_M": 361},
+        "all_keys_plus_KillB_H05": {"t_opt": 0.008677062, "dedup_rows": 455083, "active_R": 198, "active_M": 353}
+      }
+    },
+    "v2_w6_56B_w7_diff": {
+      "description": "KEYSPEC v2 full 3-class splitting {5} (1), {6} (2), B={7,8,9} (28) at all link-6 vertices + diff splitting at link-7 vertices",
+      "r7_receivers": 110087,
+      "split_receivers": 100338,
+      "r7_branches": 2599525,
+      "uniq_out": 93929,
+      "uniq_in": 21652,
+      "results": {
+        "16_rules": {"t_opt": 0.011685655, "dedup_rows": 2244168, "active_R": 152, "active_M": 277},
+        "17_rules": {"t_opt": 0.010881453, "dedup_rows": 2244168, "active_R": 189, "active_M": 332},
+        "151_keys": {"t_opt": 0.009200106, "dedup_rows": 2306107, "active_R": 280, "active_M": 411},
+        "151_keys_plus_KillB_H05": {"t_opt": 0.007671791, "dedup_rows": 2297298, "active_R": 229, "active_M": 379},
+        "all_keys_plus_KillB_H05": {"t_opt": 0.007423699, "dedup_rows": 2302381, "active_R": 230, "active_M": 387}
+      }
+    }
+  },
+  "key_conclusions": [
+    "1. KEYSPEC v2 full class splitting (v2_w6_56B_w7_diff, 2,599,525 R7 branch rows) reduces t* on the 6,718-rule Z-consistent {5,6,7} world from 0.010776039 to 0.009200106 (on 151 keys) and from 0.010102785 to 0.007423699 (with Kill B + H05 + all keys).",
+    "2. Comparing v2_w6_56B_w7_diff (t* = 0.009200106 on 151 keys; 0.007423699 with Kill B + H05 + all keys) against the Wave 4 hybrid benchmark Base=6718, Pic=Orig (t* = 0.009204094 on 151 keys; 0.007410588 with Kill B + H05 + all keys) proves that KEYSPEC v2 private-letter splitting eliminates 99.5% to 100% of the IN-slot mask-widening penalty (0.002679 out of 0.002692)!",
+    "3. Why does t* stop at 0.007423699 (matching Base=6718, Pic=Orig = 0.007410588)? Because on the p_i = 5 split branch (priv[i] = (1,)), M(7, ..., 1) equals h(7, wr, sr, p=5, sl, wl, ar, al), which is a pure base-row 6-wheel transfer via mrowR2 + cons2, and in KEYSPEC v1/v2, OUT slots (7 -> w_i) do not see priv[i] (so no existing EDGE rule can send negative charge specifically out of the p_i = 5 branch of R7 without also charging the p_i in {6,7} branches)."
+  ]
+}
