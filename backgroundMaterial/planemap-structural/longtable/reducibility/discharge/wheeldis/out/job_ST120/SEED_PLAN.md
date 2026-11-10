@@ -69,3 +69,12 @@ configuration it uses.
 - The LP lanes (MK12 / MK13, the v move) and the autocheck daemon keep running. If CPU is short, they drop to 1 process each
   before any Lean slot is touched.
 - The 20 GB memory floor holds: hC modules peak at about 3 GB RSS, hD at about 0.5 GB.
+
+## R queue order (coordinator 15:53Z)
+
+- **W2p first.** The 403 R queue starts with the W2p configs, those that need private letters (W6r
+  `rsst_conf_windows.json` 4da44238). Label kills cannot cover them.
+  - 242 W2p in all; **94 of them are in our 403**: 41 C, 53 D. The other 148 are already in Lean.
+  - The 94 run first, largest ring first, then the other 309, also largest ring first.
+- **Nothing is deleted** from the queue until Opus's family-u cover test and W6r's exhaustive re-check say which configs can
+  drop out.
