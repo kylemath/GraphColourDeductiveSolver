@@ -1,0 +1,14 @@
+# W6b-16w (round 6, claim W6b-GS15): new EDGE keys (full W5 grammar, payers 5-9; payer 8 exact, S.L+-3 wildcard) priced on lpdual_k86GS15_01 (ff255734)
+# + 25 target rows at w = 0.  Base 347 = cg_keys_r13w16_16fikpqrs.txt (891077d7) + cg_keys_w6b16t_sel18.txt (b9440d2d); none duplicates them.
+# 00-03: highest colsum (payer 7 -> big); 04-09: payer 8 -> small, credit on the 20 d8 ST-89 tight receivers (tneg 199ef49d).
+# Comment: colsum on GS15_01, ST-89 target credit (OUT - IN units over 29 d7/d8 rows; rows relieved/loaded), d8 part, pool id.
+w6b16w_00 EDGE(7->B)[S.L+1={5789} S.L+2={6789} S.L-1={5789} S.L-2=S]   # top colsum: colsum +0.034822 tgt -1 (0/1) d8 -1; p000
+w6b16w_01 EDGE(7->B)[S.L+2={6789} S.L-2=S R.L+2={5789} R.L-2={5679}]   # top colsum: colsum +0.033573 tgt +2 (5/3) d8 -1; p002
+w6b16w_02 EDGE(7->{5789})[S.L+1={57} S.L+2=B S.L-2=S]   # top colsum: colsum +0.030661 tgt +8 (4/1) d8 -1; p010
+w6b16w_03 EDGE(7->{78})[S.L+2={6789} S.L-2=S R.L+2={5789}]   # top colsum: colsum +0.030185 tgt +1 (4/3) d8 -1; p014
+w6b16w_04 EDGE(8->{567})[S.L+1={5689} S.L-1={568}]   # top ST-89 credit at colsum > 0.005: colsum +0.007860 tgt +204 (20/2) d8 +208; p060
+w6b16w_05 EDGE(8->{57})[S.L+1={5689} S.L-1={5678} S.L-2={5678} R.L+2={5789}]   # top ST-89 credit at colsum > 0.005: colsum +0.005916 tgt +195 (20/2) d8 +198; p067
+w6b16w_06 EDGE(8->{5678})[S.L+2={5678} S.L-2=S]   # top ST-89 credit: colsum +0.006397 tgt +209 (20/3) d8 +214; p054
+w6b16w_07 EDGE(8->{567})[S.L+1={5689} S.L-1={5678} S.L-2={5678}]   # top ST-89 credit: colsum +0.002907 tgt +235 (20/3) d8 +240; p030
+w6b16w_08 EDGE(8->{567})[S.L+1={5678} S.L+2=S S.L-2={5678}]   # top ST-89 credit at colsum > 0.005: colsum +0.005397 tgt +198 (20/3) d8 +203; p064
+w6b16w_09 EDGE(8->{567})[S.L+1={568} S.L-1={5678} S.L-2={5678} R.L+2={5789}]   # top ST-89 credit: colsum +0.005267 tgt +207 (20/2) d8 +210; p058

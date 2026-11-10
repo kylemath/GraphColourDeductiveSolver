@@ -1,0 +1,31 @@
+# W6b-16q (round16/pricing_k86GS12_01): improving EDGE keys priced on Opus's GS12 iteration-1 UPPER-LP dual (after separation)
+# (lpdual_k86GS12_01.json 626e6cf8: 1,821 rows; main LP on K3gB5k + the 260 keys of cg_keys_r13w16_16fikp.txt 0470c459 = 240 + w6b16p 20).
+# Load on top of cg_keys_r13w16_16fikp.txt; no key duplicates one of the 260 (canonical form).  Coefficients: the engine's current masked
+# KEYSPEC ones (no p1_r), rebuilt by W6r's k2eng on the K3g bef43766 stack (rules 2db75746, rpatN3 + offc, kill_patched298, c6le, f2b7);
+# all 1,821 rows rebuilt (2 separated receiver labels, R13 / R12, are inadmissible under K3g: logged, coefficients unaffected).
+# The dual is the exact optimal dual of t + 0.001 * sum(transfer columns) on these rows (restricted LP reproduces b.y 0.0197092, t 0.0130666),
+# so a key enters iff colsum > 0.001; rc = colsum - 0.001.  Rows are GS12's separated set at iteration 1: prices are still a guide.
+# Pool: one-step variants of the 260 keys (payer sets in {5,6,7}), 6 beam rounds of 40; set payers split; payee sets reduced when equal.
+# Diversity: greedy by colsum; distance >= 3 and effect cosine < 0.70 to every kept key; <= 3 keys per payer / payee letter, <= 10 per payer.
+# Ranked by colsum (sum_i w_i coef_i over the cert rows, > 0.001 improves; [M] float).  Payers 5, 6, 7 only, all single letters.
+# Each key passed the 5/6/7 test (t567_16q.json) and its coefficients equal p8lib's on the converted rows (check16q.json).
+w6b16q_00 EDGE(7->B)[S.L+2={5678} S.L-2={57} R.L+2={5689} R.L-2={5689}]   # b6_00017 colsum 0.08749615149 rc 0.08649615149
+w6b16q_01 EDGE(7->B)[S.L+2={6789} S.L-2={57} S.A-1={5678} R.L+2={5689} R.L-2={5679}]   # b5_00301 colsum 0.07250023419 rc 0.07150023419
+w6b16q_02 EDGE(7->B)[S.L+2={678} S.L-2=5 S.A-1={5678} R.L+2={5689}]   # b4_00185 colsum 0.06808986476 rc 0.06708986476
+w6b16q_03 EDGE(5->{5789})[S.L+1={567} S.L-1={6789} R.L+2=S]   # b6_00910_u5 colsum 0.03229142043 rc 0.03129142043
+w6b16q_04 EDGE(5->B)[S.L+1=B R.L+2=S R.L-2=S]   # b6_00791_u5 colsum 0.02818470174 rc 0.02718470174
+w6b16q_05 EDGE(5->B)[S.L-1=7 S.L-2={57} R.L-2=S]   # b6_00596_u5 colsum 0.02060695967 rc 0.01960695967
+w6b16q_06 EDGE(6->6)[S.L+1={6789} S.L+2=B S.L+3={5678} S.L-1={6789} S.L-2=B S.L-3={5678} R.L+2={5689} R.L-2={5689}]   # r0_25042 colsum 0.01973262223 rc 0.01873262223
+w6b16q_07 EDGE(6->6)[S.L+2=S S.L+3={5678} S.L-1={67} S.L-2=S S.L-3={5678} R.L+2=S R.L-2=B]   # r0_19298_v6 colsum 0.01462478302 rc 0.01362478302
+w6b16q_08 EDGE(6->6)[S.L+1={679} S.L-1={5689} R.L-2=S]   # r0_22843_v6 colsum 0.01372602396 rc 0.01272602396
+w6b16q_09 EDGE(6->7)[S.L+1=5 S.L+2={567} S.L+3={5678} S.L-1=6 S.L-2=S S.L-3={5678} S.A-1=S R.L+2=S R.L-2=B]   # r0_19524_v7 colsum 0.008723209051 rc 0.007723209051
+w6b16q_10 EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1=6 S.L-2=S S.L-3={5678} S.A+1=S S.A-1=S R.L+2=S]   # r0_26104 colsum 0.007714152087 rc 0.006714152087
+w6b16q_11 EDGE(6->7)[S.L+1=S S.L+2=B S.L+3={567} S.L-1={67} S.L-2=6 S.L-3={567} S.A+1=S S.A-1=S R.L+2=S R.L-2=B]   # r0_24909 colsum 0.006801547955 rc 0.005801547955
+w6b16q_12 EDGE(6->5)[S.L+1={689} S.L+2=S S.L-1=S S.A-1=S]   # r0_24783 colsum 0.006275664911 rc 0.005275664911
+w6b16q_13 EDGE(7->5)[S.L+1=6 S.L-1=5 S.A+1=B S.A-1=B R.L+2={5679} R.L-2={5679}]   # r0_15728 colsum 0.005834737379 rc 0.004834737379
+w6b16q_14 EDGE(5->5)[S.L+1={567} S.L+2=B S.L-2=S R.L-2=S]   # r0_28082 colsum 0.005433414129 rc 0.004433414129
+w6b16q_15 EDGE(6->5)[S.L+1={569} S.L-1=S S.L-2=S S.A-1=B]   # r0_24734 colsum 0.005352394547 rc 0.004352394547
+w6b16q_16 EDGE(6->5)[S.L+1={5689} S.L+3=B S.L-1=S S.L-2=B S.A-1=S]   # r0_28365 colsum 0.00520360666 rc 0.00420360666
+w6b16q_17 EDGE(5->5)[S.L+1={5689} S.L+2=S S.L+3=S S.L-1={5789} S.L-2={5678} S.L-3={567} S.A+1=S R.L+2=B R.L-2=B]   # r0_06798 colsum 0.004967689534 rc 0.003967689534
+w6b16q_18 EDGE(7->5)[S.L+1=7 S.L-1=S S.A-1=B R.L+2={568} R.L-2={678}]   # r0_26573 colsum 0.004638606791 rc 0.003638606791
+w6b16q_19 EDGE(6->7)[S.L+1={57} S.L+2=6 S.L+3={567} S.L-1=5 S.L-3={567} S.A-1=S R.L+2=B]   # r0_10533 colsum 0.004339249021 rc 0.003339249021

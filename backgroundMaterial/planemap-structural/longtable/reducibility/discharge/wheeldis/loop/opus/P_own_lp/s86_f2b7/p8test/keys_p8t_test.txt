@@ -1,0 +1,47 @@
+# eng_p8 test keys 3: W6b-16t sel18 (b9440d2d) + every 12th key of cg_keys_r13w16_16fikpqrs.txt (891077d7)
+w6b16t_02 EDGE(8->B)[S.L+1=5 S.L+2=5 S.L-1=5 S.L-2=5 S.A+1=8]   # GS14 +0.00305 GL5 +0.00215 ST86 +0 GL5rows +0; best one-step variant of rs_lead0 on GL5
+w6b16t_10 EDGE(7->7)[S.L+1=5 S.L+2=7 S.L+3=7 S.L-1=5 S.L-2=5 S.L-3=7 S.A+1=5 S.A-1=5 R.L+2=7 R.L-2={78}]   # GS14 -0.00556 GL5 +0.00177 ST86 +0 GL5rows +1; best one-step variant of rs_drule10_7_full on GL5
+w6b16t_12 EDGE(7->7)[S.L+1=5 S.L+2=5 S.L+3={57} S.L-1=5 S.L-2=5 S.L-3={567} S.A+1=B S.A-1={5789} R.L+2={78} R.L-2=7]   # GS14 -0.00023 GL5 +0.00114 ST86 +5 GL5rows +1; best one-step variant of rs_drule10p_7_full on GL5
+w6b16t_16 EDGE(7->7)[S.L+1={678} S.L+2=B S.L+3=5 S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=5]   # GS14 +0.00133 GL5 +0.00195 ST86 +0 GL5rows +2; best one-step variant of rs_drule21_7_full on GL5
+w6b16t_23 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.L-2=5 S.A+1=B S.A-1=5 R.L+2={5678} R.L-2={78}]   # GS14 +0.01802 GL5 +0.00461 ST86 +5 GL5rows +0; best one-step variant of rs_drule29_8_full on GS14; best one-step variant of rs_drule29_8_full on GL5
+w6b16t_25 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-2=5]   # GS14 +0.01994 GL5 -0.00000 ST86 +7 GL5rows +1; best one-step variant of rs_drule29_8_link on GS14
+w6b16t_26 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.L-2=5 S.A+1=B]   # GS14 +0.01890 GL5 +0.00434 ST86 +5 GL5rows +0; best one-step variant of rs_drule29_8_link on GL5
+w6b16t_31 EDGE(8->B)[S.L+1=5 S.L+2=S S.L-1={578} S.L-2=5]   # GS14 +0.03491 GL5 -0.00000 ST86 +4 GL5rows +1; beam top on GS14
+w6b16t_43 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.A+1=B S.A-1=5 R.L+2={5678} R.L-2={678}]   # GS14 +0.02270 GL5 +0.00635 ST86 +5 GL5rows +0; beam top on GL5
+w6b16t_45 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.L-2=S S.A+1=B S.A-1={5789}]   # GS14 +0.01981 GL5 +0.00606 ST86 +5 GL5rows +0; beam top on GL5
+w6b16t_46 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.A+1={6789} S.A-1=5 R.L+2={5678} R.L-2={78}]   # GS14 +0.02011 GL5 +0.00599 ST86 +5 GL5rows +0; beam top on GL5
+w6b16t_55 EDGE(7->{78})[S.L+1={567} S.L+2={567} S.L-1=S S.L-2=5 S.L-3={5678}]   # GS14 +0.00713 GL5 -0.00429 ST86 +9 GL5rows -3; hub-7 key keeping ST-86 credit +9 on GS14
+w6b16t_60 EDGE(7->7)[S.L+1=6 S.L+2=B S.L+3=5 S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={57}]   # GS14 +0.00179 GL5 +0.00485 ST86 +0 GL5rows +2; payer-7 beam top on GL5
+w6b16t_61 EDGE(7->7)[S.L+1={678} S.L+2=B S.L+3=5 S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={567} R.L-2={57}]   # GS14 +0.00177 GL5 +0.00479 ST86 +0 GL5rows +3; payer-7 beam top on GL5
+w6b16t_64 EDGE(7->7)[S.L+1={678} S.L+2=B S.L+3=S S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={57}]   # GS14 +0.00207 GL5 +0.00461 ST86 +0 GL5rows +3; payer-7 beam top on GL5
+w6b16t_68 EDGE(7->7)[S.L+1={678} S.L+2={6789} S.L+3=5 S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={57}]   # GS14 +0.00324 GL5 +0.00221 ST86 +1 GL5rows +0; payer-7 key with ST-86 credit +1 and GL5 colsum > 0.001
+w6b16t_70 EDGE(8->{5789})[S.L+1=5 S.L+2=S S.L-1=5 S.L-2=S]   # GS14 +0.02536 GL5 -0.00000 ST86 +10 GL5rows +8; top GL5-weighted credit (0.02251) on GS14
+w6b16t_72 EDGE(8->{6789})[S.L+2=S S.L-1=5 S.L-2=5]   # GS14 +0.01157 GL5 -0.00603 ST86 +7 GL5rows +7; top GL5-weighted credit (0.01443) on GS14
+KS EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]
+gk00_12 EDGE(6->7)[S.L+2={589} S.L+3={567} S.L-1={5689} S.L-2={5689} S.L-3={5678} S.A-1=S]
+gk02_24 EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={57}]
+gk03_36 EDGE(6->7)[S.L+1={5689} S.L+2={5689} S.L+3={5678} S.L-1={589} S.L-2={5689} S.L-3={567} S.A+1=S S.A-1={568}]
+gk04_48 EDGE(7->6)[S.L+1={5789} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2={567} S.L-3={5678} S.A+1={567} S.A-1=S R.L+2={5789} R.L-2={6789}]
+gk00_60 EDGE(5->5)[S.L+1={5689} S.L+2={567} S.L+3=S S.L-1={5789} S.L-2={5678} S.L-3={567} S.A+1=S R.L+2=B R.L-2=B]
+gk01_72 EDGE(5->7)[S.L+1=7 S.L+2=7 S.L+3=S S.L-1=5 S.L-2=S S.L-3=7 S.A-1={568} R.L+2=S]
+gk02_84 EDGE(7->6)[S.L+1={5689} S.L+2=7 S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=S S.A-1=S R.L+2={589} R.L-2={5689}]
+gk00_96 EDGE(5->5)[S.L+1={5689} S.L+2={57} S.L+3=S S.L-1={5789} S.L-2={567} S.L-3=7 S.A+1=S R.L-2={5689}]
+gk01_108 EDGE(5->7)[S.L+2=S S.L+3=7 S.L-1=6 S.L-2=7 S.L-3=S S.A+1=S S.A-1=S R.L-2=B]
+cg00_9 EDGE(7->6)[S.L+2={567} S.L+3={5678} S.L-2={567} S.L-3={5678} S.A+1={5678} S.A-1={5678} R.L-2={6789}]
+cg12_59_0 EDGE(5->9)[S.L+1={567} S.L+2={689} S.L+3=5 S.L-1=S S.A+1=S S.A-1=S R.L-2=S]   # W6 r12 colsum 0.013856
+cg12_77_2 EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.L-2={5678} S.A-1={569} R.L+2={5689} R.L-2={5678}]   # W6 r12 colsum 0.015064
+w6b16_05 EDGE(5->7)[S.L+1={5689} S.L-1=5 S.A-1=S R.L+2={569} R.L-2=S]   # w6bk86GL_57_1 colsum 0.0143577899
+w6b16_17 EDGE(7->7)[S.L+2={679} S.L-1=5 S.L-2={5678} S.A-1={5679} R.L+2={579} R.L-2={5678}]   # w6bk86GL_77_1 colsum 0.00252877237
+w6b16f_c09 EDGE(5->7)[S.L+1=6 S.L+2=6 S.L+3=5 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1=S]   # v2s_n0_664 cur 0.00281471377 P1 0.00281471377 P2 0.00502028854
+w6b16f_v02 EDGE(7->7)[S.L+1=S S.L+3=S S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B R.L-2={5789}]   # v2s_n2_1600 cur -0.00229421251 P1 0.00435196667 P2 0.00648866656
+w6b16i_04 EDGE(6->5)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=6 S.L-2=6 S.L-3={567} S.A-1=S R.L+2=S]   # r0_04974_v5 p1r 0.03149253292 cur 0.03149253292
+w6b16i_16 EDGE(7->7)[S.L+1=6 S.L+2=6 S.L+3=5 S.L-1=6 S.L-2=6 R.L+2=6 R.L-2=7]   # X120 p1r 0.004735464101 cur 0.004735464101
+w6b16k_08 EDGE(7->7)[S.L+1=6 S.L+2=5 S.L+3=5 R.L+2=6]   # X020 p1r 0.0059961558 cur 0.0059961558 max cos to 16i 0.10
+w6b16p_00 EDGE(7->{5789})[S.L+1=5 S.L-2=S R.L-2={6789}]   # b4_00217 colsum 0.1505247149 rc 0.1495247149
+w6b16p_12 EDGE(6->5)[S.L+1={5689} S.L+3=B S.L-1=S S.A-1=S]   # r0_17007 colsum 0.006889666452 rc 0.005889666452
+w6b16q_04 EDGE(5->B)[S.L+1=B R.L+2=S R.L-2=S]   # b6_00791_u5 colsum 0.02818470174 rc 0.02718470174
+w6b16q_16 EDGE(6->5)[S.L+1={5689} S.L+3=B S.L-1=S S.L-2=B S.A-1=S]   # r0_28365 colsum 0.00520360666 rc 0.00420360666
+w6b16r_08 EDGE(7->5)[S.L+1=B S.L-2=S R.L-2={6789}]   # r0_26927_v5 colsum 0.01161082391 rc 0.01061082391 tgt 9
+w6b16r_T2_0 EDGE(7->{569})   # t16r_P0 colsum 0.01457 tgt 76 (a 20 / b 56)
+w6b16s_c07 EDGE(8->{578})[S.L+1=S S.L-1={6789} S.L-2={5678} R.L+2=S]   # C colsum 0.03608 d8 +44 (18/0)
+w6b16s_t09 EDGE(8->5)[S.L+1={567} S.L+2=B S.L-2=S R.L-2={5789}]   # TP colsum 0.00852 d8 +64 (18/0)

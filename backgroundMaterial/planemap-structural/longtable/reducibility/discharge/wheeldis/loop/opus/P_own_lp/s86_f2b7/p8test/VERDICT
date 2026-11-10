@@ -1,0 +1,7 @@
+P8OK eng_p8 validated 2026-11-09T18:33Z (edge56.py c1d18662, jsepf_gk_k192s_p8.cpp 17307d6b, bin/jsepf_gk_k192 3c9e21b8)
+P8REFTEST vs W6b p8_ref.py (8ec38208), d = 7..10, 1500 receivers each: round14b keys + 26 others PASS (0 mismatches; 2063 payer-8/9 nonzero at d8); W6b-16s 24 keys + 26 others PASS (0 mismatches; 23173 payer-8/9 nonzero at d8)
+GKWINTEST (window IN >= exact IN at d 7-9, W5 OUT <= exact OUT at d 7-10, row == window terms): both key sets PASS (d = 10 IN vs the wildcard-private exact picture is informational: 41 pairs)
+F2B-SELFTEST (python rows vs C++ leaf / WIN, payer-8 amounts > 0): 316 keys (305 + round14b) PASS 400/d; 329 keys (305 + W6b-16s) PASS 600/d (max 5e-13)
+CONTROL gkoplant (WIN drops the sg = -1 W5 OUT): F2B-SELFTEST FAIL (d8 0.154, d9 0.059; d7 unaffected) as required
+CONTROL gkinplant (d = 7 leaf reads payer-8/9 keys as payer 7): leaf refuses, exit 97 (exact payee credit above window bound) as required
+Note: the gkwintest run with the first gkwintest (d = 10 IN as a failure) FAILED 41 for that reason only; the gkinplant run p8sselfINCTL was OOM-killed and rerun.

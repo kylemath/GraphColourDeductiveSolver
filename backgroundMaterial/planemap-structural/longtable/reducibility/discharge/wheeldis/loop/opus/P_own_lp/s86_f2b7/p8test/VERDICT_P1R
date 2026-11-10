@@ -1,0 +1,5 @@
+P1ROK 19:50:28Z eng_p8l (p1r.py 4828e991, prelay2.py 0cd310f3, edge56.py c1d18662)
+  p1rord (K3gB5m f9feb30c, 329 keys 891077d7, GL XF incl. offc + p1r, N=1500): P1RORDTEST PASS, 0 violations; d=7 69 / d=8 53 coefficients strictly below the upper;
+    payer-8/9 keys at d=8: OUT > 0 in 23,076 (receiver, key) pairs, IN_max > 0 in 6,293 -> d8 OUT is the exact sure count, never 0
+  p1rordCTL (same, N=600, p1rplant = d8 payer-8/9 OUT read as 0): P1RORDTEST FAIL, 9,274 violations (required: the test sees the planted error)
+  vectors: p8test/p1rord_vectors_main.json (400: d7 200, d8 200, 23 payer-8/9 keys, d8 OUT > 0 in 187)

@@ -1,0 +1,22 @@
+# Lead selection (9 Nov 20:25Z) of 18 of the 71 W6b-16t RSST-shaped keys (cg_keys_w6b16t_rsst.txt 6cfa3193; REPORT.md f0374515).
+# Picked for diversity against GS15's 329 keys: payer-8 drule29 hats positive on both GS14 and GL5 duals (23 26 43 45 46), payer-8 GS14 tops with
+# ST-86/GL5 credit (02 25 31 70 72), payer-7 drule21 GL5 forms (16 60 61 64 68), drule10/10' (10 12), hub-7 drule8 keeping ST-86 d7 credit (55).
+# All pass the 5/6/7 test on both duals and the converter check; payer-8 keys are W5 (exact payer 8, no S.L+-3). Load on top of the 329 (891077d7).
+w6b16t_02 EDGE(8->B)[S.L+1=5 S.L+2=5 S.L-1=5 S.L-2=5 S.A+1=8]   # GS14 +0.00305 GL5 +0.00215 ST86 +0 GL5rows +0; best one-step variant of rs_lead0 on GL5
+w6b16t_10 EDGE(7->7)[S.L+1=5 S.L+2=7 S.L+3=7 S.L-1=5 S.L-2=5 S.L-3=7 S.A+1=5 S.A-1=5 R.L+2=7 R.L-2={78}]   # GS14 -0.00556 GL5 +0.00177 ST86 +0 GL5rows +1; best one-step variant of rs_drule10_7_full on GL5
+w6b16t_12 EDGE(7->7)[S.L+1=5 S.L+2=5 S.L+3={57} S.L-1=5 S.L-2=5 S.L-3={567} S.A+1=B S.A-1={5789} R.L+2={78} R.L-2=7]   # GS14 -0.00023 GL5 +0.00114 ST86 +5 GL5rows +1; best one-step variant of rs_drule10p_7_full on GL5
+w6b16t_16 EDGE(7->7)[S.L+1={678} S.L+2=B S.L+3=5 S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=5]   # GS14 +0.00133 GL5 +0.00195 ST86 +0 GL5rows +2; best one-step variant of rs_drule21_7_full on GL5
+w6b16t_23 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.L-2=5 S.A+1=B S.A-1=5 R.L+2={5678} R.L-2={78}]   # GS14 +0.01802 GL5 +0.00461 ST86 +5 GL5rows +0; best one-step variant of rs_drule29_8_full on GS14; best one-step variant of rs_drule29_8_full on GL5
+w6b16t_25 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-2=5]   # GS14 +0.01994 GL5 -0.00000 ST86 +7 GL5rows +1; best one-step variant of rs_drule29_8_link on GS14
+w6b16t_26 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.L-2=5 S.A+1=B]   # GS14 +0.01890 GL5 +0.00434 ST86 +5 GL5rows +0; best one-step variant of rs_drule29_8_link on GL5
+w6b16t_31 EDGE(8->B)[S.L+1=5 S.L+2=S S.L-1={578} S.L-2=5]   # GS14 +0.03491 GL5 -0.00000 ST86 +4 GL5rows +1; beam top on GS14
+w6b16t_43 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.A+1=B S.A-1=5 R.L+2={5678} R.L-2={678}]   # GS14 +0.02270 GL5 +0.00635 ST86 +5 GL5rows +0; beam top on GL5
+w6b16t_45 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.L-2=S S.A+1=B S.A-1={5789}]   # GS14 +0.01981 GL5 +0.00606 ST86 +5 GL5rows +0; beam top on GL5
+w6b16t_46 EDGE(8->{78})[S.L+1=5 S.L+2={578} S.L-1=5 S.A+1={6789} S.A-1=5 R.L+2={5678} R.L-2={78}]   # GS14 +0.02011 GL5 +0.00599 ST86 +5 GL5rows +0; beam top on GL5
+w6b16t_55 EDGE(7->{78})[S.L+1={567} S.L+2={567} S.L-1=S S.L-2=5 S.L-3={5678}]   # GS14 +0.00713 GL5 -0.00429 ST86 +9 GL5rows -3; hub-7 key keeping ST-86 credit +9 on GS14
+w6b16t_60 EDGE(7->7)[S.L+1=6 S.L+2=B S.L+3=5 S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={57}]   # GS14 +0.00179 GL5 +0.00485 ST86 +0 GL5rows +2; payer-7 beam top on GL5
+w6b16t_61 EDGE(7->7)[S.L+1={678} S.L+2=B S.L+3=5 S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={567} R.L-2={57}]   # GS14 +0.00177 GL5 +0.00479 ST86 +0 GL5rows +3; payer-7 beam top on GL5
+w6b16t_64 EDGE(7->7)[S.L+1={678} S.L+2=B S.L+3=S S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={57}]   # GS14 +0.00207 GL5 +0.00461 ST86 +0 GL5rows +3; payer-7 beam top on GL5
+w6b16t_68 EDGE(7->7)[S.L+1={678} S.L+2={6789} S.L+3=5 S.L-1=6 S.L-2=6 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={57}]   # GS14 +0.00324 GL5 +0.00221 ST86 +1 GL5rows +0; payer-7 key with ST-86 credit +1 and GL5 colsum > 0.001
+w6b16t_70 EDGE(8->{5789})[S.L+1=5 S.L+2=S S.L-1=5 S.L-2=S]   # GS14 +0.02536 GL5 -0.00000 ST86 +10 GL5rows +8; top GL5-weighted credit (0.02251) on GS14
+w6b16t_72 EDGE(8->{6789})[S.L+2=S S.L-1=5 S.L-2=5]   # GS14 +0.01157 GL5 -0.00603 ST86 +7 GL5rows +7; top GL5-weighted credit (0.01443) on GS14

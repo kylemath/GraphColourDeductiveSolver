@@ -325,6 +325,8 @@ def write_table(W, tag):
     p = os.path.join(WORK, 'win_%s.bin' % tag)
     np.ascontiguousarray(np.where(np.isfinite(W), W, -1e300), dtype=np.float64).tofile(p); return p
 
+SEPSTOP = [False]   # s86 sepmax: True when the last run_sep call was stopped at the cap (its rows are a subset, not a complete pass)
+SEPTO = [None]   # s86 sepmax (Lead 9 Nov 06:14Z): per-call separator timeout (s) set by solveR2's capped separation; None everywhere else
 def run_sep(d, W, thr, K, mode, pats=True):
     hdr = os.path.join(WORK, 'hdr_%d.txt' % d)
     inst = instances(d) if pats else []
@@ -341,7 +343,17 @@ def run_sep(d, W, thr, K, mode, pats=True):
         if (KSTAR or EG or GKON) and d == 7: extra += [F2B_EVAL[0] or 'none', q7m_write(d) if Q7M else 'none', kstar_write(d) if KSTAR else 'none'] + ([eg_write()] if EG else [gk_write()] if GKON else []) + ([gkin_write()] if GKON and GKLEAF else [])   # s78: argv[13] = K* file, argv[14] = generic EDGE keys
         elif Q7M and d in (7, 8): extra += [F2B_EVAL[0] or 'none', q7m_write(d)]
         elif F2B_EVAL[0]: extra.append(F2B_EVAL[0])
-        cp_ = subprocess.run([BINF, hdr, wp] + extra, capture_output=True, text=True)   # s78: jsepf stderr summary lines are logged; a refusal is reported with its message
+        if SEPTO[0] is not None and os.path.exists(BINF + 's'):   # s86 sepmax: the SIGTERM-aware copy (bin/<BINF>s) stops at the cap and prints the rows found so far
+            pr_ = subprocess.Popen([BINF + 's', hdr, wp] + extra, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            try: so_, se_ = pr_.communicate(timeout=SEPTO[0])
+            except subprocess.TimeoutExpired:
+                pr_.terminate(); SEPSTOP[0] = True
+                try: so_, se_ = pr_.communicate(timeout=900)
+                except subprocess.TimeoutExpired: pr_.kill(); pr_.communicate(); raise
+            if SEPSTOP[0] and pr_.returncode != 0:   # SIGTERM before the search began (still loading): no rows
+                log('  [d=%d] sepmax: separator stopped before its search began (exit %d), no rows' % (d, pr_.returncode)); return [], time.time() - t0, len(inst)
+            cp_ = subprocess.CompletedProcess(pr_.args, pr_.returncode, so_, se_)
+        else: cp_ = subprocess.run([BINF, hdr, wp] + extra, capture_output=True, text=True, timeout=SEPTO[0])   # s78: jsepf stderr summary lines are logged; a refusal is reported with its message
         for l_ in cp_.stderr.split('\n'):
             if l_.startswith(('jsepf', 'kstar', 'edge', 'f2b', 'q7m')) and ('loaded' not in l_): log('  [d=%d] %s' % (d, l_))
         if cp_.returncode != 0: log('  [d=%d] jsepf FAILED with exit %d: %s' % (d, cp_.returncode, cp_.stderr.strip().split('\n')[-1][:300])); raise subprocess.CalledProcessError(cp_.returncode, BINF)
@@ -352,21 +364,21 @@ def run_sep(d, W, thr, K, mode, pats=True):
     if 'fy2' in FLAGS:   # s43: jsep6 at every d (l3q at d = 7 only, fy2 face coupling at the leaf)
         extra = [NTH, SYMF, CLSFILE[0] if mode == 2 else 'none', (BONUSF[0] or 'none') if d == 7 else 'none', (L3FILE[0] or 'none') if d == 7 else 'none', ZTF[min(d, 9)]]
         v7 = bool(LQVX and L3VFILE[0] and d in (7, 8))   # s47
-        out = subprocess.run([BIN7 if v7 else BIN6, hdr, wp] + extra + ([L3VFILE[0]] if v7 else []), capture_output=True, text=True, check=True).stdout.split('\n')
+        out = subprocess.run([BIN7 if v7 else BIN6, hdr, wp] + extra + ([L3VFILE[0]] if v7 else []), capture_output=True, text=True, check=True, timeout=SEPTO[0]).stdout.split('\n')
         return [l.split() for l in out if l], time.time() - t0, len(inst)
     if LQVX and L3VFILE[0] and d in (7, 8):   # s47 (RELAY_SPEC_s47 47.3): jsep7, V = 7 file at d = 7, V = 8 file at d = 7 (payer) and d = 8 (payee)
         extra = [NTH, SYMF, CLSFILE[0] if mode == 2 else 'none', (BONUSF[0] or 'none') if d == 7 else 'none', (L3FILE[0] or 'none') if d == 7 else 'none', 'none', L3VFILE[0]]
-        out = subprocess.run([BIN7, hdr, wp] + extra, capture_output=True, text=True, check=True).stdout.split('\n')
+        out = subprocess.run([BIN7, hdr, wp] + extra, capture_output=True, text=True, check=True, timeout=SEPTO[0]).stdout.split('\n')
         return [l.split() for l in out if l], time.time() - t0, len(inst)
     if L3FILE[0] and d == 7:   # stage 28: jsep5 with the l3q leaf correction (RELAY_SPEC_s21 21.6)
         if mode != 2: extra.append('none')
         extra.append(BONUSF[0] or 'none'); extra.append(L3FILE[0])
-        out = subprocess.run([BIN5, hdr, wp] + extra, capture_output=True, text=True, check=True).stdout.split('\n')
+        out = subprocess.run([BIN5, hdr, wp] + extra, capture_output=True, text=True, check=True, timeout=SEPTO[0]).stdout.split('\n')
         return [l.split() for l in out if l], time.time() - t0, len(inst)
     if BONUSF[0] and d == 7:
         if mode != 2: extra.append('none')
         extra.append(BONUSF[0])
-    out = subprocess.run([BIN4 if (BONUSF[0] and d == 7) else BIN, hdr, wp] + extra, capture_output=True, text=True, check=True).stdout.split('\n')
+    out = subprocess.run([BIN4 if (BONUSF[0] and d == 7) else BIN, hdr, wp] + extra, capture_output=True, text=True, check=True, timeout=SEPTO[0]).stdout.split('\n')
     return [l.split() for l in out if l], time.time() - t0, len(inst)
 
 def karp(M):

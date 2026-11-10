@@ -877,6 +877,68 @@ def class_table_R2(xon):
         C = np.where(r >= 2, C + HS * T7[b, c, e, f, q, r, s_], C)
         assert int(C.max()) < 2 ** 31 - 1, 'class overflow'
     return C.astype(np.int32)
+def warmcache_sig():
+    """s86 warmcache: md5 over the engine sources (*.py here), the options except run-local ones, and every existing file named by an
+    option or by a line of the args file (paths taken as given, under root, or under this directory)"""
+    import hashlib
+    H = hashlib.md5(); skip = ('tag', 'work', 'warm', 'maxit', 'threads', 'sepmax', 'sepord', 'warmcache', 'lpmax', 'feas', 'Khi')   # feas: in-out columns only, not row coefficients
+    for f_ in sorted(os.listdir(HERE)):
+        if f_.endswith('.py'): H.update(f_.encode()); H.update(open(os.path.join(HERE, f_), 'rb').read())
+    def hfile(v):
+        for c_ in (v, os.path.join(ROOT, v), os.path.join(HERE, v)):
+            if c_ and os.path.isfile(c_):
+                H.update(c_.encode()); H.update(hashlib.md5(open(c_, 'rb').read()).digest()); return
+        H.update(('nofile:' + v).encode())
+    toks = [a for a in sys.argv[1:] if not (('=' in a) and a.split('=', 1)[0] in skip) and a != 'wcbuild']
+    for a in toks:
+        H.update(a.encode() + b'\0')
+        if '=' in a:
+            for v in a.split('=', 1)[1].split(','): hfile(v)
+    if OPT.get('args') and os.path.isfile(OPT['args']):
+        for l_ in open(OPT['args']):
+            l_ = l_.strip()
+            if '=' in l_:
+                for v in l_.split('=', 1)[1].split(','): hfile(v)
+    H.update(repr(sorted(k_ for k_ in os.environ if k_.startswith(('JSEPF', 'STACK')))).encode())
+    return H.hexdigest()
+def warmcache_open():
+    """returns {'get', 'put', 'close'}: get(key) -> coefficient dict, False (not admissible) or None (not cached); close() writes the file
+    (keys interned to ids; rows as id / value arrays) when this load added entries"""
+    import pickle
+    sig = warmcache_sig(); D_ = OPT['warmcache']; os.makedirs(D_, exist_ok=True); fn = os.path.join(D_, 'wc_%s.pkl' % sig[:16])
+    KS, RW_, new = [], {}, {}
+    if os.path.isfile(fn):
+        try:
+            with open(fn, 'rb') as f_: z = pickle.load(f_)
+            assert z['sig'] == sig; KS = z['keys']; RW_ = z['rows']
+            log('warmcache: %s loaded, %d lines (%d not admissible), %d keys' % (os.path.basename(fn), len(RW_), sum(1 for v in RW_.values() if v is False), len(KS)))
+        except Exception as e_: log('warmcache: %s unreadable (%s), rebuilding' % (fn, e_)); KS, RW_ = [], {}
+    else: log('warmcache: no file for signature %s, building %s' % (sig[:16], os.path.basename(fn)))
+    hits = [0]; KI = {k_: i for i, k_ in enumerate(KS)}
+    def get(k):
+        v = RW_.get(k)
+        if v is None:
+            v = new.get(k)
+            if v is None: return None
+        else: hits[0] += 1
+        if v is False: return False
+        ids, vals = v; return {KS[i]: float(x) for i, x in zip(ids.tolist(), vals.tolist())}
+    def put(k, cf):   # interned at once (keys -> ids), so the cache costs arrays, not dicts
+        if cf is False: new[k] = False; return
+        ids = []
+        for k_ in cf:
+            if k_ not in KI: KI[k_] = len(KS); KS.append(k_)
+            ids.append(KI[k_])
+        new[k] = (np.array(ids, dtype=np.int32), np.array([float(x) for x in cf.values()], dtype=np.float64))
+    def close():
+        log('warmcache: %d lines from the cache, %d computed' % (hits[0], len(new)))
+        if not new: return
+        out = dict(RW_); out.update(new)
+        tmp = fn + '.tmp%d' % os.getpid()
+        with open(tmp, 'wb') as f_: pickle.dump({'sig': sig, 'keys': KS, 'rows': out}, f_, protocol=pickle.HIGHEST_PROTOCOL)
+        os.replace(tmp, fn); log('warmcache: wrote %s (%d lines, %d keys)' % (os.path.basename(fn), len(out), len(KS)))
+        new.clear()
+    return {'get': get, 'put': put, 'close': close}
 def recv_coef_R2(d, lk, sv, xon, tau=None):
     cy, cx = recv_coef(d, lk, sv, xon and not XO); cf = collections.Counter()   # s51: no old x under xo
     if FY2 and tau is None: tau = fy2_cells(d, [int(ch) for ch in lk], [int(ch) for ch in sv])[0][1]   # s43: reporting callers get the first cell
@@ -969,7 +1031,8 @@ def cmd_solveR2():
     p = os.path.join(WORK, 'clsR2_%d%s%s%s%s%s%s.bin' % (int(xon), 'z' if ZH else '', 'y' if FY else '', 'f' if F16 else '', 'h' if H5 else '', 'D' if DD else '', 'o' if XO else '') + (('g' + GKMD5) if GKON else ''))
     if not os.path.exists(p): class_table_R2(xon).tofile(p)
     CLSFILE[0] = p
-    K = int(OPT.get('K', '300')); MAXIT = int(OPT.get('maxit', '300')); TOL = float(OPT.get('tol', '1e-9'))
+    K = int(OPT.get('K', '300')); KHI = int(OPT.get('Khi', str(K)))   # s86 GL13 (Lead 9 Nov 13:10Z): Khi = cap of separated rows per degree at d >= 9 (d7/d8 keep K)
+    MAXIT = int(OPT.get('maxit', '300')); TOL = float(OPT.get('tol', '1e-9'))
     global FEAS
     if INOUT or 'inoutctl' in OPT: FEAS = load_feas_cols(OPT['feas']) if 'feasall' in FLAGS else inout_feas(OPT['feas']); log('inout: feasible point %s: %d columns (t = %.6f), lam %s, raw check every %d, min cuts %d' % (OPT['feas'], len(FEAS), FEAS[('t',)], INOUT, INOUTK, INOUTMIN))
     h = highspy.Highs(); h.setOptionValue('output_flag', False); inf = highspy.kHighsInf
@@ -1008,14 +1071,14 @@ def cmd_solveR2():
         if sg in msig: return
         msig.add(sg)
         for k in sig2_keys(sg): addrow({('h', k): 1.0, ('M', sg): -1.0}, -inf, 0.0, ('mrowR2', list(sg), list(k)))
-    def recv(d, lk, sv):
+    def recv(d, lk, sv, cf=None):   # s86 warmcache: cf = this row's coefficients from the warm cache (FY2 off only)
         if FY2:   # s43: every cell of the row
             got = False
             for cl, tau in fy2_cells(d, [int(ch) for ch in lk], [int(ch) for ch in sv]): got = recv1(d, lk, sv, cl, tau) or got
             return got
-        return recv1(d, lk, sv, None, None)
-    def recv1(d, lk, sv, cl, tau):
-        cf = recv_coef_R2(d, lk, sv, xon, tau)
+        return recv1(d, lk, sv, None, None, cf)
+    def recv1(d, lk, sv, cl, tau, cf=None):
+        if cf is None: cf = recv_coef_R2(d, lk, sv, xon, tau)
         key = (d, tuple(sorted(cf.items(), key=str)))
         if key in have: return False
         have.add(key)
@@ -1053,17 +1116,35 @@ def cmd_solveR2():
         log('conservation basis rows added: %d' % nb)
     if 'warm' in OPT:
         nw = 0
+        WCB_ = 'wcbuild' in FLAGS and bool(OPT.get('warmcache'))   # wcbuild: fill the cache for this configuration and exit
+        WC_ = warmcache_open() if (OPT.get('warmcache') and not FY2) else None   # s86 warmcache (Lead 9 Nov 07:52Z): per warm line, the admissibility verdict and the
+        # receiver coefficients, saved after the first load under a signature of the engine sources, the options and every input file, so a
+        # relaunch of the same configuration skips admissible() and recv_coef_R2() (about 90%% of the load); any change gives a new signature
         for fn in OPT['warm'].split(','):
             for line in open(fn):
                 m = re.match(r'^R (\d+) (\d+) (\d+)', line)
-                if m and admissible(int(m.group(1)), m.group(2), m.group(3)) is None: nw += recv(int(m.group(1)), m.group(2), m.group(3))
+                if m and WC_ is not None:
+                    d_, w_, s_ = int(m.group(1)), m.group(2), m.group(3); e_ = WC_['get']((d_, w_, s_))
+                    if e_ is None:
+                        cf_ = recv_coef_R2(d_, w_, s_, xon, None) if admissible(d_, w_, s_) is None else False; WC_['put']((d_, w_, s_), cf_)
+                    else: cf_ = e_
+                    if cf_ is not False and not WCB_: nw += recv(d_, w_, s_, cf_)
+                elif m and admissible(int(m.group(1)), m.group(2), m.group(3)) is None: nw += recv(int(m.group(1)), m.group(2), m.group(3))
                 mc_ = re.match(r'^C ([5-9]{6}) ([5-9]{6})\s*$', line)   # s86 consk: logged cons rows
-                if mc_: nw += addcons(tuple(map(int, mc_.group(1))), tuple(map(int, mc_.group(2))))
+                if mc_ and not WCB_: nw += addcons(tuple(map(int, mc_.group(1))), tuple(map(int, mc_.group(2))))
+        if WC_ is not None: WC_['close']()
+        if WCB_: log('warmcache: wcbuild done (cache only, no LP)'); sys.exit(0)
         log('warm rows admitted: %d' % nw)
     ng = sum(1 for k in cols if k[0] == 'g')
     log('R6x2 (apex %s): %d sender rows, %d g keys in senders, %d six-words, %d initial cons rows, %d M sigs' % (AP, len(SR), ng, len(RW), len(conset), len(msig)))
     if 'structonly' in FLAGS: return h, cols, info, conset, RW, SR
     T0 = time.time(); rowlog = open(os.path.join(HERE, 'rows_%s.txt' % OPT.get('tag', 'run')), 'w')
+    SEPMAX = float(OPT.get('sepmax', '0')); SEPNEXT = [None]   # s86 sepmax=<s>: cap each separation pass; sepord=<d,d,...>: degree order (rotated to start at the first cut degree)
+    def sep_order():
+        b_ = [int(x) for x in OPT['sepord'].split(',')] if OPT.get('sepord') else list(range(7, DMAX + 1))
+        b_ = [d for d in b_ if 7 <= d <= DMAX] + [d for d in range(7, DMAX + 1) if d not in b_]
+        if SEPNEXT[0] in b_: i_ = b_.index(SEPNEXT[0]); b_ = b_[i_:] + b_[:i_]
+        return b_
     def sepround(xv, t, tail, dry=False):
         y = np.array([xv[cols[('y', r_)]] for r_ in ROOTS])
         GV = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'g'}; HV2 = {k[1]: xv[i] for k, i in cols.items() if k[0] == 'h'}
@@ -1077,7 +1158,7 @@ def cmd_solveR2():
         DV.clear(); DV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'D'})
         if Q7: write_bonus()
         LQV.clear(); LQV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'lq'})
-        KSV.clear(); KSV.update({k[1]: float(xv[i]) for k, i in cols.items() if k[0] == 'ks' and i < len(xv)})   # s78
+        KSV.clear(); KSV.update({k[1]: (0.0 if -1e-7 < float(xv[i]) < 0.0 else float(xv[i])) for k, i in cols.items() if k[0] == 'ks' and i < len(xv)})   # s78; s86 GL7 (9 Nov 00:00Z): LP noise in (-1e-7, 0) set to 0 for separation only (upperR2 reads ks from the sol file and still rejects v < 0)
         FBV.clear(); FBV.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'fb'})
         LQQ.clear(); LQQ.update({k[1]: xv[i] for k, i in cols.items() if k[0] == 'lQ'})
         if L3Q: write_l3q()
@@ -1089,6 +1170,7 @@ def cmd_solveR2():
                 ks = sig2_keys(sg); mcache[sg] = max(HV2.get(k, 0.0) for k in ks) if ks else None
             return mcache[sg]
         F2B_MV2[0] = MV2
+        tdl_ = time.time() + SEPMAX if (SEPMAX and not dry) else None   # s86 sepmax: the cap counts from the start of the pass (conservation rows are never cut)
         added = 0; per = {}; NVIOL[0] = 0   # s75: NVIOL = every violated row found (new or already in the LP); 'added' counts new rows only
         nc = 0; worst = 0.0
         for L in RW:   # conservation separation
@@ -1112,10 +1194,18 @@ def cmd_solveR2():
                     if (True if dry else addcons(L, tuple(LET[v] for v in SALL[idx]))): nc += 1
         added += nc; per['cons'] = (nc, round(worst, 6))
         Wc = {}
-        for d in range(7, DMAX + 1):
+        dlist_ = sep_order(); cut_ = []   # s86 sepmax: rotated degree order
+        while dlist_:
+          for d in dlist_:
+            if tdl_ is not None and time.time() > tdl_: cut_.append(d); continue
             U = min(d, 9)
             if U not in Wc: Wc[U] = window_table_R2(U, y, xd, MV2)
-            rr, dt, ni = run_sep(d, Wc[U], d - 6 + t + TOL, K, 2)
+            SEPTO[0] = max(60.0, tdl_ - time.time()) if tdl_ is not None else None
+            SEPSTOP[0] = False
+            try: rr, dt, ni = run_sep(d, Wc[U], d - 6 + t + TOL, K if d < 9 else KHI, 2)
+            except subprocess.TimeoutExpired:
+                SEPTO[0] = None; cut_.append(d); log('  [d=%d] sepmax: separator stopped at the %.0fs pass cap; this degree goes first next pass' % (d, SEPMAX)); continue
+            SEPTO[0] = None
             n = 0; mx = None
             for r_ in rr:
                 if r_[0] == 'V':
@@ -1129,11 +1219,18 @@ def cmd_solveR2():
                         n += 1
                         if not dry or 'ctlrows' in FLAGS: rowlog.write('R %d %s %s\n' % (d, r_[2], r_[3]))   # s75 ctlrows: a dry control also writes the rows it finds
             added += n; per[d] = (n, None if mx is None else round(mx, 6), round(dt, 1))
+            if SEPSTOP[0]:   # s86 sepmax: stopped at the cap; its rows so far are added, the degree is not complete and goes first next pass
+                SEPSTOP[0] = False; cut_.append(d); log('  [d=%d] sepmax: separator stopped at the %.0fs pass cap after %.0fs; %d rows kept; this degree goes first next pass' % (d, SEPMAX, dt, n))
+          if cut_ and not added:   # nothing found within the cap: finish the cut degrees uncapped, so 'added 0' always means a complete pass
+              log('  sepmax: no rows within the %.0fs cap; separating degrees %s without a cap' % (SEPMAX, cut_)); dlist_, cut_, tdl_ = cut_, [], None; continue
+          break
+        SEPNEXT[0] = cut_[0] if cut_ else None
+        if cut_: per['cut'] = tuple(cut_)
         if not added and tail:
             W9 = Wc.get(9); Mr = relaxed_M(W9)
             for d in range(DMAX + 1, DTAIL + 1):
                 if closed_max(Mr, d) <= d - 6 + t + TOL: continue
-                rr, dt, ni = run_sep(d, W9, d - 6 + t + TOL, K, 2, pats=False); n = 0
+                rr, dt, ni = run_sep(d, W9, d - 6 + t + TOL, KHI, 2, pats=False); n = 0
                 for r_ in rr:
                     if r_[0] == 'V': NVIOL[0] += 1
                     if r_[0] == 'V' and (dry or recv(d, r_[2], r_[3])):
@@ -1244,6 +1341,9 @@ def cmd_solveR2():
         if 'ipm0' in FLAGS and it == 0 and 'polish' in FLAGS:   # stage 33: re-run simplex from the IPM crossover basis (vertex duals for lowerR2)
             t_ = time.time(); h.setOptionValue('solver', 'simplex'); h.run(); log('  polish: simplex from the IPM basis %.1fs, status %s' % (time.time() - t_, h.modelStatusToString(h.getModelStatus())))
         xv = np.array(h.getSolution().col_value); t = xv[jt]
+        if 'lpdual' in FLAGS:   # s86 (Lead 9 Nov 04:54Z): main-LP row duals in the lextcert format (dualexport cert=) for W6b pricing against the upper LP
+            rd_ = h.getSolution().row_dual; cf_ = os.path.join(HERE, 'lpdual_%s_%02d.json' % (OPT.get('tag', 'run'), it))
+            json.dump([{'w': float(dv), 'row': info[i]} for i, dv in enumerate(rd_) if abs(dv) > 1e-11], open(cf_ + '.tmp', 'w'), indent=0); os.replace(cf_ + '.tmp', cf_)
         if 'lext' in FLAGS: st2_ = h.modelStatusToString(h.getModelStatus()); h.changeColBounds(jt, -highspy.kHighsInf, highspy.kHighsInf); log('  lext it %d: phase 2 status %s, t = %.12f' % (it, st2_, t))   # status read before the bound reset (which clears it)
         y = np.array([xv[cols[('y', r_)]] for r_ in ROOTS])
         if 'q7rc' in FLAGS:   # s67: report the three W5 keys (value, reduced cost = col_dual, min convention) and the q mass

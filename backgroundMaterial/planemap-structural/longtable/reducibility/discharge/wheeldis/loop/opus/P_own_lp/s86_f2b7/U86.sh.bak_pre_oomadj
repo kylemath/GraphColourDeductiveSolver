@@ -1,0 +1,7 @@
+# s86 upperR2 exhaustive with generic keys on the f2b7 engine.  usage: [STACK ARGS] KEYS=<gkeys> bash U86.sh <tag> <sol> <threads> [extra]
+B=/home/claude/GraphColourDeductiveSolver/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/loop/opus/P_own_lp; N=$B/s86_f2b7
+export FAM=full KS=0; unset EGK; . $N/env86.sh; N=$N86
+TAG=$1; SOL=$2; TH=${3:-1}; shift 3; WK=$SD/wr86u_$TAG; mkdir -p $WK $N/logs; cd $E86
+nice -n 12 python3 pcheck.py upperR2 $F $X nomax sol=$SOL $A threads=$TH work=$WK gkeys=$KEYS gkwin gkleaf "$@" > $N/logs/upper_$TAG.log 2>&1
+echo "$(date -u +%H:%M:%SZ) [s86U-$TAG] STACK=$STACK ARGS=$(basename $ARGS) gkeys $(basename $KEYS) $SOL (md5 $(md5sum < $SOL | cut -c1-8)) extra: $*: $(grep 'UPPER-R2' $N/logs/upper_$TAG.log | tail -1) $(grep -c Traceback $N/logs/upper_$TAG.log) tracebacks" >> $N/run.log
+rm -rf $WK

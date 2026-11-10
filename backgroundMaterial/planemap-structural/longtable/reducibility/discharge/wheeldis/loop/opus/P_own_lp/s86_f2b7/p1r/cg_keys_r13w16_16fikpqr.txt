@@ -1,0 +1,398 @@
+# s86 GS15 (Lead 9 Nov 17:0xZ): merged generic key file = p1r/cg_keys_r13w16_16fikpq.txt (md5 7ad4bf1f, 280 keys) + W6b-16r cg_keys_w6b16r_k86GS14.txt (md5 8d74f2e0, 20 EDGE keys) + cg_keys_w6b16r_T2.txt (md5 5708aa9e, 5 EDGE keys), priced on lpdual_k86GS14_01 abb4c752. 305 keys.
+# ---- cg_keys_r13w16_16fikpq.txt ----
+# s86 GS13 (Lead 9 Nov 12:10Z): merged generic key file = p1r/cg_keys_r13w16_16fikp.txt (md5 0470c459, 260 keys) + W6b-16q cg_keys_w6b16q_k86GS12.txt (md5 315416ff, 20 EDGE keys, priced on lpdual_k86GS12_01 626e6cf8). 280 keys.
+# ---- cg_keys_r13w16_16fikp.txt ----
+# s86 GS12 (Lead 9 Nov 09:44Z): merged generic key file = p1r/cg_keys_r13w16_16fik.txt (md5 3d996dbb, 240 keys) + W6b-16p cg_keys_w6b16p_k86GS11.txt (md5 66215104, 20 EDGE keys, priced on lpdual_k86GS11_00 313723e4). 260 keys.
+# ---- cg_keys_r13w16_16fik.txt ----
+# s86 GL6: merged generic key file = p1r/cg_keys_r13w16_16fi.txt (md5 56d144d5, 220 keys) + W6b-16k cg_keys_w6b16k.txt (md5 c0237d8f, 20 keys, priced on the k86GL5 p1_00 dual under p1r). 240 keys.
+# ---- cg_keys_r13w16_16fi.txt ----
+# s86 GL5: merged generic key file = p1r/cg_keys_r13w16_16f.txt (md5 ea5d79a7, 200 keys) + W6b-16i cg_keys_w6b16i.txt (md5 575d59c9, 20 keys, priced on the k86GL4 p1_00 dual under p1r). 220 keys.
+# ---- cg_keys_r13w16_16f.txt ----
+# s86 p1r: merged generic key file = cg_keys_r13w16.txt (md5 15c361a1, 171 keys) + W6b-16f cg_keys_w6b16f_cur.txt (md5 b167547d, 19 keys)
+#   + cg_keys_w6b16f_v2.txt (md5 9925c5bb, 10 keys; these price > 0 only under p1r).  200 keys, 77 with payer 7 (> 64: eng_p1r uses bin/jsepf_gk_k192).
+# ---- cg_keys_r13w16.txt ----
+# Opus s86 (7 Nov 14:35Z): cg_keys_r13.txt (fe8a97a7, 151 keys) + W6b-16 cg_keys_w6b16_k86GL.txt (bf176534, 20 payer-5/6/7 keys priced on the k86GL p1_00 dual). 171 keys. Payer-8/9 file (cd75adb3) NOT loaded.
+# Opus s86 (6 Nov 15:50Z): cg_keys_r12.txt (bb547900, 140 keys, unchanged) + W6 r13 round13/cg_keys_r12_7x.txt (e74270de: the 11 improving
+# payer-7 keys priced on the k85CL dual after r12 was built). 151 keys.
+KS EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]
+A1 EDGE(7->B)[S.L+1=S S.L+2=5 S.L-2=5 S.A+1=S]
+C1 EDGE(7->7)[S.L-2=7 S.A-1=5 R.L+2=7]
+E1 EDGE(7->B)[S.L+2=6 S.L-2=5 S.L-3=5 S.A-1=7]
+N1 EDGE(7->7)[S.L+1=5 S.L-1=5 S.L-2=7 S.A+1=7 S.A-1=5 R.L+2=S]
+gk00_5 EDGE(7->6)[S.L+2={567} S.L+3={5678} S.L-2={567} S.L-3={5678} S.A+1={567} S.A-1={567} R.L+2={6789}]
+gk00_6 EDGE(6->6)[S.L+1={5689} S.L+2=7 S.L+3={5678} S.L-2={567} S.L-3={5678} R.L+2={568}]
+gk00_7 EDGE(7->5)[S.L+1={589} S.L+2=S S.L+3={5678} S.L-1={589} S.L-2={67} S.L-3={5678} S.A+1=7 S.A-1=7]
+gk00_8 EDGE(5->5)[S.L+1={5789} S.L+2=S S.L+3=S S.L-1={5789} S.L-2=S S.L-3=S R.L+2=B R.L-2=B]
+gk00_9 EDGE(5->7)[S.L+1=5 S.L+2={57} S.L-1={57} S.L-3={57} S.A+1=B S.A-1=S R.L+2=S]
+gk00_10 EDGE(7->7)[S.L+1=S S.L+3={567} S.L-1=S S.L-3={567} S.A+1=5 S.A-1=5 R.L+2={67} R.L-2={67}]
+gk00_11 EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-2={567} S.L-3={567} S.A+1=S R.L-2={568}]
+gk00_12 EDGE(6->7)[S.L+2={589} S.L+3={567} S.L-1={5689} S.L-2={5689} S.L-3={5678} S.A-1=S]
+gk00_13 EDGE(5->6)[S.L+1={5789} S.L+2=S S.L+3={58} S.L-1={589} S.L-2={567} S.L-3={567} S.A-1=B]
+gk01_14 EDGE(6->6)[S.L+2={567} S.L+3={5678} S.L-2={567} S.L-3={5678} R.L+2=B R.L-2=B]
+gk01_15 EDGE(7->7)[S.L+2={57} S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2={57} R.L-2=S]
+gk01_16 EDGE(7->5)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-2=S S.L-3={5678} S.A+1=S S.A-1=7 R.L-2={5789}]
+gk01_17 EDGE(6->7)[S.L+1={5689} S.L+2={5689} S.L+3={567} S.L-1=B S.L-2={5789} S.L-3={567} S.A+1=S R.L-2=B]
+gk01_18 EDGE(5->7)[S.L+1={67} S.L+2=7 S.L-1=5 S.L-3=7 S.A-1=B]
+gk01_19 EDGE(5->5)[S.L+1={589} S.L+2=7 S.L+3={567} S.L-2={567} S.L-3=7 S.A+1=B R.L+2={568} R.L-2={5789}]
+gk01_20 EDGE(7->6)[S.L+1={589} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2={67} S.L-3={5678} S.A+1=S S.A-1=S R.L+2={5789} R.L-2={5789}]
+gk01_21 EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-1={5789} S.L-2=S S.L-3={567} S.A+1=B]
+gk01_22 EDGE(5->6)[S.L+1={589} S.L+2={57} S.L+3={567} S.L-1=B S.L-2={567} S.L-3={567} S.A+1=S R.L+2={6789} R.L-2={568}]
+gk02_23 EDGE(6->6)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} R.L+2={568} R.L-2={5689}]
+gk02_24 EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={57}]
+gk02_25 EDGE(6->7)[S.L+1={5689} S.L+2={5789} S.L+3={57} S.L-1={589} S.L-3={567} S.A+1=S S.A-1={5689} R.L+2=B]
+gk02_26 EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5789} S.L-2=S S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2=B]
+gk02_27 EDGE(7->6)[S.L+1={589} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2=7 S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2={5789}]
+gk02_28 EDGE(5->7)[S.L+1=7 S.L+2={57} S.L+3={57} S.L-1=S S.L-2={57} S.L-3={57} S.A-1=S R.L+2=S]
+gk02_29 EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={678} S.L-1={5689} S.L-2=S S.L-3={67} S.A+1=S]
+gk02_30 EDGE(5->5)[S.L+1={5689} S.L+2={567} S.L+3={67} S.L-1={5689} S.L-2={678} S.L-3={5678} S.A+1=B S.A-1=B]
+gk02_31 EDGE(5->6)[S.L+1={589} S.L+2=7 S.L+3=7 S.L-1={6789} S.L-2=7 S.L-3={567} S.A+1=B]
+gk03_32 EDGE(6->6)[S.L+2=S S.L+3={5678} S.L-2=S S.L-3={5678}]
+gk03_33 EDGE(7->7)[S.L+1=5 S.L+2={57} S.L+3={567} S.L-1=5 S.L-2={57} S.L-3={567} S.A+1={67} S.A-1={67} R.L+2=S R.L-2={57}]
+gk03_34 EDGE(5->5)[S.L+2=S S.L+3=S S.L-2={568} S.L-3=S S.A+1=S S.A-1=S R.L+2=B R.L-2=B]
+gk03_35 EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} S.A+1=7 S.A-1=7]
+gk03_36 EDGE(6->7)[S.L+1={5689} S.L+2={5689} S.L+3={5678} S.L-1={589} S.L-2={5689} S.L-3={567} S.A+1=S S.A-1={568}]
+gk03_37 EDGE(5->7)[S.L+1={67} S.L+2={67} S.L+3=S S.L-1=S S.L-2=S S.L-3={67} S.A-1=S R.L+2=B]
+gk03_38 EDGE(7->6)[S.L+1={589} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=7 S.A-1=5 R.L+2={5689} R.L-2={5689}]
+gk03_39 EDGE(6->5)[S.L+2=S S.L+3=7 S.L-2=S S.L-3=7 S.A+1=S S.A-1=S R.L+2={5689} R.L-2={568}]
+gk03_40 EDGE(5->6)[S.L+1=B S.L+2={67} S.L+3={567} S.L-1={589} S.L-2={567} S.L-3=7 S.A-1=B]
+gk04_41 EDGE(7->7)[S.L+2=S S.L+3={567} S.L-1=5 S.L-3={567} S.A+1={567} S.A-1={67} R.L+2={67} R.L-2={67}]
+gk04_42 EDGE(6->6)[S.L+1=B S.L+2={567} S.L+3={5678} S.L-2=S S.L-3={5678} R.L+2={568} R.L-2={5689}]
+gk04_43 EDGE(6->7)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=6 S.L-2=6 S.L-3={567} S.A-1=S R.L+2=S]
+gk04_44 EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5789}]
+gk04_45 EDGE(6->5)[S.L+1={5789} S.L+2={567} S.L+3={5678} S.L-1={689} S.L-2={567} S.L-3={5678} S.A-1=S R.L-2=B]
+gk04_46 EDGE(5->7)[S.L+1={57} S.L+2=S S.L+3={57} S.L-1=S S.L-2={57} S.L-3=S S.A-1=S R.L+2=B]
+gk04_47 EDGE(5->5)[S.L+1={5689} S.L+2={567} S.L+3=7 S.L-1={5789} S.L-2={567} S.L-3={67} S.A+1=S S.A-1=S R.L+2={568} R.L-2=B]
+gk04_48 EDGE(7->6)[S.L+1={5789} S.L+2={67} S.L+3={5678} S.L-1={589} S.L-2={567} S.L-3={5678} S.A+1={567} S.A-1=S R.L+2={5789} R.L-2={6789}]
+gk04_49 EDGE(5->6)[S.L+1={589} S.L+2={567} S.L+3={678} S.L-1={5789} S.L-2={678} S.L-3=S S.A+1=B R.L-2={5689}]
+gk00_50 EDGE(7->7)[S.L+1={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]
+gk00_51 EDGE(7->7)[S.L+2={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1=7 R.L+2={57}]
+gk00_52 EDGE(6->6)[S.L+1={689} S.L+2=7 S.L+3={5678} S.L-1={689} S.L-2=7 S.L-3={5678}]
+gk00_53 EDGE(6->6)[S.L+1={689} S.L+2=7 S.L-1={689} S.L-2=7]
+gk00_54 EDGE(6->6)[S.L+1={689} S.L+2={78} S.L+3={567} S.L-1={689} S.L-2=7 S.L-3={567}]
+gk00_55 EDGE(7->5)[S.L+2=7 S.L+3={5678} S.L-1={689} S.L-2={567} S.L-3={5678} S.A+1={567} S.A-1=S R.L+2={589}]
+gk00_56 EDGE(6->7)[S.L+1={5689} S.L+3={5678} S.L-1=B S.L-2={589} S.L-3={5678} S.A+1=S R.L+2={5689} R.L-2={5689}]
+gk00_57 EDGE(6->5)[S.L+1={5789} S.L+2={78} S.L+3={567} S.L-1={5689} S.L-2={567} S.L-3={567} S.A-1=B R.L+2={5689}]
+gk00_58 EDGE(5->7)[S.L+1={57} S.L+2=5 S.L+3=7 S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S]
+gk00_59 EDGE(5->7)[S.L+1={57} S.L+2={57} S.L+3={57} S.L-1=5 S.L-2={57} S.L-3={57} S.A-1=S R.L+2=B]
+gk00_60 EDGE(5->5)[S.L+1={5689} S.L+2={567} S.L+3=S S.L-1={5789} S.L-2={5678} S.L-3={567} S.A+1=S R.L+2=B R.L-2=B]
+gk00_61 EDGE(7->6)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-1={6789} S.L-2={567} S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5689}]
+gk00_62 EDGE(5->6)[S.L+1={589} S.L+2=5 S.L+3=7 S.L-1=B S.L-2={57} S.L-3={568} S.A+1=S R.L+2={6789} R.L-2={5689}]
+gk01_63 EDGE(6->6)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} R.L+2=B R.L-2=B]
+gk01_64 EDGE(6->6)[S.L+1={5689} S.L+2={567} S.L-1={5689} S.L-2={567} R.L+2=B R.L-2=B]
+gk01_65 EDGE(6->6)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-1={5689} S.L-2={567} S.L-3={567} R.L+2=B R.L-2=B]
+gk01_66 EDGE(7->7)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=S S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67} R.L-2=S]
+gk01_67 EDGE(7->7)[S.L+1=S S.L+2=S S.L+3=5 S.L-1={57} S.L-3={567} S.A+1={567} S.A-1={567} R.L+2=S R.L-2=S]
+gk01_68 EDGE(6->7)[S.L+1=S S.L+2=6 S.L+3={567} S.L-1={67} S.L-2={67} S.L-3={567} S.A+1=S S.A-1=S R.L+2=S R.L-2=B]
+gk01_69 EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} S.A+1=7 S.A-1=S]
+gk01_70 EDGE(5->5)[S.L+1={5689} S.L+2={67} S.L+3={567} S.L-1={5689} S.L-2={678} S.L-3={67} S.A+1=B S.A-1=S]
+gk01_71 EDGE(5->7)[S.L+1=7 S.L+2=7 S.L+3=S S.L-1=5 S.L-2=S S.L-3=7 S.A-1=S R.L+2=S]
+gk01_72 EDGE(5->7)[S.L+1=7 S.L+2=7 S.L+3=S S.L-1=5 S.L-2=S S.L-3=7 S.A-1={568} R.L+2=S]
+gk01_73 EDGE(6->5)[S.L+1=B S.L+2={567} S.L+3=7 S.L-1={5689} S.L-2={567} S.L-3=7 S.A-1=B R.L+2={5689}]
+gk01_74 EDGE(7->6)[S.L+1={589} S.L+2=7 S.L+3={5678} S.L-1={5789} S.L-2={67} S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2={5689}]
+gk02_75 EDGE(7->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2=S R.L-2={57}]
+gk02_76 EDGE(6->6)[S.L+1={6789} S.L+2=S S.L+3={5678} S.L-1={5789} S.L-2={567} S.L-3={5678} R.L-2=B]
+gk02_77 EDGE(6->6)[S.L+1={6789} S.L+2=S S.L-1={5789} S.L-2={567} R.L-2=B]
+gk02_78 EDGE(6->6)[S.L+1={5789} S.L+2={567} S.L+3={567} S.L-1={6789} S.L-2=S S.L-3={567} R.L+2=B]
+gk02_79 EDGE(7->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={67} R.L+2=S R.L-2={57}]
+gk02_80 EDGE(7->5)[S.L+1={5689} S.L+2={567} S.L+3={5678} S.L-1={5689} S.L-2={567} S.L-3={5678} S.A+1=S S.A-1=7 R.L+2={5789} R.L-2={5789}]
+gk02_81 EDGE(6->7)[S.L+1={689} S.L+2={5689} S.L+3={678} S.L-1={6789} S.L-2={5789} S.L-3={678} S.A+1=S R.L+2={5689} R.L-2=B]
+gk02_82 EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-1={6789} S.L-2=S S.L-3=7 S.A+1=S]
+gk02_83 EDGE(5->5)[S.L+1={5689} S.L+2=7 S.L+3=7 S.L-1={5689} S.L-2={57} S.L-3=7 S.A+1=S S.A-1=B]
+gk02_84 EDGE(7->6)[S.L+1={5689} S.L+2=7 S.L+3={5678} S.L-1={589} S.L-2=7 S.L-3={5678} S.A+1=S S.A-1=S R.L+2={589} R.L-2={5689}]
+gk02_85 EDGE(5->7)[S.L+1=6 S.L+2={67} S.L+3=5 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1=S]
+gk02_86 EDGE(5->7)[S.L+1=6 S.L+2={67} S.L+3=5 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1={568}]
+gk00_87 EDGE(7->7)[S.L+1={57} S.L+2={57} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67} R.L-2={57}]
+gk00_88 EDGE(7->7)[S.L+1={57} S.L+2={67} S.L+3={567} S.L-1=5 S.L-2={57} S.L-3={567} S.A+1={567} S.A-1={67} R.L+2={57} R.L-2=7]
+gk00_89 EDGE(6->6)[S.L+1={6789} S.L+2=7 S.L+3={5678} S.L-1={6789} S.L-2=7 S.L-3={5678} R.L+2={5689} R.L-2={5689}]
+gk00_90 EDGE(6->6)[S.L+1={6789} S.L+2=7 S.L-1={6789} S.L-2=7 R.L+2={5689} R.L-2={5689}]
+gk00_91 EDGE(6->6)[S.L+1={6789} S.L+2=7 S.L+3={567} S.L-1={6789} S.L-2=7 S.L-3={567} R.L+2=S R.L-2={568}]
+gk00_92 EDGE(7->5)[S.L+1={689} S.L+2={567} S.L+3={5678} S.L-1={689} S.L-2={5678} S.L-3={5678} S.A+1=S S.A-1=7 R.L-2={5689}]
+gk00_93 EDGE(7->6)[S.L+1={589} S.L+2={567} S.L+3={5678} S.L-1={5789} S.L-2=7 S.L-3={5678} S.A+1=7 S.A-1={567} R.L-2={5689}]
+gk00_94 EDGE(6->7)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=5 S.L-3={567} S.A-1=S R.L+2=B]
+gk00_95 EDGE(5->7)[S.L+1=S S.L+2=S S.L+3=7 S.L-1=S S.L-2=7 S.L-3=S S.A-1=S R.L+2=B]
+gk00_96 EDGE(5->5)[S.L+1={5689} S.L+2={57} S.L+3=S S.L-1={5789} S.L-2={567} S.L-3=7 S.A+1=S R.L-2={5689}]
+gk00_97 EDGE(6->5)[S.L+1={689} S.L+2=S S.L+3={67} S.L-2={567} S.L-3=7 S.A+1=S]
+gk00_98 EDGE(5->7)[S.L+2=S S.L-1=5 S.L-3=S S.A-1={568} R.L+2=B]
+gk01_99 EDGE(7->7)[S.L+1={67} S.L+2={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={67} R.L-2=S]
+gk01_100 EDGE(7->7)[S.L+2=S S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1=7 R.L+2={67} R.L-2=S]
+gk01_101 EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1={5689} S.L-2=S S.L-3={5678} S.A+1=S S.A-1=7 R.L+2={6789}]
+gk01_102 EDGE(6->6)[S.L+1={6789} S.L+2=S S.L+3={5678} S.L-1={5689} S.L-2=S S.L-3={5678} R.L-2=B]
+gk01_103 EDGE(6->6)[S.L+1={6789} S.L+2=S S.L-1={5689} S.L-2=S R.L-2=B]
+gk01_104 EDGE(6->6)[S.L+1={6789} S.L+2=S S.L+3={567} S.L-1={5689} S.L-2=S S.L-3={567} R.L-2=B]
+gk01_105 EDGE(6->7)[S.L+1={67} S.L+2=S S.L+3={567} S.L-1=5 S.L-3=S S.A-1=S R.L+2=B]
+gk01_106 EDGE(7->6)[S.L+1={589} S.L+2={567} S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=7 S.A-1={567} R.L+2={6789} R.L-2={5789}]
+gk01_107 EDGE(6->5)[S.L+1={5689} S.L+2={567} S.L+3={567} S.L-1={5689} S.L-2={567} S.L-3={567} S.A+1=B S.A-1=S]
+gk01_108 EDGE(5->7)[S.L+2=S S.L+3=7 S.L-1=6 S.L-2=7 S.L-3=S S.A+1=S S.A-1=S R.L-2=B]
+gk01_109 EDGE(5->7)[S.L+1={57} S.L+2=5 S.L+3=7 S.L-1=S S.L-2=7 S.L-3=5 S.A-1=S R.L+2=S R.L-2=B]
+gk01_110 EDGE(5->5)[S.L+1={5689} S.L+2={678} S.L+3={67} S.L-1={5689} S.L-2={5678} S.L-3={567} S.A+1=B S.A-1=S R.L+2={5789} R.L-2={5789}]
+cg00_0 EDGE(5->5)[S.L+1={5689} S.L+2={5678} S.L+3=7 S.L-1={5789} S.L-2={679} S.L-3={78} S.A+1=B R.L-2=B]
+cg00_1 EDGE(5->6)[S.L+1={569} S.L+2={578} S.L+3={568} S.L-1={5689} S.L-2=S S.L-3={678} S.A-1=S R.L-2=B]
+cg00_2 EDGE(5->7)[S.L+1=S S.L+2=7 S.L+3=7 S.L-1=S S.L-2=7 S.L-3={5678} S.A+1=B S.A-1=B R.L+2=S R.L-2=S]
+cg00_3 EDGE(5->7)[S.L+1=S S.L+2=7 S.L+3=7 S.L-1=S S.L-2=7 S.L-3={567} S.A+1=B S.A-1=B R.L+2=S R.L-2=S]
+cg00_4 EDGE(5->7)[S.L+1=S S.L+2=7 S.L+3=7 S.L-1=S S.L-2=7 S.L-3={578} S.A+1=B S.A-1=B R.L+2=S R.L-2=S]
+cg00_5 EDGE(6->5)[S.L+1={6789} S.L+2={5678} S.L+3={678} S.L-1={69} S.L-2=S S.L-3={5678} S.A-1=S]
+cg00_6 EDGE(6->6)[S.L+1={679} S.L+2={5678} S.L+3={5678} S.L-1={679} S.L-2={5678} S.L-3={5678} R.L+2={569} R.L-2=S]
+cg00_7 EDGE(6->7)[S.L+1=7 S.L+2=S S.L+3={5678} S.L-1=6 S.L-2=S S.L-3={5678} S.A-1=S R.L+2=S R.L-2=B]
+cg00_8 EDGE(7->5)[S.L+1={6789} S.L+2=S S.L+3={5678} S.L-1={689} S.L-2={567} S.L-3={5678} S.A+1={5678} S.A-1=S R.L+2={569} R.L-2={579}]
+cg00_9 EDGE(7->6)[S.L+2={567} S.L+3={5678} S.L-2={567} S.L-3={5678} S.A+1={5678} S.A-1={5678} R.L-2={6789}]
+cg00_10 EDGE(7->7)[S.L+1=S S.L+2=7 S.L+3={567} S.L-1=S S.L-2={57} S.L-3={567} S.A+1=5 S.A-1={5678} R.L-2={67}]
+cg00_11 EDGE(7->7)[S.L+1=S S.L+2={57} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={5678} S.A-1=5 R.L+2={67}]
+cg00_12 EDGE(7->7)[S.L+1=S S.L+2={57} S.L+3={567} S.L-1=S S.L-2=7 S.L-3={567} S.A+1={567} S.A-1=5 R.L+2={67}]
+cg12_55_0 EDGE(5->5)[S.L+1=S S.L-1=S S.A+1=S S.A-1=B]   # W6 r12 colsum 0.037838
+cg12_56_0 EDGE(5->6)[S.L+1={79} S.L-1=5 S.L-2=S S.L-3=S S.A-1=B R.L-2=B]   # W6 r12 colsum 0.008357
+cg12_57_0 EDGE(5->7)[S.L+2=S S.L-1=5 S.A-1=S R.L+2=S]   # W6 r12 colsum 0.012799
+cg12_57_1 EDGE(5->7)[S.L+1={579} S.L+2={5678} S.L+3={6789} S.L-1=5 S.A-1=S R.L+2={568}]   # W6 r12 colsum 0.012269
+cg12_57_2 EDGE(5->7)[S.L+1={579} S.L+2={579} S.L+3={5789} S.L-1=5 S.A-1=S R.L-2=S]   # W6 r12 colsum 0.011928
+cg12_58_0 EDGE(5->8)[S.L+2={5689} S.L-1={59} S.A-1=S]   # W6 r12 colsum 0.006943
+cg12_58_1 EDGE(5->8)[S.L+1={5678} S.L+2=7 S.L-1=5 S.A-1=B]   # W6 r12 colsum 0.006943
+cg12_58_2 EDGE(5->8)[S.L+1=5 S.L+3=7 S.L-1={5678} S.A+1=B]   # W6 r12 colsum 0.006943
+cg12_59_0 EDGE(5->9)[S.L+1={567} S.L+2={689} S.L+3=5 S.L-1=S S.A+1=S S.A-1=S R.L-2=S]   # W6 r12 colsum 0.013856
+cg12_59_1 EDGE(5->9)[S.L+1={567} S.L+2={689} S.L+3=5 S.L-1=S S.A+1=S S.A-1=S R.L-2={568}]   # W6 r12 colsum 0.013856
+cg12_59_2 EDGE(5->9)[S.L+1=S S.L+2=5 S.L+3={689} S.L-1={567} S.A+1=S S.A-1=S R.L+2=S]   # W6 r12 colsum 0.013856
+cg12_65_0 EDGE(6->5)[S.L+1={569} S.L-1={569} S.L-3=S S.A+1=S S.A-1=S]   # W6 r12 colsum 0.039109
+cg12_66_0 EDGE(6->6)[S.L+1={567} S.L-1={567} R.L+2=S R.L-2=S]   # W6 r12 colsum 0.157571
+cg12_67_0 EDGE(6->7)[S.L+1={679} S.L+2=S S.L-1=5 S.L-2={567} S.A-1=B]   # W6 r12 colsum 0.011933
+cg12_68_0 EDGE(6->8)[S.L+1={569} S.L+2={569} S.L-1={569} S.L-2={569} S.A+1=B S.A-1=B]   # W6 r12 colsum 0.003121
+cg12_69_0 EDGE(6->9)[S.L+1={5689} S.L+2={589} S.L-1={5689} S.L-2={5789} S.A+1=S S.A-1=S]   # W6 r12 colsum 0.003427
+cg12_75_0 EDGE(7->5)[S.L+1=5 S.L-1=5 S.A+1=B S.A-1=B R.L+2={5679} R.L-2={5679}]   # W6 r12 colsum 0.016355
+cg12_76_0 EDGE(7->6)[R.L+2={6789} R.L-2={6789}]   # W6 r12 colsum 0.054929
+cg12_77_0 EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.L-2={5678} S.A-1={569} R.L+2={5689}]   # W6 r12 colsum 0.015064
+cg12_77_1 EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.L-2={5678} S.A-1={569} R.L+2={568}]   # W6 r12 colsum 0.015064
+cg12_77_2 EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.L-2={5678} S.A-1={569} R.L+2={5689} R.L-2={5678}]   # W6 r12 colsum 0.015064
+cg12_78_0 EDGE(7->8)[S.L+1=S S.L+2={578} S.L+3={5678} S.L-1=5 S.L-3={5678} S.A-1={578} R.L-2={57}]   # W6 r12 colsum 0.001020
+cg12_78_1 EDGE(7->8)[S.L+1=S S.L+2={578} S.L+3={5678} S.L-1=5 S.L-3={5678} S.A-1={578} R.L-2={578}]   # W6 r12 colsum 0.001020
+cg12_78_2 EDGE(7->8)[S.L+1=S S.L+2={578} S.L+3={5678} S.L-1=5 S.L-3={5678} S.A-1={578} R.L-2=5]   # W6 r12 colsum 0.000977
+cg12_79_0 EDGE(7->9)[S.L+1=5 S.L+2={57} S.L+3={5679} S.L-1=5 S.L-3={567} S.A+1={5689} S.A-1={568}]   # W6 r12 colsum 0.000528
+cg12_79_1 EDGE(7->9)[S.L+1=5 S.L+2={57} S.L+3={5679} S.L-1=5 S.L-3={5679} S.A+1={5689} S.A-1={568}]   # W6 r12 colsum 0.000528
+cg12_79_2 EDGE(7->9)[S.L+1=5 S.L+2={57} S.L+3={567} S.L-1=5 S.L-3={567} S.A+1={5689} S.A-1=S]   # W6 r12 colsum 0.000528
+# W6b-16 (round16/pricing_k86GL_p1_00): improving EDGE keys priced on Opus k86GL p1_00 dual (dual_rows_k86GL_p1_00.json 7524f5cf;
+# stack rules 2db75746, args K3g bef43766, cg_keys_r13 fe8a97a7, c6le, f2b7; phase-1 t1 0.001604629).  Load on top of cg_keys_r13.txt.
+# Every key passed the 5/6/7 test (t567_final.json): builder = independent reference on all 1,894 R/S/C rows, and no row over-credited
+# when apex / 6-private classes and d = 7 privates are resolved into exact letters.  Ranked by colsum (reduced cost, > 0 improves; [M]).
+# Payers 5, 6, 7 only (priced by the existing KEYSPEC builder); payer-8/9 keys are in the _payer89 file (need PAYER8SPEC.md).
+w6b16_00 EDGE(6->6)[S.L+2=B S.L-2=B]   # w6bk86GL_66_0 colsum 0.102189566
+w6b16_01 EDGE(6->5)[S.L+1={5689} S.L-1=S S.A-1=S]   # w6bk86GL_65_0 colsum 0.0571232563
+w6b16_02 EDGE(5->5)[S.L+1={589} S.L-1={589} S.L-2=B S.L-3=B R.L+2=S R.L-2=S]   # w6bk86GL_55_0 colsum 0.0183064964
+w6b16_03 EDGE(7->5)[S.L+1={589} S.L-1=S S.A-1=B R.L+2={568} R.L-2={5678}]   # w6bk86GL_75_0 colsum 0.0155756115
+w6b16_04 EDGE(5->7)[S.L+1={5689} S.L-1=5 S.A-1=S R.L+2=S R.L-2=S]   # w6bk86GL_57_0 colsum 0.0144203638
+w6b16_05 EDGE(5->7)[S.L+1={5689} S.L-1=5 S.A-1=S R.L+2={569} R.L-2=S]   # w6bk86GL_57_1 colsum 0.0143577899
+w6b16_06 EDGE(5->7)[S.L+1={569} S.L+3={5678} S.L-1=5 S.A-1=S R.L+2=S R.L-2={569}]   # w6bk86GL_57_2 colsum 0.0140171164
+w6b16_07 EDGE(6->7)[S.L+1={59} S.L+2={567} S.L-1={59} S.L-2={567} S.A+1=S S.A-1=S]   # w6bk86GL_67_0 colsum 0.0124475961
+w6b16_08 EDGE(5->9)[S.L+1={568} S.L+2=S S.L+3=S S.L-1={568} S.A+1=S S.A-1=S R.L+2=S R.L-2=S]   # w6bk86GL_59_0 colsum 0.0121480499
+w6b16_09 EDGE(5->9)[S.L+1={568} S.L+2=S S.L+3=S S.L-1={568} S.A+1=S S.A-1=S R.L+2=S]   # w6bk86GL_59_1 colsum 0.012067481
+w6b16_10 EDGE(5->8)[S.L+1={578} S.L+2={5789} S.L+3={567} S.L-1=5 S.A-1=S]   # w6bk86GL_58_0 colsum 0.00912344606
+w6b16_11 EDGE(5->8)[S.L+1={5789} S.L+2={5789} S.L+3={5789} S.L-1=5 S.A-1=S R.L+2=S R.L-2=S]   # w6bk86GL_58_1 colsum 0.00903639169
+w6b16_12 EDGE(5->8)[S.L+1={5789} S.L+2={5789} S.L-1=5 S.A-1=S R.L+2=S]   # w6bk86GL_58_2 colsum 0.00901297911
+w6b16_13 EDGE(7->6)[S.L+1={579} S.L-1=5 S.A-1=B R.L+2={569} R.L-2={567}]   # w6bk86GL_76_0 colsum 0.00740625486
+w6b16_14 EDGE(5->6)[S.L+1={68} S.L-1=5 S.L-3=B S.A-1=B R.L+2=S]   # w6bk86GL_56_0 colsum 0.00700381613
+w6b16_15 EDGE(6->8)[S.L+1={589} S.L-1={578} S.L-2={5678} S.L-3={5678} S.A+1=B S.A-1=B R.L+2=B R.L-2=B]   # w6bk86GL_68_0 colsum 0.00413401537
+w6b16_16 EDGE(7->7)[S.L+2={679} S.L-1=5 S.L-2={5678} S.A-1={5679} R.L+2={578} R.L-2={5678}]   # w6bk86GL_77_0 colsum 0.00254623514
+w6b16_17 EDGE(7->7)[S.L+2={679} S.L-1=5 S.L-2={5678} S.A-1={5679} R.L+2={579} R.L-2={5678}]   # w6bk86GL_77_1 colsum 0.00252877237
+w6b16_18 EDGE(6->9)[S.L+1={5679} S.L+2={568} S.L-1={569} S.L-2={58} S.A-1=S R.L-2=S]   # w6bk86GL_69_0 colsum 0.00165849663
+w6b16_19 EDGE(7->9)[S.L+2={567} S.L-1=5 S.L-2={568} S.A+1={6789} S.A-1={579} R.L+2=S R.L-2=6]   # w6bk86GL_79_0 colsum 0.000562792769
+# ---- cg_keys_w6b16f_cur.txt ----
+# W6b-16f (round16/keyspec2): EDGE keys that improve under the CURRENT model on Opus's k86GL2 p1_00 dual (dual_rows_k86GL2_p1_00.json;
+# cert f8893e87; stack rules 2db75746, args K3g bef43766, cg_keys_r13w16 15c361a1, c6le, f2b7).  Load on top of cg_keys_r13w16.txt.
+# From the W6b-16e search pool (cand_v2_all.txt), chosen for diversity (greedy by current colsum; mirror-aware distance >= 3 BALL2
+# positions from every kept key; <= 4 keys per payer/payee pair).  Every key re-priced here; passed the 5/6/7 test on the k86GL2 dual
+# (t567_16f.json) and the 16e builder/reference check (check.json tag w6b16f).  Ranked by current colsum (reduced cost, > 0 improves; [M]).
+# Payers 5, 6, 7 only, all single letters.  Payee sets: B as in r13w16 (A1, E1); brace sets {67} in c00-c03 (see P1R_NOTE.md).
+w6b16f_c00 EDGE(6->{67})[S.L+1={79} S.L+2=S S.L+3={5678} S.L-2=S S.L-3={5678} S.A-1=S R.L+2=S R.L-2=B]   # v2s_n2_1071 cur 0.0571685213 P1 0.0571685213 P2 0.0671400369
+w6b16f_c01 EDGE(6->{67})[S.L+1=7 S.L+2=S S.L+3={5678} S.L-1={67} S.L-2=S S.L-3={5678} R.L+2=S R.L-2=B]   # v2s_n2_1251 cur 0.0486815234 P1 0.0486815234 P2 0.0487005438
+w6b16f_c02 EDGE(6->{67})[S.L+1=B S.L+2=S S.L+3={5678} S.L-1=6 S.L-2=5 S.L-3={5678} S.A-1=S R.L+2=S R.L-2=B]   # v2s_n2_1312 cur 0.0399145715 P1 0.0399145715 P2 0.0478475628
+w6b16f_c03 EDGE(6->{67})[S.L+1=7 S.L+2={567} S.L+3={5678} S.L-1=6 S.L-2=S S.L-3={5678} S.A-1=S R.L+2=S R.L-2=B]   # v2s_n1_562 cur 0.0267592091 P1 0.0267592091 P2 0.0366090868
+w6b16f_c04 EDGE(7->B)[S.L+2=6 S.L-1=5 S.L-2=5 S.L-3=5 S.A-1=B]   # v2s_n1_1178 cur 0.00807113469 P1 0.00855248962 P2 0.00855248962
+w6b16f_c05 EDGE(5->7)[S.L+1=6 S.L+2={67} S.L+3=5 S.L-1=S S.L-2=5 S.L-3={67} S.A-1=S]   # v2s_n1_1244 cur 0.00796454271 P1 0.00796454271 P2 0.00796454271
+w6b16f_c06 EDGE(7->7)[S.L+1=6 S.L-1=5 S.L-2=5 S.L-3=5 S.A-1=B]   # v2s_n1_1345 cur 0.00662819521 P1 0.00662819521 P2 0.00662819521
+w6b16f_c07 EDGE(7->B)[S.L+2=6 S.L-2=6 S.L-3=5 S.A-1=7 R.L+2=B]   # v2s_n1_319 cur 0.00330266266 P1 0.00386177479 P2 0.0222483053
+w6b16f_c08 EDGE(5->7)[S.L+2=S S.L+3=7 S.L-1=6 S.L-2=7 S.L-3=S S.A+1=S R.L-2=B]   # v2s_n0_1423 cur 0.00315281519 P1 0.00340023052 P2 0.00355292317
+w6b16f_c09 EDGE(5->7)[S.L+1=6 S.L+2=6 S.L+3=5 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1=S]   # v2s_n0_664 cur 0.00281471377 P1 0.00281471377 P2 0.00502028854
+w6b16f_c10 EDGE(5->7)[S.L+1={57} S.L+2=5 S.L+3=7 S.L-1=5 S.L-2=7 S.L-3=5 S.A-1=S]   # v2s_n0_1021 cur 0.00266729069 P1 0.00266729069 P2 0.00266729069
+w6b16f_c11 EDGE(7->7)[S.L+1={67} S.L+3={567} S.L-1=5 S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]   # v2s_n0_1139 cur 0.0026167059 P1 0.0026167059 P2 0.00274495922
+w6b16f_c12 EDGE(7->7)[S.L+2={67} S.L+3={567} S.L-1=5 S.L-2=5 S.L-3=5 S.A+1={567} S.A-1=7 R.L+2={57}]   # v2s_n0_800 cur 0.00221640876 P1 0.00221640876 P2 0.00261282196
+w6b16f_c13 EDGE(7->7)[S.L+1=B S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B R.L-2=5]   # v2s_n0_635 cur 0.00199978666 P1 0.00199978666 P2 0.00199978666
+w6b16f_c14 EDGE(7->B)[S.L+1=5 S.L+2=5 S.L-2=5 S.A+1=S]   # v2s_n0_1221 cur 0.00171579443 P1 0.00171579443 P2 0.00171579443
+w6b16f_c15 EDGE(7->B)[S.L+2=6 S.L-1=5 S.L-2=S S.L-3=5 S.A+1={6789} S.A-1=7]   # v2s_n2_467 cur 0.00134457953 P1 0.00151813696 P2 0.00497422939
+w6b16f_c16 EDGE(6->7)[S.L+1=S S.L+2=6 S.L+3={67} S.L-1=7 S.L-2={67} S.L-3={567} S.A+1=S S.A-1=S R.L+2=S R.L-2=B]   # v2s_n1_366 cur 0.000159378496 P1 0.000159378496 P2 0.000761828095
+w6b16f_c17 EDGE(6->7)[S.L+1=S S.L+2=6 S.L+3={567} S.L-1=B S.L-2={67} S.L-3={67} S.A+1=S S.A-1=S R.L+2=S R.L-2=B]   # v2s_n1_485 cur 0.000159378496 P1 0.000159378496 P2 0.000761828095
+w6b16f_c18 EDGE(6->7)[S.L+1=5 S.L+2=8 S.L+3={567} S.L-1={67} S.L-2={67} S.L-3={567} S.A+1=S S.A-1=S R.L+2=S R.L-2=B]   # v2s_n1_669 cur 7.37876463e-05 P1 7.37876463e-05 P2 0.00136960174
+# ---- cg_keys_w6b16f_v2.txt ----
+# W6b-16f (round16/keyspec2): EDGE keys that improve ONLY under p1_r (KEYSPEC2_RECEIVER.md 3.3, single-row per-key max on d = 7 / 8
+# receivers) on Opus's k86GL2 p1_00 dual (cert f8893e87; current colsum <= 0, P1 colsum > 0).  Load on top of cg_keys_r13w16.txt, and
+# only in an engine that implements p1_r: with current pictures these keys price <= 0.  From cand_v2_v2only.txt (set-payer keys
+# split into single-payer parts and re-priced), diverse as cg_keys_w6b16f_cur.txt (<= 3 per pair).  Passed the 5/6/7 test
+# (t567_16f.json) and the 16e builder/reference check (check.json tag w6b16f).  Ranked by P1 colsum ([M]).
+# Payers 5, 6, 7 only, all single letters.  Payee sets: B as in r13w16; brace set {79} in two keys (see P1R_NOTE.md).
+w6b16f_v00 EDGE(6->7)[S.L+1=S S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B R.L-2={5689}]   # v2s_n2_1170_u6 cur -0.000217450727 P1 0.00690581992 P2 0.0142165956
+w6b16f_v01 EDGE(7->B)[S.L+2=6 S.L-1={5679} S.L-2=S S.L-3=5 S.A-1=7 R.L+2=B]   # v2s_n2_1221 cur -8.41607765e-05 P1 0.00446369788 P2 0.0268926201
+w6b16f_v02 EDGE(7->7)[S.L+1=S S.L+3=S S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B R.L-2={5789}]   # v2s_n2_1600 cur -0.00229421251 P1 0.00435196667 P2 0.00648866656
+w6b16f_v03 EDGE(7->B)[S.L+2=6 S.L-3=5 S.A-1=B R.L+2=B]   # v2s_n2_726 cur -0.00100751852 P1 0.00374128968 P2 0.0289619423
+w6b16f_v04 EDGE(7->7)[S.L+1={568} S.L-1=S S.L-2=5 S.L-3=5 S.A-1={6789}]   # v2s_n2_1290 cur -0.000451217183 P1 0.0032450062 P2 0.00367416682
+w6b16f_v05 EDGE(7->7)[S.L+1=S S.L+2={5689} S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]   # v2s_n1_1101 cur -0.00130172259 P1 0.00215419179 P2 0.0071272272
+w6b16f_v06 EDGE(7->{79})[S.L+1={569} S.L-1=S S.L-2=5 S.L-3=5 S.A-1=B]   # v2s_n2_1818 cur -0.00220995326 P1 0.00124596112 P2 0.00877272823
+w6b16f_v07 EDGE(7->{79})[S.L+1={67} S.L+3={567} S.L-1=S S.L-2=5 S.L-3=5 S.A+1={567} S.A-1={67} R.L+2={57}]   # v2s_n0_1220 cur -3.38614733e-05 P1 0.0011811208 P2 0.00296758531
+w6b16f_v08 EDGE(7->B)[S.L+2=6 S.L-2=S S.L-3=5 S.A+1={6789} S.A-1=7 R.L+2=7]   # v2s_n2_509 cur -0.00198510015 P1 0.00108858197 P2 0.026862718
+w6b16f_v09 EDGE(5->7)[S.L+1=6 S.L+2={567} S.L+3=5 S.L-1={57} S.L-2=5 S.L-3={67} S.A+1=S S.A-1=S]   # v2s_n0_667 cur 1.35797189e-12 P1 0.000247415336 P2 0.00535555026
+# ---- cg_keys_w6b16i.txt ----
+# W6b-16i (round16/pricing_k86GL4_p1_00): EDGE keys that improve under p1_r (the live model) on Opus's k86GL4 p1_00 dual
+# (dual_rows_k86GL4_p1_00.json, cert 1408df76; stack K3g bef43766, rules 2db75746, rpatN3 + offc_K3g_2f4f0f02, c6le, f2b7, p1r).
+# Load on top of cg_keys_r13w16_16f.txt (ea5d79a7, 200 keys).  Pool: all one-step variants of the 200 keys (payer sets within {5,6,7}
+# allowed), 3 beam rounds, and the EDGE form of the l3q lq/lQ splits (MROWL66.md); set-payer winners split into single payers.
+# Payee sets kept only where they add colsum (else the best single payee).  Diversity: greedy by p1r colsum; mirror-aware distance >= 3
+# (BALL2 positions + payer + payee) from every kept key; <= 3 keys per payer / payee letter (a payee set counts for each of its letters), <= 7 per payer.
+# Ranked by p1r colsum (reduced cost under p1_r, > 0 improves; [M] float); cur = colsum under the current coefficients.
+# Payers 5, 6, 7 only, all single letters.  Each key passed the 5/6/7 test (t567_16i.json) and the k2b / k2r check (k2check_16i.json).
+w6b16i_00 EDGE(6->6)[S.L+1={679} S.L-1={567} S.L-2=S R.L-2=B]   # b3_00035 p1r 0.06453471675 cur 0.06453471675
+w6b16i_01 EDGE(6->{67})[S.L+1={679} S.L-1={5689} S.L-2=S]   # b3_00889 p1r 0.06446769353 cur 0.06446769353
+w6b16i_02 EDGE(6->{69})[S.L+1={679} S.L-1={5689} R.L-2=B]   # b3_00385 p1r 0.06446769351 cur 0.06446769351
+w6b16i_03 EDGE(5->5)[S.L+1=S S.L-1=S S.A+1=B S.A-1=B]   # r0_14018 p1r 0.03492218708 cur 0.03492218708
+w6b16i_04 EDGE(6->5)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=6 S.L-2=6 S.L-3={567} S.A-1=S R.L+2=S]   # r0_04974_v5 p1r 0.03149253292 cur 0.03149253292
+w6b16i_05 EDGE(6->5)[S.L+1=7 S.L-1=S S.A-1=S]   # r0_16993 p1r 0.02444919141 cur 0.02444919141
+w6b16i_06 EDGE(6->5)[S.L+1=7 S.L+2={5678} S.L+3={678} S.L-1={69} S.L-2=S S.L-3={5678} S.A-1=S]   # r0_13113 p1r 0.02380026387 cur 0.02380026387
+w6b16i_07 EDGE(5->5)[S.L+1=6 S.L+2={567} S.L+3=7 S.L-1={5789} S.L-2={567} S.L-3={67} S.A+1=S S.A-1=S R.L+2={568} R.L-2=B]   # r0_05336 p1r 0.01099888942 cur 0.01099888942
+w6b16i_08 EDGE(5->5)[S.L+1={5689} S.L+2={567} S.L+3={67} S.L-1=6 S.L-2={678} S.L-3={5678} S.A+1=B S.A-1=B]   # r0_03444 p1r 0.00887197526 cur 0.00887197526
+w6b16i_09 EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1=6 S.L-2=S S.L-3={5678} S.A+1=S S.A-1=7 R.L+2={6789}]   # r0_11388 p1r 0.008287482368 cur 0.008287482368
+w6b16i_10 EDGE(5->{78})[S.L+2=S S.L-1=5 S.A-1=S R.L+2=S]   # r0_14296 p1r 0.008222884338 cur 0.008222884338
+w6b16i_11 EDGE(5->8)[S.L+1=S S.L+2={5789} S.L+3={567} S.L-1=5 S.A-1=S]   # r0_17997 p1r 0.007009574374 cur 0.007009574374
+w6b16i_12 EDGE(7->7)[S.L+2={679} S.L-1=5 S.L-2={5678} S.A-1=5 R.L+2={578} R.L-2={5678}]   # r0_18805 p1r 0.006771596614 cur 0.006771596614
+w6b16i_13 EDGE(5->9)[S.L+1=5 S.L+2=S S.L+3=S S.L-1={568} S.A+1=S S.A-1=S R.L+2=S]   # r0_17886 p1r 0.005851654228 cur 0.005851654228
+w6b16i_14 EDGE(5->9)[S.L+1={568} S.L+2=S S.L+3=S S.L-1=5 S.A+1=S S.A-1=S R.L+2=S R.L-2=S]   # r0_17805 p1r 0.005805639891 cur 0.005805639891
+w6b16i_15 EDGE(7->5)[S.L+1=S S.L-1=S S.A-1=B R.L+2={568} R.L-2={5678}]   # r0_17238 p1r 0.005182399873 cur 0.005182399873
+w6b16i_16 EDGE(7->7)[S.L+1=6 S.L+2=6 S.L+3=5 S.L-1=6 S.L-2=6 R.L+2=6 R.L-2=7]   # X120 p1r 0.004735464101 cur 0.004735464101
+w6b16i_17 EDGE(7->5)[S.L+1=6 S.L+2=S S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=S S.A-1={567} R.L-2={5789}]   # r0_04979 p1r 0.004639163205 cur 0.004639163205
+w6b16i_18 EDGE(7->B)[S.L+2=6 S.L-2=6 S.L-3=5 R.L+2=B]   # r0_20107 p1r 0.004566880413 cur 0.003916085842
+w6b16i_19 EDGE(6->{78})[S.L+1={59} S.L+2={567} S.L-1={59} S.L-2={567} S.A+1=S S.A-1=S]   # r0_17771 p1r 0.003640127942 cur 0.003640127942
+# ---- cg_keys_w6b16k.txt ----
+# W6b-16k (round16/pricing_k86GL5_p1_00): EDGE keys that improve under p1_r (the live model) on Opus's k86GL5 p1_00 dual
+# (dual_rows_k86GL5_p1_00.json, cert def2afcc; stack K3g bef43766, rules 2db75746, rpatN3 + offc_K3g_2f4f0f02, c6le, f2b7, p1r).
+# Load on top of cg_keys_r13w16_16fi.txt (56d144d5, 220 keys = 16f 200 + cg_keys_w6b16i 20).  Pool: all one-step variants of the 220
+# keys (payer sets within {5,6,7} allowed), 6 beam rounds, and the EDGE form of the l3q splits (MROWL66_GL5.md); set payers split.
+# Left out as duplicating a 16i key: cosine >= 0.70 between contribution vectors (w * coef over the cert rows, p1_r).
+# Diversity: greedy by p1r colsum; distance >= 3 and cosine < 0.70 to every kept key; <= 3 keys per payer / payee letter, <= 7 per payer.
+# Ranked by p1r colsum (reduced cost under p1_r, > 0 improves; [M] float); cur = colsum under the current coefficients.
+# Payers 5, 6, 7 only, all single letters.  Each key passed the 5/6/7 test (t567_16k.json) and the k2b / k2r check (k2check_16k.json).
+w6b16k_00 EDGE(6->5)[S.L+1={569} S.L-1=S S.L-2=S S.A+1=S S.A-1=B]   # b3_00106 p1r 0.02417782111 cur 0.02417782111 max cos to 16i 0.51
+w6b16k_01 EDGE(6->5)[S.L+1={689} S.L-1=S S.A-1=S]   # r0_16991 p1r 0.01050090021 cur 0.01050090021 max cos to 16i 0.21
+w6b16k_02 EDGE(6->7)[S.L+1=S S.L+2=6 S.L+3={567} S.L-1={67} S.L-2=6 S.L-3={567} S.A+1=S S.A-1=S R.L+2=S R.L-2=B]   # r0_07622 p1r 0.00986267375 cur 0.00986267375 max cos to 16i 0.04
+w6b16k_03 EDGE(6->6)[S.L+1={6789} S.L+2=B S.L+3={5678} S.L-1={6789} S.L-2=7 S.L-3={5678} R.L+2={5689} R.L-2={5689}]   # r0_10054 p1r 0.00880974736 cur 0.00880974736 max cos to 16i 0.00
+w6b16k_04 EDGE(6->6)[S.L+1={689} S.L+2=7 S.L-1={6789} S.L-2=7 R.L+2={5689} R.L-2={5689}]   # r0_10106 p1r 0.008686773806 cur 0.008686773806 max cos to 16i 0.00
+w6b16k_05 EDGE(7->7)[S.L+1=6 S.L+2=6 S.L+3=5 S.L-1=6 S.L-2=6 R.L+2=6 R.L-2=6]   # r0_24383 p1r 0.008446455723 cur 0.008446455723 max cos to 16i 0.57
+w6b16k_06 EDGE(6->6)[S.L+2=S S.L-2=B]   # r0_16931 p1r 0.007915075778 cur 0.007915075778 max cos to 16i 0.16
+w6b16k_07 EDGE(5->5)[S.L+1={569} S.L+3={6789} S.L-1=6 S.L-2=S S.A+1=S S.A-1=B]   # b5_00027_u5 p1r 0.006537246665 cur 0.006537246665 max cos to 16i 0.12
+w6b16k_08 EDGE(7->7)[S.L+1=6 S.L+2=5 S.L+3=5 R.L+2=6]   # X020 p1r 0.0059961558 cur 0.0059961558 max cos to 16i 0.10
+w6b16k_09 EDGE(6->7)[S.L+1={5689} S.L+2=6 S.L+3={57} S.L-1={589} S.L-3={567} S.A+1=S S.A-1={5689} R.L+2=B]   # r0_02815 p1r 0.005368273314 cur 0.004894532569 max cos to 16i 0.03
+w6b16k_10 EDGE(5->5)[S.L+1={5689} S.L+2={567} S.L+3=B S.L-1=6 S.L-2={678} S.L-3={5678} S.A+1=B S.A-1=B]   # r0_23423 p1r 0.005252646291 cur 0.005252646291 max cos to 16i 0.58
+w6b16k_11 EDGE(7->7)[S.L+1={67} S.L+2=B S.L+3={567} S.L-1=S S.L-2=S S.L-3=5 S.A+1={567} S.A-1={567} R.L+2=S R.L-2={57}]   # r0_08416 p1r 0.004504770514 cur 0.004504770514 max cos to 16i 0.11
+w6b16k_12 EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1=6 S.L-2=S S.L-3={5678} S.A+1=S S.A-1=S R.L+2={6789}]   # r0_23578 p1r 0.003634938417 cur 0.003634938417 max cos to 16i 0.15
+w6b16k_13 EDGE(5->5)[S.L+1={79} S.L-1=5 S.L-2=S S.L-3=S S.A-1=B R.L-2=B]   # r0_14170_v5 p1r 0.003612998188 cur 0.003612998188 max cos to 16i 0.00
+w6b16k_14 EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1={6789} S.L-2=S S.L-3={5678} S.A+1=S S.A-1={567} R.L-2=6]   # r0_05078 p1r 0.003573280649 cur 0.003573280649 max cos to 16i 0.67
+w6b16k_15 EDGE(5->8)[S.L+1=7 S.L+2={5789} S.L+3={567} S.L-1=5 S.A-1=S]   # r0_17985 p1r 0.003571366338 cur 0.003571366338 max cos to 16i 0.02
+w6b16k_16 EDGE(7->5)[S.L+1=7 S.L-1=S S.A-1=B R.L+2={568} R.L-2={5678}]   # r0_17230 p1r 0.003517482523 cur 0.003517482523 max cos to 16i 0.10
+w6b16k_17 EDGE(5->9)[S.L+2=S S.L-1=5 S.A-1=S R.L+2=S]   # r0_14290_v9 p1r 0.003093844198 cur 0.003093844198 max cos to 16i 0.15
+w6b16k_18 EDGE(5->9)[S.L+1={568} S.L+2=S S.L+3=S S.L-1=5 S.A-1=S R.L+2=S R.L-2=S]   # r0_24135 p1r 0.002890404488 cur 0.002890404488 max cos to 16i 0.38
+w6b16k_19 EDGE(5->{69})[S.L+1={68} S.L-1=5 S.L-3=B S.A-1=B R.L+2=S]   # r0_18580 p1r 0.002829536513 cur 0.002829536513 max cos to 16i 0.18
+# ---- cg_keys_w6b16p_k86GS11.txt ----
+# W6b-16p (round16/pricing_k86GS11_00): improving EDGE keys priced on Opus's first UPPER-LP dual, GS11 iteration 0
+# (lpdual_k86GS11_00.json 313723e4: 1,959 warm rows; main LP on K3gB5k + the 240 keys of cg_keys_r13w16_16fik.txt 3d996dbb, LP t 0.015718).
+# Load on top of cg_keys_r13w16_16fik.txt.  Coefficients: the engine's current masked KEYSPEC ones on every row (no p1_r), rebuilt by
+# W6r's k2eng on the K3g bef43766 stack (rules 2db75746, rpatN3 + offc, kill_patched298, c6le, f2b7); all 1,959 rows rebuilt and admissible.
+# The dual is the exact optimal dual of t + 0.001 * sum(transfer columns) on these rows (restricted LP reproduces b.y 0.0249763 and t 0.0157181),
+# so a key enters iff colsum > 0.001; rc = colsum - 0.001.  Warm rows only: prices are a guide (rows a key would make binding may be absent).
+# Pool: one-step variants of the 240 keys (payer sets in {5,6,7}), 6 beam rounds of 40; set payers split; payee sets reduced when equal.
+# Diversity: greedy by colsum; distance >= 3 and effect cosine < 0.70 to every kept key; <= 3 keys per payer / payee letter, <= 10 per payer.
+# Ranked by colsum (sum_i w_i coef_i over the cert rows, > 0.001 improves; [M] float).  Payers 5, 6, 7 only, all single letters.
+# Each key passed the 5/6/7 test (t567_16p.json) and its coefficients equal p8lib's on the converted rows (check16p.json).
+w6b16p_00 EDGE(7->{5789})[S.L+1=5 S.L-2=S R.L-2={6789}]   # b4_00217 colsum 0.1505247149 rc 0.1495247149
+w6b16p_01 EDGE(7->{5789})[S.L+1={569} S.L+2=B S.L-2=S]   # b4_00006 colsum 0.1407233223 rc 0.1397233223
+w6b16p_02 EDGE(7->B)[S.L+1=S S.L+2={6789} S.L-2=S]   # b3_00019 colsum 0.1322140769 rc 0.1312140769
+w6b16p_03 EDGE(6->6)[S.L+1={57} S.L+2=S S.L+3={567} S.L-1=5 S.L-3={567} S.A-1=S R.L+2=B]   # r0_10639_v6 colsum 0.01050942481 rc 0.009509424809
+w6b16p_04 EDGE(6->6)[S.L+1=B S.L-1={567} S.L-2=S R.L-2=B]   # r0_22501 colsum 0.009810627461 rc 0.008810627461
+w6b16p_05 EDGE(6->5)[S.L+1={569} S.L-1={569} S.L-3=B S.A+1=S S.A-1=S]   # r0_15307 colsum 0.009643019351 rc 0.008643019351
+w6b16p_06 EDGE(5->7)[S.L+1={67} S.L+2=7 S.L-1=5 S.L-3=7 S.A-1=B R.L+2=B]   # r0_02104 colsum 0.009152836512 rc 0.008152836512
+w6b16p_07 EDGE(5->7)[S.L+1={67} S.L+2={67} S.L+3=S S.L-1=S S.L-2=S S.L-3={67} S.A-1=S R.L+2=B R.L-2=B]   # r0_04245 colsum 0.008747482696 rc 0.007747482696
+w6b16p_08 EDGE(6->6)[S.L+1=B S.L+2=S S.L+3={5678} S.L-1={5689} S.L-2=S S.L-3={5678} R.L-2=B]   # r0_11470 colsum 0.008351595644 rc 0.007351595644
+w6b16p_09 EDGE(5->5)[S.L+1={567} S.L+2=B S.L-2=S]   # b5_00106_u5_v5 colsum 0.007510284516 rc 0.006510284516
+w6b16p_10 EDGE(5->{78})[S.L+1=5 S.L+2=S S.L-1=5 S.A-1=S R.L+2=S]   # r0_23603 colsum 0.007304745566 rc 0.006304745566
+w6b16p_11 EDGE(7->5)[S.L+1=7 S.L-1=S S.A-1=B R.L+2=7 R.L-2={5678}]   # r0_26570 colsum 0.006921816958 rc 0.005921816958
+w6b16p_12 EDGE(6->5)[S.L+1={5689} S.L+3=B S.L-1=S S.A-1=S]   # r0_17007 colsum 0.006889666452 rc 0.005889666452
+w6b16p_13 EDGE(6->5)[S.L+1=7 S.L+2={5678} S.L+3={78} S.L-1={69} S.L-2=S S.L-3={5678} S.A-1=S]   # r0_23178 colsum 0.006456480151 rc 0.005456480151
+w6b16p_14 EDGE(6->7)[S.L+1={5689} S.L+2=6 S.L+3={57} S.L-1={589} S.L-2=B S.L-3={567} S.A+1=S S.A-1={5689} R.L+2=B]   # r0_25743 colsum 0.006424295351 rc 0.005424295351
+w6b16p_15 EDGE(6->{89})[S.L+1={5689} S.L+2={589} S.L-1={5689} S.L-2={5789} S.A+1=S S.A-1=S]   # r0_15733 colsum 0.005550878054 rc 0.004550878054
+w6b16p_16 EDGE(6->8)[S.L+1={59} S.L+2=S S.L-1={59} S.L-2={567} S.A+1=S S.A-1=S]   # r0_24619_v8 colsum 0.005353098649 rc 0.004353098649
+w6b16p_17 EDGE(5->8)[S.L+1={578} S.L+2=S S.L+3={567} S.L-1=5 S.A-1=S]   # r0_17987 colsum 0.004978365103 rc 0.003978365103
+w6b16p_18 EDGE(5->5)[S.L-1={589} S.L-2=B S.L-3=B R.L+2=S R.L-2=S]   # r0_17108 colsum 0.004359802632 rc 0.003359802632
+w6b16p_19 EDGE(5->5)[S.L+1=S S.L+2=6 S.L-1=S S.A+1=S S.A-1=B]   # r0_13942 colsum 0.003914005693 rc 0.002914005693
+# ---- cg_keys_w6b16q_k86GS12.txt ----
+# W6b-16q (round16/pricing_k86GS12_01): improving EDGE keys priced on Opus's GS12 iteration-1 UPPER-LP dual (after separation)
+# (lpdual_k86GS12_01.json 626e6cf8: 1,821 rows; main LP on K3gB5k + the 260 keys of cg_keys_r13w16_16fikp.txt 0470c459 = 240 + w6b16p 20).
+# Load on top of cg_keys_r13w16_16fikp.txt; no key duplicates one of the 260 (canonical form).  Coefficients: the engine's current masked
+# KEYSPEC ones (no p1_r), rebuilt by W6r's k2eng on the K3g bef43766 stack (rules 2db75746, rpatN3 + offc, kill_patched298, c6le, f2b7);
+# all 1,821 rows rebuilt (2 separated receiver labels, R13 / R12, are inadmissible under K3g: logged, coefficients unaffected).
+# The dual is the exact optimal dual of t + 0.001 * sum(transfer columns) on these rows (restricted LP reproduces b.y 0.0197092, t 0.0130666),
+# so a key enters iff colsum > 0.001; rc = colsum - 0.001.  Rows are GS12's separated set at iteration 1: prices are still a guide.
+# Pool: one-step variants of the 260 keys (payer sets in {5,6,7}), 6 beam rounds of 40; set payers split; payee sets reduced when equal.
+# Diversity: greedy by colsum; distance >= 3 and effect cosine < 0.70 to every kept key; <= 3 keys per payer / payee letter, <= 10 per payer.
+# Ranked by colsum (sum_i w_i coef_i over the cert rows, > 0.001 improves; [M] float).  Payers 5, 6, 7 only, all single letters.
+# Each key passed the 5/6/7 test (t567_16q.json) and its coefficients equal p8lib's on the converted rows (check16q.json).
+w6b16q_00 EDGE(7->B)[S.L+2={5678} S.L-2={57} R.L+2={5689} R.L-2={5689}]   # b6_00017 colsum 0.08749615149 rc 0.08649615149
+w6b16q_01 EDGE(7->B)[S.L+2={6789} S.L-2={57} S.A-1={5678} R.L+2={5689} R.L-2={5679}]   # b5_00301 colsum 0.07250023419 rc 0.07150023419
+w6b16q_02 EDGE(7->B)[S.L+2={678} S.L-2=5 S.A-1={5678} R.L+2={5689}]   # b4_00185 colsum 0.06808986476 rc 0.06708986476
+w6b16q_03 EDGE(5->{5789})[S.L+1={567} S.L-1={6789} R.L+2=S]   # b6_00910_u5 colsum 0.03229142043 rc 0.03129142043
+w6b16q_04 EDGE(5->B)[S.L+1=B R.L+2=S R.L-2=S]   # b6_00791_u5 colsum 0.02818470174 rc 0.02718470174
+w6b16q_05 EDGE(5->B)[S.L-1=7 S.L-2={57} R.L-2=S]   # b6_00596_u5 colsum 0.02060695967 rc 0.01960695967
+w6b16q_06 EDGE(6->6)[S.L+1={6789} S.L+2=B S.L+3={5678} S.L-1={6789} S.L-2=B S.L-3={5678} R.L+2={5689} R.L-2={5689}]   # r0_25042 colsum 0.01973262223 rc 0.01873262223
+w6b16q_07 EDGE(6->6)[S.L+2=S S.L+3={5678} S.L-1={67} S.L-2=S S.L-3={5678} R.L+2=S R.L-2=B]   # r0_19298_v6 colsum 0.01462478302 rc 0.01362478302
+w6b16q_08 EDGE(6->6)[S.L+1={679} S.L-1={5689} R.L-2=S]   # r0_22843_v6 colsum 0.01372602396 rc 0.01272602396
+w6b16q_09 EDGE(6->7)[S.L+1=5 S.L+2={567} S.L+3={5678} S.L-1=6 S.L-2=S S.L-3={5678} S.A-1=S R.L+2=S R.L-2=B]   # r0_19524_v7 colsum 0.008723209051 rc 0.007723209051
+w6b16q_10 EDGE(7->5)[S.L+1={5689} S.L+2=S S.L+3={5678} S.L-1=6 S.L-2=S S.L-3={5678} S.A+1=S S.A-1=S R.L+2=S]   # r0_26104 colsum 0.007714152087 rc 0.006714152087
+w6b16q_11 EDGE(6->7)[S.L+1=S S.L+2=B S.L+3={567} S.L-1={67} S.L-2=6 S.L-3={567} S.A+1=S S.A-1=S R.L+2=S R.L-2=B]   # r0_24909 colsum 0.006801547955 rc 0.005801547955
+w6b16q_12 EDGE(6->5)[S.L+1={689} S.L+2=S S.L-1=S S.A-1=S]   # r0_24783 colsum 0.006275664911 rc 0.005275664911
+w6b16q_13 EDGE(7->5)[S.L+1=6 S.L-1=5 S.A+1=B S.A-1=B R.L+2={5679} R.L-2={5679}]   # r0_15728 colsum 0.005834737379 rc 0.004834737379
+w6b16q_14 EDGE(5->5)[S.L+1={567} S.L+2=B S.L-2=S R.L-2=S]   # r0_28082 colsum 0.005433414129 rc 0.004433414129
+w6b16q_15 EDGE(6->5)[S.L+1={569} S.L-1=S S.L-2=S S.A-1=B]   # r0_24734 colsum 0.005352394547 rc 0.004352394547
+w6b16q_16 EDGE(6->5)[S.L+1={5689} S.L+3=B S.L-1=S S.L-2=B S.A-1=S]   # r0_28365 colsum 0.00520360666 rc 0.00420360666
+w6b16q_17 EDGE(5->5)[S.L+1={5689} S.L+2=S S.L+3=S S.L-1={5789} S.L-2={5678} S.L-3={567} S.A+1=S R.L+2=B R.L-2=B]   # r0_06798 colsum 0.004967689534 rc 0.003967689534
+w6b16q_18 EDGE(7->5)[S.L+1=7 S.L-1=S S.A-1=B R.L+2={568} R.L-2={678}]   # r0_26573 colsum 0.004638606791 rc 0.003638606791
+w6b16q_19 EDGE(6->7)[S.L+1={57} S.L+2=6 S.L+3={567} S.L-1=5 S.L-3={567} S.A-1=S R.L+2=B]   # r0_10533 colsum 0.004339249021 rc 0.003339249021
+# ---- cg_keys_w6b16r_k86GS14.txt ----
+# W6b-16r (round16/pricing_k86GS14_01): improving EDGE keys priced on Opus's GS14 iteration-1 UPPER-LP dual (after separation)
+# (lpdual_k86GS14_01.json abb4c752: 1,905 rows; main LP on K3gB5l + the 280 keys of cg_keys_r13w16_16fikpq.txt 7ad4bf1f = 240 + w6b16p 20 + w6b16q 20).
+# Load on top of cg_keys_r13w16_16fikpq.txt; no key duplicates one of the 280 (canonical form).  Coefficients: the engine's current masked
+# KEYSPEC ones (no p1_r), rebuilt by W6r's k2eng on the K3g bef43766 stack (rules 2db75746, rpatN3 + offc, kill_patched298, c6le, f2b7);
+# all rows rebuilt (inadmissible-under-K3g receiver labels logged, coefficients unaffected); 16 target rows added at w = 0 (colsums unchanged).
+# The dual is the exact optimal dual of t + 0.001 * sum(transfer columns) on its rows, so a key enters iff colsum > 0.001; rc = colsum - 0.001.
+# Pool: one-step variants of the 280 keys (payer sets in {5,6,7}), 6 beam rounds of 40 by colsum + two target-credit beams; set payers split.
+# Diversity: greedy by colsum; distance >= 3 and effect cosine < 0.70 to every kept key; <= 3 keys per payer / payee letter, <= 10 per payer.
+# Ranked by colsum (sum_i w_i coef_i over the cert rows, > 0.001 improves; [M] float).  Payers 5, 6, 7 only, all single letters.
+# tgt = credit per unit key to the 26 distinct target rows (ST-83 top d7 class + W13 open rows): sum of OUT - IN on them.
+# Each key passed the 5/6/7 test (t567_16r.json) and its coefficients equal p8lib's on the converted rows (check16r.json).
+w6b16r_00 EDGE(7->B)[S.L+2={6789} S.L-1={6789} S.L-2={578} R.L+2={57} R.L-2={5678}]   # b6_00089 colsum 0.05866563207 rc 0.05766563207 tgt 3
+w6b16r_01 EDGE(7->{5689})[S.L+1={5679} S.L-2=S R.L-2={5678}]   # TPb4_01537 colsum 0.03057075049 rc 0.02957075049 tgt 54
+w6b16r_02 EDGE(7->B)[S.L+1={5789} S.L-1={67} S.L-2={589} R.L-2=S]   # b5_00646_u7 colsum 0.0290639131 rc 0.0280639131 tgt 4
+w6b16r_03 EDGE(5->{78})[S.L-1={567} S.L-2={589} R.L-2=S]   # b6_01600_u5 colsum 0.02439537407 rc 0.02339537407 tgt -106
+w6b16r_04 EDGE(5->B)[S.L-1=7 S.L-2=S R.L-2=S]   # r0_29889 colsum 0.02270747673 rc 0.02170747673 tgt -4
+w6b16r_05 EDGE(5->7)[S.L+1={567} S.L-1={6789} R.L+2=S R.L-2=B]   # r0_29708_v7 colsum 0.0164143583 rc 0.0154143583 tgt -3
+w6b16r_06 EDGE(5->8)[S.L+1=B S.L+2={5689} R.L+2=S R.L-2=S]   # r0_29737_v8 colsum 0.0157287567 rc 0.0147287567 tgt -35
+w6b16r_07 EDGE(7->7)[S.L+1={57} S.L+2={567} S.L-1=5 S.L-2=S S.A-1={569} R.L+2={568}]   # r0_16022 colsum 0.01465078863 rc 0.01365078863 tgt 0
+w6b16r_08 EDGE(7->5)[S.L+1=B S.L-2=S R.L-2={6789}]   # r0_26927_v5 colsum 0.01161082391 rc 0.01061082391 tgt 9
+w6b16r_09 EDGE(6->6)[S.L+2=S S.L-1=6 S.L-2=B]   # r0_25350 colsum 0.009836681008 rc 0.008836681008 tgt 0
+w6b16r_10 EDGE(6->6)[S.L+1={6789} S.L+2=S S.L-1={5689} S.L-2=S R.L+2=B R.L-2=B]   # r0_11675 colsum 0.008599398544 rc 0.007599398544 tgt 0
+w6b16r_11 EDGE(6->6)[S.L+1=B S.L-1={567} S.L-2=S R.L+2=S R.L-2=B]   # r0_27491 colsum 0.007527375419 rc 0.006527375419 tgt 0
+w6b16r_12 EDGE(6->5)[S.L+1={5689} S.L+3=B S.L-1=S S.A-1=S R.L-2=B]   # r0_28412 colsum 0.006026409599 rc 0.005026409599 tgt 0
+w6b16r_13 EDGE(6->5)[S.L+1={5689} S.L+3=B S.L-1=6 S.L-2=B S.A-1=S]   # r0_31078 colsum 0.006024825756 rc 0.005024825756 tgt 0
+w6b16r_14 EDGE(6->5)[S.L+1=7 S.L+2=B S.L-1=S S.A-1=S]   # r0_23041 colsum 0.005322595176 rc 0.004322595176 tgt 0
+w6b16r_15 EDGE(6->7)[S.L+1={679} S.L+2=S S.L-1=5 S.L-2={567} S.A-1=S]   # r0_15499 colsum 0.005192881052 rc 0.004192881052 tgt 0
+w6b16r_16 EDGE(7->5)[S.L+1=7 S.L+2=B S.L-1=S S.A-1=B R.L+2={568} R.L-2={5678}]   # r0_26473 colsum 0.005127103865 rc 0.004127103865 tgt 0
+w6b16r_17 EDGE(5->5)[S.L+1={567} S.L+2=B R.L-2=S]   # r0_30869 colsum 0.00489992015 rc 0.00389992015 tgt 0
+w6b16r_18 EDGE(7->6)[S.L+1=7 S.L-1=5 S.A-1=B R.L+2={569} R.L-2={567}]   # r0_18316 colsum 0.004355486409 rc 0.003355486409 tgt 0
+w6b16r_19 EDGE(7->6)[R.L+2={579} R.L-2={5679}]   # TPb5_01242_v6 colsum 0.004 rc 0.003 tgt 24
+# ---- cg_keys_w6b16r_T2.txt ----
+# W6b-16r target-relief keys (list T2 in final16r.json: best 5 by target credit among keys with colsum > 0.001), saved by the lead 9 Nov 17:10Z.
+# Priced on lpdual_k86GS14_01 (abb4c752) with the same pipeline and checks as cg_keys_w6b16r_k86GS14.txt (8d74f2e0): all pass the 5/6/7 test,
+# 0 converter mismatches. Each relieves all 8 d7 target rows (ST-83 top d7 class 5556858/9595785, 5556858/9595875 + 6 d7 rows of the W13/ST-76
+# open list) and loads none of the 26 targets. Load on top of the 280 keys (7ad4bf1f) together with the 20 keys of 8d74f2e0 (none duplicates them).
+w6b16r_T2_0 EDGE(7->{569})   # t16r_P0 colsum 0.01457 tgt 76 (a 20 / b 56)
+w6b16r_T2_1 EDGE(7->{5679})[S.L+1={5678} S.L-1={5678}]   # t16r_P1 colsum 0.00957 tgt 76
+w6b16r_T2_2 EDGE(7->{567})[S.L+1={5678} R.L+2={5679}]   # t16r_P2 colsum 0.00564 tgt 74
+w6b16r_T2_3 EDGE(7->S)[S.L+1={5678} R.L-2={5679}]   # t16r_P3 colsum 0.00250 tgt 73
+w6b16r_T2_4 EDGE(7->{5679})[R.L+2={5679} R.L-2={5679}]   # t16r_P4 colsum 0.02118 tgt 72 (a 16 / b 56)
