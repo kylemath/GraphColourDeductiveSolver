@@ -6,7 +6,7 @@ import Mathlib.Combinatorics.SimpleGraph.PlaneMap.EulerSharp
 
 Studio, 10 Nov. Initial charge `10 (6 − deg v)`. By Euler (`twice_edges_add_twelve_le`, EulerSharp: `2E + 12 ≤ 6n`) and the
 handshake lemma, the total charge is at least 120. A discharging transfer `τ` conserves the total, so some vertex ends
-positive. Proofs are `sorry` pending the review. No existing module is edited.
+positive. All three are proved (ST-114 step 3a); axioms: propext, Classical.choice, Quot.sound. No existing module is edited.
 -/
 
 namespace SimpleGraph.SphericalMap.RSSTSeed
