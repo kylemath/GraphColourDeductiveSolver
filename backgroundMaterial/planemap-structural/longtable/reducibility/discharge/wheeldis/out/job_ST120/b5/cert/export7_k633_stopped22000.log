@@ -1,0 +1,29 @@
+0 {'nodes': 1, 'kill_leaves': 1, 'links_dfs': 1, 'embs': 1} 0
+2000 {'nodes': 4908340, 'kill_leaves': 1205314, 'links_dfs': 1867, 'embs': 13401, 'ub_leaves': 1884902, 'links_ub0': 134} 495
+4000 {'nodes': 6757800, 'kill_leaves': 1628937, 'links_dfs': 3380, 'embs': 21462, 'ub_leaves': 2642858, 'links_ub0': 621} 680
+6000 {'nodes': 12962501, 'kill_leaves': 2936635, 'links_dfs': 4924, 'embs': 35110, 'ub_leaves': 5297492, 'links_ub0': 1077} 916
+8000 {'nodes': 29986961, 'kill_leaves': 6283571, 'links_dfs': 6588, 'embs': 59009, 'ub_leaves': 12747169, 'links_ub0': 1413} 1345
+10000 {'nodes': 35598701, 'kill_leaves': 7294148, 'links_dfs': 7896, 'embs': 70366, 'ub_leaves': 15285292, 'links_ub0': 2105} 1497
+12000 {'nodes': 36111813, 'kill_leaves': 7391591, 'links_dfs': 8789, 'embs': 75507, 'ub_leaves': 15514416, 'links_ub0': 3212} 1538
+14000 {'nodes': 36771510, 'kill_leaves': 7511527, 'links_dfs': 9822, 'embs': 81910, 'ub_leaves': 15814250, 'links_ub0': 4179} 1570
+16000 {'nodes': 37902262, 'kill_leaves': 7779719, 'links_dfs': 10754, 'embs': 86930, 'ub_leaves': 16255490, 'links_ub0': 5247} 1599
+18000 {'nodes': 45830244, 'kill_leaves': 9422023, 'links_dfs': 12408, 'embs': 101398, 'ub_leaves': 19666493, 'links_ub0': 5593} 1717
+20000 {'nodes': 58413962, 'kill_leaves': 11979791, 'links_dfs': 14099, 'embs': 122661, 'ub_leaves': 25171104, 'links_ub0': 5902} 1922
+22000 {'nodes': 73699213, 'kill_leaves': 14833664, 'links_dfs': 15512, 'embs': 141362, 'ub_leaves': 32169005, 'links_ub0': 6489} 2168
+Traceback (most recent call last):
+  File "/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b5/py/export_cert.py", line 278, in <module>
+    allL = list(itertools.product((5, 6, 7, 8, 9), repeat=d))
+  File "/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b5/py/export_cert.py", line 259, in main
+    
+  File "/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b5/py/export_cert.py", line 229, in do_link
+    return True
+  File "/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b5/py/export_cert.py", line 213, in run_dfs
+    
+  File "/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b5/py/export_cert.py", line 213, in run_dfs
+    
+  File "/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b5/py/export_cert.py", line 213, in run_dfs
+    
+  [Previous line repeated 11 more times]
+  File "/Users/kylemathewson/GraphColourDeductiveSolver/.claude/worktrees/inspiring-lamport-831744/backgroundMaterial/planemap-structural/longtable/reducibility/discharge/wheeldis/out/job_ST120/b5/py/export_cert.py", line 200, in run_dfs
+    
+__main__.Budget
