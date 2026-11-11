@@ -18,13 +18,13 @@ t = src
 prev = re.search(r'k86GL\((\d+)\|%d\) ' % old, t).group(1)
 t = t.replace('k86GL(%s|%d) ' % (prev, old), 'k86GL(%d|%d) ' % (old, new)).replace('GL%s/GL%d running' % (prev, old), 'GL%d/GL%d running' % (old, new))
 t = t.replace('launch_%s' % O, 'launch_%s' % W)
-t = re.sub(r'sol_k86GS22_in\d\d', CAND, t)
+t = re.sub(r'sol_k86GS\d+_in\d\d', CAND, t)
 L = t.split('\n')
 for i, l in enumerate(L):
     if l.startswith('export WARM='): L[i] = l + ',$N/warm/' + snap
     elif l.startswith(('nohup ', 'cd $N', 'sleep 2; echo')): L[i] = l.replace(O, W)
 t = '\n'.join(L)
-t = re.sub(r'after the GS22 in\d\d check', 'after the GS22 %s check' % CAND[-4:], t)
+t = re.sub(r'after the GS\d+ in\d\d check', 'after the %s %s check' % (CAND.split('_')[1][3:], CAND[-4:]), t)
 t = re.sub(r'GL17-\d+ rows', 'GL17-%d rows' % old, t)
 hdr = '# s86: %s (%s) = %s relaunched after the U86 check of %s (%s stopped at %s, for memory); warm += %s.  glswap86.py\n' % (
     W, time.strftime('%d %b %H:%MZ', time.gmtime()), O, CAND, O, itd, snap)
