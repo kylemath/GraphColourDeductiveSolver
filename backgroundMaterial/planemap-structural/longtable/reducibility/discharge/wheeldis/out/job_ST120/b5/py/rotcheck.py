@@ -28,7 +28,7 @@ def krot(line):
     cyc = {}
     for j in range(m):
         N = adj[('I', j)]
-        sub = {v: [w for w in adj[v] if w in N] for v in N}
+        sub = {v: sorted(w for w in adj[v] if w in N) for v in N}   # sorted: deterministic orientation
         if any(len(s) != 2 for s in sub.values()): raise ValueError('link of I%d is not a cycle' % j)
         start = min(N); seq = [start]; prev = None; cur = start
         while True:

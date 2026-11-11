@@ -13,12 +13,12 @@ line per link word: ORDER|k:e,e,..;k:e,.. listing only the embeddings the DFS us
 
 Codes: apex s_j -> 100+j, private p_i.(k+1) -> 200+3i+k. Window vertices: u 0, w_i 1+i, s_i 1+d+i, p_i.(k+1) 1+2d+3i+k.
 
-usage: python3 -I export_cert.py D OUTFILE [--model 633|582|583|names:FILE] [--links N] [--dump-inst FILE] [--sample K SEED] [--parts FILE] [--rotmin] [--links-file FILE]; --model also kc:FILE
+usage: python3 -I export_cert.py D OUTFILE [--model 633|582|583|names:FILE] [--links N] [--dump-inst FILE] [--sample K SEED] [--parts FILE] [--rotmin] [--links-file FILE] [--rot]; --model also kc:FILE
 """
 import os, sys, time, itertools, json, collections, hashlib
 H = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.normpath(os.path.join(H, '..', '..', '..'))
-sys.path.insert(0, os.path.join(OUT, 'job_RSST1SHOT', 'code'))
+sys.path.insert(0, os.path.join(OUT, 'job_RSST1SHOT', 'code')); sys.path.insert(0, H)
 import rcore as R
 
 FULL = R.FULL
@@ -112,6 +112,9 @@ def instances(W):
             if r: ins.append(r)
     return ins, outs
 
+ROT = [False]
+ROTW = [None]     # the Window when only rotation-respecting placements count (--rot), else None
+
 def embeddings(host, adj, p):
     """All injective induced degree-preserving maps of p's interior into the host graph (rcore.all_embeddings), keeping
     one embedding per minimal requirement. Returns list of (requirement frozenset of (host, letter) on variable hosts,
@@ -120,6 +123,11 @@ def embeddings(host, adj, p):
     U = sorted(deg)
     def rec(k):
         if k == len(order):
+            if ROTW[0] is not None:          # rotation-respecting under one chirality (= Lean rotOK)
+                import rotcheck as RC
+                Wn = ROTW[0]
+                letters = {h: (Wn.link[h[1]] if h[0] == 'w' else Wn.d if h == 'u' else deg[x]) for x, h in phi.items()}
+                if not RC.chirality(Wn, dict(phi), p['cyc'], letters)[0]: return
             req = frozenset((phi[x], deg[x]) for x in phi if len(host[phi[x]]) > 1)
             if req not in found: found[req] = [phi[x] for x in U]
             return
@@ -156,7 +164,9 @@ def prep_kc(line):
     order = [max(U, key=lambda u: (deg[u], len(E[u])))]; seen = set(order)
     while len(order) < m:
         b = max((u for u in U if u not in seen), key=lambda u: (len(E[u] & seen), deg[u])); order.append(b); seen.add(b)
-    return {'name': name, 'deg': deg, 'E': E, 'order': order, 'dm': collections.Counter(deg.values()), 'proved': True}
+    import rotcheck as RC
+    return {'name': name, 'deg': deg, 'E': E, 'order': order, 'dm': collections.Counter(deg.values()), 'proved': True,
+            'cyc': RC.krot(line)[3]}
 
 KLIST = {}
 def kill_list(model):
@@ -176,6 +186,7 @@ def kpos(model):
 
 def link_reqs(W, model, relevant):
     host, adj, var = R.window_hostgraph(W)
+    if ROT[0]: ROTW[0] = W
     hc = collections.Counter()
     for v, S in host.items():
         for x in S: hc[x] += 1
@@ -240,7 +251,8 @@ def simpR1(v, S, R_):
 
 class Budget(Exception): pass
 
-def run_dfs(base, vs, ins, outs, reqs, used, stats, maxnodes):
+FAILPATH = []
+def run_dfs(base, vs, ins, outs, reqs, used, stats, maxnodes, path=()):
     stats['nodes'] += 1
     if stats['nodes'] > maxnodes: raise Budget       # maxnodes is absolute: do_link sets it per link
     ub = base + len(ins) - sum(1 for cs, o in outs if not cs and not o)
@@ -249,13 +261,13 @@ def run_dfs(base, vs, ins, outs, reqs, used, stats, maxnodes):
     if empt:
         pick = next((ix for ix in empt if ix in used), empt[0]); used.add(pick); stats['kill_leaves'] += 1
         return True
-    if not vs: return False
+    if not vs: FAILPATH.append((list(path), ub)); return False
     (v, cls), rest = vs[0], vs[1:]
     for S in cls:
         i2 = [y for y in (simp1(v, S, x) for x in ins) if y is not None]
         o2 = [y for y in (simp1(v, S, x) for x in outs) if y is not None]
         r2 = [y for y in (simpR1(v, S, x) for x in reqs) if y is not None]
-        if not run_dfs(base, rest, i2, o2, r2, used, stats, maxnodes): return False
+        if not run_dfs(base, rest, i2, o2, r2, used, stats, maxnodes, path + ((v, S),)): return False
     return True
 
 def do_link(d, link, model, stats, maxnodes=10 ** 8):
@@ -294,10 +306,19 @@ def main():
         elif a[0] == '--dump-inst': dump = a[1]; a = a[2:]
         elif a[0] == '--sample': sample = (int(a[1]), int(a[2])); a = a[3:]
         elif a[0] == '--rotmin': rotmin = True; a = a[1:]
+        elif a[0] == '--rot': ROT[0] = True; a = a[1:]
         elif a[0] == '--links-file': linksfile = a[1]; a = a[2:]
         elif a[0] == '--parts':                      # replace the 71 parts (e.g. 71 + N2) by a parts file
             R.PARTS[:] = load_parts_file(a[1]); a = a[2:]
         else: raise SystemExit('bad arg ' + a[0])
+    # memory guard (ST-120: 20 GB free-memory floor): refuse to start below 24 GB free+inactive
+    try:
+        import subprocess, re as _re
+        vm = subprocess.run(['vm_stat'], capture_output=True, text=True).stdout
+        pg = 16384 * sum(int(_re.search(r'%s:\s+(\d+)' % k, vm).group(1)) for k in ('Pages free', 'Pages inactive', 'Pages speculative'))
+        if pg < 24e9: raise SystemExit('memory guard: only %.1f GB free+inactive' % (pg / 1e9))
+    except SystemExit: raise
+    except Exception: pass
     stats = collections.Counter(); t0 = time.time()
     lines = []; dl = []
     if linksfile is not None:       # d >= 9: exactly the Lean search's survivors, in its order (RSSTD9Core.linkSurv)
@@ -315,11 +336,16 @@ def main():
         if nlinks is not None and n >= nlinks: break
         line, ins, outs = do_link(d, link, model, stats)
         if line is None:
-            print('FAILED link', ''.join(map(str, link)), flush=True); line = ''
+            fp = FAILPATH[-1] if FAILPATH else ([], None)
+            print('FAILED link', ''.join(map(str, link)), 'hi', fp[1], 'state',
+                  ' '.join('%d=%s' % (v, ''.join(map(str, S))) for v, S in fp[0]), flush=True); line = ''
         lines.append(line)
         if dump is not None:
             dl.append('%s in %s out %s' % (''.join(map(str, link)), ' '.join(sorted(inst_str(x) for x in ins)),
                                           ' '.join(sorted(inst_str(x) for x in outs))))
+        if n % 200 == 0:
+            import resource
+            if resource.getrusage(resource.RUSAGE_SELF).ru_maxrss > 8e9: raise SystemExit('memory guard: RSS > 8 GB')
         if n % 2000 == 0:
             print(n, dict(stats), round(time.time() - t0), flush=True)
     hdr = '# ST-120 B5 certificate d=%d model=K%s links=%d (allWords order%s); exporter export_cert.py; rcore 3d133146' % (d, model, len(lines), ', rotmin' if rotmin else '')
