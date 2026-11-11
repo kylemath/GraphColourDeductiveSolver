@@ -13,7 +13,7 @@ line per link word: ORDER|k:e,e,..;k:e,.. listing only the embeddings the DFS us
 
 Codes: apex s_j -> 100+j, private p_i.(k+1) -> 200+3i+k. Window vertices: u 0, w_i 1+i, s_i 1+d+i, p_i.(k+1) 1+2d+3i+k.
 
-usage: python3 -I export_cert.py D OUTFILE [--model 633|582|583|names:FILE] [--links N] [--dump-inst FILE] [--sample K SEED] [--parts FILE]
+usage: python3 -I export_cert.py D OUTFILE [--model 633|582|583|names:FILE] [--links N] [--dump-inst FILE] [--sample K SEED] [--parts FILE] [--rotmin]; --model also kc:FILE
 """
 import os, sys, time, itertools, json, collections, hashlib
 H = os.path.dirname(os.path.abspath(__file__))
@@ -146,6 +146,29 @@ def kill_sel(model):
         return [i for i, p in enumerate(R.CONFIGS) if p['name'] in nm]
     raise SystemExit('unknown model ' + model)
 
+def prep_kc(line):
+    """A configuration from a kc line (name r m ringnbrs interiornbrs), interior vertices 0..m-1 (rsst.txt format)."""
+    f = line.split(); name, r, m = f[0], int(f[1]), int(f[2])
+    rl = [[] if x == '-' else x.split(',') for x in f[3].split(';')]
+    il = [[] if x == '-' else [int(y) for y in x.split(',')] for x in f[4].split(';')]
+    deg = {j: len(rl[j]) + len(il[j]) for j in range(m)}; E = {j: set(il[j]) for j in range(m)}
+    U = list(range(m))
+    order = [max(U, key=lambda u: (deg[u], len(E[u])))]; seen = set(order)
+    while len(order) < m:
+        b = max((u for u in U if u not in seen), key=lambda u: (len(E[u] & seen), deg[u])); order.append(b); seen.add(b)
+    return {'name': name, 'deg': deg, 'E': E, 'order': order, 'dm': collections.Counter(deg.values()), 'proved': True}
+
+KLIST = {}
+def kill_list(model):
+    """[(Lean kill-list index, config dict)]: rsst models select from rcore.CONFIGS; 'kc:FILE' loads kc lines
+    (e.g. st127/k767_kc.txt, the 768-entry list) in file order."""
+    if model not in KLIST:
+        if model.startswith('kc:'):
+            KLIST[model] = list(enumerate(prep_kc(l) for l in open(model[3:]) if l.strip()))
+        else:
+            KLIST[model] = [(k, R.CONFIGS[ci]) for k, ci in enumerate(kill_sel(model))]
+    return KLIST[model]
+
 KSEL = {}
 def kpos(model):
     if model not in KSEL: KSEL[model] = {ci: k for k, ci in enumerate(kill_sel(model))}
@@ -157,15 +180,14 @@ def link_reqs(W, model, relevant):
     for v, S in host.items():
         for x in S: hc[x] += 1
     out = []
-    for ci, p in enumerate(R.CONFIGS):
-        if ci not in kpos(model): continue
+    for ci, p in kill_list(model):
         if len(p['deg']) > len(host): continue
         if any(hc[x] < m for x, m in p['dm'].items()): continue
         for rq, emb in embeddings(host, adj, p):
             req = tuple(sorted((var_code(var[h]), L) for h, L in rq))
             if relevant is not None and any(c not in relevant for c, _ in req): continue
             out.append((req, ci, [vcode(W.d, h) for h in emb]))
-    out.sort(key=lambda t: (len(t[0]), not R.CONFIGS[t[1]]['proved']))
+    out.sort(key=lambda t: len(t[0]))
     return out
 
 REQ_CACHE = {}
@@ -254,7 +276,7 @@ def do_link(d, link, model, stats, maxnodes=10 ** 8):
         stats['FAILED_links'] += 1
         return None, ins, outs
     stats['links_dfs'] += 1; stats['embs'] += len(used)
-    embs = ';'.join('%d:%s' % (kpos(model)[rq[k][1]], ','.join(map(str, rq[k][2]))) for k in sorted(used))
+    embs = ';'.join('%d:%s' % (rq[k][1], ','.join(map(str, rq[k][2]))) for k in sorted(used))
     return '%s|%s' % (','.join(map(str, rel)), embs), ins, outs
 
 def inst_str(inst):
@@ -263,19 +285,22 @@ def inst_str(inst):
 
 def main():
     d = int(sys.argv[1]); outf = sys.argv[2]
-    model = '633'; nlinks = None; dump = None; sample = None
+    model = '633'; nlinks = None; dump = None; sample = None; rotmin = False
     a = sys.argv[3:]
     while a:
         if a[0] == '--model': model = a[1]; a = a[2:]
         elif a[0] == '--links': nlinks = int(a[1]); a = a[2:]
         elif a[0] == '--dump-inst': dump = a[1]; a = a[2:]
         elif a[0] == '--sample': sample = (int(a[1]), int(a[2])); a = a[3:]
+        elif a[0] == '--rotmin': rotmin = True; a = a[1:]
         elif a[0] == '--parts':                      # replace the 71 parts (e.g. 71 + N2) by a parts file
             R.PARTS[:] = load_parts_file(a[1]); a = a[2:]
         else: raise SystemExit('bad arg ' + a[0])
     stats = collections.Counter(); t0 = time.time()
     lines = []; dl = []
     allL = list(itertools.product((5, 6, 7, 8, 9), repeat=d))
+    if rotmin:                      # one representative per rotation class: the least rotation (= Lean isRotMin)
+        allL = [L for L in allL if L == min(L[r:] + L[:r] for r in range(d))]
     if sample is not None:          # instance dumps only (the certificate is then not a full one)
         import random
         allL = sorted(random.Random(sample[1]).sample(allL, sample[0]))
@@ -290,7 +315,7 @@ def main():
                                           ' '.join(sorted(inst_str(x) for x in outs))))
         if n % 2000 == 0:
             print(n, dict(stats), round(time.time() - t0), flush=True)
-    hdr = '# ST-120 B5 certificate d=%d model=K%s links=%d (allWords order); exporter export_cert.py; rcore 3d133146' % (d, model, len(lines))
+    hdr = '# ST-120 B5 certificate d=%d model=K%s links=%d (allWords order%s); exporter export_cert.py; rcore 3d133146' % (d, model, len(lines), ', rotmin' if rotmin else '')
     txt = hdr + '\n' + '\n'.join(lines) + '\n'
     open(outf, 'w').write(txt)
     if dump is not None: open(dump, 'w').write('\n'.join(dl) + '\n')
