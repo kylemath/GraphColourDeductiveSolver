@@ -1,0 +1,38 @@
+cumulative profiling times:
+	.olean serialization 3.14ms
+	attribute application 0.0218ms
+	compilation (IR) 0.234ms
+	compilation (LCNF base) 6.97ms
+	compilation (LCNF impure) 0.885ms
+	compilation (LCNF mono) 1.53ms
+	do element elaborator 10.5ms
+	elaboration 26.8ms
+	fix level params 0.028ms
+	instantiate metavars 0.0747ms
+	interpretation 23.1s
+	let-to-have transformation 0.461ms
+	linting 1.19ms
+	module linting 0.001ms
+	parsing 1.25ms
+	process pre-definitions 1.58ms
+	share common exprs 0.207ms
+	type checking 0.728ms
+	typeclass inference 8ms
+       23.45 real        18.04 user         0.19 sys
+           430915584  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               39066  page reclaims
+                   3  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   0  voluntary context switches
+                3503  involuntary context switches
+        321894003398  instructions retired
+         64665258376  cycles elapsed
+            92003192  peak memory footprint

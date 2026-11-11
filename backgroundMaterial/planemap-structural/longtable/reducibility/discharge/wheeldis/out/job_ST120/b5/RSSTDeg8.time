@@ -1,0 +1,40 @@
+cumulative profiling times:
+	.olean serialization 4.3ms
+	attribute application 0.0337ms
+	compilation (IR) 0.735ms
+	compilation (LCNF base) 2.99ms
+	compilation (LCNF impure) 0.248ms
+	compilation (LCNF mono) 2.27ms
+	elaboration 945s
+	fix level params 0.0127ms
+	instantiate metavars 0.0147ms
+	interpretation 945s
+	let-to-have transformation 0.0154ms
+	linting 72.2ms
+	module linting 0.00125ms
+	overlappingInstancesLinter 6.23ms
+	parsing 1.02ms
+	process pre-definitions 0.291ms
+	share common exprs 0.599ms
+	tactic execution 0.77ms
+	tacticAnalysis 8.32ms
+	type checking 2.75ms
+	typeclass inference 1.48ms
+      948.57 real       941.09 user         4.75 sys
+          3279257600  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              273232  page reclaims
+                 543  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                  19  voluntary context switches
+              357009  involuntary context switches
+      19279623992471  instructions retired
+       3654752168490  cycles elapsed
+           606720224  peak memory footprint

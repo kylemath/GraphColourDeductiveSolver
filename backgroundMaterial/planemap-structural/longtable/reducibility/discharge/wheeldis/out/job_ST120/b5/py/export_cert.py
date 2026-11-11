@@ -13,7 +13,7 @@ line per link word: ORDER|k:e,e,..;k:e,.. listing only the embeddings the DFS us
 
 Codes: apex s_j -> 100+j, private p_i.(k+1) -> 200+3i+k. Window vertices: u 0, w_i 1+i, s_i 1+d+i, p_i.(k+1) 1+2d+3i+k.
 
-usage: python3 -I export_cert.py D OUTFILE [--model 633|582|583|names:FILE] [--links N] [--dump-inst FILE] [--sample K SEED] [--parts FILE] [--rotmin] [--links-file FILE] [--rot]; --model also kc:FILE
+usage: python3 -I export_cert.py D OUTFILE [--model 633|582|583|names:FILE] [--links N] [--dump-inst FILE] [--sample K SEED] [--parts FILE] [--rotmin] [--links-file FILE] [--rot] [--census FILE]; --model also kc:FILE
 """
 import os, sys, time, itertools, json, collections, hashlib
 H = os.path.dirname(os.path.abspath(__file__))
@@ -252,6 +252,7 @@ def simpR1(v, S, R_):
 class Budget(Exception): pass
 
 FAILPATH = []
+CENSUS = [None, '']    # [open file, current link word]
 def run_dfs(base, vs, ins, outs, reqs, used, stats, maxnodes, path=()):
     stats['nodes'] += 1
     if stats['nodes'] > maxnodes: raise Budget       # maxnodes is absolute: do_link sets it per link
@@ -261,7 +262,13 @@ def run_dfs(base, vs, ins, outs, reqs, used, stats, maxnodes, path=()):
     if empt:
         pick = next((ix for ix in empt if ix in used), empt[0]); used.add(pick); stats['kill_leaves'] += 1
         return True
-    if not vs: FAILPATH.append((list(path), ub)); return False
+    if not vs:
+        FAILPATH.append((list(path), ub))
+        if CENSUS[0] is not None:            # census mode: record every failing leaf and go on
+            CENSUS[0].write('%s\t%d\t%s\n' % (CENSUS[1], ub, ' '.join('%d=%s' % (v, ''.join(map(str, S))) for v, S in path)))
+            stats['census_leaves'] += 1
+            return True
+        return False
     (v, cls), rest = vs[0], vs[1:]
     for S in cls:
         i2 = [y for y in (simp1(v, S, x) for x in ins) if y is not None]
@@ -307,6 +314,7 @@ def main():
         elif a[0] == '--sample': sample = (int(a[1]), int(a[2])); a = a[3:]
         elif a[0] == '--rotmin': rotmin = True; a = a[1:]
         elif a[0] == '--rot': ROT[0] = True; a = a[1:]
+        elif a[0] == '--census': CENSUS[0] = open(a[1], 'w'); a = a[2:]
         elif a[0] == '--links-file': linksfile = a[1]; a = a[2:]
         elif a[0] == '--parts':                      # replace the 71 parts (e.g. 71 + N2) by a parts file
             R.PARTS[:] = load_parts_file(a[1]); a = a[2:]
@@ -334,7 +342,9 @@ def main():
         allL = sorted(random.Random(sample[1]).sample(allL, sample[0]))
     for n, link in enumerate(allL):
         if nlinks is not None and n >= nlinks: break
+        CENSUS[1] = ''.join(map(str, link)); nfail0 = stats['census_leaves']
         line, ins, outs = do_link(d, link, model, stats)
+        if CENSUS[0] is not None and stats['census_leaves'] > nfail0: stats['census_links'] += 1; CENSUS[0].flush()
         if line is None:
             fp = FAILPATH[-1] if FAILPATH else ([], None)
             print('FAILED link', ''.join(map(str, link)), 'hi', fp[1], 'state',
