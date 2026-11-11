@@ -13,7 +13,7 @@ line per link word: ORDER|k:e,e,..;k:e,.. listing only the embeddings the DFS us
 
 Codes: apex s_j -> 100+j, private p_i.(k+1) -> 200+3i+k. Window vertices: u 0, w_i 1+i, s_i 1+d+i, p_i.(k+1) 1+2d+3i+k.
 
-usage: python3 -I export_cert.py D OUTFILE [--model 633|582|583|names:FILE] [--links N] [--dump-inst FILE] [--sample K SEED] [--parts FILE] [--rotmin]; --model also kc:FILE
+usage: python3 -I export_cert.py D OUTFILE [--model 633|582|583|names:FILE] [--links N] [--dump-inst FILE] [--sample K SEED] [--parts FILE] [--rotmin] [--links-file FILE]; --model also kc:FILE
 """
 import os, sys, time, itertools, json, collections, hashlib
 H = os.path.dirname(os.path.abspath(__file__))
@@ -285,7 +285,8 @@ def inst_str(inst):
 
 def main():
     d = int(sys.argv[1]); outf = sys.argv[2]
-    model = '633'; nlinks = None; dump = None; sample = None; rotmin = False
+    model = '633'; nlinks = None; dump = None; sample = None; rotmin = False; linksfile = None
+    R.U_HOST_ALWAYS = True          # errata (spec §14): u is a host at every degree (no change for d <= 8)
     a = sys.argv[3:]
     while a:
         if a[0] == '--model': model = a[1]; a = a[2:]
@@ -293,12 +294,18 @@ def main():
         elif a[0] == '--dump-inst': dump = a[1]; a = a[2:]
         elif a[0] == '--sample': sample = (int(a[1]), int(a[2])); a = a[3:]
         elif a[0] == '--rotmin': rotmin = True; a = a[1:]
+        elif a[0] == '--links-file': linksfile = a[1]; a = a[2:]
         elif a[0] == '--parts':                      # replace the 71 parts (e.g. 71 + N2) by a parts file
             R.PARTS[:] = load_parts_file(a[1]); a = a[2:]
         else: raise SystemExit('bad arg ' + a[0])
     stats = collections.Counter(); t0 = time.time()
     lines = []; dl = []
-    allL = list(itertools.product((5, 6, 7, 8, 9), repeat=d))
+    if linksfile is not None:       # d >= 9: exactly the Lean search's survivors, in its order (RSSTD9Core.linkSurv)
+        allL = [tuple(int(c) for c in l.strip()) for l in open(linksfile) if l.strip()]
+    else:                           # (never materialise 5^d words for d >= 9)
+        assert d <= 8, 'use --links-file for d >= 9'
+        allL = list(itertools.product((5, 6, 7, 8, 9), repeat=d))
+        assert all(len(L) == d for L in allL)
     if rotmin:                      # one representative per rotation class: the least rotation (= Lean isRotMin)
         allL = [L for L in allL if L == min(L[r:] + L[:r] for r in range(d))]
     if sample is not None:          # instance dumps only (the certificate is then not a full one)

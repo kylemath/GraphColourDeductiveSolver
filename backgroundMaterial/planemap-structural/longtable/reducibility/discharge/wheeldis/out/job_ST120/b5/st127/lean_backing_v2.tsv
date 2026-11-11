@@ -1,0 +1,769 @@
+# name	group	status	module_or_queue	evidence_path  (ST-127 lean backing of k767_kc.txt; built = status exit=0 sorry=0 error=0 or ST-113/ST-122 documented; paths relative to wheeldis/out)	literal_check(v2)
+rsst000_0o7322	582	queued	ST-120 R queue: job_HDRS403 HDRS403V197	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst001_2o122	582	built	HDR5:HDR5V00	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst002_3o442802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V194	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst003_2o126	2.126	built	C2o126Final (ST-123 route (i), ring-merging X; also C2o126HC/C2o126Glue/HC2o126_00/HC2o126Rot)	job_ST123/lean/status.txt: C2o126Final exit=0 wall=4s sorry=0 error=0 rss=3018MB 21:18	
+rsst004_0o453962	582	built	HDR5:HDR5V01	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst005_3o1306802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V190	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst006_2o7566	582	built	HDR5:HDR5V02	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst007_0o79077722	582	queued	ST-120 R queue: job_HDRS403 HDRS403V195	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst008_3o460806	582	built	HD0:HDCtrlV00	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst009_3o1306806	582	built	HD0:HDCtrlV01	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst011_0o79077962	582	queued	ST-120 R queue: job_HDRS403 HDRS403V191	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst012_2o22086	582	built	HD0:HDCtrlV02	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst013_2o453966	582	built	iso witness nl0016_r10 -> HDCV.hD_4 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V174 lock-skipped	
+rsst015_3o1551602	582	queued	ST-120 R queue: job_HDRS403 HDRS403V142	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst016_2o25866	582	built	HDC502:HDCV36	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst017_2o1325166	582	built	HDC502:HDCV37	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst018_2o79077962	582	queued	ST-120 R queue: job_HDRS403 HDRS403V175	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst020_2o79077966	582	queued	ST-120 R queue: job_HDRS403 HDRS403V143	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst021_2o1551966	582	queued	ST-120 R queue: job_HDRS403 HDRS403V70	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst023_122o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V196	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst024_122o442802	582	built	HDR5:HDR5V03	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst025_122o126	582	built	iso witness f7_...5565_....... -> CXI.hC_20 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V204 lock-skipped	
+rsst026_122o363	582	built	HDR5:HDR5V04	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst027_122o1306802	582	built	HDC502:HDCV12	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst029_3o3682802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V176	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst030_123o442806	582	built	HDC502:HDCV13	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst031_122o368	582	built	iso witness f7_...5566_.....5. -> CXI.hC_21 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V196 lock-skipped	
+rsst032_122o7566	582	queued	ST-120 R queue: job_HDRS403 HDRS403V177	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst033_126o128	582	built	iso witness f7_...5665_.....5. -> CXI.hC_27 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V197 lock-skipped	
+rsst034_126o363	582	built	iso witness f7_...5656_.....5. -> CXI.hC_26 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V198 lock-skipped	
+rsst035_126o7562	582	built	iso witness f7_..56565_....... -> CXI.hC_50 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V199 lock-skipped	
+rsst036_128o126	582	queued	ST-120 R queue: job_HDRS403 HDRS403V178	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst037_0o260517722	582	queued	ST-120 R queue: job_HDRS403 HDRS403V192	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst040_3o3682806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V144	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst041_3o3686402	582	queued	ST-120 R queue: job_HCRS403 RS403V168	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst042_3o3700802	582	queued	ST-120 R queue: job_HCRS403 RS403V169	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst043_128o442806	582	built	HDC502:HDCV38	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst044_182o1307280	582	queued	ST-120 R queue: job_HDRS403 HDRS403V179	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst045_182o1310580	582	queued	ST-120 R queue: job_HDRS403 HDRS403V180	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst046_126o7566	582	built	iso witness f7_..56665_....... -> CXI.hC_56 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V170 lock-skipped	
+rsst047_0o82101962	582	queued	ST-120 R queue: job_HDRS403 HDRS403V181	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst048_2o454806	582	built	iso witness f7_...5666_....55. -> CXI.hC_29 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V171 lock-skipped	
+rsst049_2o490086	582	built	HDC502:HDCV39	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst050_2o504366	582	built	iso witness nl0092_r11 -> HDCV.hD_20 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V145 lock-skipped	
+rsst051_2o1368362	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst052_122o431	582	built	HDC502:HDCV40	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst053_122o22086	582	built	iso witness f7_..55666_.....5. -> CXI.hC_41 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V172 lock-skipped	
+rsst054_126o191	582	built	iso witness f7_...5665_.....65 -> CXI.hC_28 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V173 lock-skipped	
+rsst055_126o428	582	built	CR118:R118V.hC_117	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst056_126o21786	582	queued	ST-120 R queue: job_HDRS403 HDRS403V146	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst057_126o22082	582	built	iso witness f7_..56566_.....5. -> CXI.hC_51 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V174 lock-skipped	
+rsst058_126o453962	582	queued	ST-120 R queue: job_HDRS403 HDRS403V147	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst059_186o368	582	built	iso witness f7_...5666_...5.5. -> CXI.hC_30 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V175 lock-skipped	
+rsst060_482o368	582	built	HDC502:HDCV41	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst062_3o3700806	582	queued	ST-120 R queue: job_HCRS403 RS403V121	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst064_128o1306806	582	built	HDC502:HDCV97	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst066_3o3927602	582	queued	ST-120 R queue: job_HDRS403 HDRS403V71	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst067_131o442807	582	queued	ST-120 R queue: job_HDRS403 HDRS403V72	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst068_182o1325280	582	queued	ST-120 R queue: job_HDRS403 HDRS403V73	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst069_184o460806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V148	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst070_184o1306806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V149	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst071_186o1307280	582	queued	ST-120 R queue: job_HDRS403 HDRS403V150	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst072_2o1368366	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst073_126o431	582	built	CR118:R118V.hC_116	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst074_126o22086	582	built	iso witness f7_..56666_.....5. -> CXR.hC_15 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V122 lock-skipped	
+rsst075_126o453966	582	queued	ST-120 R queue: job_HDRS403 HDRS403V74	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst076_0o57693962	582	queued	ST-120 R queue: job_HDRS403 HDRS403V182	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst077_2o448026	582	queued	ST-120 R queue: job_HDRS403 HDRS403V151	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst078_2o745566	582	built	HDC502:HDCV98	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst079_2o1609562	582	queued	ST-120 R queue: job_HCRS403 RS403V123	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst080_2o3701166	582	built	HDC502:HDCV99	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst081_2o260517962	582	built	iso witness nl0145_r11 -> HDCV.hD_25 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V152 lock-skipped	
+rsst083_482o431	582	built	iso witness nl0154_r12 -> HDCV.hD_48 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V75 lock-skipped	
+rsst084_486o191	582	queued	ST-120 R queue: job_HDRS403 HDRS403V76	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst085_486o428	582	built	iso witness nl0158_r12 -> HDCV.hD_49 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module HDRS403V77 lock-skipped	
+rsst086_3o1339217	582	queued	ST-120 R queue: job_HDRS403 HDRS403V22	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst087_3o3927606	582	queued	ST-120 R queue: job_HDRS403 HDRS403V23	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst090_3o5439602	582	queued	ST-120 R queue: job_HDRS403 HDRS403V24	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst091_182o1339680	582	queued	ST-120 R queue: job_HDRS403 HDRS403V78	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst092_182o1342980	582	queued	ST-120 R queue: job_HDRS403 HDRS403V79	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst093_184o1310466	582	queued	ST-120 R queue: job_HDRS403 HDRS403V80	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst094_2o1609566	582	queued	ST-120 R queue: job_HCRS403 RS403V56	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst095_2o3711966	582	built	CR118:R118V.hC_115	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst096_2o82101966	582	built	HDC502:HDCV100	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst097_2o209109966	582	built	HDC502:HDCV101	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst098_2o260517966	582	built	iso witness nl0201_r12 -> HDCV.hD_56 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V81 lock-skipped	
+rsst099_122o79077966	582	queued	ST-120 R queue: job_HDRS403 HDRS403V82	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst100_126o22326	582	built	CR118:R118V.hC_114	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst101_126o25866	582	built	CR118:R118V.hC_113	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst102_126o1325166	582	built	iso witness f7_.566666_.....5. -> CXI.hC_84 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V57 lock-skipped	
+rsst103_486o22086	582	built	iso witness f7_..66666_..5..5. -> CXI.hC_73 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V58 lock-skipped	
+rsst104_2o44733966	582	built	HDC502:HDCV42	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst105_482o611	582	built	HDC502:HDCV223	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst106_186o1329060	582	queued	ST-120 R queue: job_HDRS403 HDRS403V25	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst107_186o1342980	582	queued	ST-120 R queue: job_HDRS403 HDRS403V26	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst108_3o351237966	582	built	iso witness nl0252_r12 -> HDCV.hD_61 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V83 lock-skipped	
+rsst109_126o36666	582	built	HDC502:HDCV329	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst110_122o140	582	queued	ST-120 R queue: job_HDRS403 HDRS403V183	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst111_123o136	582	built	iso witness f7_...5575_....5.. -> CXI.hC_22 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V200 lock-skipped	
+rsst112_122o1023	582	built	iso witness f8_.....555_....5775 -> HDCV.hD_3 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V184 lock-skipped	
+rsst113_140o442802	582	built	iso witness f7_.55.575_.5...5. -> CXI.hC_74 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V176 lock-skipped	
+rsst114_123o442817	582	queued	ST-120 R queue: job_HDRS403 HDRS403V153	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst116_0o211701722	582	built	iso witness f7_...5756_....55. -> CXI.hC_34 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V201 lock-skipped	
+rsst117_122o207	582	built	HDC502:HDCV43	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst118_122o1024	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst119_122o1028	582	built	HDC502:HDCV44	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst120_122o8406	582	built	iso witness f7_..55675_.....5. -> HDCV.hD_14 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V154 lock-skipped	
+rsst121_122o22802	582	built	iso witness f7_..55576_.....5. -> CXI.hC_40 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V177 lock-skipped	
+rsst122_123o7576	582	built	iso witness f7_..55765_...5... -> CXI.hC_48 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V178 lock-skipped	
+rsst123_126o200	582	built	iso witness f7_...5675_.....55 -> CXR.hC_3 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V179 lock-skipped	
+rsst124_126o8163	582	built	iso witness f7_..56575_....5.. -> CXI.hC_54 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V180 lock-skipped	
+rsst125_126o8402	582	built	iso witness f7_..56575_.....5. -> CXI.hC_52 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V181 lock-skipped	
+rsst126_122o3700802	582	built	CR118:R118V.hC_112	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst128_140o1306802	582	built	iso witness f7_.56.575_.5...5. -> CXI.hC_78 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V124 lock-skipped	
+rsst129_482o1023	582	built	iso witness f8_....5555_....6775 -> HDCV.hD_15 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module HDRS403V155 lock-skipped	
+rsst130_124o442817	582	built	CR118:R118V.hC_111	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst131_128o442817	582	built	CR118:R118V.hC_110	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst132_182o1368180	582	queued	ST-120 R queue: job_HDRS403 HDRS403V84	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst133_182o3683280	582	built	HDC502:HDCV45	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst134_0o81288362	582	built	iso witness f7_...5756_....65. -> CXI.hC_36 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V182 lock-skipped	
+rsst135_0o211701962	582	built	iso witness f7_...5756_....56. -> CXI.hC_35 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V183 lock-skipped	
+rsst136_2o490806	582	built	iso witness f7_...5766_....55. -> CXI.hC_37 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V125 lock-skipped	
+rsst137_122o1031	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst138_122o22806	582	built	iso witness f7_..55676_.....5. -> CXI.hC_46 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V126 lock-skipped	
+rsst139_126o207	582	built	iso witness f7_...5675_.....65 -> CXR.hC_4 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V127 lock-skipped	
+rsst140_126o1024	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst141_126o7580	582	built	iso witness f7_..56765_....5.. -> CXI.hC_61 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V128 lock-skipped	
+rsst143_126o8406	582	built	iso witness f7_..56675_.....5. -> CXI.hC_57 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V129 lock-skipped	
+rsst144_126o22802	582	built	iso witness f7_..56576_.....5. -> CXR.hC_14 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V130 lock-skipped	
+rsst145_2o3744362	582	built	CR118:R118V.hC_109	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst146_122o26822	582	built	HDC502:HDCV102	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst147_126o12422	582	built	iso witness f7_..56575_.....65 -> CXI.hC_53 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V131 lock-skipped	
+rsst148_126o61682	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst149_126o489786	582	queued	ST-120 R queue: job_HDRS403 HDRS403V85	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst150_126o504126	582	queued	ST-120 R queue: job_HDRS403 HDRS403V86	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst152_140o22082	582	built	iso witness f7_..57566_...5.5. -> CXI.hC_63 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V132 lock-skipped	
+rsst153_196o428	582	built	HDC502:HDCV103	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst154_196o21786	582	queued	ST-120 R queue: job_HDRS403 HDRS403V87	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst155_196o22082	582	queued	ST-120 R queue: job_HDRS403 HDRS403V88	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst156_482o1028	582	built	HDC502:HDCV104	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst157_486o1023	582	built	HDC502:HDCV105	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst158_496o188	582	built	iso witness f7_...5676_..55.5. -> CXR.hC_7 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V133 lock-skipped	
+rsst159_124o460817	582	built	iso witness tw_d7_w7_p1_73_fx_0 -> A5CV.hC_6 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V59 lock-skipped	
+rsst160_124o1306817	582	built	CR118:R118V.hC_30	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst161_128o460817	582	built	iso witness tw_d7_w7_p1_765_fx_0 -> A5CV.hC_7 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V60 lock-skipped	
+rsst162_128o1306817	582	built	CR118:R118V.hC_29	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst163_128o3700802	582	built	CR118:R118V.hC_28	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst164_140o1310462	582	built	iso witness f7_.56.575_56...5. -> CXI.hC_80 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V61 lock-skipped	
+rsst166_149o442806	582	built	CR118:R118V.hC_108	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst167_186o504480	582	queued	ST-120 R queue: job_HDRS403 HDRS403V27	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst169_128o442819	582	queued	ST-120 R queue: job_HCRS403 RS403V62	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst170_182o3701280	582	queued	ST-120 R queue: job_HDRS403 HDRS403V28	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst171_182o3711780	582	built	CR118:R118V.hC_107	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst172_184o511206	582	queued	ST-120 R queue: job_HDRS403 HDRS403V89	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst173_184o3682806	582	built	HDC502:HDCV106	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst174_186o1308120	582	built	HDC502:HDCV107	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst175_186o3683280	582	queued	ST-120 R queue: job_HDRS403 HDRS403V90	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst176_197o1307280	582	built	HDC502:HDCV108	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst177_2o1325780	582	built	CR118:R118V.hC_106	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst178_2o211701962	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst179_122o23346	582	built	CR118:R118V.hC_27	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst180_122o61866	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst181_122o1368366	582	built	iso witness f7_.556676_.....5. -> CXI.hC_76 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V63 lock-skipped	
+rsst182_126o7647	582	built	iso witness f7_...6676_...555. -> CXR.hC_12 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V64 lock-skipped	
+rsst183_126o8172	582	built	CR118:R118V.hC_105	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst184_126o8946	582	built	CR118:R118V.hC_26	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst185_126o12426	582	built	iso witness f7_..56675_.....65 -> CXI.hC_58 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V65 lock-skipped	
+rsst186_126o26822	582	built	CR118:R118V.hC_25	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst187_126o61686	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst188_126o454806	582	built	iso witness f7_.566765_....5.. -> CXI.hC_86 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V66 lock-skipped	
+rsst189_126o490086	582	built	iso witness f7_.566675_....5.. -> CXI.hC_85 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V67 lock-skipped	
+rsst190_126o504366	582	queued	ST-120 R queue: job_HDRS403 HDRS403V29	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst191_126o1368362	582	built	iso witness f7_.565676_.....5. -> CXI.hC_82 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V68 lock-skipped	
+rsst192_186o1031	582	built	CR118:R118V.hC_104	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst193_186o22806	582	built	iso witness f7_..56676_..5..5. -> CXR.hC_16 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V69 lock-skipped	
+rsst194_196o431	582	built	CR118:R118V.hC_103	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst195_196o22086	582	built	iso witness f7_..57666_..5..5. -> CXI.hC_70 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V70 lock-skipped	
+rsst196_482o1031	582	built	CR118:R118V.hC_102	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst197_486o1024	582	built	CR118:R118V.hC_101	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst198_486o1028	582	built	CR118:R118V.hC_100	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst199_486o22802	582	built	iso witness f7_..66576_..5..5. -> CXI.hC_72 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V71 lock-skipped	
+rsst200_496o428	582	built	CR118:R118V.hC_99	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst201_0o57730082	582	built	HDC502:HDCV46	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst203_126o26408	582	built	CR118:R118V.hC_24	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst204_128o22156	582	built	CR118:R118V.hC_23	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst205_140o25862	582	built	CR118:R118V.hC_98	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst207_188o22096	582	queued	ST-120 R queue: job_HDRS403 HDRS403V30	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst208_196o22322	582	built	iso witness nl0507_r13 -> HDCV.hD_129 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module HDRS403V31 lock-skipped	
+rsst209_482o1148	582	queued	ST-120 R queue: job_HCRS403 RS403V72	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst210_486o12422	582	queued	ST-120 R queue: job_HDRS403 HDRS403V32	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst211_677o188	582	built	CR118:R118V.hC_97	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst212_124o1310477	582	built	CR118:R118V.hC_22	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst213_184o3686406	582	built	CR118:R118V.hC_21	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst214_186o1326120	582	built	job_HDRS403 HDRS403V.hD_0	job_HDRS403/lean/status.txt: HDRS403V00 exit=0 wall=1337s sorry=0 error=0 rss=532MB 02:04	
+rsst217_2o211701966	582	built	Lean531:CCV.hC_all	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=None status_ok=True	Lean531 literal vs rsst.txt: IDENTICAL (st127/lean531_check.tsv)
+rsst218_126o1368366	582	built	iso witness f7_.566676_.....5. -> CCV.hC_6 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V00 lock-skipped	
+rsst219_2o226173962	582	built	HDC502:HDCV224	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst220_122o3711966	582	built	CR118:R118V.hC_96	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst221_126o68886	582	built	job_HCRS403 RS403V.hC_1	job_HCRS403/lean/status.txt: RS403V01 exit=0 wall=2234s sorry=0 error=0 rss=3034MB 21:22	
+rsst222_126o454572	582	built	HDC502:HDCV330	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst223_126o458826	582	queued	ST-120 R queue: job_HDRS403 HDRS403V01	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh); lock taken (in progress)	
+rsst224_126o745566	582	queued	ST-120 R queue: job_HDRS403 HDRS403V02	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst225_126o1325768	582	built	iso witness f7_.566766_...5.5. -> CCV.hC_7 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V02 lock-skipped	
+rsst226_126o1400762	582	built	CR118:R118V.hC_95	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst227_128o25876	582	built	CR118:R118V.hC_94	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst228_149o22086	582	built	CR118:R118V.hC_93	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst229_186o23346	582	built	CR118:R118V.hC_92	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst230_186o61866	582	built	CR118:R118V.hC_91	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst231_257o431	582	built	job_HCRS403 RS403V.hC_3	job_HCRS403/lean/status.txt: RS403V03 exit=0 wall=2492s sorry=0 error=0 rss=3034MB 21:50	
+rsst232_486o22926	582	built	CR118:R118V.hC_90	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst233_546o389	582	built	job_HCRS403 RS403V.hC_4	job_HCRS403/lean/status.txt: RS403V04 exit=0 wall=2097s sorry=0 error=0 rss=3034MB 21:57	
+rsst234_667o1028	582	built	job_HCRS403 RS403V.hC_5	job_HCRS403/lean/status.txt: RS403V05 exit=0 wall=2191s sorry=0 error=0 rss=3036MB 22:27	
+rsst235_0o174369782	582	queued	ST-120 R queue: job_HDRS403 HDRS403V91	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst236_126o26829	582	built	CR118:R118V.hC_89	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst237_186o1379460	582	built	job_HDRS403 HDRS403V.hD_3	job_HDRS403/lean/status.txt: HDRS403V03 exit=0 wall=926s sorry=0 error=0 rss=532MB 02:19	
+rsst238_483o3927606	582	queued	ST-120 R queue: job_HDRS403 HDRS403V04	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh); lock taken (in progress)	
+rsst239_126o469626	582	queued	ST-120 R queue: job_HDRS403 HDRS403V05	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh); lock taken (in progress)	
+rsst240_122o174333962	582	queued	ST-120 R queue: job_HDRS403 HDRS403V06	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst241_0o262728122	582	built	CR118:R118V.hC_20	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst242_122o8182	582	queued	ST-120 R queue: job_HDRS403 HDRS403V92	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst243_122o62402	582	built	HDC502:HDCV109	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst244_140o8402	582	built	iso witness f7_..57575_...5.5. -> CXI.hC_64 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V134 lock-skipped	
+rsst245_182o1040	582	built	iso witness f7_...5775_...5.55 -> CXR.hC_8 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V135 lock-skipped	
+rsst246_196o1023	582	built	HDC502:HDCV110	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst247_196o8402	582	queued	ST-120 R queue: job_HDRS403 HDRS403V93	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst248_140o3682802	582	built	CR118:R118V.hC_19	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst249_0o211738082	582	built	CR118:R118V.hC_18	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst250_0o262728362	582	built	CR118:R118V.hC_17	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst251_2o504980	582	built	CR118:R118V.hC_88	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst252_122o22820	582	built	iso witness f7_..55776_....55. -> CXI.hC_49 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V73 lock-skipped	
+rsst253_122o62822	582	built	CR118:R118V.hC_87	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst254_122o454580	582	built	iso witness f7_.557765_...5... -> CXI.hC_77 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V74 lock-skipped	
+rsst255_126o490802	582	built	iso witness f7_.565775_....5.. -> CXI.hC_83 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V75 lock-skipped	
+rsst256_128o8416	582	built	iso witness f7_..56775_...5.5. -> CXI.hC_62 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V76 lock-skipped	
+rsst257_140o8164	582	built	iso witness f7_..57575_...56.. -> CXI.hC_65 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V136 lock-skipped	
+rsst259_140o22802	582	built	iso witness f7_..57576_...5.5. -> CXI.hC_66 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V77 lock-skipped	
+rsst260_196o207	582	built	iso witness f7_...5775_...5.65 -> CXR.hC_9 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V78 lock-skipped	
+rsst261_196o1024	582	built	CR118:R118V.hC_86	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst262_196o1028	582	built	CR118:R118V.hC_85	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst263_196o8406	582	built	iso witness f7_..57675_..5..5. -> CXR.hC_23 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V79 lock-skipped	
+rsst264_196o22802	582	built	iso witness f7_..57576_..5..5. -> CXR.hC_21 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V80 lock-skipped	
+rsst265_496o1023	582	built	CR118:R118V.hC_84	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst266_122o69602	582	queued	ST-120 R queue: job_HCRS403 RS403V81	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst267_126o12842	582	built	CR118:R118V.hC_16	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst268_140o61682	582	built	CR118:R118V.hC_83	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst269_140o536402	582	built	CR118:R118V.hC_15	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst270_182o1107	582	built	CR118:R118V.hC_82	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst271_196o12422	582	queued	ST-120 R queue: job_HDRS403 HDRS403V33	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst272_196o61682	582	built	iso witness nl0843_r13 -> HDCV.hD_144 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module HDRS403V34 lock-skipped	
+rsst273_196o504362	582	queued	ST-120 R queue: job_HDRS403 HDRS403V35	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst274_257o1023	582	queued	ST-120 R queue: job_HCRS403 RS403V82	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst275_1322o1028	582	built	HDC502:HDCV225	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst276_124o511217	582	built	job_HCRS403 RS403V.hC_6	job_HCRS403/lean/status.txt: RS403V06 exit=0 wall=1475s sorry=0 error=0 rss=3036MB 22:22	
+rsst277_124o3682817	582	built	job_HCRS403 RS403V.hC_7	job_HCRS403/lean/status.txt: RS403V07 exit=0 wall=1531s sorry=0 error=0 rss=3035MB 22:47	
+rsst278_186o505320	582	queued	ST-120 R queue: job_HDRS403 HDRS403V07	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst279_197o504480	582	built	iso witness nl0895_r14 -> HDCV.hD_234 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module HDRS403V08 lock-skipped	
+rsst280_2o1368980	582	built	CR118:R118V.hC_81	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst281_3o1369216	582	queued	ST-120 R queue: job_HCRS403 RS403V08	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst282_122o62946	582	built	CR118:R118V.hC_80	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst283_122o70022	582	built	job_HCRS403 RS403V.hC_9	job_HCRS403/lean/status.txt: RS403V09 exit=0 wall=2011s sorry=0 error=0 rss=3035MB 23:00	
+rsst284_126o7474	582	built	iso witness f7_..57576_...655. -> CXI.hC_67 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V83 lock-skipped	
+rsst285_126o12846	582	built	CR118:R118V.hC_14	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst286_126o27242	582	built	CR118:R118V.hC_79	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst288_126o505206	582	built	iso witness f7_.566775_....55. -> K108V.hC_47 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V10 lock-skipped	
+rsst289_126o1368963	582	built	iso witness f7_.565776_...5.5. -> CCV.hC_5 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V11 lock-skipped	
+rsst290_128o61696	582	built	CR118:R118V.hC_78	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst291_128o62822	582	built	CR118:R118V.hC_13	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst292_140o61862	582	built	CR118:R118V.hC_77	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst293_196o1091	582	built	job_HCRS403 RS403V.hC_12	job_HCRS403/lean/status.txt: RS403V12 exit=0 wall=1946s sorry=0 error=0 rss=3035MB 23:20	
+rsst294_196o61686	582	built	CR118:R118V.hC_76	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst295_197o22806	582	built	CR118:R118V.hC_75	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst296_257o207	582	built	CR118:R118V.hC_74	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst297_257o22802	582	built	CR118:R118V.hC_73	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst298_496o12422	582	built	iso witness f7_..57576_.56..5. -> CXR.hC_22 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V13 lock-skipped	
+rsst299_496o22803	582	built	iso witness f7_..67576_..5.55. -> CC3V.hC_5 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V14 lock-skipped	
+rsst300_497o1028	582	built	job_HCRS403 RS403V.hC_15	job_HCRS403/lean/status.txt: RS403V15 exit=0 wall=2774s sorry=0 error=0 rss=3035MB 23:47	
+rsst301_1326o207	582	built	CR118:R118V.hC_72	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst302_1326o1028	582	built	job_HCRS403 RS403V.hC_16	job_HCRS403/lean/status.txt: RS403V16 exit=0 wall=2416s sorry=0 error=0 rss=3035MB 00:00	
+rsst303_1742o1024	582	built	job_HCRS403 RS403V.hC_17	job_HCRS403/lean/status.txt: RS403V17 exit=0 wall=1985s sorry=0 error=0 rss=3034MB 23:54	
+rsst304_140o68882	582	built	job_HCRS403 RS403V.hC_18	job_HCRS403/lean/status.txt: RS403V18 exit=0 wall=1439s sorry=0 error=0 rss=3034MB 00:11	
+rsst305_1326o12422	582	queued	ST-120 R queue: job_HDRS403 HDRS403V09	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst306_184o3686417	582	built	job_HCRS403 RS403V.hC_19	job_HCRS403/lean/status.txt: RS403V19 exit=0 wall=1238s sorry=0 error=0 rss=3036MB 00:15	
+rsst307_184o23356	582	built	CR118:R118V.hC_71	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst308_184o1368376	582	built	iso witness f7_.557676_.56..5. -> K108V.hC_45 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V20 lock-skipped	
+rsst309_483o23356	582	built	CR118:R118V.hC_70	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst310_483o1368376	582	built	iso witness f7_.657676_.55..5. -> K108V.hC_51 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V21 lock-skipped	
+rsst311_1743o1031	582	built	job_HCRS403 RS403V.hC_22	job_HCRS403/lean/status.txt: RS403V22 exit=0 wall=1471s sorry=0 error=0 rss=3036MB 00:25	
+rsst312_3o520036	582	queued	ST-120 R queue: job_HDRS403 HDRS403V10	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst313_184o3701176	582	queued	ST-120 R queue: job_HDRS403 HDRS403V11	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst314_483o1368968	582	built	iso witness f7_.656776_.555.5. -> K108V.hC_50 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V23 lock-skipped	
+rsst315_1328o1032	582	queued	ST-120 R queue: job_HDRS403 HDRS403V12	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst316_126o78485226	582	queued	ST-120 R queue: job_HDRS403 HDRS403V13	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst317_122o62420	582	built	CR118:R118V.hC_12	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst318_140o490802	582	built	iso witness f7_.575775_..5.5.. -> K108V.hC_48 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V24 lock-skipped	
+rsst319_196o62402	582	built	CR118:R118V.hC_69	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst320_1322o1040	582	built	job_HCRS403 RS403V.hC_25	job_HCRS403/lean/status.txt: RS403V25 exit=0 wall=2977s sorry=0 error=0 rss=3034MB 01:00	
+rsst321_140o444436	582	built	iso witness f7_.557775_.56.5.. -> K108V.hC_46 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V26 lock-skipped	
+rsst322_140o1368963	582	built	iso witness f7_.575776_..55.5. -> K108V.hC_49 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V27 lock-skipped	
+rsst323_7322o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V193	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst324_7322o439320	582	queued	ST-120 R queue: job_HDRS403 HDRS403V185	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst325_7322o442802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V186	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst326_7322o126	582	built	iso witness f8_...55565_........ -> CXI.hC_96 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V202 lock-skipped	
+rsst327_7326o122	582	built	iso witness f8_...55655_........ -> CXR.hC_31 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V203 lock-skipped	
+rsst328_7322o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V187	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst330_7322o1306802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V156	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst331_7326o442802	582	built	iso witness f8_.55.5565_.5...... -> CXI.hC_251 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V184 lock-skipped	
+rsst332_7323o442806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V157	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst333_7562o126	582	built	iso witness f8_...56565_........ -> CXI.hC_140 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V185 lock-skipped	
+rsst334_7322o368	582	queued	ST-120 R queue: job_HDRS403 HDRS403V158	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst335_7326o128	582	built	iso witness f8_...55665_......5. -> CXI.hC_126 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V186 lock-skipped	
+rsst336_7326o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V159	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst337_7328o126	582	queued	ST-120 R queue: job_HDRS403 HDRS403V160	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst338_7386o126	582	built	iso witness f8_...55665_....5... -> CXI.hC_127 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V187 lock-skipped	
+rsst339_7562o363	582	built	iso witness f8_...56556_......5. -> CXI.hC_138 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V188 lock-skipped	
+rsst340_7562o7562	582	built	iso witness f8_..565565_........ -> CXI.hC_217 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V189 lock-skipped	
+rsst341_7566o123	582	built	iso witness f8_...55665_...5.... -> CXR.hC_32 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V190 lock-skipped	
+rsst343_7323o364	582	queued	ST-120 R queue: job_HDRS403 HDRS403V188	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst344_7326o460802	582	built	iso witness f8_.5565.65_......5. -> CXI.hC_264 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V137 lock-skipped	
+rsst345_7326o1306802	582	built	iso witness f8_.5565.56_......5. -> CXI.hC_261 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V138 lock-skipped	
+rsst347_7322o687602	582	queued	ST-120 R queue: job_HDRS403 HDRS403V94	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst348_7322o1307280	582	queued	ST-120 R queue: job_HDRS403 HDRS403V161	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst349_7322o1310580	582	queued	ST-120 R queue: job_HDRS403 HDRS403V162	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst350_7323o460806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V95	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst351_7323o1306806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V96	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst352_7563o442806	582	built	iso witness f8_.55.5656_.5....5. -> CXI.hC_253 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V139 lock-skipped	
+rsst353_7568o442802	582	built	iso witness f8_.55.5665_.5....5. -> CXI.hC_254 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V140 lock-skipped	
+rsst354_7384o442806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V163	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst355_7562o7566	582	built	iso witness f8_..565665_........ -> CXI.hC_222 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V141 lock-skipped	
+rsst357_7566o363	582	built	iso witness f8_...56656_......5. -> CXR.hC_39 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V142 lock-skipped	
+rsst358_7568o126	582	built	iso witness f8_...56665_.....5.. -> CXI.hC_167 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V143 lock-skipped	
+rsst359_7322o372	582	built	iso witness nl1639_r12 -> HDCV.hD_73 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V97 lock-skipped	
+rsst360_7322o431	582	built	HDC502:HDCV111	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst361_7326o369	582	built	CR118:R118V.hC_68	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst362_7328o364	582	queued	ST-120 R queue: job_HDRS403 HDRS403V164	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst363_7328o368	582	queued	ST-120 R queue: job_HDRS403 HDRS403V98	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst364_7386o368	582	built	iso witness f8_...55666_....5.5. -> CXI.hC_131 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V144 lock-skipped	
+rsst365_7562o22082	582	built	iso witness f8_..565566_......5. -> CXI.hC_218 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V145 lock-skipped	
+rsst366_7562o453962	582	queued	ST-120 R queue: job_HDRS403 HDRS403V99	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst367_7563o364	582	built	iso witness f8_...56556_.....56. -> CXI.hC_139 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V191 lock-skipped	
+rsst368_7563o368	582	built	iso witness f8_...56566_.....55. -> CXI.hC_157 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V146 lock-skipped	
+rsst369_7682o368	582	queued	ST-120 R queue: job_HDRS403 HDRS403V100	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst372_7563o460806	582	built	iso witness f8_.56.6565_.5..5... -> CXI.hC_266 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V84 lock-skipped	
+rsst373_7563o1306806	582	built	iso witness f8_.56.5656_.5....5. -> CXI.hC_265 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V85 lock-skipped	
+rsst374_7384o460806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V101	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst375_7384o1306806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V102	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst376_7326o372	582	built	CR118:R118V.hC_67	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst377_7326o431	582	built	CR118:R118V.hC_66	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst378_7562o431	582	built	CR118:R118V.hC_65	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst379_7562o22086	582	built	iso witness f8_..565666_......5. -> CXI.hC_223 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V86 lock-skipped	
+rsst380_7566o22082	582	built	iso witness f8_..566566_......5. -> CXI.hC_225 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V87 lock-skipped	
+rsst381_7686o368	582	built	iso witness f8_...56666_....5.5. -> CXI.hC_171 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V88 lock-skipped	
+rsst382_2o584517962	582	built	iso witness nl1694_r12 -> HDCV.hD_75 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V103 lock-skipped	
+rsst383_7322o611	582	built	HDC502:HDCV226	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst384_7562o25862	582	built	CR118:R118V.hC_64	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst385_7562o1325162	582	queued	ST-120 R queue: job_HDRS403 HDRS403V36	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst386_11046o368	582	queued	ST-120 R queue: job_HDRS403 HDRS403V104	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst387_28986o368	582	queued	ST-120 R queue: job_HDRS403 HDRS403V105	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst388_29163o364	582	queued	ST-120 R queue: job_HDRS403 HDRS403V106	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst389_10920o1310591	582	queued	ST-120 R queue: job_HDRS403 HDRS403V107	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst390_11046o443460	582	queued	ST-120 R queue: job_HDRS403 HDRS403V108	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst391_11046o1307280	582	queued	ST-120 R queue: job_HDRS403 HDRS403V109	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst392_11046o1310580	582	queued	ST-120 R queue: job_HDRS403 HDRS403V110	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst394_2o507189966	582	queued	ST-120 R queue: job_HDRS403 HDRS403V37	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst395_2o584517966	582	queued	ST-120 R queue: job_HDRS403 HDRS403V38	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst396_2o675237962	582	built	CR118:R118V.hC_63	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst397_7326o611	582	built	HDC502:HDCV331	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst398_28926o431	582	built	CR118:R118V.hC_62	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst399_11160o1310591	582	queued	ST-120 R queue: job_HDRS403 HDRS403V39	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst400_11586o368	582	queued	ST-120 R queue: job_HDRS403 HDRS403V14	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst401_7322o140	582	queued	ST-120 R queue: job_HDRS403 HDRS403V165	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst402_7323o136	582	built	iso witness f8_...55575_.....5.. -> CXI.hC_124 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V192 lock-skipped	
+rsst403_7340o122	582	built	iso witness f8_...55755_.....5.. -> CXR.hC_36 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V193 lock-skipped	
+rsst404_7322o1023	582	built	HDC502:HDCV47	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst405_7322o3682802	582	built	HDC502:HDCV112	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst406_7322o3682920	582	queued	ST-120 R queue: job_HDRS403 HDRS403V111	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst407_7340o442802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V112	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst408_7323o442817	582	queued	ST-120 R queue: job_HDRS403 HDRS403V113	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst409_7322o380	582	built	iso witness f8_...55576_......5. -> CXR.hC_29 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V147 lock-skipped	
+rsst410_7562o140	582	built	iso witness f8_...56575_......5. -> CXI.hC_158 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V148 lock-skipped	
+rsst411_7563o136	582	built	iso witness f8_...56575_.....5.. -> CXI.hC_160 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V149 lock-skipped	
+rsst412_7322o149	582	built	CR118:R118V.hC_61	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst413_7322o207	582	queued	ST-120 R queue: job_HDRS403 HDRS403V114	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst414_7322o1024	582	built	CR118:R118V.hC_6	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst415_7322o1028	582	built	iso witness nl1794_r12 -> HDCV.hD_78 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module HDRS403V115 lock-skipped	
+rsst416_7322o8168	582	queued	ST-120 R queue: job_HDRS403 HDRS403V116	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst417_7322o8406	582	queued	ST-120 R queue: job_HDRS403 HDRS403V117	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst418_7324o137	582	built	CR118:R118V.hC_60	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst419_7326o142	582	built	HDC502:HDCV113	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst420_7326o1023	582	built	HDC502:HDCV114	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst421_7328o140	582	queued	ST-120 R queue: job_HDRS403 HDRS403V118	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst422_7340o128	582	built	HDC502:HDCV115	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst423_7340o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V166	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst424_7347o123	582	queued	ST-120 R queue: job_HDRS403 HDRS403V167	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst425_7349o122	582	built	iso witness f7_..56585_....55. -> CXI.hC_55 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V150 lock-skipped	
+rsst426_7384o136	582	built	iso witness f8_...55575_....56.. -> CXI.hC_125 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V194 lock-skipped	
+rsst427_7396o128	582	built	iso witness f8_...55765_....5.5. -> CXI.hC_135 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V151 lock-skipped	
+rsst428_7396o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V119	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst429_7562o1023	582	built	CR118:R118V.hC_5	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst430_7562o8402	582	built	iso witness f8_..565575_......5. -> CXI.hC_219 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V152 lock-skipped	
+rsst431_7696o123	582	built	iso witness f8_...55765_...5.5.. -> CXI.hC_136 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V153 lock-skipped	
+rsst432_8402o363	582	built	iso witness f8_...57556_....5.5. -> CXI.hC_179 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V154 lock-skipped	
+rsst434_10926o140	582	built	iso witness f8_...55675_...5..5. -> CXR.hC_33 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V155 lock-skipped	
+rsst435_7322o3686520	582	built	CR118:R118V.hC_59	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst436_7322o3700920	582	built	CR118:R118V.hC_58	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst437_7326o511202	582	built	CR118:R118V.hC_11	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst438_7340o1306802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V40	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst440_7324o442817	582	built	CR118:R118V.hC_57	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst441_8403o442806	582	built	iso witness f8_.55.5756_.5...55. -> CXI.hC_255 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V156 lock-skipped	
+rsst442_8823o442802	582	built	iso witness f8_.55.5575_.5..56.. -> CXI.hC_252 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V157 lock-skipped	
+rsst443_7322o389	582	built	CR118:R118V.hC_56	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst444_7322o1031	582	built	CR118:R118V.hC_4	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst445_7322o22806	582	built	iso witness f8_..555676_......5. -> CXI.hC_204 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V89 lock-skipped	
+rsst446_7326o149	582	built	CR118:R118V.hC_55	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst447_7326o1024	582	built	CR118:R118V.hC_3	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst448_7328o380	582	built	iso witness f8_...55676_.....55. -> CXI.hC_134 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V90 lock-skipped	
+rsst449_7331o137	582	built	CR118:R118V.hC_54	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst450_7340o364	582	queued	ST-120 R queue: job_HDRS403 HDRS403V120	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst451_7347o124	582	built	iso witness f8_...55755_.....66. -> CXR.hC_37 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V158 lock-skipped	
+rsst452_7347o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V121	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst453_7562o149	582	built	CR118:R118V.hC_53	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst454_7562o207	582	built	iso witness f8_...56575_......65 -> CXI.hC_159 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V91 lock-skipped	
+rsst455_7562o1024	582	built	CR118:R118V.hC_2	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst456_7562o1028	582	built	CR118:R118V.hC_1	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst457_7562o7580	582	built	iso witness f8_..565765_.....5.. -> CXI.hC_224 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V92 lock-skipped	
+rsst458_7562o22802	582	built	iso witness f8_..565576_......5. -> CXI.hC_220 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V93 lock-skipped	
+rsst459_7566o1023	582	built	CR118:R118V.hC_0	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst460_7566o8402	582	built	iso witness f8_..566575_......5. -> CXI.hC_228 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V94 lock-skipped	
+rsst463_7682o380	582	built	iso witness f8_...56576_....5.5. -> CXR.hC_38 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V95 lock-skipped	
+rsst464_7684o136	582	built	iso witness f8_...56575_....56.. -> CXI.hC_161 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V159 lock-skipped	
+rsst465_7696o128	582	built	iso witness f8_...56765_....5.5. -> CXI.hC_178 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V96 lock-skipped	
+rsst466_7696o363	582	built	iso witness f8_...56756_....5.5. -> CXI.hC_177 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V97 lock-skipped	
+rsst467_8402o368	582	built	iso witness f8_...57566_....5.5. -> CXI.hC_181 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V98 lock-skipped	
+rsst470_11766o363	582	built	iso witness f8_...57656_...5..5. -> CXR.hC_46 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V99 lock-skipped	
+rsst471_219o22082	582	queued	ST-120 R queue: job_HDRS403 HDRS403V41	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst472_482o2408	582	queued	ST-120 R queue: job_HDRS403 HDRS403V42	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst473_7386o1028	582	built	CR118:R118V.hC_52	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst474_7457o128	582	built	CR118:R118V.hC_10	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst475_7562o61682	582	built	CR118:R118V.hC_51	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst476_7568o7396	582	built	iso witness f8_..557665_..5.5... -> CXI.hC_213 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V100 lock-skipped	
+rsst477_7877o123	582	built	iso witness f7_..56685_....555 -> CXI.hC_60 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V101 lock-skipped	
+rsst478_10926o382	582	built	CR118:R118V.hC_50	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst479_10926o1028	582	built	CR118:R118V.hC_49	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst480_10926o8406	582	built	iso witness f8_..556675_..5...5. -> CXI.hC_212 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V102 lock-skipped	
+rsst481_11056o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V122	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst482_11762o22082	582	queued	ST-120 R queue: job_HDRS403 HDRS403V43	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst483_11763o364	582	queued	ST-120 R queue: job_HDRS403 HDRS403V123	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst484_28940o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V124	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst485_7322o3711780	582	built	CR118:R118V.hC_48	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst486_7328o460817	582	queued	ST-120 R queue: job_HDRS403 HDRS403V15	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst487_7331o442817	582	built	CR118:R118V.hC_47	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst489_11160o461763	582	built	iso witness f8_.56.5765_.5..5.5. -> K108V.hC_70 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V28 lock-skipped	
+rsst490_39782o1023	582	built	HDC502:HDCV116	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst491_2o217101962	582	built	iso witness nl2031_r13 -> HDCV.hD_159 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V44 lock-skipped	
+rsst492_122o1483562	582	built	job_HCRS403 RS403V.hC_29	job_HCRS403/lean/status.txt: RS403V29 exit=0 wall=2264s sorry=0 error=0 rss=3036MB 00:52	
+rsst493_126o455948	582	built	HDC502:HDCV332	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst494_126o456306	582	built	iso witness nl2041_r14 -> HDCV.hD_253 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V16 lock-skipped	
+rsst495_126o594366	582	queued	ST-120 R queue: job_HDRS403 HDRS403V17	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst496_7322o23346	582	built	CR118:R118V.hC_46	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst497_7326o454806	582	built	iso witness f8_.5566765_.....5.. -> CXR.hC_57 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V30 lock-skipped	
+rsst498_7349o7566	582	built	CR118:R118V.hC_45	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst499_7457o7566	582	built	CR118:R118V.hC_44	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst500_7562o1091	582	built	job_HCRS403 RS403V.hC_31	job_HCRS403/lean/status.txt: RS403V31 exit=0 wall=1976s sorry=0 error=0 rss=3034MB 00:57	
+rsst501_7562o23342	582	built	CR118:R118V.hC_43	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst502_7562o61862	582	built	CR118:R118V.hC_42	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst503_7566o22803	582	built	iso witness f8_..566576_.....55. -> CCV.hC_12 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V32 lock-skipped	
+rsst504_7682o22806	582	built	iso witness f8_..565676_...5..5. -> CCV.hC_11 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V33 lock-skipped	
+rsst505_7696o428	582	built	CR118:R118V.hC_41	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst506_8402o22086	582	built	iso witness f8_..575666_...5..5. -> K108V.hC_65 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V34 lock-skipped	
+rsst507_8823o364	582	built	iso witness f8_...57556_....656. -> CXI.hC_180 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V160 lock-skipped	
+rsst508_8946o363	582	built	CR118:R118V.hC_40	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst509_15426o363	582	built	CR118:R118V.hC_39	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst510_28926o1028	582	built	CR118:R118V.hC_38	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst511_28947o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V45	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst512_7568o11296	582	built	iso witness f8_..566765_....5.55 -> K108V.hC_62 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V35 lock-skipped	
+rsst513_28996o428	582	queued	ST-120 R queue: job_HDRS403 HDRS403V46	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst514_39782o207	582	queued	ST-120 R queue: job_HDRS403 HDRS403V47	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst515_7457o1307280	582	built	CR118:R118V.hC_37	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst516_7457o1310580	582	built	CR118:R118V.hC_9	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst517_10920o3686591	582	queued	ST-120 R queue: job_HDRS403 HDRS403V48	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst518_28986o389	582	built	CR118:R118V.hC_36	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst520_7342o136	582	built	iso witness f7_..55785_....55. -> CXR.hC_13 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V103 lock-skipped	
+rsst521_8402o140	582	built	iso witness f8_...57575_....5.5. -> CXI.hC_182 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V104 lock-skipped	
+rsst522_0o262818122	582	built	HDC502:HDCV117	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst523_122o441560	582	built	CR118:R118V.hC_8	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst524_196o9723	582	queued	ST-120 R queue: job_HDRS403 HDRS403V49	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst525_196o9902	582	queued	ST-120 R queue: job_HDRS403 HDRS403V50	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst526_219o1023	582	queued	ST-120 R queue: job_HDRS403 HDRS403V51	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst527_7385o137	582	built	CR118:R118V.hC_35	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst528_11762o8402	582	queued	ST-120 R queue: job_HDRS403 HDRS403V52	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst529_0o262818362	582	built	iso witness nl6353_r13 -> HDCV.hD_216 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V53 lock-skipped	
+rsst530_165o22802	582	built	job_HCRS403 RS403V.hC_36	job_HCRS403/lean/status.txt: RS403V36 exit=0 wall=2484s sorry=0 error=0 rss=3033MB 01:34	
+rsst531_196o10322	582	built	job_HCRS403 RS403V.hC_37	job_HCRS403/lean/status.txt: RS403V37 exit=0 wall=2153s sorry=0 error=0 rss=3034MB 01:33	
+rsst532_219o22802	582	built	job_HCRS403 RS403V.hC_38	job_HCRS403/lean/status.txt: RS403V38 exit=0 wall=2482s sorry=0 error=0 rss=3033MB 01:42	
+rsst533_222o22802	582	built	iso witness f7_..58576_..55.5. -> CXR.hC_24 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V39 lock-skipped	
+rsst534_7322o62406	582	built	CR118:R118V.hC_34	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst535_7326o490802	582	built	iso witness f8_.5565775_.....5.. -> CC3V.hC_10 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V40 lock-skipped	
+rsst536_7340o1024	582	built	iso witness nl2301_r13 -> HDCV.hD_168 (yes)	job_ST122/results.tsv CONFIRMED; R module HDRS403V54 lock-skipped	
+rsst537_7354o124	582	built	iso witness f7_..57585_...655. -> CXI.hC_69 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V105 lock-skipped	
+rsst538_7354o363	582	built	iso witness f7_..57585_...565. -> CXI.hC_68 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V106 lock-skipped	
+rsst539_7580o8163	582	built	iso witness f8_..567575_....55.. -> CXI.hC_229 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V107 lock-skipped	
+rsst540_7696o142	582	built	CR118:R118V.hC_33	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst541_7696o8402	582	built	iso witness f8_..567575_...5..5. -> CCV.hC_13 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V41 lock-skipped	
+rsst542_8402o8406	582	built	iso witness f8_..575675_...5..5. -> K108V.hC_66 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V42 lock-skipped	
+rsst543_11762o22802	582	built	iso witness f8_..575576_..5...5. -> K108V.hC_64 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V43 lock-skipped	
+rsst545_219o61682	582	queued	ST-120 R queue: job_HDRS403 HDRS403V18	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst546_7457o142	582	built	job_HCRS403 RS403V.hC_44	job_HCRS403/lean/status.txt: RS403V44 exit=0 wall=1475s sorry=0 error=0 rss=3033MB 01:58	
+rsst547_11762o8942	582	built	iso witness nl2364_r14 -> HDCV.hD_270 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module HDRS403V19 lock-skipped	
+rsst548_229o22803	582	queued	ST-120 R queue: job_HDRS403 HDRS403V20	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst549_8403o1031	582	built	CR118:R118V.hC_32	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst550_8823o1024	582	built	CR118:R118V.hC_31	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst551_11057o380	582	built	CR118:R118V.hC_7	job_ST113/rsst582_lean_coverage.tsv (d2f91ec5) literal_eq=True status_ok=True	
+rsst552_283o22803	582	queued	ST-120 R queue: job_HDRS403 HDRS403V21	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst553_126o78560406	582	built	iso witness f7_5656678_5....55 -> K108V.hC_54 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V45 lock-skipped	
+rsst554_8403o8416	582	built	iso witness f8_..575775_...55.5. -> K108V.hC_67 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V46 lock-skipped	
+rsst555_7322o165	582	queued	ST-120 R queue: job_HDRS403 HDRS403V125	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst556_7323o162	582	built	iso witness f8_...55585_.....55. -> CXR.hC_30 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V161 lock-skipped	
+rsst557_7322o172	582	queued	ST-120 R queue: job_HCRS403 RS403V108	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst558_7324o159	582	queued	ST-120 R queue: job_HCRS403 RS403V109	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst559_7365o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V126	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst560_7372o123	582	queued	ST-120 R queue: job_HDRS403 HDRS403V127	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst561_7564o159	582	queued	ST-120 R queue: job_HCRS403 RS403V47	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst562_7479o363	582	built	iso witness f8_...56585_.....565 -> CC2V.hC_4 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V48 lock-skipped	
+rsst564_11082o364	582	queued	ST-120 R queue: job_HDRS403 HDRS403V55	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst565_0o586818122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V56	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst566_439322o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V189	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst567_439320o439322	582	queued	ST-120 R queue: job_HDRS403 HDRS403V168	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst568_439322o442802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V169	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst569_439322o126	582	built	iso witness f9_...555565_......... -> CXI.hC_274 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V195 lock-skipped	
+rsst570_439326o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V170	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst571_439322o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V171	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst572_439322o1306802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V128	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst573_439563o442802	582	queued	ST-120 R queue: job_HDRS403 HDRS403V129	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst575_453722o126	582	built	iso witness f9_...565565_......... -> CXI.hC_299 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V162 lock-skipped	
+rsst576_439322o368	582	queued	ST-120 R queue: job_HDRS403 HDRS403V130	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst577_439326o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V131	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst578_439562o128	582	built	iso witness f9_...556565_.......5. -> CXI.hC_282 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V163 lock-skipped	
+rsst579_439562o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V132	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst580_439562o7326	582	queued	ST-120 R queue: job_HDRS403 HDRS403V133	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst581_453722o363	582	built	iso witness f9_...565556_.......5. -> CXI.hC_296 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V164 lock-skipped	
+rsst582_439323o364	582	queued	ST-120 R queue: job_HDRS403 HDRS403V172	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst584_453722o368	582	built	iso witness f9_...565566_.......5. -> CXI.hC_300 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V110 lock-skipped	
+rsst585_453722o7566	582	built	iso witness f9_..5655665_......... -> CXI.hC_335 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V111 lock-skipped	
+rsst586_453726o363	582	built	iso witness f9_...565656_.......5. -> CXI.hC_303 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V112 lock-skipped	
+rsst587_453786o126	582	built	iso witness f9_...565665_.....5... -> CXI.hC_309 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V113 lock-skipped	
+rsst589_439322o22086	582	queued	ST-120 R queue: job_HDRS403 HDRS403V57	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst590_439568o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V134	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst591_453723o364	582	built	iso witness f9_...565556_......56. -> CXI.hC_297 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V165 lock-skipped	
+rsst592_454086o123	582	built	iso witness f9_...556665_...5.5... -> CXI.hC_294 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V114 lock-skipped	
+rsst593_1735326o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V58	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst594_439384o460806	582	queued	ST-120 R queue: job_HDRS403 HDRS403V59	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst596_1735566o363	582	built	iso witness f9_...656656_...5...5. -> CXR.hC_76 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V49 lock-skipped	
+rsst597_439322o140	582	queued	ST-120 R queue: job_HDRS403 HDRS403V135	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst598_439323o136	582	built	iso witness f9_...555575_......5.. -> CXI.hC_275 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V166 lock-skipped	
+rsst599_439396o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V136	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst601_439340o126	582	built	iso witness f9_...555765_......5.. -> CXI.hC_281 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V115 lock-skipped	
+rsst602_453722o140	582	built	iso witness f9_...565575_.......5. -> CXI.hC_301 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V116 lock-skipped	
+rsst603_453723o136	582	built	iso witness f9_...565575_......5.. -> CXI.hC_302 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V117 lock-skipped	
+rsst604_439326o1023	582	queued	ST-120 R queue: job_HDRS403 HDRS403V60	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst605_439347o123	582	queued	ST-120 R queue: job_HDRS403 HDRS403V137	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst606_439396o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V61	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst607_439682o140	582	queued	ST-120 R queue: job_HDRS403 HDRS403V62	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst608_440402o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V63	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst609_440403o126	582	queued	ST-120 R queue: job_HDRS403 HDRS403V138	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst610_440823o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V139	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst611_705722o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V64	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst613_439562o8168	582	built	iso witness f9_..5565675_......5.. -> CXR.hC_78 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V50 lock-skipped	
+rsst615_440823o126	582	queued	ST-120 R queue: job_HDRS403 HDRS403V65	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst616_453747o123	582	built	iso witness f9_...557565_...56.... -> CXI.hC_295 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V118 lock-skipped	
+rsst617_453962o8402	582	built	iso witness f9_..5665575_.......5. -> K108V.hC_85 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V51 lock-skipped	
+rsst618_460940o126	582	built	iso witness f9_...565765_....5.5.. -> CC2V.hC_5 (yes-mirror)	job_ST122/results.tsv CONFIRMED; R module RS403V52 lock-skipped	
+rsst619_504123o136	582	built	iso witness f9_...575575_....5.5.. -> K108V.hC_79 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V53 lock-skipped	
+rsst620_453722o165	582	built	job_HCRS403 RS403V.hC_54	job_HCRS403/lean/status.txt: RS403V54 exit=0 wall=2557s sorry=0 error=0 rss=3033MB 02:16	
+rsst621_26359322o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V173	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst622_26359322o126	582	built	iso witness f10_...5555565_.......... -> CXI.hC_0 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V167 lock-skipped	
+rsst623_26359326o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V140	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst625_26373722o126	582	built	iso witness f10_...5565565_.......... -> CXI.hC_6 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V119 lock-skipped	
+rsst626_27223322o126	582	built	iso witness f10_...5655565_.......... -> CXI.hC_9 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V120 lock-skipped	
+rsst627_26359326o363	582	queued	ST-120 R queue: job_HDRS403 HDRS403V66	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst628_26373786o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V67	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst629_26373786o126	582	built	iso witness f10_...5565665_......5... -> CC3V.hC_0 (yes)	job_ST122/results.tsv CONFIRMED; R module RS403V55 lock-skipped	
+rsst630_26359340o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V68	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst631_26359396o122	582	queued	ST-120 R queue: job_HDRS403 HDRS403V69	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+rsst632_26359322o-7322	582	queued	ST-120 R queue: job_HDRS403 HDRS403V141	job_ST120R/queue_order.txt (queue_r2.sh running; worker3.sh)	
+fix_50f4aa3e7d	SUB2	queued	job_HCST119 ST119V08	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fix_63c8a193fe	SUB	built	job_HCK5P20 K5P20V.hC_0	job_HCK5P20/lean/status.txt: K5P20V00 exit=0 wall=2109s sorry=0 error=0 rss=3032MB 14:53	
+fix_b80e8a0990	SUB2	queued	job_HCST119 ST119V06	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_13f30da28e	SUB2	queued	job_HCST119 ST119V09	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_59905b5526	SUB2	queued	job_HCST119 ST119V04	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_5ce6c53845	SUB2	queued	job_HCST119 ST119V00	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_980b7e87e4	SUB2	queued	job_HDST119 HDST119V75	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_d80034e607	SUB2	queued	job_HCST119 ST119V10	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_e4befbe5e1	SUB2	queued	job_HCST119 ST119V07	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_ed8b171a03	SUB2	queued	job_HCST119 ST119V02	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_f3d4a8ea73	SUB2	queued	job_HCST119 ST119V05	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+fw_f7c75a21e2	SUB2	queued	job_HCST119 ST119V03	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0004_r8	SUB	built	job_HDC502 HDCV.hD_0	job_HDC502/lean/status.txt: HDCV00 exit=0 wall=1s user=0.76 sys=0.56 sorry=0 error=0 rss=517MB 10:20	
+nl0008_r9	SUB	built	job_HDC502 HDCV.hD_1	job_HDC502/lean/status.txt: HDCV01 exit=0 wall=1s user=1.08 sys=0.57 sorry=0 error=0 rss=518MB 10:20	
+nl0009_r9	SUB2	built	job_HDC502 HDCV.hD_2	job_HDC502/lean/status.txt: HDCV02 exit=0 wall=1s user=1.16 sys=0.56 sorry=0 error=0 rss=518MB 10:20	
+nl0012_r10	SUB2	queued	job_HDST119 HDST119V107	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0013_r10	SUB	built	job_HDST111 HDST111V.hD_11	job_HDST111/lean/status.txt: HDST111V11 exit=0 wall=2s sorry=0 error=0 rss=512MB 15:44	
+nl0018_r11	SUB	built	job_HDC502 HDCV.hD_16	job_HDC502/lean/status.txt: HDCV16 exit=0 wall=16s user=13.93 sys=0.22 sorry=0 error=0 rss=519MB 10:38	
+nl0019_r11	SUB	built	job_HDST111 HDST111V.hD_6	job_HDST111/lean/status.txt: HDST111V06 exit=0 wall=11s sorry=0 error=0 rss=513MB 15:44	
+nl0026_r12	SUB	built	job_HDST111 HDST111V.hD_2	job_HDST111/lean/status.txt: HDST111V02 exit=0 wall=76s sorry=0 error=0 rss=515MB 15:42	
+nl0034_r13	SUB2	queued	job_HDST119 HDST119V64	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0050_r10	SUB	built	job_HDC502 HDCV.hD_5	job_HDC502/lean/status.txt: HDCV05 exit=0 wall=3s user=2.59 sys=0.57 sorry=0 error=0 rss=518MB 10:20	
+nl0067_r10	SUB	built	job_HDC502 HDCV.hD_10	job_HDC502/lean/status.txt: HDCV10 exit=0 wall=3s user=2.36 sys=0.56 sorry=0 error=0 rss=518MB 10:20	
+nl0077_r11	SUB2	built	job_HDC502 HDCV.hD_17	job_HDC502/lean/status.txt: HDCV17 exit=0 wall=12s user=12.03 sys=0.21 sorry=0 error=0 rss=518MB 10:43	
+nl0078_r11	SUB	built	job_HDC502 HDCV.hD_18	job_HDC502/lean/status.txt: HDCV18 exit=0 wall=13s user=12.94 sys=0.20 sorry=0 error=0 rss=519MB 10:48	
+nl0137_r12	SUB2	queued	job_HDST119 HDST119V91	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0171_r12	SUB2	queued	job_HDST119 HDST119V82	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0194_r12	SUB2	queued	job_HDST119 HDST119V92	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0195_r12	SUB2	built	job_HDC502 HDCV.hD_54	job_HDC502/lean/status.txt: HDCV54 exit=0 wall=37s user=37.25 sys=0.18 sorry=0 error=0 rss=519MB 20:41	
+nl0278_r11	SUB2	queued	job_HDST119 HDST119V103	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0282_r11	SUB2	queued	job_HDST119 HDST119V104	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0289_r11	SUB2	queued	job_HDST119 HDST119V105	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0292_r11	SUB2	built	job_HDC502 HDCV.hD_29	job_HDC502/lean/status.txt: HDCV29 exit=0 wall=10s user=10.02 sys=0.17 sorry=0 error=0 rss=517MB 13:11	
+nl0299_r11	SUB2	queued	job_HDST119 HDST119V102	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0306_r12	SUB2	built	job_HDC502 HDCV.hD_64	job_HDC502/lean/status.txt: HDCV64 exit=0 wall=44s user=43.50 sys=0.17 sorry=0 error=0 rss=519MB 20:48	
+nl0317_r12	SUB2	queued	job_HDST119 HDST119V101	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0319_r12	SUB2	built	job_HDW18N HDW18NV.hD_3	job_HDW18N/lean/status.txt: HDW18NV03 exit=0 wall=75s user=74.31 sys=0.24 sorry=0 error=0 rss=515MB 02:58	
+nl0338_r12	SUB2	built	job_HDC502 HDCV.hD_66	job_HDC502/lean/status.txt: HDCV66 exit=0 wall=63s user=62.23 sys=0.19 sorry=0 error=0 rss=519MB 20:49	
+nl0354_r12	SUB2	queued	job_HDST119 HDST119V78	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0368_r12	SUB2	queued	job_HDST119 HDST119V94	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0421_r12	SUB2	built	job_HDC502 HDCV.hD_69	job_HDC502/lean/status.txt: HDCV69 exit=0 wall=58s user=57.94 sys=0.20 sorry=0 error=0 rss=519MB 20:51	
+nl0423_r12	SUB2	queued	job_HDST119 HDST119V85	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0444_r12	SUB2	queued	job_HDST119 HDST119V89	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0445_r12	SUB2	queued	job_HDST119 HDST119V76	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0452_r13	SUB2	queued	job_HDST119 HDST119V59	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0556_r14	SUB2	built	job_HDC502 HDCV.hD_228	job_HDC502/lean/status.txt: HDCV228 exit=0 wall=1734s user=1733.19 sys=0.52 sorry=0 error=0 rss=533MB 11:34	
+nl0597_r13	SUB2	queued	job_HDST119 HDST119V69	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0627_r13	SUB2	queued	job_HDST119 HDST119V34	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0642_r14	SUB2	built	job_HDC502 HDCV.hD_232	job_HDC502/lean/status.txt: HDCV232 exit=0 wall=1232s user=1231.97 sys=0.39 sorry=0 error=0 rss=533MB 11:28	
+nl0648_r14	SUB2	queued	job_HDST119 HDST119V32	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0652_r14	SUB2	queued	job_HDST119 HDST119V18	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0678_r14	SUB2	queued	job_HDST119 HDST119V15	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0732_r14	SUB2	queued	job_HDST119 HDST119V17	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0768_r15	SUB2	queued	job_HDST119 HDST119V03	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0823_r13	SUB2	queued	job_HDST119 HDST119V67	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0832_r13	SUB2	queued	job_HDST119 HDST119V46	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0841_r13	SUB2	built	job_HDC502 HDCV.hD_143	job_HDC502/lean/status.txt: HDCV143 exit=0 wall=356s user=319.94 sys=0.55 sorry=0 error=0 rss=525MB 10:37	
+nl0857_r13	SUB2	queued	job_HDST119 HDST119V65	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0897_r13	SUB2	queued	job_HDST119 HDST119V45	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0922_r13	SUB2	queued	job_HDST119 HDST119V56	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0947_r13	SUB2	queued	job_HDST119 HDST119V39	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl0994_r14	SUB2	queued	job_HDST119 HDST119V08	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1035_r14	SUB2	queued	job_HDST119 HDST119V25	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1052_r14	SUB2	queued	job_HDST119 HDST119V19	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1088_r14	SUB2	queued	job_HDST119 HDST119V11	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1150_r14	SUB2	built	job_HDC502 HDCV.hD_243	job_HDC502/lean/status.txt: HDCV243 exit=0 wall=1356s user=1355.26 sys=0.42 sorry=0 error=0 rss=529MB 11:58	
+nl1153_r14	SUB2	queued	job_HDST119 HDST119V31	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1185_r15	SUB2	built	job_HDC502 HDCV.hD_338	job_HDC502/lean/status.txt: HDCV338 exit=0 wall=9604s user=9600.54 sys=1.96 sorry=0 error=0 rss=560MB 17:18	
+nl1296_r14	SUB2	built	job_HDC502 HDCV.hD_246	job_HDC502/lean/status.txt: HDCV246 exit=0 wall=1016s user=1015.31 sys=0.35 sorry=0 error=0 rss=533MB 11:54	
+nl1328_r15	SUB2	queued	job_HDST119 HDST119V07	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1425_r14	SUB2	built	job_HDC502 HDCV.hD_249	job_HDC502/lean/status.txt: HDCV249 exit=0 wall=1338s user=1336.85 sys=0.42 sorry=0 error=0 rss=530MB 12:11	
+nl1439_r15	SUB2	queued	job_HDST119 HDST119V02	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1575_r11	SUB2	queued	job_HDST119 HDST119V106	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1615_r12	SUB2	queued	job_HDST119 HDST119V90	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1618_r12	SUB2	queued	job_HDST119 HDST119V84	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1620_r12	SUB2	queued	job_HDST119 HDST119V98	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1630_r12	SUB2	queued	job_HDST119 HDST119V95	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1640_r12	SUB2	queued	job_HDST119 HDST119V86	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1645_r12	SUB2	queued	job_HDST119 HDST119V77	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1681_r12	SUB2	queued	job_HDST119 HDST119V100	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1683_r12	SUB2	queued	job_HDST119 HDST119V87	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1706_r12	SUB2	queued	job_HDST119 HDST119V88	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1713_r13	SUB2	queued	job_HDST119 HDST119V40	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1749_r13	SUB2	queued	job_HDST119 HDST119V60	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1755_r13	SUB2	queued	job_HDST119 HDST119V35	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1793_r12	SUB2	built	job_HDC502 HDCV.hD_77	job_HDC502/lean/status.txt: HDCV77 exit=0 wall=63s user=63.08 sys=0.19 sorry=0 error=0 rss=519MB 20:54	
+nl1816_r12	SUB2	queued	job_HDST119 HDST119V97	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1845_r13	SUB2	queued	job_HDST119 HDST119V50	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1854_r13	SUB2	queued	job_HDST119 HDST119V70	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1873_r12	SUB2	queued	job_HDST119 HDST119V79	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1878_r13	SUB2	queued	job_HDST119 HDST119V47	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1884_r13	SUB2	queued	job_HDST119 HDST119V74	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1893_r13	SUB2	queued	job_HDST119 HDST119V62	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1898_r13	SUB2	queued	job_HDST119 HDST119V68	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1950_r12	SUB2	queued	job_HDST119 HDST119V99	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl1985_r13	SUB2	built	job_HDC502 HDCV.hD_155	job_HDC502/lean/status.txt: HDCV155 exit=0 wall=295s user=274.18 sys=0.54 sorry=0 error=0 rss=525MB 10:41	
+nl1998_r14	SUB2	queued	job_HDST119 HDST119V20	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2054_r13	SUB2	queued	job_HDST119 HDST119V57	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2057_r13	SUB2	queued	job_HDST119 HDST119V38	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2068_r13	SUB2	queued	job_HDST119 HDST119V52	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2076_r13	SUB2	queued	job_HDST119 HDST119V44	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2079_r13	SUB2	queued	job_HDST119 HDST119V72	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2084_r14	SUB2	queued	job_HDST119 HDST119V26	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2092_r14	SUB2	queued	job_HDST119 HDST119V28	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2102_r14	SUB2	queued	job_HDST119 HDST119V09	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2107_r14	SUB2	queued	job_HDST119 HDST119V12	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2208_r13	ST123	queued	job_HDST123 HDST123V00	job_HDST123/drive.sh (running, waits for ST119 QDONE)	
+nl2275_r13	SUB2	queued	job_HDST119 HDST119V53	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2284_r13	SUB2	queued	job_HDST119 HDST119V48	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2311_r13	SUB2	built	job_HDC502 HDCV.hD_171	job_HDC502/lean/status.txt: HDCV171 exit=0 wall=291s user=281.52 sys=0.50 sorry=0 error=0 rss=523MB 10:49	
+nl2312_r13	SUB2	queued	job_HDST119 HDST119V33	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2319_r14	SUB2	queued	job_HDST119 HDST119V27	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2327_r14	SUB2	queued	job_HDST119 HDST119V23	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2340_r14	SUB2	queued	job_HDST119 HDST119V29	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2345_r14	SUB2	built	job_HDC502 HDCV.hD_266	job_HDC502/lean/status.txt: HDCV266 exit=0 wall=1400s user=1399.28 sys=0.43 sorry=0 error=0 rss=536MB 12:44	
+nl2360_r14	SUB2	queued	job_HDST119 HDST119V24	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2380_r13	SUB2	built	job_HDC502 HDCV.hD_172	job_HDC502/lean/status.txt: HDCV172 exit=0 wall=256s user=247.20 sys=0.49 sorry=0 error=0 rss=525MB 10:48	
+nl2446_r14	SUB2	queued	job_HDST119 HDST119V16	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2462_r15	SUB2	queued	job_HDST119 HDST119V01	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2592_r12	SUB2	queued	job_HDST119 HDST119V96	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2594_r13	SUB2	queued	job_HDST119 HDST119V63	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2612_r13	SUB2	queued	job_HDST119 HDST119V61	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2636_r12	SUB	built	job_HDST111 HDST111V.hD_7	job_HDST111/lean/status.txt: HDST111V07 exit=0 wall=66s sorry=0 error=0 rss=515MB 15:43	
+nl2637_r12	SUB	built	job_HDST111 HDST111V.hD_8	job_HDST111/lean/status.txt: HDST111V08 exit=0 wall=64s sorry=0 error=0 rss=515MB 15:43	
+nl2638_r12	SUB	built	job_HDST111 HDST111V.hD_1	job_HDST111/lean/status.txt: HDST111V01 exit=0 wall=70s sorry=0 error=0 rss=515MB 15:40	
+nl2653_r12	SUB	built	job_HDST111 HDST111V.hD_21	job_HDST111/lean/status.txt: HDST111V21 exit=0 wall=56s sorry=0 error=0 rss=515MB 15:44	
+nl2656_r13	SUB	built	job_HDST111 HDST111V.hD_5	job_HDST111/lean/status.txt: HDST111V05 exit=0 wall=354s sorry=0 error=0 rss=520MB 15:08	
+nl2660_r13	SUB	built	job_HDST111 HDST111V.hD_13	job_HDST111/lean/status.txt: HDST111V13 exit=0 wall=329s sorry=0 error=0 rss=519MB 15:19	
+nl2669_r13	SUB	built	job_HDST111 HDST111V.hD_28	job_HDST111/lean/status.txt: HDST111V28 exit=0 wall=250s sorry=0 error=0 rss=519MB 15:39	
+nl2675_r13	SUB	built	job_HDST111 HDST111V.hD_14	job_HDST111/lean/status.txt: HDST111V14 exit=0 wall=234s sorry=0 error=0 rss=519MB 15:18	
+nl2676_r13	SUB	built	job_HDST111 HDST111V.hD_9	job_HDST111/lean/status.txt: HDST111V09 exit=0 wall=277s sorry=0 error=0 rss=520MB 15:13	
+nl2686_r15	SUB	built	job_HDST111 HDST111V.hD_31	job_HDST111/lean/status.txt: HDST111V31 exit=0 wall=7285s sorry=0 error=0 rss=557MB 16:18	
+nl2726_r13	SUB	built	job_HDST111 HDST111V.hD_19	job_HDST111/lean/status.txt: HDST111V19 exit=0 wall=292s sorry=0 error=0 rss=519MB 15:27	
+nl2737_r14	SUB	built	job_HDST111 HDST111V.hD_10	job_HDST111/lean/status.txt: HDST111V10 exit=0 wall=1955s sorry=0 error=0 rss=526MB 14:49	
+nl2756_r13	SUB	built	job_HDST111 HDST111V.hD_27	job_HDST111/lean/status.txt: HDST111V27 exit=0 wall=239s sorry=0 error=0 rss=519MB 15:37	
+nl2759_r13	SUB	built	job_HDST111 HDST111V.hD_17	job_HDST111/lean/status.txt: HDST111V17 exit=0 wall=265s sorry=0 error=0 rss=519MB 15:22	
+nl2803_r13	SUB	built	job_HDST111 HDST111V.hD_18	job_HDST111/lean/status.txt: HDST111V18 exit=0 wall=335s sorry=0 error=0 rss=520MB 15:24	
+nl2804_r13	SUB	built	job_HDST111 HDST111V.hD_29	job_HDST111/lean/status.txt: HDST111V29 exit=0 wall=294s sorry=0 error=0 rss=519MB 15:42	
+nl2828_r13	SUB	built	job_HDST111 HDST111V.hD_4	job_HDST111/lean/status.txt: HDST111V04 exit=0 wall=330s sorry=0 error=0 rss=520MB 15:03	
+nl2837_r11	SUB	built	job_HDC502 HDCV.hD_35	job_HDC502/lean/status.txt: HDCV35 exit=0 wall=10s user=9.78 sys=0.19 sorry=0 error=0 rss=518MB 17:12	
+nl2892_r13	SUB2	queued	job_HDST119 HDST119V73	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl2913_r13	SUB2	built	job_HDC502 HDCV.hD_174	job_HDC502/lean/status.txt: HDCV174 exit=0 wall=274s user=268.25 sys=0.43 sorry=0 error=0 rss=525MB 10:50	
+nl3131_r12	SUB2	queued	job_HDST119 HDST119V80	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl3153_r13	SUB2	built	job_HDC502 HDCV.hD_181	job_HDC502/lean/status.txt: HDCV181 exit=0 wall=218s user=217.05 sys=0.28 sorry=0 error=0 rss=523MB 10:52	
+nl3174_r13	SUB2	queued	job_HDST119 HDST119V55	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl3228_r13	SUB2	queued	job_HDST119 HDST119V36	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl3352_r13	SUB	built	job_HDST111 HDST111V.hD_0	job_HDST111/lean/status.txt: HDST111V00 exit=0 wall=197s sorry=0 error=0 rss=520MB 14:52	
+nl3468_r14	SUB2	queued	job_HDST119 HDST119V10	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl3507_r14	SUB2	queued	job_HDST119 HDST119V30	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl3555_r13	SUB2	queued	job_HDST119 HDST119V71	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl3959_r13	SUB2	queued	job_HDST119 HDST119V51	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl4046_r14	SUB2	built	job_HDC502 HDCV.hD_293	job_HDC502/lean/status.txt: HDCV293 exit=0 wall=1152s user=1151.16 sys=0.45 sorry=0 error=0 rss=529MB 13:36	
+nl4049_r14	SUB2	queued	job_HDST119 HDST119V21	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl4328_r15	SUB2	queued	job_HDST119 HDST119V04	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl4361_r15	SUB2	queued	job_HDST119 HDST119V06	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5195_r13	SUB2	queued	job_HDST119 HDST119V54	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5222_r13	SUB2	queued	job_HDST119 HDST119V43	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5290_r13	SUB2	queued	job_HDST119 HDST119V41	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5292_r13	SUB2	queued	job_HDST119 HDST119V66	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5397_r14	SUB2	queued	job_HDST119 HDST119V14	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5437_r15	SUB2	queued	job_HDST119 HDST119V05	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5458_r16	SUB2	queued	job_HDST119 HDST119V00	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5471_r12	SUB2	queued	job_HDST119 HDST119V83	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5477_r12	SUB2	queued	job_HDST119 HDST119V81	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5534_r13	SUB2	queued	job_HDST119 HDST119V58	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5560_r13	SUB2	queued	job_HDST119 HDST119V42	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5594_r13	SUB2	queued	job_HDST119 HDST119V49	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5672_r12	SUB2	queued	job_HDST119 HDST119V93	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl5979_r14	SUB2	queued	job_HDST119 HDST119V22	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl6015_r14	SUB2	built	job_HDC502 HDCV.hD_308	job_HDC502/lean/status.txt: HDCV308 exit=0 wall=1298s user=1297.36 sys=0.40 sorry=0 error=0 rss=536MB 14:09	
+nl6361_r13	SUB2	built	job_HDC502 HDCV.hD_219	job_HDC502/lean/status.txt: HDCV219 exit=0 wall=251s user=249.97 sys=0.21 sorry=0 error=0 rss=523MB 11:07	
+nl6371_r13	SUB2	queued	job_HDST119 HDST119V37	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl6475_r14	SUB2	queued	job_HDST119 HDST119V13	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	
+nl7264_r12	SUB	built	job_HDST111 HDST111V.hD_16	job_HDST111/lean/status.txt: HDST111V16 exit=0 wall=40s sorry=0 error=0 rss=515MB 15:43	
+nl7287_r12	SUB	built	job_HDST111 HDST111V.hD_15	job_HDST111/lean/status.txt: HDST111V15 exit=0 wall=41s sorry=0 error=0 rss=515MB 15:43	
+nl7313_r12	SUB	built	job_HDST111 HDST111V.hD_20	job_HDST111/lean/status.txt: HDST111V20 exit=0 wall=43s sorry=0 error=0 rss=515MB 15:44	
+nl7383_r13	SUB	built	job_HDST111 HDST111V.hD_23	job_HDST111/lean/status.txt: HDST111V23 exit=0 wall=198s sorry=0 error=0 rss=519MB 15:31	
+nl7476_r14	SUB	built	job_HDST111 HDST111V.hD_24	job_HDST111/lean/status.txt: HDST111V24 exit=0 wall=1807s sorry=0 error=0 rss=525MB 14:46	
+nl7574_r13	SUB	built	job_HDST111 HDST111V.hD_3	job_HDST111/lean/status.txt: HDST111V03 exit=0 wall=299s sorry=0 error=0 rss=519MB 14:57	
+nl7579_r13	SUB	built	job_HDST111 HDST111V.hD_22	job_HDST111/lean/status.txt: HDST111V22 exit=0 wall=323s sorry=0 error=0 rss=519MB 15:30	
+nl7659_r13	SUB	built	job_HDST111 HDST111V.hD_25	job_HDST111/lean/status.txt: HDST111V25 exit=0 wall=198s sorry=0 error=0 rss=520MB 15:33	
+nl7734_r14	SUB	built	job_HDST111 HDST111V.hD_30	job_HDST111/lean/status.txt: HDST111V30 exit=0 wall=1454s sorry=0 error=0 rss=528MB 15:11	
+nl7749_r13	SUB	built	job_HDST111 HDST111V.hD_12	job_HDST111/lean/status.txt: HDST111V12 exit=0 wall=209s sorry=0 error=0 rss=520MB 15:14	
+nl8062_r13	SUB	built	job_HDST111 HDST111V.hD_26	job_HDST111/lean/status.txt: HDST111V26 exit=0 wall=264s sorry=0 error=0 rss=519MB 15:35	
+sub_b376bcffea	SUB2	queued	job_HCST119 ST119V01	job_ST119/queue_order.txt (queue_lean.sh running; ST119V00 compiling)	

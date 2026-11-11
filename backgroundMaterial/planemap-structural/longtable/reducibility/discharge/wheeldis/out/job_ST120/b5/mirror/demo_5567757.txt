@@ -1,0 +1,22 @@
+# link 5567757 (d=7); host codes: u 0, w_i 1+i, s_i 8+i, p_i.(k+1) 15+3i+k
+
+rsst213_184o3686406: checkEmb-valid placements 1; {'no-chirality': 1}
+  no-chirality example: e = 0,1,2,3,6,5,8,9,12,28  (letters needed: s0=5 s1=6 s4=6 p4.2=5)  per-vertex chiralities {0: [], 5: [-1], 4: [-1], 8: [-1], 9: [-1], 3: [1], 2: [1], 7: [1], 1: [1], 6: [1]}
+
+nl0078_r11: checkEmb-valid placements 2; {'no-chirality': 2}
+  no-chirality example: e = 7,12,13,6,8,14,1,34  (letters needed: s4=5 s5=6 s0=5 s6=6 p6.2=5)  per-vertex chiralities {0: [], 2: [1], 3: [1], 1: [1], 5: [-1], 6: [-1], 4: [-1], 7: [-1]}
+
+fw_f7c75a21e2: checkEmb-valid placements 0; {}
+
+Reading (ST-120 B5, 11 Nov): "no-chirality" = the placement passes checkEmb (degrees, injective, induced) but no
+single chirality e in {+1,-1} makes every interior vertex's K-rotation match its host's window rotation; the
+per-vertex sets show a block fitting only e=-1 and the rest only e=+1, with the cut vertex fitting neither: one
+block of K flipped across the cut (partial mirror). So for 184.3686406 (rsst213) and nl0078_r11 checkEmb accepts a
+placement here that is not an occurrence; neither has a rotation-respecting placement in this window.
+fw_f7c75a21e2 has no checkEmb-valid placement in this window at all (all apex/private letters free, u a host).
+Control (py/mirror_scan.py): link 55555, all 150 checkEmb placements of K768 respect rotation; link 5567757:
+256 respect rotation, 30 do not; configs whose only placements here are non-rotation: nl0078_r11,
+rsst163_128o3700802, rsst173_184o3682806, rsst213_184o3686406, rsst248_140o3682802.
+Comparison engine: py/rotcheck.py (K rotations rebuilt from the kc lines as coherently oriented link cycles; host
+rotations from the window as in B4 M1: rot(u), rot(w_i) full; s_i / privates: known window arc + ring-3 slots).
+rcore (RSST-1SHOT) does not check rotation either (same induced test as checkEmb), so it accepts these too.
