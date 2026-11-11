@@ -1,0 +1,6 @@
+== kc_C2
+rsst461_7580o363 r=12 m=8 classes=22144 ext=2981 reached=13616 D=false depth=9 passes=10 mode=gs 74ms
+  C-REDUCIBLE X={I0-I3,R6-I3,R8-I3} size=3 (kc-C: tested 1914, admissible 1464, edges 33, 77ms)
+== cfast_fixed
+rsst461_7580o363 r=12 m=8 classes=22144 ext=2981 reached=13616 bad=8528 D=false depth=19 (0.2s)
+  fixed X={I0-I3,R6-I3,R8-I3} (3 edges): C-REDUCIBLE, leftover bad classes extending after contraction = 0

@@ -1,0 +1,48 @@
+========================================================================
+  Standalone Zero-Dependency 4CT Full-Stack t=0 Verifier (python3 -I)  
+========================================================================
+
+=== Phase 1: 79-Part Discharging Rules, Mirror Involution & Sphere Conservation ===
+  [PASS] 79 parts (71 RSST + 8 N2): 2-ball local, exact mirror multiset involution, sphere conservation = +120 (240 rule firings on 48-vertex mixed sphere) & Window2Ball bracketed.
+
+=== Phase 2: Configuration Registry, CCW Orientation, CGlue & Provenance ===
+  [PASS] 878 configs verified (tiers={'E2': 499, 'L': 379}, subtiers={'E2': 499, 'L_full': 83, 'L_eval': 296}; CCW R-R 100%; 346/346 C admissibleX+foldSafeX; 2.126 CGlueM PASS).
+
+=== Phase 3: Infinite Tail Proof (d >= 15) & Exact 3,125-Window c+ Table ===
+  [PASS] Recomputed all 3,125 c+ entries (cmax={5: 6, 6: 6, 7: 6, 8: 4, 9: 0}, lambda* = 6/1): c_final(u) <= 60 - 4*d <= 0 for all d >= 15.
+
+=== Phase 4: Exhaustive Word Completeness & Certificate Replay (d = 5..17) ===
+  [PASS] d= 5: canon_words=   377 | dfs_nodes=     377 | rotOK_witnesses=    29 |  0.06s
+  [PASS] d= 6: canon_words=  1505 | dfs_nodes=  289358 | rotOK_witnesses=  2340 |  1.97s
+  [PASS] d= 7: canon_words=  5895 | dfs_nodes= 8186468 | rotOK_witnesses= 24307 | 67.59s
+  [PASS] d= 8: canon_words= 25395 | dfs_nodes=19973524 | rotOK_witnesses= 44260 | 222.12s
+  [PASS] d= 9: canon_words=  2905 | dfs_nodes=22480682 | rotOK_witnesses= 48212 | 317.30s
+  [PASS] d=10: canon_words=  1911 | dfs_nodes= 7291384 | rotOK_witnesses= 39863 | 131.46s
+  [PASS] d=11: canon_words=   949 | dfs_nodes= 1171502 | rotOK_witnesses= 18464 | 26.32s
+  [PASS] d=12: canon_words=   266 | dfs_nodes=   85114 | rotOK_witnesses=  3420 |  2.63s
+  [PASS] d=13: canon_words=    30 | dfs_nodes=    2235 | rotOK_witnesses=   237 |  0.19s
+  [PASS] d=14: canon_words=     2 | dfs_nodes=      25 | rotOK_witnesses=     6 |  0.01s
+  [PASS] d=15: canon_words=     0 | dfs_nodes=       0 | rotOK_witnesses=     0 |  0.00s
+  [PASS] d=16: canon_words=     0 | dfs_nodes=       0 | rotOK_witnesses=     0 |  0.00s
+  [PASS] d=17: canon_words=     0 | dfs_nodes=       0 | rotOK_witnesses=     0 |  0.00s
+
+=== Phase 5: Running 7 Planted Negative Controls (NC1..NC7) ===
+  [PASS] NC1: Dropping 2.126 (rsst003_2o126) on d=6 link 565667 -> REJECTED as expected.
+  [PASS] NC2: Dropping 8 N2 parts on d=7 link 5657669 (no 128.1324802) -> REJECTED as expected.
+  [PASS] NC3: Dropping 0.7322 on d=5 link 55555 -> REJECTED as expected.
+  [PASS] NC4: Corrupted shift AND Whitney 2-flip via verify_rot_witness (14 calls) -> REJECTED.
+  [PASS] NC5: Dropping mirrors AND asymmetric chiral part duplication -> multiset involution REJECTED both.
+  [PASS] NC6: Perturbed Window2Ball.succ AND perturbed receiver anchor on sphere T_mix -> REJECTED both.
+  [PASS] NC7: Corrupted admissibleX ring labels, D1 fold-unsafe eqR, and 2.126 chordB -> REJECTED all three.
+
+========================================================================
+ALL POSITIVE CHECKS (d=5..17 + TAIL d>=15) & ALL 7 NEGATIVE CONTROLS PASSED 100% (769.93s)!
+  Exhaustive raw words covered (d=5..8) : 487,500
+  Canonical words replayed (d=5..17)    : 39,235
+  Total symbolic DFS nodes verified     : 59,480,669
+  Total rotOK (RotOcc) witnesses checked: 181,138
+  Distinct reducible configs used       : 854 (tiers={'E2': 480, 'L': 374}, subtiers={'E2': 480, 'L_full': 78, 'L_eval': 296})
+  Used configs by source                : {'RSST_582': 582, 'RSST_2o126_LEAN': 1, 'SUB_NL51': 268, 'SUB_WINDOW': 3}
+  Used rim-pinned configs (all foldSafe): 64 ({('RSST_2o126_LEAN', 'L_full'): 1, ('RSST_582', 'L_eval'): 56, ('RSST_582', 'E2'): 6, ('SUB_WINDOW', 'L_full'): 1})
+  Whitney 2-flip partners used          : 15 ['nl0021_r11', 'nl0027_r12', 'nl0079_r11', 'nl0196_r12', 'nl1684_r12', 'nl1847_r13', 'nl2829_r13', 'nl2848_r12', 'nl3097_r12', 'nl3177_r13', 'nl3357_r13', 'nl5077_r12', 'nl5439_r15', 'nl5459_r16', 'nl5981_r14']
+========================================================================
