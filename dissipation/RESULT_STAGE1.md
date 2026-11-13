@@ -127,3 +127,99 @@ a deliberately wrong view (two fields swapped) is caught.
 | logs | `logs/` |
 
 The 48 MB index cache (`cache_B.pkl`) is not committed; `build_cache.py` rebuilds it in 4 s.
+
+---
+
+# Stage 1 (c): hat-aware pushes, forwarding into 6s, round 3 (13 Nov 2026, k: "c … scale up")
+
+**Verdict: still FAIL, but the bound is halved.**
+
+- Best exact maximum final charge: **1437/275 ≈ 5.2255 charge units = 0.0871 t-units**. The amounts are rational on a 1/1100 grid,
+  checked by this code's integer evaluator ([P], one engine). The LP float for the same attention is 5.2243.
+- With amounts snapped to multiples of 3 and polished: **9 units (0.15 t-units)**.
+- Stage 1 as first run gave 115/11 ≈ 10.45 (LP) and 12 (hardened). The LP floor in this world is 0.0058 to 0.0072 t-units,
+  i.e. 0.35 to 0.43 charge units.
+
+## Model changes (net2.py)
+
+- **R1, hat-aware push:** P[deg u, deg v, unordered pair of sides (x, h_x), (y, h_y)], plus o, the vertex opposite v, when u is a 6.
+  Here h_x is u's other neighbour next to the common neighbour x. A push therefore reads the pusher's whole link, which includes the
+  hats of the u–v diamond. 360 entries, strictly richer than the n5 table.
+- **R2:** a 7 with c1 > th7 forwards to its neighbours of degree **6 or 7**. Attention: 576 mirror-symmetric bits, plus a "target is a 7" bit
+  and its conjunctions.
+- **R3 (tunnel):** a 6 with c2 > th6 forwards to its 7-neighbours, with its own attention.
+- **Finals:**
+  - 7: min(c1, th7) + in2 + in3.
+  - 6: min(c2, th6).
+  - 5: 60 − out.
+- **Rows:**
+  - 110,087 7-rows (765 excused), unchanged.
+  - **21,001 new 6-rows** (link + hats; the link is not R6, and every link 5 or 6 passes R5 / R6). 6,513 of them are excused because no
+    admissible 7-row fits their view of a 7-neighbour.
+  - 24 5-rows.
+- **Reach:** handled as in Stage 1. Whatever a row receives in R2 or R3 is bounded by the maximum over every admissible sender row consistent
+  with the receiver's view. There are 3,125 R2 views over 1.26 M sender entries, and 1,849 R3 views.
+- **Torus self-test** (`test_torus2.py`): direct three-round simulation on 30 tori × 5 random parameter sets gives 7,695 vertex checks, the
+  true final charge ≤ the row bound everywhere, and charge conserved. A mutated view is caught.
+- Exact integers in units of 1/25200 (420 × 60), so R2 shares 1/k and R3 shares of R2 sums are exact. One evaluation takes 26 ms.
+
+## Runs (LP inner for (P, th7, th6) given hard shares, own-term alternation; 10–12 workers in parallel on the M4 Max)
+
+| setting | LP max final (units) |
+|---|---|
+| R1 hat-aware only | 5.6198 |
+| R1 + R2 uniform | 5.6198 |
+| R1 + R2 + R3 uniform, thetas free | 5.655 |
+| thetas fixed (4,4) / (2,2) / (5,0) / (0,0) / (−10,0), uniform | 6.36 / 7.73 / 9.28 / 9.29 / 9.47 |
+| 18 random integer attentions | best 5.3408, worst 5.693 |
+| soft-trained attention (PyTorch, 3,000 steps × 2 seeds, quantised to 3 bits) | 5.632 / 5.693 |
+| evolutionary search on attention, generation 1 (12 mutants) | 5.2501 |
+| evolutionary search on attention, generation 2 (12 mutants) | **5.2243** → exact 1437/275 |
+
+- Lower bounds that hold for every attention:
+  - 5- and 6-rows alone reach 0.
+  - 5-rows plus 7-rows with no forwarding: 60/11 = 5.4545.
+- **Attention now matters**, unlike in the first run: random draws spread from 5.34 to 5.69, and the search gains about 0.4 units.
+- Descent on the smooth max is not competitive with the LP inner (soft max 6.38).
+
+**Best network** (`stage1/best_stage1c.npz`):
+- th7 = th6 = 5747/1100; margins m2 = 0, m3 = 3.
+- **173 non-zero push amounts**.
+- Attention weights are dense integers in [−3, 3]: 498 (R2) + 495 (R3), not pruned. Pruning costs one LP solve per test (3–5 min each),
+  and I stopped here.
+- Binding rows at 1437/275:
+  - 7-rows: 5566776/5676657, 5567757/5666577, 5667576/5667665, 5667576/5667765, 5667766/5656665, 5675776/5675665, 5675776/5775665.
+  - 5-links: 56667, 56776, 57677, 57777, 67677.
+- The multiple-of-3 version is `best_stage1c_mult3.npz` (exact max 9).
+
+## Diagnosis
+
+- Hat-aware pushes do most of the work: 11.64 → 5.62.
+- Forwarding and attention add about 0.4 more. The binding 7-rows sit at c1 = th7 = t with nothing coming in.
+- Lowering th7 or th6 to make 7s or 6s forward more makes things worse (the fixed-theta rows of the table): every receiver has to budget
+  for the worst admissible sender in each of its views.
+- The search had not converged when I stopped (each generation gained 0.02 to 0.09). But at that rate it would need dozens of
+  generations to reach the LP floor (0.35 units), let alone 0.
+
+## Compute
+
+- About 2.5 h of wall time for (c) on the M4 Max (16 cores, 128 GB).
+- Up to 12 LP workers at once (HiGHS, 0.6 M rows each, 3–8 min per solve with alternation; about 6 GB RAM each).
+- PyTorch on CPU, 2 threads per seed. MPS was not used: it was 8× slower in Stage 1.
+- One of my own grid workers (fixed th7 = 5, th6 = −10) was still running after 38 min and I stopped it.
+- No other job was touched.
+
+## Files
+
+| purpose | files |
+|---|---|
+| model, row set, exact evaluator | `stage1/net2.py` |
+| torus soundness test | `stage1/test_torus2.py` |
+| index cache (not committed, 83 MB) | `stage1/build_cache2.py` → `cache_B2.pkl` |
+| inner LP | `stage1/lp2.py` |
+| soft model and descent | `stage1/train2.py` |
+| parallel workers (theta / rand / soft / mut) | `stage1/grid2.py` |
+| hardening | `stage1/harden2.py` (multiples of 3), `stage1/rational2.py` (exact rational) |
+| final evaluation | `stage1/final_eval2.py` → `result_stage1c.json` |
+| diagnostics | `stage1/diag6.py`, `stage1/diag7.py` |
+| logs | `stage1/logs/grid2*.log`, `stage1/logs/train2_s*.log` |
