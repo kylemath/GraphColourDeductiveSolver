@@ -223,3 +223,18 @@ The 48 MB index cache (`cache_B.pkl`) is not committed; `build_cache.py` rebuild
 | final evaluation | `stage1/final_eval2.py` → `result_stage1c.json` |
 | diagnostics | `stage1/diag6.py`, `stage1/diag7.py` |
 | logs | `stage1/logs/grid2*.log`, `stage1/logs/train2_s*.log` |
+
+---
+
+# Stage 1 (c2): kite pushes (13 Nov 2026, k: "improve … iteratively but without cheating")
+
+- **R1 push key** extended to the full kite of the edge u→v: the unordered pair of sides (x, h_x, g_x), (y, h_y, g_y), plus the opposite
+  vertex o when u is a 6. Here g_x is v's other neighbour next to x. That gives 3,024 push amounts.
+- **5-rows now carry hats:** 2,484 rows (24 links × admissible hats, R5/R6 at the link 5s and 6s).
+- Everything else as in (c): R2 into 6s and 7s, R3 from 6s, the same sound reach bound.
+- `test_torus3.py`: 7,695 vertex checks pass, and a mutated kite key is caught.
+- **R1 alone (LP): exactly 5.0 charge units = 0.0833 t-units** [M], down from 5.62 with hat-aware pushes. The optimum is heavily
+  degenerate (194 7-rows, 1,298 6-rows and 1,603 of the 2,484 5-rows bind at once).
+- The batch with R2/R3 plus attention (12 workers: the best attention from (c), 6 mutants of it, 5 random) was still running at the time of
+  writing, after 2 h without a first result. The forward LPs are much larger with 3,024 push amounts.
+- Stop rule set by k: stop after this batch unless it reaches 2.61 units, half of 5.2255.
