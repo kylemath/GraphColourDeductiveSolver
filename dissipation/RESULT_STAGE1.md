@@ -238,3 +238,8 @@ The 48 MB index cache (`cache_B.pkl`) is not committed; `build_cache.py` rebuild
 - The batch with R2/R3 plus attention (12 workers: the best attention from (c), 6 mutants of it, 5 random) was still running at the time of
   writing, after 2 h without a first result. The forward LPs are much larger with 3,024 push amounts.
 - Stop rule set by k: stop after this batch unless it reaches 2.61 units, half of 5.2255.
+- **Stopped by k on 13 Nov (05:19Z) before any R2/R3 worker returned a value.** So the (c2) result is R1 only: **5.0 charge units
+  = 0.0833 t-units [M], FAIL.** No exact or hardened evaluation was run for (c2). Proposed next step (not run): the lift test.
+  Take the LP dual, a weighting of binding rows, and ask whether it extends to a consistent kill-free 3-ring weighting.
+  - If it cannot be extended, read one ring further; the infeasibility certificate names the features.
+  - If it can, only new reducible configurations can break it, ranked by the weighting.
