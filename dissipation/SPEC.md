@@ -93,4 +93,4 @@ Pass / fail for Stage 1:
 
 Imitating the outside team's receiver choice on 4,928 neighbourhoods: best 76% exact on held-out rule families
 with 200 pair features (pass line was 95%). See `stage0/RESULT.md`. `stage0/gen.py` needs the outside team's rule
-file, which is deliberately not in this repository; Stage 1 does not need it.
+file, which is in this repository as `dissipation/data/synth_rules_588.txt` (an earlier version of this brief said otherwise, wrongly); Stage 1 does not need it.
