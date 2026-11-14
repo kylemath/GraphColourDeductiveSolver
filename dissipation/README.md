@@ -41,4 +41,4 @@ is `stage0/alphabet_test.py`: on RSST rules the edge amount is fixed by the two 
 
 - Large caches from the Mac run (48 to 200 MB each); the `stage1/build_cache*.py` scripts rebuild them.
 - The Atlas data file (`atlas4.json`, 7 MB) and the rule database (`rules.sqlite`); rebuild with `families/code/build_atlas.py` and `builddb.py`, or take them from the project files `swarm/families/db/`.
-- The outside team's 588-part rule file, deliberately kept out: `stage0/gen.py` and `gen_all.py` need it.
+- The outside team's 588-part rule file as a separate file: `stage0/gen.py` and `gen_all.py` need it. Note that `families/atlas_page/rule-atlas.html` embeds those rule parts as page data (the "Outside team 588" proof), and the earlier pass of the outside team's work is already on main under `backgroundMaterial/.../out/job_OUTSIDE2/`.
