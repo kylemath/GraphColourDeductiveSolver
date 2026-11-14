@@ -1,0 +1,395 @@
+<div class="wrap">
+  <header>
+    <h1>Discharging Rule Atlas</h1>
+    <p class="sub">Four proofs of the four colour theorem in one shared format: each rule drawn as the picture it reads, each configuration drawn with its ring. Charge is in units of 1/60 of a degree-5 vertex's starting charge (60).</p>
+  </header>
+  <div class="proofbar" role="radiogroup" aria-label="Proof" id="proofbar"></div>
+  <p class="sub" id="proofsub" style="margin:0"></p>
+  <nav class="tabs" role="tablist"><a href="#rules" id="tb-rules" role="tab">Rules</a><a href="#tree" id="tb-tree" role="tab">Family tree</a><a href="#grid" id="tb-grid" role="tab">Template</a><a href="#flow" id="tb-flow" role="tab">Who pays whom</a><a href="#configs" id="tb-configs" role="tab">Configurations</a></nav>
+  <div id="tab-rules" class="tabpane">
+    <div class="stats" id="stats"></div>
+    <div class="bar">
+      <label class="muted" for="q">Find</label>
+      <input id="q" placeholder="tag or condition, e.g. SP_45365, T=7, rule014">
+      <select id="ft" aria-label="Template"><option value="">All kinds</option></select>
+      <select id="fh" aria-label="Sender degree"><option value="">Any sender</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
+      <select id="fg" aria-label="Group by"><option value="0">Shape order (no grouping)</option><option value="1">Families: 1-node changes</option><option value="2">Families: up to 2-node changes</option><option value="3">Families: up to 3-node changes</option><option value="4">Families: up to 4-node changes</option></select>
+      <span class="muted" id="count"></span>
+    </div>
+    <div class="main">
+      <div class="list" id="list" role="listbox" aria-label="Rules"></div>
+      <div class="detail" id="detail"></div>
+    </div>
+    <section>
+      <h2>Symbols</h2>
+      <div class="tblwrap"><table class="sym" id="sym"></table></div>
+    </section>
+  </div>
+  <div id="tab-tree" class="tabpane" hidden>
+    <div class="stats" id="tstats"></div>
+    <div class="detail">
+      <h2>Family tree of rule shapes</h2>
+      <p class="sub" style="margin:0">Every dot is one rule (a mirror pair counts once). Each rule is joined to its nearest relative, so the whole proof hangs off one tree with the fewest possible node changes in total. The centre is the rule with the fewest conditions; moving outward adds or changes conditions. Thick dark branches are single-node swaps. Click a dot to see what changed from its parent.</p>
+      <div class="treegrid"><div id="treeg"></div><div id="tdetail"></div></div>
+      <div class="legend" id="tleg"></div>
+    </div>
+    <div class="detail">
+      <h2>Nested clusters</h2>
+      <p class="sub" style="margin:0">The same tree cut at different swap sizes. The left column groups rules that can reach each other through steps of at most 6 node changes; each column to the right allows smaller steps, so every block splits into the blocks beside it. The last column is the rules themselves. Click a block to list its members and light them up in the tree above.</p>
+      <div style="overflow-x:auto"><div id="nestg"></div></div>
+      <div id="nestsel"></div>
+    </div>
+  </div>
+  <div id="tab-grid" class="tabpane" hidden>
+    <div class="bar">
+      <label class="muted" for="gsel">Rule</label>
+      <select id="gsel" aria-label="Rule"></select>
+      <div class="links"><button id="gprev">Previous</button><button id="gnext">Next</button></div>
+      <span class="muted" id="gcount"></span>
+    </div>
+    <div class="detail">
+      <h2>The rule as a hierarchy</h2>
+      <p class="sub" style="margin:0">The vertex that pays is at the top. The row below holds its neighbours in order around it, with the one that receives in the middle. The rows below that hold the outer ring: a hat sits between two neighbours and touches both, a fan belongs to one neighbour. Coloured vertices carry a condition; grey ones are present but may have any degree.</p>
+      <div id="ghead"></div>
+      <div style="overflow-x:auto"><div id="gtop" class="gsvg"></div></div>
+    </div>
+    <div class="detail" id="gtplbox">
+      <h2>The same rule on the shared template</h2>
+      <p class="sub" style="margin:0">The template holds every position a rule in this language can mention: one hub, up to 8 neighbours, 8 hats and up to 3 fans under each neighbour, 41 positions in all. Every rule is a subgraph of it. Dashed outlines are positions this rule does not have.</p>
+      <div style="overflow-x:auto"><div id="gtpl" class="gsvg"></div></div>
+      <div class="relk">Nearest shapes on the same template</div>
+      <div id="gnear" class="gmini"></div>
+    </div>
+    <div class="detail" id="gusebox">
+      <h2>How the whole proof uses the template</h2>
+      <p class="sub" style="margin:0" id="gusenote"></p>
+      <div style="overflow-x:auto"><div id="guse" class="gsvg"></div></div>
+    </div>
+  </div>
+  <div id="tab-flow" class="tabpane" hidden>
+    <div class="detail">
+      <h2>Rule by rule: which degree pays which</h2>
+      <p class="sub" style="margin:0">Each band is a set of rules (mirror pairs counted once), from the sender's degree condition on the left to the receiver's on the right. Width = number of rules. Tunnels are drawn from the neighbour that pays to the neighbour that receives. 2026 rules whose sender and receiver are not adjacent are marked "at distance".</p>
+      <div style="overflow-x:auto"><div id="bip"></div></div>
+      <div class="legend" id="bipleg"></div>
+    </div>
+    <div class="detail" id="flowbox">
+      <h2>On the whole world: average charge moved per adjacent pair</h2>
+      <p class="sub" style="margin:0" id="flownote"></p>
+      <div style="overflow-x:auto"><div id="flowg"></div></div>
+      <div class="tblwrap"><table class="sym" id="flowt"></table></div>
+    </div>
+  </div>
+  <div id="tab-configs" class="tabpane" hidden>
+    <div class="stats" id="cstats"></div>
+    <div class="bar">
+      <label class="muted" for="cq">Find</label>
+      <input id="cq" placeholder="name, e.g. 2.126, 7322, D2100, nl0194">
+      <select id="cu" aria-label="Use"></select>
+      <select id="ck" aria-label="Reducibility"><option value="">Any reducibility</option><option value="D">D</option><option value="C">C</option><option value="C_merge">C with ring merge</option></select>
+      <select id="cr" aria-label="Ring size"><option value="">Any ring</option></select>
+      <span class="muted" id="ccount"></span>
+    </div>
+    <div class="main">
+      <div class="list" id="clist" role="listbox" aria-label="Configurations"></div>
+      <div class="detail" id="cdetail"></div>
+    </div>
+  </div>
+</div>
+<script type="application/json" id="data">__DATA__</script>
+<script>
+const A=JSON.parse(document.getElementById('data').textContent);
+const RU=A.rules, CF=A.configs, PR=A.proofs, T=2;
+const byTag={};RU.forEach(r=>byTag[r.tag]=r);
+const adj=RU.map(()=>({}));
+for(const [a,b,k] of A.edges){(adj[a][k]=adj[a][k]||[]).push(b);(adj[b][k]=adj[b][k]||[]).push(a);}
+const kinds=['retarget','one-slot edit','lift (add free spoke)','same job (behaviour cos>=0.999)'];
+const kindLabel={'retarget':'Same picture, other target','one-slot edit':'One neighbour changed','lift (add free spoke)':'One free neighbour added or removed','same job (behaviour cos>=0.999)':'Does the same job (charge pattern)'};
+const kindName={RSST:'RSST',push:'push (added)',tunnel:'tunnel (added)',N2:'N2 (added)','2026':'2026 rule'};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function rangeTxt(lo,hi){if(lo<=5&&hi>=9)return'*';if(lo===hi)return lo>=9?'9+':String(lo);if(hi>=9)return'≥'+lo;if(lo<=5)return'≤'+hi;return lo+'–'+hi}
+function col(lo,hi){if(lo<=5&&hi>=9)return'var(--free)';if(lo===hi)return'var(--t'+Math.min(lo,9)+')';return'var(--pin)'}
+function lab(j,h){let o=((j-T)%h+h)%h;if(o>h/2)o-=h;if(o===0)return'T';return o>0?'R'+o:'L'+(-o)}
+document.getElementById('sym').innerHTML=A.symbols.map(([s,m])=>`<tr><td>${esc(s)}</td><td>${esc(m)}</td></tr>`).concat([`<tr><td>S, D, v&lt;k&gt;</td><td>2026 rules: source (sends), destination (receives) and the other vertices of the pattern graph, each with a degree range</td></tr>`]).join('');
+let P=PR[2];
+try{const s=localStorage.getItem('atlas-proof');const f=PR.find(p=>p.id===s);if(f)P=f}catch(e){}
+const pb=document.getElementById('proofbar');
+pb.innerHTML=PR.map(p=>`<button role="radio" data-id="${p.id}">${esc(p.label)}</button>`).join('');
+pb.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;P=PR.find(p=>p.id===b.dataset.id);try{localStorage.setItem('atlas-proof',P.id)}catch(e){}setProof()});
+const _pt={};function partnerTarget(n){if(n.t!=='tunnel')return null;if(n.id in _pt)return _pt[n.id];const h=n.hub;let res=null;
+  for(const p of RU){if(p.t!=='tunnel'||p.hub!==h||p.w!==-n.w)continue;for(let r=0;r<h&&!res;r++){let ok=true;for(let j=0;j<h;j++){if(JSON.stringify(p.sl[j])!==JSON.stringify(n.sl[(j+r)%h])){ok=false;break}}if(ok)res={slot:(T+r)%h,tag:p.tag}}if(res)break}
+  return _pt[n.id]=res}
+/* ---------------- rule pictures ---------------- */
+function picture(n){
+  const h=n.hub,cx=180,cy=180,r1=78,r2=132,r3=162;const sl=n.sl;
+  const ang=j=>(-90+(j-T)*360/h)*Math.PI/180;const Pt=(r,a)=>[cx+r*Math.cos(a),cy+r*Math.sin(a)];
+  let lines='',dots='',txt='';const sp=sl.map((s,j)=>Pt(r1,ang(j)));const hat=sl.map((s,j)=>Pt(r2,ang(j)-Math.PI/h));
+  for(let j=0;j<h;j++){const [x,y]=sp[j];lines+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/>`;const [x2,y2]=sp[(j+1)%h];lines+=`<line x1="${x}" y1="${y}" x2="${x2}" y2="${y2}"/>`;
+    const [hx,hy]=hat[j];const [px,py]=sp[(j-1+h)%h];lines+=`<line x1="${hx}" y1="${hy}" x2="${x}" y2="${y}"/><line x1="${hx}" y1="${hy}" x2="${px}" y2="${py}"/>`;}
+  for(let j=0;j<h;j++){const fans=sl[j][4];if(!fans.length)continue;const a0=ang(j)-Math.PI/h,a1=ang(j)+Math.PI/h;let prev=hat[j];
+    fans.forEach((f,k)=>{const a=a0+(a1-a0)*(k+1)/(fans.length+1);const [fx,fy]=Pt(r3,a);lines+=`<line x1="${sp[j][0]}" y1="${sp[j][1]}" x2="${fx}" y2="${fy}"/><line x1="${prev[0]}" y1="${prev[1]}" x2="${fx}" y2="${fy}"/>`;prev=[fx,fy];
+      dots+=`<circle cx="${fx}" cy="${fy}" r="9" fill="${col(f[0],f[1])}"/>`;txt+=`<text x="${fx}" y="${fy+3.5}">${rangeTxt(f[0],f[1])}</text>`;});
+    lines+=`<line x1="${prev[0]}" y1="${prev[1]}" x2="${hat[(j+1)%h][0]}" y2="${hat[(j+1)%h][1]}"/>`;}
+  for(let j=0;j<h;j++){const [hx,hy]=hat[j];const s=sl[j];dots+=`<circle cx="${hx}" cy="${hy}" r="10" fill="${col(s[2],s[3])}"/>`;txt+=`<text x="${hx}" y="${hy+3.5}">${rangeTxt(s[2],s[3])}</text>`;}
+  for(let j=0;j<h;j++){const [x,y]=sp[j];const s=sl[j];dots+=`<circle cx="${x}" cy="${y}" r="15" fill="${col(s[0],s[1])}" ${j===T?'stroke="var(--fg)" stroke-width="2.5"':''}/>`;txt+=`<text x="${x}" y="${y+4}" class="big">${rangeTxt(s[0],s[1])}</text>`;const [lx,ly]=Pt(r1-30,ang(j));txt+=`<text x="${lx}" y="${ly+3}" class="lab">${lab(j,h)}</text>`;}
+  let arrow='';const pt=partnerTarget(n);
+  if(pt){const Aa=n.w<0?T:pt.slot,B=n.w<0?pt.slot:T;const [ax,ay]=sp[Aa],[bx,by]=sp[B];const ux=bx-cx,uy=by-cy,ul=Math.hypot(ux,uy);arrow=`<path d="M${ax},${ay} Q${cx},${cy} ${bx-ux/ul*17},${by-uy/ul*17}"/>`;}
+  else arrow=n.w>0?`<line x1="${cx}" y1="${cy}" x2="${sp[T][0]}" y2="${sp[T][1]+17}"/>`:`<line x1="${sp[T][0]}" y1="${sp[T][1]+15}" x2="${cx}" y2="${cy-20}"/>`;
+  const ac=pt?'var(--t9)':n.w>0?'var(--accent)':'var(--neg)';
+  dots+=`<circle cx="${cx}" cy="${cy}" r="18" fill="var(--fg)"/>`;txt+=`<text x="${cx}" y="${cy+4.5}" class="hub">${h}</text>`;
+  return `<svg viewBox="0 0 360 360" role="img" aria-label="Picture read by ${esc(n.tag)}"><defs><marker id="ah${n.id}" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="${ac}"/></marker></defs>
+  <g stroke="var(--line)" stroke-width="1.4" fill="none">${lines}</g><g stroke="${ac}" stroke-width="3" fill="none" marker-end="url(#ah${n.id})">${arrow}</g>
+  <g>${dots}</g><g font-family="IBM Plex Mono,monospace" font-size="9.5" text-anchor="middle" fill="var(--bg)">${txt}</g><style>.big{font-size:11px;font-weight:600}.hub{font-size:13px;font-weight:600}.lab{fill:var(--muted);font-size:9px}</style></svg>`}
+function gpicture(n){
+  const S=360,c=180,R=140;const p=i=>[c+R*n.pos[i][0],c+R*n.pos[i][1]];let L='',Dt='',Tx='';
+  n.ge.forEach(([a,b])=>{const [x1,y1]=p(a),[x2,y2]=p(b);L+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`});
+  n.vr.forEach(([lo,hi],i)=>{const [x,y]=p(i);const big=i===n.sv||i===n.dv;Dt+=`<circle cx="${x}" cy="${y}" r="${big?16:12}" fill="${col(lo,hi)}" ${i===n.dv?'stroke="var(--fg)" stroke-width="2.5"':''}/>`;Tx+=`<text x="${x}" y="${y+4}">${rangeTxt(lo,hi)}</text>`});
+  const [sx,sy]=p(n.sv),[dx,dy]=p(n.dv);const ux=dx-sx,uy=dy-sy,ul=Math.hypot(ux,uy)||1;const bg=Math.min(30,ul*0.12),mx=(sx+dx)/2-uy/ul*bg,my=(sy+dy)/2+ux/ul*bg;
+  const ar=`<path d="M${sx+ux/ul*18},${sy+uy/ul*18} Q${mx},${my} ${dx-ux/ul*20},${dy-uy/ul*20}"/>`;
+  return `<svg viewBox="0 0 ${S} ${S}" role="img" aria-label="Pattern read by ${esc(n.tag)}"><defs><marker id="ag${n.id}" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--accent)"/></marker></defs><g stroke="var(--line)" stroke-width="1.4">${L}</g><g stroke="var(--accent)" stroke-width="3" fill="none" marker-end="url(#ag${n.id})">${ar}</g><g>${Dt}</g><g font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" text-anchor="middle" fill="var(--bg)">${Tx}</g></svg>`}
+function pic(n){return n.lang==='part'?picture(n):gpicture(n)}
+function paysTxt(n){if(n.lang==='graph')return `degree ${rangeTxt(...n.vr[n.sv])} pays degree ${rangeTxt(...n.vr[n.dv])}${n.adj?'':' (at distance)'}: ${n.w}/60`;
+  const s=n.sl[T];const pt=partnerTarget(n);
+  if(pt){const p=byTag[pt.tag];const a=n.w<0?n:p,b=n.w<0?p:n;return `tunnel: neighbour ${rangeTxt(a.sl[T][0],a.sl[T][1])} → hub ${n.hub} → neighbour ${rangeTxt(b.sl[T][0],b.sl[T][1])}, 6/60 (pair with ${esc(pt.tag)})`}
+  return n.w>0?`${n.hub} pays ${rangeTxt(s[0],s[1])}: ${n.w}/60`:`${rangeTxt(s[0],s[1])} pays back ${n.hub}: ${-n.w}/60`}
+function sender(n){return n.lang==='part'?n.hub:n.vr[n.sv][0]}
+/* ---------------- rules tab ---------------- */
+const q=document.getElementById('q'),ft=document.getElementById('ft'),fh=document.getElementById('fh'),fg=document.getElementById('fg'),list=document.getElementById('list');
+let sel=0,open=new Set(),pairOf={};
+function pfilt(){const s=q.value.trim().toLowerCase();return P.seq.map((e,i)=>[e,i]).filter(([e])=>{const n=RU[e.pair[0]];
+  return (!ft.value||n.t===ft.value)&&(!fh.value||sender(n)==fh.value)&&(!s||e.pair.some(id=>RU[id].tag.toLowerCase().includes(s)||RU[id].c.toLowerCase().includes(s)))})}
+function dlab(d){if(d===null||d===undefined)return'';if(d===0)return'<span class="dl same">same shape</span>';if(d<=2)return`<span class="dl near">${d} node${d>1?'s':''} differ</span>`;if(d>=99)return'<span class="dl">different language</span>';return`<span class="dl">${d} nodes differ</span>`}
+function rowHtml(e,i,showD){const n=RU[e.pair[0]];const tg=e.pair.map(id=>RU[id].tag);const name=tg.length>1?`${esc(tg[0])} <span class="muted">+ mirror</span>`:`${esc(tg[0])}${n.lang==='part'&&n.t!=='N2'?' <span class="muted">(own mirror)</span>':''}`;
+  return `<div class="row${i===sel?' sel':''}${showD&&e.dprev>=5?' gap':''}" role="option" tabindex="0" data-id="${i}"><span class="pill ${n.t}">${n.t}</span><span class="tag">${name}${showD?'<br>'+dlab(e.dprev):''}</span><span class="w${n.w<0?' neg':''}">${n.lang==='part'?'H'+n.hub:'S'+rangeTxt(...n.vr[n.sv])} ${n.w>0?'+':''}${n.w}</span></div>`}
+function renderList(){const L=pfilt();const k=+fg.value;const full=L.length===P.seq.length;
+  if(!k){document.getElementById('count').textContent=L.length+' rules (mirror pairs)';list.innerHTML=L.map(([e,i])=>rowHtml(e,i,full)).join('');return}
+  const groups=new Map();L.forEach(([e,i])=>{const f=e.fam[k];if(!groups.has(f))groups.set(f,[]);groups.get(f).push([e,i])});
+  const G=[...groups.values()].sort((a,b)=>b.length-a.length);const multi=G.filter(g=>g.length>1).length;
+  document.getElementById('count').textContent=`${G.length} families (${multi} with 2+ rules) from ${L.length} rules`;
+  list.innerHTML=G.map(g=>{const key=k+':'+g[0][0].fam[k];const isOpen=open.has(key)||g.some(([e,i])=>i===sel);const n=RU[g[0][0].pair[0]];
+    const head=`<div class="row famhead" tabindex="0" data-fam="${key}"><span class="pill">${g.length}</span><span class="tag">${esc(RU[g[0][0].pair[0]].tag)}${g.length>1?` <span class="muted">and ${g.length-1} more</span>`:''}</span><span class="w">${isOpen?'▾':'▸'}</span></div>`;
+    return head+(isOpen?g.map(([e,i])=>rowHtml(e,i,false).replace('class="row','class="row sub')).join(''):'')}).join('')}
+list.addEventListener('click',e=>{const h=e.target.closest('.famhead');if(h){const k=h.dataset.fam;open.has(k)?open.delete(k):open.add(k);renderList();return}const r=e.target.closest('.row');if(r&&r.dataset.id)pick(+r.dataset.id)});
+list.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.click()});
+[q,ft,fh,fg].forEach(el=>el.addEventListener('input',renderList));
+function pick(i){sel=i;renderList();renderDetail();renderGrid()}
+function legendHtml(){return `<div class="legend"><span><span class="sw" style="background:var(--t5)"></span>5</span><span><span class="sw" style="background:var(--t6)"></span>6</span><span><span class="sw" style="background:var(--t7)"></span>7</span><span><span class="sw" style="background:var(--t8)"></span>8</span><span><span class="sw" style="background:var(--t9)"></span>9+</span><span><span class="sw" style="background:var(--pin)"></span>range</span><span><span class="sw" style="background:var(--free)"></span>any</span><span><span class="sw" style="background:var(--accent)"></span>arrow: pays</span><span><span class="sw" style="background:var(--neg)"></span>arrow: pays back</span><span><span class="sw" style="background:var(--t9)"></span>arrow: tunnel</span></div>`}
+function renderDetail(){const el=document.getElementById('detail');const e=P.seq[sel];if(!e){el.innerHTML='';return}const n=RU[e.pair[0]];const ids=e.pair;
+  const inP=new Set(P.rules);const relset={};
+  if(n.lang==='part')ids.forEach(id=>kinds.forEach(k=>(adj[id]&&adj[id][k]||[]).forEach(j=>{if(!inP.has(j))return;const pi=pairOf[j];if(pi!==undefined&&pi!==sel)(relset[k]=relset[k]||new Set()).add(pi)})));
+  const rel=kinds.filter(k=>relset[k]).map(k=>{const v=[...relset[k]];return `<div><div class="relk">${kindLabel[k]} · ${v.length}</div><div class="links">${v.slice(0,40).map(i=>`<button data-id="${i}">${esc(RU[P.seq[i].pair[0]].tag)}</button>`).join('')}</div></div>`}).join('');
+  const near=`<div><div class="relk">Nearest shapes in this proof (nodes that differ)</div><div class="links">${e.near.filter(x=>x[1]<99).map(([id,d])=>`<button data-id="${pairOf[id]}">${esc(RU[id].tag)} · ${d}</button>`).join('')}</div></div>`;
+  el.innerHTML=`<div class="dhead"><span class="tag">${ids.map(id=>esc(RU[id].tag)).join(' / ')}</span><span class="pill ${n.t}">${esc(kindName[n.t]||n.t)}</span><span class="w${n.w<0?' neg':''}">${n.lang==='part'?'hub degree '+n.hub:n.nv+'-vertex pattern'} · ${n.np} conditions${ids.length>1?' · mirror pair':''}</span></div>
+  <div class="pays">${paysTxt(n)}</div>
+  <div class="pics">${ids.map(id=>`<div>${pic(RU[id])}<div class="cap">${esc(RU[id].tag)}</div></div>`).join('')}</div>${legendHtml()}
+  <div><div class="relk">Compact form</div><div class="code">${esc(n.c)}</div></div>
+  <div><div class="relk">In words</div><div class="eng">${esc(n.e)}</div></div>
+  ${n.lang==='part'&&n.fac?`<div class="muted">Main behaviour factor ${n.fac}: ${esc(A.factors[n.fac-1]||'')}</div>`:''}
+  ${n.lang==='graph'?'<div class="muted">The 2026 rules are general pattern graphs, not hub pictures: the source and destination need not be adjacent, and no vertex plays the role of a hub. The layout is automatic; edges are the pattern\'s edges.</div>':''}
+  <div class="rel">${near}${rel}</div>`;
+  el.querySelectorAll('.links button').forEach(b=>b.addEventListener('click',()=>pick(+b.dataset.id)))}
+/* ---------------- flow tab ---------------- */
+const tcol={RSST:'var(--t8)',push:'var(--t7)',tunnel:'var(--t9)',N2:'var(--t6)','2026':'var(--t5)'};
+function renderFlow(){
+  const agg={},seen=new Set();
+  P.seq.forEach(e=>{const n=RU[e.pair[0]];let a,b;
+    if(n.lang==='graph'){a='h'+rangeTxt(...n.vr[n.sv]);b='n'+rangeTxt(...n.vr[n.dv])+(n.adj?'':' (at distance)')}
+    else{const pt=partnerTarget(n);
+      if(pt){const key=[n.tag,pt.tag].sort().join('|');if(seen.has(key))return;seen.add(key);const p=byTag[pt.tag];const Aa=n.w<0?n:p,B=n.w<0?p:n;a='t'+rangeTxt(Aa.sl[T][0],Aa.sl[T][1]);b='n'+rangeTxt(B.sl[T][0],B.sl[T][1])}
+      else if(n.w>0){a='h'+n.hub;b='n'+rangeTxt(n.sl[T][0],n.sl[T][1])}else{a='n'+rangeTxt(n.sl[T][0],n.sl[T][1]);b='h'+n.hub}}
+    const k=a+'>'+b+'>'+n.t;agg[k]=(agg[k]||0)+1});
+  const E=Object.entries(agg).map(([k,v])=>{const [a,b,t]=k.split('>');return{a,b,t,v}});
+  const ord=s=>{const m=s.match(/\d+/);return (m?+m[0]:0)*10+({h:0,n:4,t:7}[s[0]])+(s.includes('≥')?1:0)+(s.includes('≤')?2:0)+(s.includes('distance')?3:0)};
+  const nm=s=>({h:'',n:'',t:''}[s[0]])+(s[0]==='h'?'sender ':s[0]==='t'?'neighbour ':'receiver ')+s.slice(1)+(s[0]==='t'?' (tunnel)':'');
+  const Ls=[...new Set(E.map(e=>e.a))].sort((x,y)=>ord(x)-ord(y)),Rs=[...new Set(E.map(e=>e.b))].sort((x,y)=>ord(x)-ord(y));
+  const W=760,H=Math.max(Ls.length,Rs.length)*30+40;const ly=i=>30+i*(H-60)/Math.max(1,Ls.length-1),ry=i=>30+i*(H-60)/Math.max(1,Rs.length-1);
+  const mx=Math.max(...E.map(e=>e.v));let g='';
+  E.sort((x,y)=>y.v-x.v).forEach(e=>{const y1=ly(Ls.indexOf(e.a)),y2=ry(Rs.indexOf(e.b));g+=`<path d="M220,${y1} C390,${y1} 390,${y2} 560,${y2}" stroke="${tcol[e.t]}" stroke-opacity=".55" stroke-width="${1+9*Math.sqrt(e.v/mx)}" fill="none"><title>${nm(e.a)} → ${nm(e.b)}: ${e.v} rule${e.v>1?'s':''} (${e.t})</title></path>`});
+  Ls.forEach((s,i)=>g+=`<text x="210" y="${ly(i)+4}" text-anchor="end">${esc(nm(s))}</text>`);Rs.forEach((s,i)=>g+=`<text x="570" y="${ry(i)+4}">${esc(nm(s))}</text>`);
+  document.getElementById('bip').innerHTML=`<svg viewBox="0 0 ${W} ${H}" style="max-width:${W}px;min-width:560px" font-family="IBM Plex Mono,monospace" font-size="12" fill="var(--fg)">${g}</svg>`;
+  const tl=[...new Set(E.map(e=>e.t))];
+  document.getElementById('bipleg').innerHTML=tl.map(k=>`<span><span class="sw" style="background:${tcol[k]}"></span>${esc(kindName[k]||k)} (${E.filter(e=>e.t===k).reduce((s,e)=>s+e.v,0)})</span>`).join('');
+  const box=document.getElementById('flowbox');
+  if(!P.flow){document.getElementById('flownote').textContent='Not computed for this proof: the 2026 rules are general pattern graphs and need their own evaluator. The rule-by-rule graph above is exact.';document.getElementById('flowg').innerHTML='';document.getElementById('flowt').innerHTML='';return}
+  document.getElementById('flownote').textContent='For every pair of adjacent degrees (a, b), the average charge in 1/60 that a pays b through the rules, over every neighbourhood with a receiver of degree 5 to 11 (5 to 8 exhaustive, 9 to 11 sampled; unknown outer degrees uniform). Width is on a log scale.'+(P.flownote?' '+P.flownote+'.':'');
+  const nodes=[5,6,7,8,9];const R=120,cx=200,cy=170;const pos=d=>{const i=nodes.indexOf(d);const a=-Math.PI/2+i*2*Math.PI/5;return[cx+R*Math.cos(a),cy+R*Math.sin(a)]};
+  const agg2={};P.flow.forEach(([a,b,t,v])=>{const k=a+'>'+b+'>'+t;agg2[k]=(agg2[k]||0)+v});
+  const E2=Object.entries(agg2).map(([k,v])=>{const [a,b,t]=k.split('>');return{a:+a,b:+b,t,v}}).filter(e=>e.v>1e-6);
+  const lmin=Math.log10(1e-5),lmax=Math.log10(Math.max(...E2.map(e=>e.v)));let s2='';
+  E2.sort((x,y)=>x.v-y.v).forEach(e=>{const w=1+8*(Math.log10(e.v)-lmin)/(lmax-lmin);const off={RSST:0,push:14,tunnel:-14}[e.t]||0;
+    if(e.a===e.b){const [x,y]=pos(e.a);const dx=(x-cx)/R,dy=(y-cy)/R;s2+=`<circle cx="${x+dx*28+off*.6}" cy="${y+dy*28}" r="14" fill="none" stroke="${tcol[e.t]}" stroke-opacity=".6" stroke-width="${w}"><title>${e.a} → ${e.b} ${e.t}: ${e.v.toPrecision(3)}/60</title></circle>`;return}
+    const [x1,y1]=pos(e.a),[x2,y2]=pos(e.b);const mx=(x1+x2)/2,my=(y1+y2)/2;const nx=-(y2-y1),ny=x2-x1,nl=Math.hypot(nx,ny);const k=26+off;const qx=mx+nx/nl*k,qy=my+ny/nl*k;const ex=x2-(x2-qx)/Math.hypot(x2-qx,y2-qy)*24,ey=y2-(y2-qy)/Math.hypot(x2-qx,y2-qy)*24;
+    s2+=`<path d="M${x1},${y1} Q${qx},${qy} ${ex},${ey}" stroke="${tcol[e.t]}" stroke-opacity=".6" stroke-width="${w}" fill="none" marker-end="url(#fa-${e.t})"><title>${e.a===9?'9+':e.a} pays ${e.b===9?'9+':e.b} (${e.t}): ${e.v.toPrecision(3)}/60 per adjacent pair</title></path>`});
+  const mk=Object.entries(tcol).map(([k,c])=>`<marker id="fa-${k}" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0L10,5L0,10z" fill="${c}"/></marker>`).join('');
+  nodes.forEach(d=>{const [x,y]=pos(d);s2+=`<circle cx="${x}" cy="${y}" r="22" fill="var(--t${d})"/><text x="${x}" y="${y+5}" text-anchor="middle" fill="var(--bg)" font-weight="600" font-size="15">${d===9?'9+':d}</text>`});
+  document.getElementById('flowg').innerHTML=`<svg viewBox="0 0 400 340" style="max-width:480px;min-width:320px" font-family="IBM Plex Mono,monospace"><defs>${mk}</defs>${s2}</svg>`;
+  document.getElementById('flowt').innerHTML='<tr><td>pays</td><td>receives</td><td>rules</td><td>average per adjacent pair (1/60)</td></tr>'+E2.sort((x,y)=>y.v-x.v).map(e=>`<tr><td>${e.a===9?'9+':e.a}</td><td>${e.b===9?'9+':e.b}</td><td>${e.t}</td><td style="font-variant-numeric:tabular-nums">${e.v<0.001?e.v.toExponential(2):e.v.toFixed(3)}</td></tr>`).join('')}
+/* ---------------- configs tab ---------------- */
+const cq=document.getElementById('cq'),cu=document.getElementById('cu'),ck=document.getElementById('ck'),cr=document.getElementById('cr'),clist=document.getElementById('clist');
+let csel=null,CL=[],usedSet=null;
+function cfilt(){const s=cq.value.trim().toLowerCase();return CL.filter(i=>{const c=CF[i];const u=usedSet?(usedSet.has(i)?'1':'0'):'1';
+  return (cu.value===''||u===cu.value)&&(!ck.value||c.k===ck.value)&&(!cr.value||c.r==cr.value)&&(!s||c.n.toLowerCase().includes(s))})}
+function cRenderList(){const L=cfilt();const cap=600;document.getElementById('ccount').textContent=L.length+' shown'+(L.length>cap?` (first ${cap} listed; narrow the search)`:'');
+  clist.innerHTML=L.slice(0,cap).map(i=>{const c=CF[i];const dropped=usedSet&&!usedSet.has(i);return `<div class="row${i===csel?' sel':''}" role="option" tabindex="0" data-id="${i}"><span class="pill ${c.k}">${c.k==='C_merge'?'C merge':c.k}</span><span class="tag">${esc(c.n)}${dropped?' <span class="drop">dropped</span>':''}</span><span class="w">ring ${c.r} · ${c.m}v</span></div>`}).join('')}
+clist.addEventListener('click',e=>{const r=e.target.closest('.row');if(r)cpick(+r.dataset.id)});
+clist.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.click()});
+[cq,cu,ck,cr].forEach(el=>el.addEventListener('input',cRenderList));
+function cpick(i){csel=i;cRenderList();cRenderDetail()}
+function parseX(X){const out=[];if(!X)return out;X.split(',').filter(Boolean).forEach(e=>{const [a,b]=e.split('-');out.push([a,b])});return out}
+function cDraw(c){const S=360,cx=180,cy=180,R=150;const rp=k=>[cx+R*Math.cos(2*Math.PI*k/c.r-Math.PI/2),cy+R*Math.sin(2*Math.PI*k/c.r-Math.PI/2)];const ip=u=>[cx+R*c.pi[u][0],cy+R*c.pi[u][1]];const Pp=v=>v[0]==='R'?rp(+v.slice(1)):ip(+v.slice(1));
+  let L='',Dt='',Tx='',I='',Xl='';for(let k=0;k<c.r;k++){const [a,b]=rp(k),[x,y]=rp((k+1)%c.r);L+=`<line x1="${a}" y1="${b}" x2="${x}" y2="${y}"/>`}
+  c.re.forEach(([u,k])=>{const [a,b]=ip(u),[x,y]=rp(k);L+=`<line x1="${a}" y1="${b}" x2="${x}" y2="${y}"/>`});c.ie.forEach(([u,v])=>{const [a,b]=ip(u),[x,y]=ip(v);I+=`<line x1="${a}" y1="${b}" x2="${x}" y2="${y}"/>`});
+  parseX(c.X).forEach(([a,b])=>{const [x1,y1]=Pp(a),[x2,y2]=Pp(b);Xl+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`});
+  for(let k=0;k<c.r;k++){const [x,y]=rp(k);Dt+=`<circle cx="${x}" cy="${y}" r="4.5" fill="var(--panel)" stroke="var(--muted)" stroke-width="1.5"/>`}
+  const rr=c.m>14?9:12;c.deg.forEach((d,u)=>{const [x,y]=ip(u);Dt+=`<circle cx="${x}" cy="${y}" r="${rr}" fill="var(--t${Math.min(d,9)})"/>`;Tx+=`<text x="${x}" y="${y+4}">${d}</text>`});
+  return `<svg viewBox="0 0 ${S} ${S}" role="img" aria-label="Configuration ${esc(c.n)}"><g stroke="var(--line)" stroke-width="1.2">${L}</g><g stroke="var(--muted)" stroke-width="2">${I}</g><g stroke="var(--pin)" stroke-width="4" stroke-dasharray="6 4" stroke-linecap="round">${Xl}</g><g>${Dt}</g><g font-family="IBM Plex Mono,monospace" font-size="${c.m>14?9:11}" font-weight="600" text-anchor="middle" fill="var(--bg)">${Tx}</g></svg>`}
+function cRenderDetail(){const el=document.getElementById('cdetail');if(csel===null){el.innerHTML='';return}const c=CF[csel];
+  const kindTxt={D:'D-reducible: every ring colouring extends after Kempe changes',C:'C-reducible: reducible after contracting the edges X',C_merge:'C-reducible with a contraction that merges ring vertices into the interior'}[c.k];
+  const dropped=usedSet&&!usedSet.has(csel);
+  const cov=c.cov&&(P.id==='rsst'||P.id==='ext588')?`<div><div class="relk">Where the rules need it</div><div class="eng">After the rules, ${c.cov.n>=400?'at least ':''}${c.cov.n} positive neighbourhoods are covered by this configuration and by no other RSST configuration (${c.cov.nl} distinct centre-degree + link-word types). By centre degree: ${c.cov.d.map(([d,k])=>`degree ${d}: ${k}`).join(', ')||'none'}.</div>
+  <div class="links" style="margin-top:6px">${c.cov.top.map(([d,l,k])=>`<span class="pays" style="background:var(--chip);border-radius:5px;padding:2px 7px">d${d} · ${l} · ${k}</span>`).join('')}</div><div class="muted" style="margin-top:6px;font-size:12px">Source: the outside team's profile under its earlier 534-part rule file, capped at 400 per configuration.</div></div>`:'';
+  el.innerHTML=`<div class="dhead"><span class="tag">${esc(c.n)}</span><span class="pill ${c.k}">${c.k==='C_merge'?'C merge':c.k}</span>${dropped?'<span class="drop">dropped from this proof</span>':''}</div>
+  <div class="pic"><div>${cDraw(c)}<div class="legend"><span><span class="sw" style="background:var(--t5)"></span>5</span><span><span class="sw" style="background:var(--t6)"></span>6</span><span><span class="sw" style="background:var(--t7)"></span>7</span><span><span class="sw" style="background:var(--t8)"></span>8</span><span><span class="sw" style="background:var(--t9)"></span>9+</span><span><svg width="22" height="10" style="display:inline;vertical-align:0;width:22px"><line x1="1" y1="5" x2="21" y2="5" stroke="var(--pin)" stroke-width="3" stroke-dasharray="5 3"/></svg> contraction X (edges shrunk to prove C-reducibility)</span><span><span class="sw" style="background:var(--panel);border:1.5px solid var(--muted)"></span>ring</span></div></div>
+  <dl class="facts"><dt>Reducibility</dt><dd>${kindTxt}</dd><dt>Contraction X</dt><dd class="tag">${c.X?esc(c.X):'none'}</dd><dt>Interior</dt><dd>${c.m} vertices, degrees ${c.deg.join(' ')}</dd><dt>Ring</dt><dd>${c.r} vertices</dd><dt>Evidence</dt><dd>${esc(c.ev)}</dd>${c.fs?`<dt>Degree family</dt><dd>family ${c.fam} (${c.fs} RSST configurations that differ by one degree change)</dd>`:''}</dl></div>
+  ${cov}${c.nb&&c.nb.length?`<div class="rel"><div><div class="relk">One degree change away · ${c.nb.length}</div><div class="links">${c.nb.map(i=>`<button data-id="${i}">${esc(CF[i].n)}</button>`).join('')}</div></div></div>`:''}`;
+  el.querySelectorAll('.links button').forEach(b=>b.addEventListener('click',()=>cpick(+b.dataset.id)))}
+/* ---------------- proof switch ---------------- */
+/* ---------------- family tree tab ---------------- */
+const kcol={RSST:'var(--t8)',push:'var(--t7)',tunnel:'var(--t9)',N2:'var(--t6)','2026':'var(--t5)'};
+let TR=null,tsel=0,thl=null;
+function flip(s){const i=s.indexOf(': ');const [a,b]=s.slice(i+2).split(' to ');return s.slice(0,i)+': '+b+' to '+a}
+function buildTree(){const n=P.seq.length;const nb=Array.from({length:n},()=>[]);
+  (P.tree||[]).forEach(([a,b,d,df])=>{nb[a].push([b,d,df]);nb[b].push([a,d,df.map(flip)])});
+  let root=0;for(let i=1;i<n;i++)if(RU[P.seq[i].pair[0]].np<RU[P.seq[root].pair[0]].np)root=i;
+  const par=Array(n).fill(-1),pd=Array(n).fill(0),pdf=Array(n).fill(null),dep=Array(n).fill(0),ch=Array.from({length:n},()=>[]),ord=[root];const seen=new Set([root]);
+  for(let q=0;q<ord.length;q++){const v=ord[q];nb[v].forEach(([u,d,df])=>{if(seen.has(u))return;seen.add(u);par[u]=v;pd[u]=d;pdf[u]=df;dep[u]=dep[v]+1;ch[v].push(u);ord.push(u)})}
+  const sz=Array(n).fill(1);for(let q=ord.length-1;q>0;q--)sz[par[ord[q]]]+=sz[ord[q]];
+  ch.forEach(c=>c.sort((a,b)=>pd[a]-pd[b]||sz[b]-sz[a]));
+  const ang=Array(n).fill(0);let leaf=0;const nl=ord.filter(v=>!ch[v].length).length||1;
+  (function walk(v){if(!ch[v].length){ang[v]=2*Math.PI*(leaf++)/nl;return}ch[v].forEach(walk);ang[v]=(ang[ch[v][0]]+ang[ch[v][ch[v].length-1]])/2})(root);
+  const md=Math.max(1,...dep);const S=920,c=S/2,R=c-(n<=50?70:24);
+  const xy=dep.map((d,i)=>i===root?[c,c]:[c+R*d/md*Math.cos(ang[i]-Math.PI/2),c+R*d/md*Math.sin(ang[i]-Math.PI/2)]);
+  TR={n,root,par,pd,pdf,dep,ch,xy,S,ang,md}}
+function estyle(d){return d<=1?'stroke="var(--fg)" stroke-width="2.4"':d===2?'stroke="var(--muted)" stroke-width="1.6"':d<=4?'stroke="var(--muted)" stroke-width="1" opacity=".55"':'stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4" opacity=".45"'}
+function renderTree(){if(!TR)buildTree();const {n,par,pd,xy,S,root}=TR;const path=new Set();for(let v=tsel;v>=0;v=par[v])path.add(v);
+  let E='',N='',Tx='';const r=n<=50?9:n<=100?7:4.6;
+  for(let v=0;v<n;v++){if(par[v]<0)continue;const [x1,y1]=xy[par[v]],[x2,y2]=xy[v];const on=path.has(v);E+=`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" ${on?'stroke="var(--accent)" stroke-width="3.2"':estyle(pd[v])}/>`}
+  for(let v=0;v<n;v++){const m=RU[P.seq[v].pair[0]];const [x,y]=xy[v];const dim=thl&&!thl.has(v);
+    N+=`<circle data-id="${v}" tabindex="0" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${v===tsel?r+3:r}" fill="${kcol[m.t]||'var(--free)'}" ${dim?'opacity=".18"':''} stroke="${v===tsel?'var(--fg)':v===root?'var(--fg)':'var(--panel)'}" stroke-width="${v===tsel?3:v===root?2:1}" style="cursor:pointer"><title>${esc(m.tag)}${par[v]>=0?' · '+pd[v]+' node'+(pd[v]===1?'':'s')+' from '+esc(RU[P.seq[par[v]].pair[0]].tag):' · root'}</title></circle>`;
+    if(n<=50){const a=TR.ang[v]-Math.PI/2;const out=v===root?[0,-r-6]:[Math.cos(a)*(r+5),Math.sin(a)*(r+5)+3];Tx+=`<text x="${(x+out[0]).toFixed(1)}" y="${(y+out[1]).toFixed(1)}" text-anchor="${v===root?'middle':Math.cos(a)>0.3?'start':Math.cos(a)<-0.3?'end':'middle'}">${esc(m.tag)}</text>`}}
+  document.getElementById('treeg').innerHTML=`<svg viewBox="0 0 ${S} ${S}" role="img" aria-label="Family tree of rule shapes"><g fill="none">${E}</g><g>${N}</g><g font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--muted)" pointer-events="none">${Tx}</g></svg>`;
+  const kinds=[...new Set(P.seq.map(e=>RU[e.pair[0]].t))];
+  document.getElementById('tleg').innerHTML=kinds.map(k=>`<span><span class="sw" style="background:${kcol[k]}"></span>${esc(kindName[k]||k)}</span>`).join('')+'<span><svg width="26" height="8"><line x1="0" y1="4" x2="26" y2="4" stroke="var(--fg)" stroke-width="2.4"/></svg> 1-node swap</span><span><svg width="26" height="8"><line x1="0" y1="4" x2="26" y2="4" stroke="var(--muted)" stroke-width="1.6"/></svg> 2 nodes</span><span><svg width="26" height="8"><line x1="0" y1="4" x2="26" y2="4" stroke="var(--muted)" stroke-width="1" opacity=".55"/></svg> 3 to 4</span><span><svg width="26" height="8"><line x1="0" y1="4" x2="26" y2="4" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4"/></svg> 5 or more</span>';
+  renderTDetail()}
+function renderTDetail(){const {par,pd,pdf,ch,dep}=TR;const v=tsel;const e=P.seq[v];if(!e){document.getElementById('tdetail').innerHTML='';return}const m=RU[e.pair[0]];const el=document.getElementById('tdetail');
+  const line=[];for(let u=v;u>=0;u=par[u])line.unshift(u);
+  const btn=u=>`<button data-id="${u}">${esc(RU[P.seq[u].pair[0]].tag)}${par[u]>=0?' · '+pd[u]:''}</button>`;
+  const pv=par[v];
+  el.innerHTML=`<div class="dhead"><span class="tag">${esc(m.tag)}</span><span class="pill ${m.t}">${esc(kindName[m.t]||m.t)}</span><span class="w">${dep[v]===0?'root: fewest conditions':'generation '+dep[v]}</span></div>
+  <div class="pays">${paysTxt(m)}</div>
+  ${pv>=0?`<div><div class="relk">Changed from parent ${esc(RU[P.seq[pv].pair[0]].tag)} · ${pd[v]} node${pd[v]===1?'':'s'}</div>${pdf[v]&&pdf[v].length?`<ul class="chg">${pdf[v].map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`:'<div class="muted">A larger rewrite; the two pictures are shown side by side.</div>'}</div>`:''}
+  <div class="pics">${pv>=0?`<div>${pic(RU[P.seq[pv].pair[0]])}<div class="cap">parent: ${esc(RU[P.seq[pv].pair[0]].tag)}</div></div>`:''}<div>${pic(m)}<div class="cap">${esc(m.tag)}</div></div></div>
+  <div><div class="relk">Line of descent (number = nodes changed at that step)</div><div class="links">${line.map(btn).join('')}</div></div>
+  ${ch[v].length?`<div><div class="relk">Children · ${ch[v].length}</div><div class="links">${ch[v].slice(0,40).map(btn).join('')}</div></div>`:''}
+  <div class="links"><button data-open="${v}">Open in the rules list</button></div>`;
+  el.querySelectorAll('.links button').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.open!==undefined){pick(+b.dataset.open);location.hash='#rules';return}tsel=+b.dataset.id;renderTree()}))}
+document.getElementById('treeg').addEventListener('click',e=>{const c=e.target.closest('circle');if(c){tsel=+c.dataset.id;renderTree()}});
+document.getElementById('treeg').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset.id){tsel=+e.target.dataset.id;renderTree()}});
+const TH=[6,4,3,2,1];let NEST=null;
+function renderNest(){const n=P.seq.length;const lev=TH.map(k=>{const p=[...Array(n).keys()];const f=x=>{while(p[x]!==x){p[x]=p[p[x]];x=p[x]}return x};(P.tree||[]).forEach(([a,b,d])=>{if(d<=k)p[f(a)]=f(b)});return [...Array(n).keys()].map(f)});
+  const size=lev.map(L=>{const s={};L.forEach(c=>s[c]=(s[c]||0)+1);return s});
+  const order=[...Array(n).keys()].sort((a,b)=>{for(let l=0;l<TH.length;l++){const ca=lev[l][a],cb=lev[l][b];if(ca!==cb)return size[l][cb]-size[l][ca]||ca-cb}return a-b});
+  const h=Math.max(3,Math.min(16,Math.round(820/n))),cw=96,x0=8,top=26,W=x0+cw*TH.length+70,H=top+n*h+8;let R='',Hd='';NEST=[];
+  TH.forEach((k,l)=>{Hd+=`<text x="${x0+l*cw+cw/2-4}" y="14" text-anchor="middle">steps ≤ ${k}</text>`;let i=0;while(i<n){let j=i;const c=lev[l][order[i]];while(j<n&&lev[l][order[j]]===c)j++;const cnt=j-i;const id=NEST.length;NEST.push({k,mem:order.slice(i,j)});
+    R+=`<rect data-n="${id}" tabindex="0" x="${x0+l*cw}" y="${top+i*h+0.5}" width="${cw-8}" height="${Math.max(1,cnt*h-1)}" rx="2" fill="${cnt>1?'var(--accent)':'var(--line)'}" opacity="${cnt>1?Math.min(.85,.25+.12*Math.log2(cnt)):.6}" style="cursor:pointer"><title>${cnt} rule${cnt>1?'s':''} joined by steps of at most ${k}</title></rect>`+(cnt*h>=13&&cnt>1?`<text x="${x0+l*cw+(cw-8)/2}" y="${top+i*h+cnt*h/2+4}" text-anchor="middle" fill="var(--fg)" pointer-events="none">${cnt}</text>`:'');i=j}});
+  Hd+=`<text x="${x0+TH.length*cw+26}" y="14" text-anchor="middle">rules</text>`;
+  order.forEach((v,i)=>{const m=RU[P.seq[v].pair[0]];R+=`<rect data-leaf="${v}" x="${x0+TH.length*cw}" y="${top+i*h+0.5}" width="56" height="${Math.max(1,h-1)}" fill="${kcol[m.t]||'var(--free)'}" style="cursor:pointer"><title>${esc(m.tag)}</title></rect>`});
+  document.getElementById('nestg').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Nested clusters of rules by swap size" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--muted)">${Hd}${R}</svg>`;
+  document.getElementById('nestsel').innerHTML='';
+  const cnt={};(P.tree||[]).forEach(e=>{const b=e[2]<=4?e[2]:'5+';cnt[b]=(cnt[b]||0)+1});
+  document.getElementById('tstats').innerHTML=[[n,'rules in the tree'],[(cnt[0]||0)+(cnt[1]||0),'branches of 0 or 1 node'],[cnt[2]||0,'of 2 nodes'],[(cnt[3]||0)+(cnt[4]||0),'of 3 to 4'],[cnt['5+']||0,'of 5 or more'],[new Set(lev[4]).size,'families at 1-node steps'],[new Set(lev[1]).size,'at 4-node steps']].map(([v,l])=>`<span class="stat"><b>${v}</b>${l}</span>`).join('')}
+document.getElementById('nestg').addEventListener('click',e=>{const lf=e.target.closest('[data-leaf]');if(lf){thl=null;tsel=+lf.dataset.leaf;renderTree();document.getElementById('treeg').scrollIntoView({behavior:'smooth',block:'center'});return}
+  const r=e.target.closest('[data-n]');if(!r)return;const c=NEST[+r.dataset.n];thl=new Set(c.mem);renderTree();
+  const el=document.getElementById('nestsel');el.innerHTML=`<div class="relk">${c.mem.length} rule${c.mem.length>1?'s':''} joined by steps of at most ${c.k} node${c.k>1?'s':''} (lit up in the tree)</div><div class="links">${c.mem.slice(0,120).map(u=>`<button data-id="${u}">${esc(RU[P.seq[u].pair[0]].tag)}</button>`).join('')}<button data-clear="1">Clear highlight</button></div>`;
+  el.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.clear){thl=null;el.innerHTML='';renderTree();return}tsel=+b.dataset.id;renderTree();document.getElementById('treeg').scrollIntoView({behavior:'smooth',block:'center'})}))});
+/* ---------------- template tab ---------------- */
+const GW=96,GX0=112,GY=[44,130,214,292],OFF=[-3,-2,-1,0,1,2,3,4];
+function offs(h){const o=[];for(let j=0;j<h;j++){let x=((j-T)%h+h)%h;if(x>h/2)x-=h;o.push(x)}return o}
+function olab(o){return o===0?'T':o>0?'R'+o:'L'+(-o)}
+/* positions of one part on a column map colx(offset) */
+function gparts(n,colx,ghost,mini){const h=n.hub,of=offs(h);const lo=Math.min(...of),hi=Math.max(...of);const W=colx(4)+GX0;
+  let L='',N='',Tx='',Lb='';const hubx=(colx(lo)+colx(hi))/2;const R=mini?9:15,r2=mini?7:12;
+  const node=(x,y,lo_,hi_,r,strong)=>{N+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${col(lo_,hi_)}" ${strong?'stroke="var(--fg)" stroke-width="2.5"':''}/>`;if(!mini)Tx+=`<text x="${x}" y="${y+4}">${rangeTxt(lo_,hi_)}</text>`};
+  const gh=(x,y,r)=>{if(ghost)N+=`<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="var(--line)" stroke-width="1.2" stroke-dasharray="3 3"/>`};
+  const ln=(x1,y1,x2,y2,c)=>{L+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" ${c||''}/>`};
+  const sx={};of.forEach((o,j)=>sx[o]=colx(o));
+  if(ghost)OFF.forEach(o=>{if(!(o in sx)){gh(colx(o),GY[1],R);gh(colx(o)-GW/2,GY[2],r2);for(let k=0;k<3;k++)gh(colx(o)+(k-1)*26,GY[3],r2)}});
+  of.forEach((o,j)=>{const s=n.sl[j];const x=sx[o];
+    ln(hubx,GY[0],x,GY[1],o===0?'stroke="var(--accent)" stroke-width="3.5"':'');
+    /* ring edge to previous neighbour and the hat between them */
+    const po=o===lo?hi:o-1;const wrap=o===lo;const hx=wrap?x-GW/2:(sx[po]+x)/2;
+    if(!wrap)ln(sx[po],GY[1],x,GY[1]);
+    ln(x,GY[1],hx,GY[2]);if(!wrap)ln(sx[po],GY[1],hx,GY[2]);
+    else L+=`<path d="M${sx[hi]},${GY[1]} C${sx[hi]},${GY[1]-58} ${hx},${GY[1]-58} ${hx},${GY[2]}" fill="none" stroke-dasharray="4 4"/>`;
+    node(hx,GY[2],s[2],s[3],r2);
+    const nf=s[4].length;s[4].forEach((f,k)=>{const fx=x+(ghost?k-1:k-(nf-1)/2)*26;ln(x,GY[1],fx,GY[3]);node(fx,GY[3],f[0],f[1],r2)});
+    if(ghost)for(let k=nf;k<3;k++)gh(x+(k-1)*26,GY[3],r2);
+    node(x,GY[1],s[0],s[1],R,o===0);
+    if(!mini)Lb+=`<text x="${x}" y="${GY[1]-22}">${olab(o)}</text>`});
+  N+=`<circle cx="${hubx}" cy="${GY[0]}" r="${R+2}" fill="var(--fg)"/>`;if(!mini)Tx+=`<text x="${hubx}" y="${GY[0]+4}">${h}</text>`;
+  return {L,N,Tx,Lb,W}}
+function gsvg(n,full,mini){const of=offs(n.hub);const lo=Math.min(...of);
+  const colx=full?(o=>GX0+(o+3)*GW):(o=>GX0+(o-lo)*GW);const g=gparts(n,colx,full,mini);
+  const W=full?GX0*2+7*GW:GX0*2+(n.hub-1)*GW,H=GY[3]+34;
+  const rows=mini?'':`<g font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--muted)"><text x="4" y="${GY[0]+4}">pays</text><text x="4" y="${GY[1]+4}">ring 1</text><text x="4" y="${GY[2]+4}">hats</text><text x="4" y="${GY[3]+4}">fans</text></g>`;
+  return `<svg viewBox="0 0 ${W} ${H}" ${mini?'':`width="${W}" height="${H}"`} role="img" aria-label="${esc(n.tag)} as a layered graph"><g stroke="var(--line)" stroke-width="1.4" fill="none">${g.L}</g>${g.N}<g font-family="IBM Plex Mono,monospace" font-size="${11}" font-weight="600" text-anchor="middle" fill="var(--bg)">${g.Tx}</g><g font-family="IBM Plex Mono,monospace" font-size="10" text-anchor="middle" fill="var(--muted)">${g.Lb}</g>${rows}</svg>`}
+/* 2026 pattern graphs: layers by distance from the source */
+function glayer(n){const adj=n.vr.map(()=>[]);n.ge.forEach(([a,b])=>{adj[a].push(b);adj[b].push(a)});const d=n.vr.map(()=>-1);d[n.sv]=0;const q=[n.sv];
+  for(let i=0;i<q.length;i++)adj[q[i]].forEach(u=>{if(d[u]<0){d[u]=d[q[i]]+1;q.push(u)}});
+  const lay=[];q.forEach(v=>(lay[d[v]]=lay[d[v]]||[]).push(v));const s0=n.pos[n.sv];const an=v=>Math.atan2(n.pos[v][1]-s0[1],n.pos[v][0]-s0[0]);lay.forEach(l=>l.sort((a,b)=>an(a)-an(b)));n.vr.forEach((_,v)=>{if(d[v]<0)(lay[lay.length]=lay[lay.length]||[]).push(v)});
+  const maxw=Math.max(...lay.map(l=>l.length));const W=Math.max(420,GX0*2+(maxw-1)*GW),H=44+lay.length*84;const pos={};
+  lay.forEach((l,i)=>l.forEach((v,k)=>pos[v]=[W/2+(k-(l.length-1)/2)*GW,44+i*84]));
+  let L='',N='',Tx='';n.ge.forEach(([a,b])=>{const pay=(a===n.sv&&b===n.dv)||(b===n.sv&&a===n.dv);const [x1,y1]=pos[a],[x2,y2]=pos[b];
+    L+=y1===y2&&Math.abs(x1-x2)>GW+1?`<path d="M${x1},${y1} Q${(x1+x2)/2},${y1-30} ${x2},${y2}" fill="none"/>`:`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" ${pay?'stroke="var(--accent)" stroke-width="3.5"':''}/>`});
+  n.vr.forEach(([lo,hi],v)=>{const [x,y]=pos[v];N+=v===n.sv?`<circle cx="${x}" cy="${y}" r="17" fill="var(--fg)"/>`:`<circle cx="${x}" cy="${y}" r="15" fill="${col(lo,hi)}" ${v===n.dv?'stroke="var(--fg)" stroke-width="2.5"':''}/>`;Tx+=`<text x="${x}" y="${y+4}">${rangeTxt(lo,hi)}</text>`});
+  return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${esc(n.tag)} as a layered graph"><g stroke="var(--line)" stroke-width="1.4" fill="none">${L}</g>${N}<g font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600" text-anchor="middle" fill="var(--bg)">${Tx}</g><g font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--muted)">${lay.map((l,i)=>`<text x="4" y="${48+i*84}">${i===0?'pays':'step '+i}</text>`).join('')}</g></svg>`}
+function guse(){const cnt={},tot=P.rules.filter(i=>RU[i].lang==='part');
+  tot.forEach(i=>{const n=RU[i];const of=offs(n.hub);n.sl.forEach((s,j)=>{const o=of[j];const b=(k,lo,hi)=>{const c=cnt[k]=cnt[k]||{has:0,con:0};c.has++;if(!(lo<=5&&hi>=9))c.con++};b('s'+o,s[0],s[1]);b('h'+o,s[2],s[3]);s[4].forEach((f,k)=>b('f'+o+'_'+k,f[0],f[1]))})});
+  const N=tot.length||1;const colx=o=>GX0+(o+3)*GW;const W=GX0*2+7*GW,H=GY[3]+34;let L='',C='',Tx='';
+  const nd=(k,x,y,r)=>{const c=cnt[k]||{has:0,con:0};const f=c.con/N;C+=`<circle cx="${x}" cy="${y}" r="${r}" fill="var(--accent)" fill-opacity="${(0.06+0.94*f).toFixed(2)}" stroke="var(--line)" stroke-width="1.2" ${c.has?'':'stroke-dasharray="3 3"'}><title>${c.con} of ${N} rule parts put a condition here; ${c.has} have this position</title></circle>`;Tx+=`<text x="${x}" y="${y+4}" fill="${f>0.5?'var(--bg)':'var(--fg)'}">${c.con}</text>`};
+  const hubx=colx(0);OFF.forEach(o=>{const x=colx(o);L+=`<line x1="${hubx}" y1="${GY[0]}" x2="${x}" y2="${GY[1]}"/>`;if(o>-3)L+=`<line x1="${colx(o-1)}" y1="${GY[1]}" x2="${x}" y2="${GY[1]}"/><line x1="${colx(o-1)}" y1="${GY[1]}" x2="${x-GW/2}" y2="${GY[2]}"/>`;L+=`<line x1="${x}" y1="${GY[1]}" x2="${x-GW/2}" y2="${GY[2]}"/>`;
+    for(let k=0;k<3;k++){L+=`<line x1="${x}" y1="${GY[1]}" x2="${x+(k-1)*26}" y2="${GY[3]}"/>`;nd('f'+o+'_'+k,x+(k-1)*26,GY[3],12)}
+    nd('h'+o,x-GW/2,GY[2],12);nd('s'+o,x,GY[1],16);Tx+=`<text x="${x}" y="${GY[1]-22}" fill="var(--muted)" font-weight="400" font-size="10">${olab(o)}</text>`});
+  C+=`<circle cx="${hubx}" cy="${GY[0]}" r="17" fill="var(--fg)"/>`;
+  document.getElementById('guse').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="How often each template position carries a condition"><g stroke="var(--line)" stroke-width="1.2">${L}</g>${C}<g font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" text-anchor="middle">${Tx}</g></svg>`;
+  document.getElementById('gusenote').textContent=`Each position shows how many of this proof's ${N} rule parts put a condition there (mirrors counted separately, so left and right balance). Darker means used more. Only hubs of degree 8 reach the R4 column, which is why it is lighter.`}
+const gselEl=document.getElementById('gsel');
+function renderGrid(){const e=P.seq[sel];if(!e)return;const n=RU[e.pair[0]];gselEl.value=sel;
+  document.getElementById('gcount').textContent=(sel+1)+' of '+P.seq.length+' (shape order)';
+  document.getElementById('ghead').innerHTML=`<div class="dhead"><span class="tag">${e.pair.map(id=>esc(RU[id].tag)).join(' / ')}</span><span class="pill ${n.t}">${esc(kindName[n.t]||n.t)}</span><span class="w">${n.np} conditions</span></div><div class="pays">${paysTxt(n)}</div>`;
+  const part=n.lang==='part';
+  document.getElementById('gtop').innerHTML=part?gsvg(n,false):glayer(n)+'<p class="muted" style="margin:8px 0 0">The 2026 rules are free-form pattern graphs, so they have no fixed template: each row is one more step away from the vertex that pays. The shared template below applies to the three proofs written in the hub language.</p>';
+  document.getElementById('gtplbox').hidden=!part;document.getElementById('gusebox').hidden=!part;
+  if(part){document.getElementById('gtpl').innerHTML=gsvg(n,true);
+    document.getElementById('gnear').innerHTML=e.near.filter(x=>x[1]<99&&RU[x[0]].lang==='part').map(([id,d])=>`<button data-id="${pairOf[id]}">${gsvg(RU[id],true,true)}<span>${esc(RU[id].tag)} · ${d} node${d===1?'':'s'} differ</span></button>`).join('');
+    document.getElementById('gnear').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>pick(+b.dataset.id)))}}
+gselEl.addEventListener('input',()=>pick(+gselEl.value));
+document.getElementById('gprev').addEventListener('click',()=>pick((sel-1+P.seq.length)%P.seq.length));
+document.getElementById('gnext').addEventListener('click',()=>pick((sel+1)%P.seq.length));
+function setProof(){
+  pb.querySelectorAll('button').forEach(b=>{const on=b.dataset.id===P.id;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});
+  document.getElementById('proofsub').textContent=P.sub;
+  pairOf={};P.seq.forEach((s,i)=>s.pair.forEach(id=>pairOf[id]=i));sel=0;open=new Set();
+  const tset=[...new Set(P.rules.map(i=>RU[i].t))];ft.innerHTML='<option value="">All kinds</option>'+tset.map(t=>`<option value="${t}">${esc(kindName[t]||t)}</option>`).join('');
+  const fam=k=>new Set(P.seq.map(e=>e.fam[k])).size;
+  document.getElementById('stats').innerHTML=[[P.rules.length,'rule parts'],[P.seq.length,'mirror pairs'],[fam(1),'families (1-node)'],[fam(2),'families (2-node)'],[P.used?P.used.length:P.configs.length,P.used?'configurations used':'configurations']].map(([v,l])=>`<span class="stat"><b>${v.toLocaleString()}</b>${l}</span>`).join('');
+  CL=P.configs;usedSet=P.used?new Set(P.used):null;
+  cu.innerHTML=usedSet?'<option value="1">Used in this proof</option><option value="0">Dropped from RSST\'s 633</option><option value="">All</option>':'<option value="">All in this proof</option>';
+  const rings=[...new Set(CL.map(i=>CF[i].r))].sort((a,b)=>a-b);cr.innerHTML='<option value="">Any ring</option>'+rings.map(r=>`<option value="${r}">ring ${r}</option>`).join('');
+  const used=usedSet?CL.filter(i=>usedSet.has(i)):CL;const kc={};used.forEach(i=>kc[CF[i].k]=(kc[CF[i].k]||0)+1);
+  document.getElementById('cstats').innerHTML=[[used.length,'used'],[kc.D||0,'D'],[kc.C||0,'C'],[kc.C_merge||0,'C with ring merge'],[rings[0]+'–'+rings[rings.length-1],'ring sizes']].concat(usedSet?[[CL.length-used.length,'RSST configs dropped']]:[]).map(([v,l])=>`<span class="stat"><b>${typeof v==='number'?v.toLocaleString():v}</b>${l}</span>`).join('');
+  csel=CL.includes(3)?3:CL[0];
+  TR=null;thl=null;buildTree();tsel=TR.root;renderList();renderDetail();renderFlow();renderTree();renderNest();gselEl.innerHTML=P.seq.map((e,i)=>`<option value="${i}">${esc(RU[e.pair[0]].tag)}</option>`).join('');guse();renderGrid();cRenderList();cRenderDetail()}
+function route(){const h=['#configs','#flow','#tree','#grid'].includes(location.hash)?location.hash.slice(1):'rules';['rules','tree','grid','flow','configs'].forEach(k=>{document.getElementById('tab-'+k).hidden=h!==k;document.getElementById('tb-'+k).classList.toggle('on',h===k)})}
+addEventListener('hashchange',route);route();setProof();
+</script>
