@@ -28,7 +28,7 @@ is `stage0/alphabet_test.py`: on RSST rules the edge amount is fixed by the two 
 | `stage0/` | Imitation experiments (code and `RESULT.md`) |
 | `stage1/` | Network code, exact evaluator, soundness tests, best parameter sets and logs from the Mac Studio |
 | `families/` | Family and behaviour analysis: `REPORT.md`, `FABLE_IDEAS.md`, `OPERATIONS_IDEAS.md`, `code/` |
-| `families/atlas_page/` | Page sources for the Rule Atlas (`assemble.py`, `body3.html`, `css.txt`); the builder is `families/code/build_atlas.py` |
+| `families/atlas_page/` | The Discharging Rule Atlas: its own `README.md`, a self-contained `rule-atlas.html` copy of the published page, and the page sources (`assemble.py`, `body3.html`, `css.txt`); the builder is `families/code/build_atlas.py` |
 | `w16/` | Copy of the W16 zero-Euler code, data and report that defined the 5/6/7 world |
 | `families_code/` | Early copies of `behav.py`, `parts.py`, `mir.py` used by the Stage 0 scripts |
 
